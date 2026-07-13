@@ -1,0 +1,72 @@
+# One keyword per line. The USPTO plant-patent feed includes ornamentals, so
+# the refresh script keeps only records whose title, Latin name, claim, or
+# denomination text matches this target crop list.
+
+almond
+apple
+apricot
+avocado
+banana
+blackberry
+blueberry
+cacao
+cherry
+chestnut
+citrus
+coconut
+cranberry
+currant
+elderberry
+fig
+grape
+grapefruit
+guava
+hazelnut
+kiwifruit
+lemon
+lime
+macadamia
+mandarin
+mango
+melon
+nectarine
+olive
+orange
+papaya
+passion fruit
+peach
+pear
+pecan
+persimmon
+pistachio
+plum
+pomegranate
+raspberry
+strawberry
+sweet cherry
+tangerine
+walnut
+watermelon
+
+artichoke
+asparagus
+bean
+beet
+broccoli
+cabbage
+carrot
+cauliflower
+celery
+cucumber
+eggplant
+garlic
+lettuce
+onion
+pepper
+potato
+pumpkin
+spinach
+squash
+sweet potato
+tomato
+vegetable
