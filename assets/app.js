@@ -17,6 +17,8 @@ const els = {
   resetButton: document.querySelector("#resetButton"),
   timelineChart: document.querySelector("#timelineChart"),
   cropChart: document.querySelector("#cropChart"),
+  timelineInsight: document.querySelector("#timelineInsight"),
+  cropInsight: document.querySelector("#cropInsight"),
   latestList: document.querySelector("#latestList"),
   sourceSummary: document.querySelector("#sourceSummary"),
   timelineCount: document.querySelector("#timelineCount"),
@@ -62,20 +64,32 @@ function topEntries(counts, limit) {
     .slice(0, limit);
 }
 
+function formatSigned(value) {
+  if (value > 0) return `+${value}`;
+  return String(value);
+}
+
 function renderBars(target, entries, max, emptyText) {
   target.innerHTML = "";
   if (!entries.length) {
     target.innerHTML = `<p class="subtle">${emptyText}</p>`;
     return;
   }
-  for (const [label, value] of entries) {
+  for (const entry of entries) {
+    const label = Array.isArray(entry) ? entry[0] : entry.label;
+    const value = Array.isArray(entry) ? entry[1] : entry.value;
+    const note = Array.isArray(entry) ? "" : entry.note;
+    const noteClass = Array.isArray(entry) ? "" : entry.noteClass;
     const width = max ? Math.max(4, Math.round((value / max) * 100)) : 0;
     const row = document.createElement("div");
     row.className = "bar-row";
     row.innerHTML = `
-      <span>${escapeHtml(label)}</span>
+      <span class="bar-label" title="${escapeHtml(label)}">${escapeHtml(label)}</span>
       <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>
-      <strong>${value.toLocaleString()}</strong>
+      <span class="bar-value">
+        <strong>${value.toLocaleString()}</strong>
+        ${note ? `<span class="bar-note ${escapeHtml(noteClass || "")}">${escapeHtml(note)}</span>` : ""}
+      </span>
     `;
     target.appendChild(row);
   }
@@ -209,13 +223,46 @@ function renderCharts(rows) {
     .sort((a, b) => a[0].localeCompare(b[0]))
     .slice(-12);
   const maxYear = Math.max(0, ...yearEntries.map((entry) => entry[1]));
-  renderBars(els.timelineChart, yearEntries, maxYear, "No dated records match the filters.");
+  const currentYear = String(new Date().getFullYear());
+  const annotatedYears = yearEntries.map(([year, value], index) => {
+    const previous = index > 0 ? yearEntries[index - 1][1] : null;
+    const delta = previous === null ? null : value - previous;
+    const isCurrentYear = year === currentYear;
+    return {
+      label: isCurrentYear ? `${year} YTD` : year,
+      value,
+      note: isCurrentYear ? "partial" : delta === null ? "" : `${formatSigned(delta)} YoY`,
+      noteClass: delta > 0 ? "good" : delta < 0 ? "soft" : "",
+    };
+  });
+  renderBars(els.timelineChart, annotatedYears, maxYear, "No dated records match the filters.");
   els.timelineCount.textContent = `${yearEntries.length} years shown`;
+
+  const peakYear = yearEntries.reduce((best, entry) => (entry[1] > best[1] ? entry : best), ["", 0]);
+  const lastFullYear = [...yearEntries].reverse().find(([year]) => year !== currentYear);
+  const currentYearEntry = yearEntries.find(([year]) => year === currentYear);
+  els.timelineInsight.innerHTML = `
+    <div class="insight-pill"><span>Peak year</span><strong>${escapeHtml(peakYear[0] || "--")} · ${peakYear[1].toLocaleString()}</strong></div>
+    <div class="insight-pill"><span>Latest full year</span><strong>${escapeHtml(lastFullYear?.[0] || "--")} · ${(lastFullYear?.[1] || 0).toLocaleString()}</strong></div>
+    <div class="insight-pill"><span>${escapeHtml(currentYear)} so far</span><strong>${(currentYearEntry?.[1] || 0).toLocaleString()} records</strong></div>
+  `;
 
   const cropEntries = topEntries(countBy(rows, (row) => row.crop || "Unclassified"), 12);
   const maxCrop = Math.max(0, ...cropEntries.map((entry) => entry[1]));
-  renderBars(els.cropChart, cropEntries, maxCrop, "No crop data matches the filters.");
+  const annotatedCrops = cropEntries.map(([label, value]) => ({
+    label,
+    value,
+    note: rows.length ? `${Math.round((value / rows.length) * 100)}% share` : "",
+  }));
+  renderBars(els.cropChart, annotatedCrops, maxCrop, "No crop data matches the filters.");
   els.cropCount.textContent = `${cropEntries.length} crops shown`;
+  const topCrop = cropEntries[0] || ["--", 0];
+  const topThree = cropEntries.slice(0, 3).reduce((sum, entry) => sum + entry[1], 0);
+  els.cropInsight.innerHTML = `
+    <div class="insight-pill"><span>Top crop</span><strong>${escapeHtml(topCrop[0])} · ${topCrop[1].toLocaleString()}</strong></div>
+    <div class="insight-pill"><span>Top 3 share</span><strong>${rows.length ? Math.round((topThree / rows.length) * 100) : 0}%</strong></div>
+    <div class="insight-pill"><span>Crop breadth</span><strong>${Object.keys(countBy(rows, (row) => row.crop || "Unclassified")).length.toLocaleString()} crops</strong></div>
+  `;
 }
 
 function renderTable(rows) {
