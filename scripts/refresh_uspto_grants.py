@@ -93,6 +93,42 @@ def classify_crop(search_text: str, keywords: list[str]) -> str:
 
 
 def parse_patent_detail(item: dict[str, str], keywords: list[str]) -> dict[str, Any] | None:
+    detail = fetch_patent_detail(item)
+    if not detail:
+        return None
+
+    crop = classify_crop(" ".join([detail["title"], detail["latin_name"], detail["cultivar"], detail["text"]]), keywords)
+    if not crop:
+        return None
+
+    return {
+        "id": detail["patent_display"],
+        "source": "USPTO Official Gazette",
+        "sourceKind": "Issued plant patent",
+        "primarySource": detail["patent_display"],
+        "patentNumber": detail["patent_display"],
+        "publicationNumber": "",
+        "applicationNumber": detail["application_number"],
+        "date": item["issueDate"],
+        "issueDate": item["issueDate"],
+        "filedDateText": detail["filed_date"],
+        "title": detail["title"],
+        "crop": crop,
+        "cultivar": detail["cultivar"],
+        "tradeName": "",
+        "status": "issued",
+        "breeders": "",
+        "assignee": detail["assignee"] or detail["filed_by"],
+        "inventors": detail["inventors"],
+        "list": "",
+        "notes": detail["latin_name"],
+        "sourceUrl": item["detailUrl"],
+        "detailText": detail["text"][:1500],
+        "updatedAt": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def fetch_patent_detail(item: dict[str, str]) -> dict[str, str] | None:
     try:
         html_source = fetch_text(item["detailUrl"])
     except (HTTPError, URLError, TimeoutError) as exc:
@@ -110,36 +146,35 @@ def parse_patent_detail(item: dict[str, str], keywords: list[str]) -> dict[str, 
     app_match = re.search(r"Filed on\s+(.*?),\s+as Appl\. No\.\s+([0-9/,]+)", text)
     filed_date = app_match.group(1).strip() if app_match else ""
     application_number = app_match.group(2).strip() if app_match else ""
-    crop = classify_crop(" ".join([title, latin_name, cultivar, text]), keywords)
-
-    if not crop:
-        return None
-
+    inventors = extract_inventors(text, title, latin_name, cultivar)
     return {
-        "id": patent_display,
-        "source": "USPTO Official Gazette",
-        "sourceKind": "Issued plant patent",
-        "primarySource": patent_display,
-        "patentNumber": patent_display,
-        "publicationNumber": "",
-        "applicationNumber": application_number,
-        "date": item["issueDate"],
-        "issueDate": item["issueDate"],
-        "filedDateText": filed_date,
+        "text": text,
+        "patent_display": patent_display,
         "title": title,
-        "crop": crop,
+        "latin_name": latin_name,
         "cultivar": cultivar,
-        "tradeName": "",
-        "status": "issued",
-        "breeders": "",
-        "assignee": assignee or filed_by,
-        "inventors": "",
-        "list": "",
-        "notes": latin_name,
-        "sourceUrl": item["detailUrl"],
-        "detailText": text[:1500],
-        "updatedAt": datetime.now(timezone.utc).isoformat(),
+        "assignee": assignee,
+        "filed_by": filed_by,
+        "filed_date": filed_date,
+        "application_number": application_number,
+        "inventors": inventors,
     }
+
+
+def extract_inventors(text: str, title: str, latin_name: str, cultivar: str) -> str:
+    anchors = [cultivar, latin_name, title]
+    start_idx = -1
+    for anchor in anchors:
+        if anchor:
+            start_idx = text.find(anchor)
+            if start_idx >= 0:
+                start_idx += len(anchor)
+                break
+    if start_idx < 0:
+        return ""
+    tail = text[start_idx:]
+    end = re.search(r"\s+Assigned to|\s+Filed by|\s+Filed on|\s+Int\. Cl\.", tail)
+    return tail[: end.start()].strip(" .,;") if end else ""
 
 
 def load_payload() -> dict[str, Any]:
@@ -155,33 +190,88 @@ def save_payload(payload: dict[str, Any]) -> None:
     DATA_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+def patent_key(value: str) -> str:
+    match = re.search(r"\b(?:US)?PP\s*0*([0-9,]+)\b|\b(?:US)?PP0*([0-9]{5,6})\b", value or "", re.I)
+    if not match:
+        return ""
+    number = (match.group(1) or match.group(2) or "").replace(",", "")
+    return f"PP{int(number):06d}" if number.isdigit() else ""
+
+
+def merge_detail(row: dict[str, Any], item: dict[str, str], detail: dict[str, str]) -> bool:
+    changed = False
+    updates = {
+        "sourceUrl": item["detailUrl"],
+        "verifiedSource": "USPTO Official Gazette",
+        "verifiedAt": datetime.now(timezone.utc).isoformat(),
+        "applicationNumber": detail["application_number"],
+        "filedDateText": detail["filed_date"],
+        "detailText": detail["text"][:1500],
+    }
+    if detail["assignee"]:
+        updates["assignee"] = detail["assignee"]
+    if detail["inventors"]:
+        updates["inventors"] = detail["inventors"]
+    if detail["title"] and not row.get("title"):
+        updates["title"] = detail["title"]
+    if detail["cultivar"] and not row.get("cultivar"):
+        updates["cultivar"] = detail["cultivar"]
+    if detail["latin_name"] and not row.get("notes"):
+        updates["notes"] = detail["latin_name"]
+
+    for key, value in updates.items():
+        if value and row.get(key) != value:
+            row[key] = value
+            changed = True
+    return changed
+
+
 def refresh(issue_limit: int) -> int:
     keywords = load_keywords()
     payload = load_payload()
     records = payload.setdefault("records", [])
     existing_ids = {row.get("id") for row in records}
+    rows_by_patent: dict[str, list[dict[str, Any]]] = {}
+    for row in records:
+        key = patent_key(" ".join([str(row.get("primarySource") or ""), str(row.get("patentNumber") or ""), str(row.get("id") or "")]))
+        if key:
+            rows_by_patent.setdefault(key, []).append(row)
     added = 0
+    enriched = 0
     checked = 0
 
     for issue in find_issues(issue_limit):
         for item in parse_issue(issue):
             checked += 1
+            matching_rows = rows_by_patent.get(item["number"], [])
+            if matching_rows:
+                if all(row.get("sourceUrl") for row in matching_rows):
+                    continue
+                detail = fetch_patent_detail(item)
+                if not detail:
+                    continue
+                for row in matching_rows:
+                    if merge_detail(row, item, detail):
+                        enriched += 1
+                continue
             if item["number"] in existing_ids or "US" + item["number"] in existing_ids:
                 continue
             record = parse_patent_detail(item, keywords)
             if record:
                 records.append(record)
                 existing_ids.add(record["id"])
+                rows_by_patent.setdefault(item["number"], []).append(record)
                 added += 1
 
     payload.setdefault("metadata", {})["lastGrantRefresh"] = datetime.now(timezone.utc).isoformat()
     payload["metadata"]["lastGrantRefreshChecked"] = checked
     payload["metadata"]["lastGrantRefreshAdded"] = added
+    payload["metadata"]["lastGrantRefreshEnriched"] = enriched
     payload["metadata"].setdefault("sources", [])
     if "USPTO Official Gazette public plant patent pages" not in payload["metadata"]["sources"]:
         payload["metadata"]["sources"].append("USPTO Official Gazette public plant patent pages")
     save_payload(payload)
-    print(f"Checked {checked} Gazette plant patents; added {added} target crop records.")
+    print(f"Checked {checked} Gazette plant patents; added {added} target crop records; enriched {enriched} existing records.")
     return added
 
 

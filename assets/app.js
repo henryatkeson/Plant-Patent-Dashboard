@@ -62,8 +62,32 @@ function detailValue(row, keys) {
   return "";
 }
 
+function patentLookupUrl(row) {
+  if (row.sourceUrl) return row.sourceUrl;
+  const source = [row.primarySource, row.patentNumber, row.publicationNumber, row.id].filter(Boolean).join(" ");
+  const uspp = source.match(/\bUSPP\s*([0-9,]+)\b/i) || source.match(/\bPP0*([0-9]{5,6})\b/i);
+  if (uspp) {
+    const number = uspp[1].replace(/\D/g, "");
+    return `https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/PP${number}`;
+  }
+  const usppa = source.match(/\bUSPPA\s*([0-9]{11})\b/i);
+  if (usppa) {
+    return `https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/${usppa[1]}`;
+  }
+  return "";
+}
+
+function patentLookupLabel(row) {
+  if (row.sourceUrl) return "Open verified source";
+  const source = [row.primarySource, row.patentNumber, row.publicationNumber, row.id].filter(Boolean).join(" ");
+  if (/\bUSPP\s*[0-9,]+\b|\bPP0*[0-9]{5,6}\b/i.test(source)) return "Open patent lookup";
+  if (/\bUSPPA\s*[0-9]{11}\b/i.test(source)) return "Open application lookup";
+  return "";
+}
+
 function sourceLabel(row) {
   if (row.sourceUrl) return "Verified link";
+  if (patentLookupUrl(row)) return "Generated lookup";
   if (normalize(row.source).includes("workbook")) return "Baseline";
   return row.source || "Source";
 }
@@ -324,8 +348,9 @@ function openRecordDrawer(recordKey) {
   const title = row.cultivar || row.title || row.tradeName || "Patent record";
   const sourceText = row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind || "Source";
   const owner = detailValue(row, ["assignee", "breeders", "inventors"]);
-  const sourceAction = row.sourceUrl
-    ? `<a class="detail-link" href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">Open patent/source</a>`
+  const lookupUrl = patentLookupUrl(row);
+  const sourceAction = lookupUrl
+    ? `<a class="detail-link" href="${escapeHtml(lookupUrl)}" target="_blank" rel="noopener">${escapeHtml(patentLookupLabel(row))}</a>`
     : `<span class="detail-button-muted">No direct source link yet</span>`;
 
   els.drawerTitle.textContent = title;
@@ -352,8 +377,10 @@ function openRecordDrawer(recordKey) {
     </div>
     <p class="detail-note">
       ${row.sourceUrl
-        ? "This record has a direct source link. The button above opens the patent or source page in a new tab."
-        : "This record is still based on the baseline workbook or another non-linked source. We can add source verification as we enrich the dataset."}
+        ? "This record has a verified source link from the dashboard data. The button above opens the patent or source page in a new tab."
+        : lookupUrl
+          ? "This record does not yet have a verified dashboard source URL, so the button uses a generated public patent lookup link. We can replace these with verified USPTO Gazette links as the dataset is enriched."
+          : "This record is still based on the baseline workbook or another non-linked source. We can add source verification as we enrich the dataset."}
     </p>
   `;
   els.drawerBackdrop.hidden = false;
