@@ -17,8 +17,12 @@ const els = {
   resetButton: document.querySelector("#resetButton"),
   timelineChart: document.querySelector("#timelineChart"),
   cropChart: document.querySelector("#cropChart"),
+  latestList: document.querySelector("#latestList"),
+  sourceSummary: document.querySelector("#sourceSummary"),
   timelineCount: document.querySelector("#timelineCount"),
   cropCount: document.querySelector("#cropCount"),
+  latestCount: document.querySelector("#latestCount"),
+  sourceCount: document.querySelector("#sourceCount"),
   rowCount: document.querySelector("#rowCount"),
   recordsBody: document.querySelector("#recordsBody"),
 };
@@ -32,6 +36,15 @@ function formatDate(value) {
 
 function normalize(value) {
   return String(value || "").toLowerCase();
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 function countBy(rows, fn) {
@@ -60,7 +73,7 @@ function renderBars(target, entries, max, emptyText) {
     const row = document.createElement("div");
     row.className = "bar-row";
     row.innerHTML = `
-      <span>${label}</span>
+      <span>${escapeHtml(label)}</span>
       <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>
       <strong>${value.toLocaleString()}</strong>
     `;
@@ -72,13 +85,13 @@ function populateFilters() {
   const crops = [...new Set(state.records.map((row) => row.crop).filter(Boolean))]
     .sort((a, b) => a.localeCompare(b));
   els.cropFilter.innerHTML = `<option value="">All crops</option>${crops
-    .map((crop) => `<option value="${crop.replaceAll('"', "&quot;")}">${crop}</option>`)
+    .map((crop) => `<option value="${escapeHtml(crop)}">${escapeHtml(crop)}</option>`)
     .join("")}`;
 
   const sources = [...new Set(state.records.map((row) => row.sourceKind).filter(Boolean))]
     .sort((a, b) => a.localeCompare(b));
   els.sourceFilter.innerHTML = `<option value="">All sources</option>${sources
-    .map((source) => `<option value="${source.replaceAll('"', "&quot;")}">${source}</option>`)
+    .map((source) => `<option value="${escapeHtml(source)}">${escapeHtml(source)}</option>`)
     .join("")}`;
 }
 
@@ -123,6 +136,73 @@ function renderMetrics(rows) {
   els.metricPending.textContent = pending.toLocaleString();
 }
 
+function sourceLabel(row) {
+  if (row.sourceUrl) return "Verified link";
+  if (normalize(row.source).includes("workbook")) return "Baseline";
+  return row.source || "Source";
+}
+
+function statusClass(row) {
+  const status = normalize(row.status);
+  if (status.includes("pending") || normalize(row.sourceKind).includes("application")) return "pending";
+  if (normalize(row.sourceKind).includes("issued")) return "issued";
+  return "";
+}
+
+function renderLatest(rows) {
+  const latest = rows.filter((row) => row.date).slice(0, 6);
+  els.latestCount.textContent = `${latest.length} shown`;
+  els.latestList.innerHTML = "";
+  if (!latest.length) {
+    els.latestList.innerHTML = `<p class="empty-state">No records match the filters.</p>`;
+    return;
+  }
+
+  for (const row of latest) {
+    const title = row.cultivar || row.title || row.tradeName || "Untitled record";
+    const sourceText = row.primarySource || row.patentNumber || row.sourceKind || "";
+    const sourceMarkup = row.sourceUrl
+      ? `<a href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(sourceText)}</a>`
+      : escapeHtml(sourceText);
+    const owner = row.assignee || row.breeders || row.inventors || "";
+    const card = document.createElement("article");
+    card.className = "latest-card";
+    card.innerHTML = `
+      <div class="meta-line">
+        <span class="badge">${escapeHtml(formatDate(row.date))}</span>
+        <span class="badge">${escapeHtml(row.crop || "Unclassified")}</span>
+      </div>
+      <h3>${escapeHtml(title)}</h3>
+      <div>
+        ${sourceMarkup}
+        <span class="subtle">${escapeHtml(row.sourceKind || row.source || "")}</span>
+      </div>
+      <div class="meta-line">
+        <span class="badge ${statusClass(row)}">${escapeHtml(row.status || row.sourceKind || "record")}</span>
+        <span class="badge ${row.sourceUrl ? "verified" : "baseline"}">${escapeHtml(sourceLabel(row))}</span>
+      </div>
+      ${owner ? `<span class="subtle">${escapeHtml(owner)}</span>` : ""}
+    `;
+    els.latestList.appendChild(card);
+  }
+}
+
+function renderSources(rows) {
+  const entries = topEntries(countBy(rows, (row) => row.sourceKind || row.source || "Other"), 6);
+  els.sourceCount.textContent = `${entries.length} sources`;
+  els.sourceSummary.innerHTML = "";
+  if (!entries.length) {
+    els.sourceSummary.innerHTML = `<p class="empty-state">No sources match the filters.</p>`;
+    return;
+  }
+  for (const [label, value] of entries) {
+    const row = document.createElement("div");
+    row.className = "source-row";
+    row.innerHTML = `<span>${escapeHtml(label)}</span><strong>${value.toLocaleString()}</strong>`;
+    els.sourceSummary.appendChild(row);
+  }
+}
+
 function renderCharts(rows) {
   const byYear = countBy(rows, (row) => (row.date || "").slice(0, 4));
   const yearEntries = Object.entries(byYear)
@@ -145,18 +225,19 @@ function renderTable(rows) {
   for (const row of rows.slice(0, 500)) {
     const title = row.cultivar || row.title || row.tradeName || "Untitled record";
     const link = row.sourceUrl
-      ? `<a href="${row.sourceUrl}" target="_blank" rel="noopener">${row.primarySource || row.patentNumber || "USPTO"}</a>`
-      : `${row.primarySource || row.patentNumber || ""}`;
+      ? `<a href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(row.primarySource || row.patentNumber || "USPTO")}</a>`
+      : `${escapeHtml(row.primarySource || row.patentNumber || "")}`;
     const subtitle = [row.tradeName, row.title && row.title !== title ? row.title : ""].filter(Boolean).join(" | ");
     const owner = row.assignee || row.breeders || row.inventors || "";
+    const status = row.status || row.sourceKind || "";
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${formatDate(row.date)}</td>
-      <td>${row.crop || ""}</td>
-      <td><strong>${title}</strong>${subtitle ? `<span class="subtle">${subtitle}</span>` : ""}</td>
+      <td><span class="badge">${escapeHtml(row.crop || "")}</span></td>
+      <td><strong class="record-title">${escapeHtml(title)}</strong>${subtitle ? `<span class="subtle">${escapeHtml(subtitle)}</span>` : ""}</td>
       <td>${link}<span class="subtle">${row.sourceKind || row.source || ""}</span></td>
-      <td>${row.status || ""}</td>
-      <td>${owner}</td>
+      <td><span class="badge ${statusClass(row)}">${escapeHtml(status)}</span></td>
+      <td>${escapeHtml(owner)}</td>
     `;
     els.recordsBody.appendChild(tr);
   }
@@ -164,6 +245,8 @@ function renderTable(rows) {
 
 function render() {
   renderMetrics(state.filtered);
+  renderLatest(state.filtered);
+  renderSources(state.filtered);
   renderCharts(state.filtered);
   renderTable(state.filtered);
 }

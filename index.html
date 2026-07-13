@@ -8,16 +8,17 @@
   </head>
   <body>
     <header class="topbar">
-      <div>
+      <div class="title-block">
         <p class="eyebrow">Fruit, tree nut, and vegetable IP watch</p>
         <h1>Plant Patent Dashboard</h1>
       </div>
-      <div class="refresh-note">
+      <div class="refresh-note" aria-live="polite">
+        <strong>Public patent monitor</strong>
         <span id="lastRefresh">Loading data...</span>
       </div>
     </header>
 
-    <main>
+    <main class="page-shell">
       <section class="summary-grid" aria-label="Dashboard summary">
         <div class="metric">
           <span class="metric-label">Records</span>
@@ -61,6 +62,23 @@
           <input id="toDate" type="date">
         </label>
         <button id="resetButton" type="button" title="Clear filters">Reset</button>
+      </section>
+
+      <section class="workbench-grid">
+        <div class="panel latest-panel">
+          <div class="panel-head">
+            <h2>Latest Records</h2>
+            <span id="latestCount"></span>
+          </div>
+          <div id="latestList" class="latest-list"></div>
+        </div>
+        <div class="panel source-panel">
+          <div class="panel-head">
+            <h2>Source Mix</h2>
+            <span id="sourceCount"></span>
+          </div>
+          <div id="sourceSummary" class="source-list"></div>
+        </div>
       </section>
 
       <section class="visual-grid">
