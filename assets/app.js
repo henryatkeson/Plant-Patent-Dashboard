@@ -274,7 +274,7 @@ function renderCharts(rows) {
       note: isCurrentYear ? "partial" : delta === null ? "" : `${formatSigned(delta)} YoY`,
       noteClass: delta > 0 ? "good" : delta < 0 ? "soft" : "",
     };
-  });
+  }).reverse();
   renderBars(els.timelineChart, annotatedYears, maxYear, "No dated records match the filters.");
   els.timelineCount.textContent = `${yearEntries.length} years shown`;
 
