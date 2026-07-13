@@ -1,6 +1,7 @@
 const state = {
   records: [],
   filtered: [],
+  byKey: new Map(),
 };
 
 const els = {
@@ -27,6 +28,11 @@ const els = {
   sourceCount: document.querySelector("#sourceCount"),
   rowCount: document.querySelector("#rowCount"),
   recordsBody: document.querySelector("#recordsBody"),
+  drawer: document.querySelector("#recordDrawer"),
+  drawerBackdrop: document.querySelector("#drawerBackdrop"),
+  drawerClose: document.querySelector("#drawerClose"),
+  drawerTitle: document.querySelector("#drawerTitle"),
+  drawerBody: document.querySelector("#drawerBody"),
 };
 
 function formatDate(value) {
@@ -47,6 +53,19 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function detailValue(row, keys) {
+  for (const key of keys) {
+    if (row[key]) return row[key];
+  }
+  return "";
+}
+
+function sourceLabel(row) {
+  if (row.sourceUrl) return "Verified link";
+  if (normalize(row.source).includes("workbook")) return "Baseline";
+  return row.source || "Source";
 }
 
 function countBy(rows, fn) {
@@ -150,12 +169,6 @@ function renderMetrics(rows) {
   els.metricPending.textContent = pending.toLocaleString();
 }
 
-function sourceLabel(row) {
-  if (row.sourceUrl) return "Verified link";
-  if (normalize(row.source).includes("workbook")) return "Baseline";
-  return row.source || "Source";
-}
-
 function statusClass(row) {
   const status = normalize(row.status);
   if (status.includes("pending") || normalize(row.sourceKind).includes("application")) return "pending";
@@ -181,6 +194,9 @@ function renderLatest(rows) {
     const owner = row.assignee || row.breeders || row.inventors || "";
     const card = document.createElement("article");
     card.className = "latest-card";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.dataset.recordKey = row.__key;
     card.innerHTML = `
       <div class="meta-line">
         <span class="badge">${escapeHtml(formatDate(row.date))}</span>
@@ -278,6 +294,7 @@ function renderTable(rows) {
     const owner = row.assignee || row.breeders || row.inventors || "";
     const status = row.status || row.sourceKind || "";
     const tr = document.createElement("tr");
+    tr.dataset.recordKey = row.__key;
     tr.innerHTML = `
       <td>${formatDate(row.date)}</td>
       <td><span class="badge">${escapeHtml(row.crop || "")}</span></td>
@@ -288,6 +305,66 @@ function renderTable(rows) {
     `;
     els.recordsBody.appendChild(tr);
   }
+}
+
+function renderDetailItem(label, value) {
+  if (!value) return "";
+  return `
+    <div class="detail-item">
+      <span>${escapeHtml(label)}</span>
+      <p>${escapeHtml(value)}</p>
+    </div>
+  `;
+}
+
+function openRecordDrawer(recordKey) {
+  const row = state.byKey.get(recordKey);
+  if (!row) return;
+
+  const title = row.cultivar || row.title || row.tradeName || "Patent record";
+  const sourceText = row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind || "Source";
+  const owner = detailValue(row, ["assignee", "breeders", "inventors"]);
+  const sourceAction = row.sourceUrl
+    ? `<a class="detail-link" href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">Open patent/source</a>`
+    : `<span class="detail-button-muted">No direct source link yet</span>`;
+
+  els.drawerTitle.textContent = title;
+  els.drawerBody.innerHTML = `
+    <div class="detail-actions">
+      ${sourceAction}
+      <span class="badge ${row.sourceUrl ? "verified" : "baseline"}">${escapeHtml(sourceLabel(row))}</span>
+      <span class="badge ${statusClass(row)}">${escapeHtml(row.status || row.sourceKind || "record")}</span>
+    </div>
+    <div class="detail-grid">
+      ${renderDetailItem("Date", formatDate(row.date))}
+      ${renderDetailItem("Crop", row.crop)}
+      ${renderDetailItem("Cultivar / denomination", row.cultivar)}
+      ${renderDetailItem("Trade name", row.tradeName)}
+      ${renderDetailItem("Title", row.title)}
+      ${renderDetailItem("Primary source", sourceText)}
+      ${renderDetailItem("Source type", row.sourceKind || row.source)}
+      ${renderDetailItem("Assignee / breeder", owner)}
+      ${renderDetailItem("Inventors", row.inventors && row.inventors !== owner ? row.inventors : "")}
+      ${renderDetailItem("Application number", row.applicationNumber)}
+      ${renderDetailItem("Filed", row.filedDateText)}
+      ${renderDetailItem("List", row.list)}
+      ${renderDetailItem("Notes", row.notes)}
+    </div>
+    <p class="detail-note">
+      ${row.sourceUrl
+        ? "This record has a direct source link. The button above opens the patent or source page in a new tab."
+        : "This record is still based on the baseline workbook or another non-linked source. We can add source verification as we enrich the dataset."}
+    </p>
+  `;
+  els.drawerBackdrop.hidden = false;
+  els.drawer.classList.add("open");
+  els.drawer.setAttribute("aria-hidden", "false");
+}
+
+function closeRecordDrawer() {
+  els.drawer.classList.remove("open");
+  els.drawer.setAttribute("aria-hidden", "true");
+  els.drawerBackdrop.hidden = true;
 }
 
 function render() {
@@ -311,7 +388,10 @@ async function init() {
   const response = await fetch("data/plant_patents.json", { cache: "no-store" });
   if (!response.ok) throw new Error(`Could not load data: ${response.status}`);
   const payload = await response.json();
-  state.records = (payload.records || []).sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+  state.records = (payload.records || [])
+    .map((row, index) => ({ ...row, __key: `${index}-${row.id || row.primarySource || row.cultivar || "record"}` }))
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+  state.byKey = new Map(state.records.map((row) => [row.__key, row]));
   state.filtered = [...state.records];
   const generatedAt = payload.metadata?.generatedAt ? new Date(payload.metadata.generatedAt) : null;
   els.lastRefresh.textContent = generatedAt && !Number.isNaN(generatedAt.getTime())
@@ -325,6 +405,28 @@ for (const input of [els.searchInput, els.cropFilter, els.sourceFilter, els.from
   input.addEventListener("input", applyFilters);
 }
 els.resetButton.addEventListener("click", resetFilters);
+els.latestList.addEventListener("click", (event) => {
+  const card = event.target.closest("[data-record-key]");
+  if (!card || event.target.closest("a")) return;
+  openRecordDrawer(card.dataset.recordKey);
+});
+els.latestList.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const card = event.target.closest("[data-record-key]");
+  if (!card) return;
+  event.preventDefault();
+  openRecordDrawer(card.dataset.recordKey);
+});
+els.recordsBody.addEventListener("click", (event) => {
+  const row = event.target.closest("[data-record-key]");
+  if (!row || event.target.closest("a")) return;
+  openRecordDrawer(row.dataset.recordKey);
+});
+els.drawerClose.addEventListener("click", closeRecordDrawer);
+els.drawerBackdrop.addEventListener("click", closeRecordDrawer);
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeRecordDrawer();
+});
 
 init().catch((error) => {
   els.lastRefresh.textContent = "Could not load dashboard data";
