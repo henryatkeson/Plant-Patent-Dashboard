@@ -349,6 +349,9 @@ function openRecordDrawer(recordKey) {
   const sourceText = row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind || "Source";
   const owner = detailValue(row, ["assignee", "breeders", "inventors"]);
   const lookupUrl = patentLookupUrl(row);
+  const gazetteAction = row.gazetteUrl
+    ? `<a class="detail-button-muted" href="${escapeHtml(row.gazetteUrl)}" target="_blank" rel="noopener">Open Gazette notice</a>`
+    : "";
   const sourceAction = lookupUrl
     ? `<a class="detail-link" href="${escapeHtml(lookupUrl)}" target="_blank" rel="noopener">${escapeHtml(patentLookupLabel(row))}</a>`
     : `<span class="detail-button-muted">No direct source link yet</span>`;
@@ -357,6 +360,7 @@ function openRecordDrawer(recordKey) {
   els.drawerBody.innerHTML = `
     <div class="detail-actions">
       ${sourceAction}
+      ${gazetteAction}
       <span class="badge ${row.sourceUrl ? "verified" : "baseline"}">${escapeHtml(sourceLabel(row))}</span>
       <span class="badge ${statusClass(row)}">${escapeHtml(row.status || row.sourceKind || "record")}</span>
     </div>

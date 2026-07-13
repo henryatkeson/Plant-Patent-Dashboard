@@ -89,9 +89,13 @@ def main() -> None:
     work: dict[str, str] = {}
 
     for row in records:
+        kind, number, url = candidate_for(row)
+        if kind == "USPPPDF" and row.get("sourceUrl") and "patentsgazette.uspto.gov" in str(row.get("sourceUrl")):
+            row["gazetteUrl"] = row["sourceUrl"]
+            row.pop("sourceUrl", None)
+            row.pop("verifiedSource", None)
         if row.get("sourceUrl") and row.get("verifiedSource") != "Google Patents":
             continue
-        kind, number, url = candidate_for(row)
         if not url:
             continue
         cache_key = f"{kind}:{number}"
@@ -124,9 +128,13 @@ def main() -> None:
 
     linked = 0
     for row in records:
+        kind, number, _url = candidate_for(row)
+        if kind == "USPPPDF" and row.get("sourceUrl") and "patentsgazette.uspto.gov" in str(row.get("sourceUrl")):
+            row["gazetteUrl"] = row["sourceUrl"]
+            row.pop("sourceUrl", None)
+            row.pop("verifiedSource", None)
         if row.get("sourceUrl") and row.get("verifiedSource") != "Google Patents":
             continue
-        kind, number, _url = candidate_for(row)
         if not kind:
             continue
         result = cache.get(f"{kind}:{number}")
