@@ -36,6 +36,91 @@ const els = {
   drawerBody: document.querySelector("#drawerBody"),
 };
 
+const LATEST_RELEVANT_CROPS = new Set([
+  "almond",
+  "almond rootstock",
+  "annona",
+  "apple",
+  "apple rootstock",
+  "apple/quince hybrid",
+  "apricot",
+  "avocado",
+  "avocado rootstock",
+  "banana",
+  "blackberry",
+  "blue honeysuckle",
+  "blueberry",
+  "cacao",
+  "cherimoya",
+  "cherry",
+  "cherry rootstock",
+  "cherry-sweet",
+  "cherry-tart",
+  "chestnut",
+  "citrus",
+  "citrus-finger lime hybrid",
+  "citrus-grapefruit",
+  "citrus-lemon",
+  "citrus-mandarin hybrid",
+  "citrus-misc",
+  "citrus rootstock",
+  "citrus-sweet orange",
+  "citrus-sweet orange-like hybrid",
+  "coconut",
+  "cranberry",
+  "currant",
+  "currant-black",
+  "elderberry",
+  "fig",
+  "goji",
+  "gooseberry",
+  "grape",
+  "guava",
+  "hazelnut",
+  "huckleberry (vaccinium ovatum)",
+  "kiwifruit",
+  "lemon",
+  "lingonberry",
+  "loquat",
+  "macadamia",
+  "mango",
+  "mulberry",
+  "nectarine",
+  "olive",
+  "orange",
+  "papaya",
+  "passion fruit",
+  "peach",
+  "peach rootstock",
+  "pear",
+  "pear-rootstock",
+  "pecan",
+  "persimmon",
+  "pineapple",
+  "pistachio",
+  "pistachio rootstock",
+  "pitahaya",
+  "plum",
+  "plum rootstock",
+  "plum-cherry",
+  "plum-interspecific",
+  "pomegranate",
+  "prunophora hybrid",
+  "prunophora hybrid-plumcot",
+  "prunus",
+  "quince",
+  "raspberry",
+  "raspberry-black",
+  "red bayberry",
+  "rubus",
+  "soursop",
+  "strawberry",
+  "sugar apple",
+  "walnut",
+  "walnut rootstock",
+  "walnut-black",
+]);
+
 function formatDate(value) {
   if (!value) return "--";
   const date = new Date(`${value}T00:00:00`);
@@ -79,6 +164,16 @@ function displayCrop(value) {
 
 function isCpvoRecord(row) {
   return normalize(row.source).includes("cpvo") || normalize(row.sourceKind).includes("cpvo");
+}
+
+function isRelevantLatestRecord(row) {
+  const crop = normalize(row.crop);
+  const cropFocus = normalize(row.cropFocus);
+  const combined = normalize([row.crop, row.title, row.notes, row.speciesLatinName].join(" "));
+  if (!crop) return false;
+  if (crop.includes("ornamental") || combined.includes("ornamental")) return false;
+  if (cropFocus.includes("other plant patent")) return false;
+  return LATEST_RELEVANT_CROPS.has(crop);
 }
 
 function detailValue(row, keys) {
@@ -238,11 +333,11 @@ function statusClass(row) {
 }
 
 function renderLatest(rows) {
-  const latest = rows.filter((row) => row.date).slice(0, 6);
+  const latest = rows.filter((row) => row.date && isRelevantLatestRecord(row)).slice(0, 6);
   els.latestCount.textContent = `${latest.length} shown`;
   els.latestList.innerHTML = "";
   if (!latest.length) {
-    els.latestList.innerHTML = `<p class="empty-state">No records match the filters.</p>`;
+    els.latestList.innerHTML = `<p class="empty-state">No relevant fruit, tree nut, or vegetable records match the filters.</p>`;
     return;
   }
 
