@@ -458,6 +458,11 @@ a:hover {
   color: #73501a;
 }
 
+.badge.registered {
+  background: #e6f0ea;
+  color: #24513c;
+}
+
 .badge.verified {
   background: #e8f0f6;
   color: #315a72;

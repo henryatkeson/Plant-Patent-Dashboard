@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Plant Patent Dashboard</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260714-cpvo-gazettes">
+    <link rel="stylesheet" href="assets/styles.css?v=20260714-cpvo-all-varieties">
   </head>
   <body>
     <header class="topbar">
@@ -13,7 +13,7 @@
         <h1>Plant Patent Dashboard</h1>
       </div>
       <div class="refresh-note" aria-live="polite">
-        <strong>Public patent monitor</strong>
+        <strong>Public patent and variety monitor</strong>
         <span id="lastRefresh">Loading data...</span>
       </div>
     </header>
@@ -33,7 +33,7 @@
           <strong id="metricIssued">0</strong>
         </div>
         <div class="metric">
-          <span class="metric-label">Pending/Public Apps</span>
+          <span class="metric-label">Applications</span>
           <strong id="metricPending">0</strong>
         </div>
       </section>
@@ -41,7 +41,7 @@
       <section class="control-strip" aria-label="Filters">
         <label>
           Search
-          <input id="searchInput" type="search" placeholder="Cultivar, crop, breeder, assignee">
+          <input id="searchInput" type="search" placeholder="Cultivar, crop, breeder, assignee, country">
         </label>
         <label>
           Crop
@@ -146,6 +146,6 @@
       <div id="drawerBody" class="drawer-body"></div>
     </aside>
 
-    <script src="assets/app.js?v=20260714-cpvo-gazettes"></script>
+    <script src="assets/app.js?v=20260714-cpvo-all-varieties"></script>
   </body>
 </html>

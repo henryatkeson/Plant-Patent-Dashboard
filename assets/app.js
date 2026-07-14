@@ -3,6 +3,7 @@ const state = {
   filtered: [],
   byKey: new Map(),
   cpvoGazettes: [],
+  cpvoVarieties: [],
 };
 
 const els = {
@@ -79,6 +80,10 @@ function displayCrop(value) {
     .join("");
 }
 
+function isCpvoRecord(row) {
+  return normalize(row.source).includes("cpvo") || normalize(row.sourceKind).includes("cpvo");
+}
+
 function detailValue(row, keys) {
   for (const key of keys) {
     if (row[key]) return displayText(row[key]);
@@ -87,6 +92,7 @@ function detailValue(row, keys) {
 }
 
 function patentLookupUrl(row) {
+  if (isCpvoRecord(row)) return row.sourceUrl || "https://online.plantvarieties.eu/";
   if (row.sourceUrl) return row.sourceUrl;
   const source = [row.primarySource, row.patentNumber, row.publicationNumber, row.id].filter(Boolean).join(" ");
   const uspp = source.match(/\bUSPP\s*([0-9,]+)\b/i) || source.match(/\bPP0*([0-9]{5,6})\b/i);
@@ -102,6 +108,7 @@ function patentLookupUrl(row) {
 }
 
 function patentLookupLabel(row) {
+  if (isCpvoRecord(row)) return "Open CPVO Variety Finder";
   if (row.sourceUrl) return "Open verified source";
   const source = [row.primarySource, row.patentNumber, row.publicationNumber, row.id].filter(Boolean).join(" ");
   if (/\bUSPP\s*[0-9,]+\b|\bPP0*[0-9]{5,6}\b/i.test(source)) return "Open patent lookup";
@@ -110,6 +117,7 @@ function patentLookupLabel(row) {
 }
 
 function sourceLabel(row) {
+  if (isCpvoRecord(row)) return row.registerGroup || "CPVO";
   if (row.sourceUrl) return "Verified link";
   if (patentLookupUrl(row)) return "Generated lookup";
   if (normalize(row.source).includes("workbook")) return "Baseline";
@@ -194,6 +202,13 @@ function applyFilters() {
       row.assignee,
       row.inventors,
       row.notes,
+      row.country,
+      row.registerType,
+      row.registerLabel,
+      row.registerGroup,
+      row.speciesClass,
+      row.speciesLatinName,
+      row.breederReference,
     ].join(" "));
     if (term && !haystack.includes(term)) return false;
     if (crop && row.crop !== crop) return false;
@@ -209,7 +224,7 @@ function applyFilters() {
 function renderMetrics(rows) {
   const latest = rows.find((row) => row.date)?.date || "";
   const issued = rows.filter((row) => normalize(row.sourceKind).includes("issued plant patent")).length;
-  const pending = rows.filter((row) => normalize(row.status).includes("pending") || normalize(row.sourceKind).includes("application")).length;
+  const pending = rows.filter((row) => normalize(row.status).includes("pending") || normalize(row.status).includes("application") || normalize(row.sourceKind).includes("application")).length;
 
   els.metricRecords.textContent = rows.length.toLocaleString();
   els.metricLatest.textContent = formatDate(latest);
@@ -219,7 +234,8 @@ function renderMetrics(rows) {
 
 function statusClass(row) {
   const status = normalize(row.status);
-  if (status.includes("pending") || normalize(row.sourceKind).includes("application")) return "pending";
+  if (status.includes("pending") || status.includes("application") || normalize(row.sourceKind).includes("application")) return "pending";
+  if (status.includes("registered") || status.includes("approved")) return "registered";
   if (normalize(row.sourceKind).includes("issued")) return "issued";
   return "";
 }
@@ -235,9 +251,10 @@ function renderLatest(rows) {
 
   for (const row of latest) {
     const title = displayText(row.cultivar || row.title || row.tradeName, "Untitled record");
-    const sourceText = displayText(row.primarySource || row.patentNumber || row.sourceKind, "Patent unknown");
-    const sourceMarkup = row.sourceUrl
-      ? `<a href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(sourceText)}</a>`
+    const sourceText = displayText(row.primarySource || row.patentNumber || row.sourceKind, "Source unknown");
+    const sourceUrl = patentLookupUrl(row);
+    const sourceMarkup = sourceUrl
+      ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(sourceText)}</a>`
       : escapeHtml(sourceText);
     const owner = displayText(row.assignee || row.breeders || row.inventors || "");
     const card = document.createElement("article");
@@ -364,9 +381,10 @@ function renderTable(rows) {
 
   for (const row of rows.slice(0, 500)) {
     const title = displayText(row.cultivar || row.title || row.tradeName, "Untitled record");
-    const link = row.sourceUrl
-      ? `<a href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(displayText(row.primarySource || row.patentNumber, "Patent unknown"))}</a>`
-      : `${escapeHtml(displayText(row.primarySource || row.patentNumber, "Patent unknown"))}`;
+    const sourceUrl = patentLookupUrl(row);
+    const link = sourceUrl
+      ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(displayText(row.primarySource || row.patentNumber, "Source unknown"))}</a>`
+      : `${escapeHtml(displayText(row.primarySource || row.patentNumber, "Source unknown"))}`;
     const subtitle = [row.tradeName, row.title && row.title !== title ? row.title : ""].filter(Boolean).map((value) => displayText(value)).join(" | ");
     const owner = displayText(row.assignee || row.breeders || row.inventors || "");
     const status = displayText(row.status || row.sourceKind || "");
@@ -399,8 +417,9 @@ function openRecordDrawer(recordKey) {
   if (!row) return;
 
   const title = displayText(row.cultivar || row.title || row.tradeName, "Patent record");
-  const sourceText = displayText(row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind, "Patent unknown");
+  const sourceText = displayText(row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind, "Source unknown");
   const owner = detailValue(row, ["assignee", "breeders", "inventors"]);
+  const isCpvo = isCpvoRecord(row);
   const lookupUrl = patentLookupUrl(row);
   const gazetteAction = row.gazetteUrl
     ? `<a class="detail-button-muted" href="${escapeHtml(row.gazetteUrl)}" target="_blank" rel="noopener">Open Gazette notice</a>`
@@ -425,15 +444,25 @@ function openRecordDrawer(recordKey) {
       ${renderDetailItem("Title", row.title)}
       ${renderDetailItem("Primary source", sourceText)}
       ${renderDetailItem("Source type", row.sourceKind || row.source)}
+      ${renderDetailItem("Register group", row.registerGroup)}
+      ${renderDetailItem("Register type", row.registerType ? `${row.registerType} - ${row.registerLabel || ""}` : "")}
+      ${renderDetailItem("Country", row.country)}
+      ${renderDetailItem("Species class", row.speciesClass)}
+      ${renderDetailItem("Species latin name", row.speciesLatinName)}
       ${renderDetailItem("Assignee / breeder", owner)}
+      ${renderDetailItem("Breeder reference", row.breederReference)}
       ${renderDetailItem("Inventors", row.inventors && row.inventors !== owner ? row.inventors : "")}
       ${renderDetailItem("Application number", row.applicationNumber)}
-      ${renderDetailItem("Filed", row.filedDateText)}
+      ${renderDetailItem("Application date", row.applicationDate || row.filedDateText)}
+      ${renderDetailItem("Grant / registration date", row.grantDate)}
+      ${renderDetailItem("Denomination status", row.denominationStatus)}
       ${renderDetailItem("List", row.list)}
       ${renderDetailItem("Notes", row.notes)}
     </div>
     <p class="detail-note">
-      ${row.sourceUrl
+      ${isCpvo
+        ? "This record comes from the CPVO Variety Finder export. The button above opens the CPVO search site; the row-specific details are stored in the dashboard data from the Excel export."
+        : row.sourceUrl
         ? "This record has a verified source link from the dashboard data. The button above opens the patent or source page in a new tab."
         : lookupUrl
           ? "This record does not yet have a verified dashboard source URL, so the button uses a generated public patent lookup link. We can replace these with verified USPTO Gazette links as the dataset is enriched."
@@ -470,9 +499,10 @@ function resetFilters() {
 }
 
 async function init() {
-  const [response, cpvoResponse] = await Promise.all([
+  const [response, cpvoResponse, cpvoVarietiesResponse] = await Promise.all([
     fetch("data/plant_patents.json", { cache: "no-store" }),
     fetch("data/cpvo_gazettes.json", { cache: "no-store" }).catch(() => null),
+    fetch("data/cpvo_varieties.json", { cache: "no-store" }).catch(() => null),
   ]);
   if (!response.ok) throw new Error(`Could not load data: ${response.status}`);
   const payload = await response.json();
@@ -481,7 +511,11 @@ async function init() {
     state.cpvoGazettes = (cpvoPayload.gazettes || [])
       .sort((a, b) => String(b.publicationDate || "").localeCompare(String(a.publicationDate || "")));
   }
-  state.records = (payload.records || [])
+  if (cpvoVarietiesResponse && cpvoVarietiesResponse.ok) {
+    const cpvoVarietiesPayload = await cpvoVarietiesResponse.json();
+    state.cpvoVarieties = cpvoVarietiesPayload.records || [];
+  }
+  state.records = [...(payload.records || []), ...state.cpvoVarieties]
     .map((row, index) => ({ ...row, __key: `${index}-${row.id || row.primarySource || row.cultivar || "record"}` }))
     .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
   state.byKey = new Map(state.records.map((row) => [row.__key, row]));
