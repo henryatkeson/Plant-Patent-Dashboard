@@ -103,10 +103,6 @@ h2 {
   margin-top: 14px;
 }
 
-.cpvo-section {
-  margin-top: 14px;
-}
-
 .metric,
 .panel,
 .table-section {
@@ -494,57 +490,6 @@ a:hover {
   font-size: 16px;
 }
 
-.gazette-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.gazette-card {
-  display: grid;
-  gap: 12px;
-  min-height: 144px;
-  padding: 14px;
-  border: 1px solid #dce4dc;
-  border-radius: 8px;
-  background: #fbfcfb;
-}
-
-.gazette-card h3 {
-  margin: 9px 0 5px;
-  font-size: 15px;
-}
-
-.gazette-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.gazette-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-self: end;
-}
-
-.gazette-actions a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 32px;
-  padding: 0 10px;
-  border-radius: 6px;
-  background: #eef3ee;
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.gazette-actions a:first-child {
-  background: var(--green);
-  color: #ffffff;
-}
-
 .record-title {
   display: block;
   margin-bottom: 2px;
@@ -698,7 +643,6 @@ tbody tr:hover td {
   .summary-grid,
   .visual-grid,
   .workbench-grid,
-  .gazette-list,
   .control-strip,
   .latest-list,
   .chart-insight {

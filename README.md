@@ -7,7 +7,6 @@ This is a lightweight dashboard for fruit, tree nut, and vegetable plant-patent 
 - Seed data from the local workbook in `Patent Dashboard`.
 - Public issued plant patents from the USPTO Official Gazette.
 - CPVO Variety Finder export records for selected high-relevance crops.
-- CPVO Official Gazette PDFs from 2024 onward for EU plant variety rights monitoring.
 - Published plant applications can be added later through the same JSON file once an Open Data Portal/API-key workflow is selected.
 
 Important limitation: unpublished filings inside Patent Center are not public records. A USPTO account can help with Patent Center or Open Data Portal workflows, but it cannot make non-public filings broadly available for an automated public dashboard.
@@ -20,7 +19,6 @@ From this folder:
 python scripts/export_seed.py
 python scripts/refresh_uspto_grants.py --issues 8
 python scripts/import_cpvo_varieties.py
-python scripts/download_cpvo_gazettes.py --start-year 2024
 python scripts/serve.py
 ```
 
@@ -32,20 +30,15 @@ http://127.0.0.1:8787/
 
 ## Daily refresh
 
-The refresh scripts write `data/plant_patents.json` and `data/cpvo_gazettes.json`. `data/cpvo_varieties.json` is rebuilt from a local CPVO Variety Finder Excel export when a new export is downloaded.
+The refresh scripts write `data/plant_patents.json`. `data/cpvo_varieties.json` is rebuilt from local CPVO Variety Finder Excel exports when new exports are downloaded.
 
 For an online deployment, schedule:
 
 ```powershell
 python scripts/refresh_uspto_grants.py --issues 8
-python scripts/download_cpvo_gazettes.py --start-year 2024
 ```
 
-Run them once per day. The USPTO Official Gazette is weekly and the CPVO Official Gazette is periodic, but daily checks are harmless and make the dashboard pick up new issues as soon as they appear.
-
-## CPVO PDFs
-
-The dashboard stores CPVO Gazette PDFs in `data/cpvo/gazettes` and lists them from `data/cpvo_gazettes.json`. The PDFs are multilingual. English headings, contents pages, and field definitions can be parsed, while the actual variety rows are shared tables rather than separate English-only duplicate records.
+Run it once per day. The USPTO Official Gazette is weekly, but daily checks are harmless and make the dashboard pick up new issues as soon as they appear.
 
 ## CPVO Variety Finder
 

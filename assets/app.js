@@ -2,7 +2,6 @@ const state = {
   records: [],
   filtered: [],
   byKey: new Map(),
-  cpvoGazettes: [],
   cpvoVarieties: [],
 };
 
@@ -24,8 +23,6 @@ const els = {
   cropInsight: document.querySelector("#cropInsight"),
   latestList: document.querySelector("#latestList"),
   sourceSummary: document.querySelector("#sourceSummary"),
-  cpvoGazetteCount: document.querySelector("#cpvoGazetteCount"),
-  cpvoGazetteList: document.querySelector("#cpvoGazetteList"),
   timelineCount: document.querySelector("#timelineCount"),
   cropCount: document.querySelector("#cropCount"),
   latestCount: document.querySelector("#latestCount"),
@@ -298,35 +295,6 @@ function renderSources(rows) {
   }
 }
 
-function renderCpvoGazettes() {
-  if (!els.cpvoGazetteList || !els.cpvoGazetteCount) return;
-  const gazettes = state.cpvoGazettes.slice(0, 15);
-  els.cpvoGazetteCount.textContent = `${state.cpvoGazettes.length.toLocaleString()} PDFs`;
-  if (!gazettes.length) {
-    els.cpvoGazetteList.innerHTML = `<p class="empty-state">No CPVO Gazette PDFs have been loaded yet.</p>`;
-    return;
-  }
-
-  els.cpvoGazetteList.innerHTML = gazettes
-    .map((gazette) => {
-      const sizeMb = gazette.bytes ? `${(gazette.bytes / 1024 / 1024).toFixed(1)} MB` : "PDF";
-      return `
-        <article class="gazette-card">
-          <div>
-            <span class="badge">${escapeHtml(formatDate(gazette.publicationDate))}</span>
-            <h3>${escapeHtml(gazette.title || "CPVO Official Gazette")}</h3>
-            <p>${escapeHtml(sizeMb)} &middot; CPVO Official Gazette</p>
-          </div>
-          <div class="gazette-actions">
-            <a href="${escapeHtml(gazette.localPath)}" target="_blank" rel="noopener">Open PDF</a>
-            <a href="${escapeHtml(gazette.sourceUrl)}" target="_blank" rel="noopener">CPVO source</a>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-}
-
 function renderCharts(rows) {
   const byYear = countBy(rows, (row) => (row.date || "").slice(0, 4));
   const yearEntries = Object.entries(byYear)
@@ -484,7 +452,6 @@ function render() {
   renderMetrics(state.filtered);
   renderLatest(state.filtered);
   renderSources(state.filtered);
-  renderCpvoGazettes();
   renderCharts(state.filtered);
   renderTable(state.filtered);
 }
@@ -499,18 +466,12 @@ function resetFilters() {
 }
 
 async function init() {
-  const [response, cpvoResponse, cpvoVarietiesResponse] = await Promise.all([
+  const [response, cpvoVarietiesResponse] = await Promise.all([
     fetch("data/plant_patents.json", { cache: "no-store" }),
-    fetch("data/cpvo_gazettes.json", { cache: "no-store" }).catch(() => null),
     fetch("data/cpvo_varieties.json", { cache: "no-store" }).catch(() => null),
   ]);
   if (!response.ok) throw new Error(`Could not load data: ${response.status}`);
   const payload = await response.json();
-  if (cpvoResponse && cpvoResponse.ok) {
-    const cpvoPayload = await cpvoResponse.json();
-    state.cpvoGazettes = (cpvoPayload.gazettes || [])
-      .sort((a, b) => String(b.publicationDate || "").localeCompare(String(a.publicationDate || "")));
-  }
   if (cpvoVarietiesResponse && cpvoVarietiesResponse.ok) {
     const cpvoVarietiesPayload = await cpvoVarietiesResponse.json();
     state.cpvoVarieties = cpvoVarietiesPayload.records || [];
