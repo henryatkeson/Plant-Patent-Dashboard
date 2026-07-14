@@ -92,14 +92,39 @@ def classify_crop(search_text: str, keywords: list[str]) -> str:
     return ""
 
 
+def title_case_crop(value: str) -> str:
+    parts = re.split(r"([-\u2013\u2014/() ])", value or "")
+    small_words = {"and", "or", "of", "the", "in"}
+    titled = []
+    for part in parts:
+        if re.fullmatch(r"[A-Za-z]+", part):
+            lower = part.lower()
+            titled.append(lower if lower in small_words else lower[:1].upper() + lower[1:])
+        else:
+            titled.append(part)
+    return "".join(titled).strip()
+
+
+def crop_from_title(title: str) -> str:
+    match = re.search(r"^(.+?)\s+plant\s+named\b", title or "", re.I)
+    if match:
+        return title_case_crop(match.group(1).strip())
+    first = (title or "").split(" ", 1)[0].strip(" ,.;:")
+    return title_case_crop(first or "Other Plant")
+
+
+def cultivar_from_title(title: str) -> str:
+    match = re.search(r"named\s+[\u2018'\"\u201c](.+?)[\u2019'\"\u201d]", title or "", re.I)
+    return match.group(1).strip() if match else ""
+
+
 def parse_patent_detail(item: dict[str, str], keywords: list[str]) -> dict[str, Any] | None:
     detail = fetch_patent_detail(item)
     if not detail:
         return None
 
-    crop = classify_crop(" ".join([detail["title"], detail["latin_name"], detail["cultivar"], detail["text"]]), keywords)
-    if not crop:
-        return None
+    classified_crop = classify_crop(" ".join([detail["title"], detail["latin_name"], detail["cultivar"], detail["text"]]), keywords)
+    crop = title_case_crop(classified_crop) if classified_crop else crop_from_title(detail["title"])
 
     return {
         "id": detail["patent_display"],
@@ -114,6 +139,7 @@ def parse_patent_detail(item: dict[str, str], keywords: list[str]) -> dict[str, 
         "filedDateText": detail["filed_date"],
         "title": detail["title"],
         "crop": crop,
+        "cropFocus": "Target crop" if classified_crop else "Other plant patent",
         "cultivar": detail["cultivar"],
         "tradeName": "",
         "status": "issued",
@@ -141,6 +167,9 @@ def fetch_patent_detail(item: dict[str, str]) -> dict[str, str] | None:
     title = title_match.group(2).strip(" .") if title_match else ""
     latin_name = extract_between(text, "Latin Name:", r"Varietal Denomination:|Assigned to|Filed by|Filed on")
     cultivar = extract_between(text, "Varietal Denomination:", r"Assigned to|Filed by|Filed on|Int\. Cl\.")
+    title_cultivar = cultivar_from_title(title)
+    if title_cultivar and (not cultivar or len(cultivar) > len(title_cultivar) + 8):
+        cultivar = title_cultivar
     assignee = extract_between(text, "Assigned to", r"Filed by|Filed on|Int\. Cl\.")
     filed_by = extract_between(text, "Filed by", r"Filed on|Int\. Cl\.")
     app_match = re.search(r"Filed on\s+(.*?),\s+as Appl\. No\.\s+([0-9/,]+)", text)
@@ -271,7 +300,7 @@ def refresh(issue_limit: int) -> int:
     if "USPTO Official Gazette public plant patent pages" not in payload["metadata"]["sources"]:
         payload["metadata"]["sources"].append("USPTO Official Gazette public plant patent pages")
     save_payload(payload)
-    print(f"Checked {checked} Gazette plant patents; added {added} target crop records; enriched {enriched} existing records.")
+    print(f"Checked {checked} Gazette plant patents; added {added} plant patent records; enriched {enriched} existing records.")
     return added
 
 
