@@ -55,9 +55,30 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function displayText(value, fallback = "") {
+  const text = String(value || "")
+    .replace(/\?{2,}/g, "patent unknown")
+    .replace(/\s+/g, " ")
+    .trim();
+  return text || fallback;
+}
+
+function titleCaseWord(word) {
+  const lower = word.toLowerCase();
+  if (["and", "or", "of", "the", "in"].includes(lower)) return lower;
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+function displayCrop(value) {
+  return displayText(value, "Unclassified")
+    .split(/([-\u2013\u2014/() ])/)
+    .map((part) => (/^[A-Za-z]+$/.test(part) ? titleCaseWord(part) : part))
+    .join("");
+}
+
 function detailValue(row, keys) {
   for (const key of keys) {
-    if (row[key]) return row[key];
+    if (row[key]) return displayText(row[key]);
   }
   return "";
 }
@@ -142,7 +163,7 @@ function populateFilters() {
   const crops = [...new Set(state.records.map((row) => row.crop).filter(Boolean))]
     .sort((a, b) => a.localeCompare(b));
   els.cropFilter.innerHTML = `<option value="">All crops</option>${crops
-    .map((crop) => `<option value="${escapeHtml(crop)}">${escapeHtml(crop)}</option>`)
+    .map((crop) => `<option value="${escapeHtml(crop)}">${escapeHtml(displayCrop(crop))}</option>`)
     .join("")}`;
 
   const sources = [...new Set(state.records.map((row) => row.sourceKind).filter(Boolean))]
@@ -210,12 +231,12 @@ function renderLatest(rows) {
   }
 
   for (const row of latest) {
-    const title = row.cultivar || row.title || row.tradeName || "Untitled record";
-    const sourceText = row.primarySource || row.patentNumber || row.sourceKind || "";
+    const title = displayText(row.cultivar || row.title || row.tradeName, "Untitled record");
+    const sourceText = displayText(row.primarySource || row.patentNumber || row.sourceKind, "Patent unknown");
     const sourceMarkup = row.sourceUrl
       ? `<a href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(sourceText)}</a>`
       : escapeHtml(sourceText);
-    const owner = row.assignee || row.breeders || row.inventors || "";
+    const owner = displayText(row.assignee || row.breeders || row.inventors || "");
     const card = document.createElement("article");
     card.className = "latest-card";
     card.tabIndex = 0;
@@ -224,15 +245,15 @@ function renderLatest(rows) {
     card.innerHTML = `
       <div class="meta-line">
         <span class="badge">${escapeHtml(formatDate(row.date))}</span>
-        <span class="badge">${escapeHtml(row.crop || "Unclassified")}</span>
+        <span class="badge">${escapeHtml(displayCrop(row.crop))}</span>
       </div>
       <h3>${escapeHtml(title)}</h3>
       <div>
         ${sourceMarkup}
-        <span class="subtle">${escapeHtml(row.sourceKind || row.source || "")}</span>
+        <span class="subtle">${escapeHtml(displayText(row.sourceKind || row.source || ""))}</span>
       </div>
       <div class="meta-line">
-        <span class="badge ${statusClass(row)}">${escapeHtml(row.status || row.sourceKind || "record")}</span>
+        <span class="badge ${statusClass(row)}">${escapeHtml(displayText(row.status || row.sourceKind || "record"))}</span>
         <span class="badge ${row.sourceUrl ? "verified" : "baseline"}">${escapeHtml(sourceLabel(row))}</span>
       </div>
       ${owner ? `<span class="subtle">${escapeHtml(owner)}</span>` : ""}
@@ -290,7 +311,7 @@ function renderCharts(rows) {
   const cropEntries = topEntries(countBy(rows, (row) => row.crop || "Unclassified"), 12);
   const maxCrop = Math.max(0, ...cropEntries.map((entry) => entry[1]));
   const annotatedCrops = cropEntries.map(([label, value]) => ({
-    label,
+    label: displayCrop(label),
     value,
     note: rows.length ? `${Math.round((value / rows.length) * 100)}% share` : "",
   }));
@@ -299,7 +320,7 @@ function renderCharts(rows) {
   const topCrop = cropEntries[0] || ["--", 0];
   const topThree = cropEntries.slice(0, 3).reduce((sum, entry) => sum + entry[1], 0);
   els.cropInsight.innerHTML = `
-    <div class="insight-pill"><span>Top crop</span><strong>${escapeHtml(topCrop[0])} · ${topCrop[1].toLocaleString()}</strong></div>
+    <div class="insight-pill"><span>Top crop</span><strong>${escapeHtml(displayCrop(topCrop[0]))} · ${topCrop[1].toLocaleString()}</strong></div>
     <div class="insight-pill"><span>Top 3 share</span><strong>${rows.length ? Math.round((topThree / rows.length) * 100) : 0}%</strong></div>
     <div class="insight-pill"><span>Crop breadth</span><strong>${Object.keys(countBy(rows, (row) => row.crop || "Unclassified")).length.toLocaleString()} crops</strong></div>
   `;
@@ -310,20 +331,20 @@ function renderTable(rows) {
   els.recordsBody.innerHTML = "";
 
   for (const row of rows.slice(0, 500)) {
-    const title = row.cultivar || row.title || row.tradeName || "Untitled record";
+    const title = displayText(row.cultivar || row.title || row.tradeName, "Untitled record");
     const link = row.sourceUrl
-      ? `<a href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(row.primarySource || row.patentNumber || "USPTO")}</a>`
-      : `${escapeHtml(row.primarySource || row.patentNumber || "")}`;
-    const subtitle = [row.tradeName, row.title && row.title !== title ? row.title : ""].filter(Boolean).join(" | ");
-    const owner = row.assignee || row.breeders || row.inventors || "";
-    const status = row.status || row.sourceKind || "";
+      ? `<a href="${escapeHtml(row.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(displayText(row.primarySource || row.patentNumber, "Patent unknown"))}</a>`
+      : `${escapeHtml(displayText(row.primarySource || row.patentNumber, "Patent unknown"))}`;
+    const subtitle = [row.tradeName, row.title && row.title !== title ? row.title : ""].filter(Boolean).map((value) => displayText(value)).join(" | ");
+    const owner = displayText(row.assignee || row.breeders || row.inventors || "");
+    const status = displayText(row.status || row.sourceKind || "");
     const tr = document.createElement("tr");
     tr.dataset.recordKey = row.__key;
     tr.innerHTML = `
       <td>${formatDate(row.date)}</td>
-      <td><span class="badge">${escapeHtml(row.crop || "")}</span></td>
+      <td><span class="badge">${escapeHtml(displayCrop(row.crop))}</span></td>
       <td><strong class="record-title">${escapeHtml(title)}</strong>${subtitle ? `<span class="subtle">${escapeHtml(subtitle)}</span>` : ""}</td>
-      <td>${link}<span class="subtle">${row.sourceKind || row.source || ""}</span></td>
+      <td>${link}<span class="subtle">${escapeHtml(displayText(row.sourceKind || row.source || ""))}</span></td>
       <td><span class="badge ${statusClass(row)}">${escapeHtml(status)}</span></td>
       <td>${escapeHtml(owner)}</td>
     `;
@@ -336,7 +357,7 @@ function renderDetailItem(label, value) {
   return `
     <div class="detail-item">
       <span>${escapeHtml(label)}</span>
-      <p>${escapeHtml(value)}</p>
+      <p>${escapeHtml(displayText(value))}</p>
     </div>
   `;
 }
@@ -345,8 +366,8 @@ function openRecordDrawer(recordKey) {
   const row = state.byKey.get(recordKey);
   if (!row) return;
 
-  const title = row.cultivar || row.title || row.tradeName || "Patent record";
-  const sourceText = row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind || "Source";
+  const title = displayText(row.cultivar || row.title || row.tradeName, "Patent record");
+  const sourceText = displayText(row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind, "Patent unknown");
   const owner = detailValue(row, ["assignee", "breeders", "inventors"]);
   const lookupUrl = patentLookupUrl(row);
   const gazetteAction = row.gazetteUrl
@@ -366,7 +387,7 @@ function openRecordDrawer(recordKey) {
     </div>
     <div class="detail-grid">
       ${renderDetailItem("Date", formatDate(row.date))}
-      ${renderDetailItem("Crop", row.crop)}
+      ${renderDetailItem("Crop", displayCrop(row.crop))}
       ${renderDetailItem("Cultivar / denomination", row.cultivar)}
       ${renderDetailItem("Trade name", row.tradeName)}
       ${renderDetailItem("Title", row.title)}
