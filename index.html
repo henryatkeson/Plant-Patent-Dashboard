@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Variety Rights Sourcing Engine</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260715-sourcing-engine">
+    <link rel="stylesheet" href="assets/styles.css?v=20260715-methodology">
   </head>
   <body>
     <header class="topbar">
@@ -24,6 +24,7 @@
         <button id="tab-sourcing" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-sourcing" data-tab-target="sourcing">Sourcing</button>
         <button id="tab-analytics" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-analytics" data-tab-target="analytics">Analytics</button>
         <button id="tab-records" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-records" data-tab-target="records">Records</button>
+        <button id="tab-methodology" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-methodology" data-tab-target="methodology">Methodology</button>
       </nav>
 
       <section id="panel-overview" class="workbench-grid view-panel active" role="tabpanel" aria-labelledby="tab-overview" data-view-panel="overview">
@@ -171,6 +172,95 @@
           </table>
         </div>
       </section>
+
+      <section id="panel-methodology" class="methodology-section view-panel" role="tabpanel" aria-labelledby="tab-methodology" data-view-panel="methodology">
+        <div class="panel methodology-hero">
+          <p class="eyebrow">Scoring methodology</p>
+          <h2>What the breeder score is trying to measure</h2>
+          <p>
+            The sourcing score ranks owners, breeders, nurseries, and breeding programs by how useful they may be for acquisition sourcing.
+            It is a prioritization signal, not a valuation or a recommendation to acquire.
+          </p>
+        </div>
+
+        <div class="methodology-grid">
+          <article class="panel methodology-card">
+            <h3>Portfolio Scale</h3>
+            <strong>Up to 25 points</strong>
+            <p>Larger portfolios get more credit, with a cap so very large strategics do not overwhelm the list purely because of size.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Protected IP Share</h3>
+            <strong>Up to 20 points</strong>
+            <p>Issued US plant patents and granted CPVO PBR records matter more than application-only or breeder-only signals.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Jurisdiction Breadth</h3>
+            <strong>Up to 12 points</strong>
+            <p>Programs active across multiple jurisdictions get credit because they are more likely to have real commercialization infrastructure.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Recent Velocity</h3>
+            <strong>Up to 12 points</strong>
+            <p>Recent filings in the last five years increase the score because they suggest an active breeding pipeline.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Durability</h3>
+            <strong>Up to 8 points</strong>
+            <p>Portfolios with active protection remaining score better than portfolios where most rights appear expired or close to expiry.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Crop Attractiveness</h3>
+            <strong>Weighted crop signal</strong>
+            <p>Fruit, tree nut, and vegetable crops are weighted more heavily than lower-priority or less relevant crops.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Owner Confidence</h3>
+            <strong>Up to 12 points</strong>
+            <p>Confirmed patent assignees score higher than records where the engine only sees a breeder or inventor name.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Relevant Crop Exposure</h3>
+            <strong>Up to 10 points</strong>
+            <p>The score rewards records that fall inside the target universe: fruit, tree nuts, and vegetables.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Recency</h3>
+            <strong>Up to 7 points</strong>
+            <p>Owners with recent activity get a small boost so stale portfolios do not rank above currently active programs.</p>
+          </article>
+        </div>
+
+        <div class="panel methodology-notes">
+          <h3>How to read the flags</h3>
+          <div class="methodology-columns">
+            <div>
+              <h4>Useful positive signals</h4>
+              <p><strong>Confirmed patent assignee</strong> means the record names the party as the legal owner, not only a breeder.</p>
+              <p><strong>Multi-jurisdiction program</strong> means the party appears in several countries or systems.</p>
+              <p><strong>Focused crop program</strong> means the portfolio is concentrated in one crop, which can indicate a specialized platform.</p>
+            </div>
+            <div>
+              <h4>Succession or diligence signals</h4>
+              <p><strong>Individual owner</strong> or <strong>sole named breeder</strong> can point toward succession-driven opportunities.</p>
+              <p><strong>Patent/PBR cliff</strong> means a meaningful share of protection appears to expire in the next five years.</p>
+              <p><strong>Dormant portfolio</strong> means the owner has records but little or no recent filing activity.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel methodology-notes">
+          <h3>Important caveats</h3>
+          <p>
+            CPVO exports often identify breeders more cleanly than legal holders, so some profiles are breeder-led signals rather than confirmed owners.
+            The dashboard uses company rollups where the relationship is clear, but ambiguous people are left visible instead of being forced into a company.
+          </p>
+          <p>
+            The score should be used to decide where to diligence first. It should be paired with company size, ownership, trademarks, active licenses,
+            customer base, and direct outreach before treating a target as actionable.
+          </p>
+        </div>
+      </section>
     </main>
 
     <div id="drawerBackdrop" class="drawer-backdrop" hidden></div>
@@ -185,6 +275,6 @@
       <div id="drawerBody" class="drawer-body"></div>
     </aside>
 
-    <script src="assets/app.js?v=20260715-sourcing-engine"></script>
+    <script src="assets/app.js?v=20260715-methodology"></script>
   </body>
 </html>

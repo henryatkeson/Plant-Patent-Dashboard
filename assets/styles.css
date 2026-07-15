@@ -336,6 +336,83 @@ button:hover {
   margin-top: 14px;
 }
 
+.methodology-section {
+  margin-top: 14px;
+}
+
+.methodology-hero {
+  display: grid;
+  gap: 10px;
+}
+
+.methodology-hero h2 {
+  font-size: 24px;
+}
+
+.methodology-hero p,
+.methodology-card p,
+.methodology-notes p {
+  max-width: 920px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.methodology-card {
+  display: grid;
+  gap: 8px;
+}
+
+.methodology-card h3,
+.methodology-notes h3,
+.methodology-notes h4 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.methodology-card h3,
+.methodology-notes h3 {
+  font-size: 16px;
+}
+
+.methodology-card strong {
+  color: var(--green);
+  font-size: 13px;
+}
+
+.methodology-notes {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.methodology-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.methodology-columns > div {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid #dfe7df;
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.methodology-notes h4 {
+  color: var(--green);
+  font-size: 13px;
+}
+
 .owner-toolbar {
   display: grid;
   grid-template-columns: minmax(260px, 1fr) 220px 220px;
@@ -916,7 +993,9 @@ tbody tr:hover td {
   .owner-toolbar,
   .control-strip,
   .latest-list,
-  .chart-insight {
+  .chart-insight,
+  .methodology-grid,
+  .methodology-columns {
     grid-template-columns: minmax(0, 1fr);
   }
 
