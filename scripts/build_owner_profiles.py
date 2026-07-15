@@ -667,17 +667,33 @@ def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
     by_owner = {profile["ownerName"]: profile for profile in profiles}
     by_normalized = {profile["normalizedOwnerName"]: profile for profile in profiles}
     output = list(profiles)
+    absorbed_normalized: set[str] = set()
     for company in COMPANY_PROFILES:
-        children = [by_owner[name] for name in company.get("rollupChildren", []) if name in by_owner]
-        if not children:
-            continue
         normalized = normalize_owner_name(company["canonicalName"])
+        if normalized in absorbed_normalized:
+            continue
         existing_parent = by_normalized.get(normalized)
+        children = [by_owner[name] for name in company.get("rollupChildren", []) if name in by_owner]
+        suppressed_names = [clean_text(name) for name in company.get("suppressProfiles", []) if clean_text(name)]
+        if not children and not existing_parent and not suppressed_names:
+            continue
         rollup_parts = []
         if existing_parent:
             rollup_parts.append(existing_parent)
         rollup_parts.extend(child for child in children if child.get("normalizedOwnerName") != normalized)
-        output = [profile for profile in output if profile.get("normalizedOwnerName") != normalized]
+        if not rollup_parts:
+            continue
+        suppressed_normalized = {
+            normalized,
+            *(child.get("normalizedOwnerName") for child in children),
+            *(normalize_owner_name(name) for name in suppressed_names),
+        }
+        absorbed_normalized.update(item for item in suppressed_normalized if item != normalized)
+        output = [
+            profile
+            for profile in output
+            if profile.get("normalizedOwnerName") not in suppressed_normalized
+        ]
         role_counts: Counter[str] = Counter()
         for child in rollup_parts:
             role_counts.update(child.get("ownerRoleCounts") or {})
@@ -712,7 +728,10 @@ def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "individualOwner": False,
             "soleNamedBreeder": False,
             "isParentRollup": True,
-            "rollupChildren": [child["ownerName"] for child in rollup_parts if child["ownerName"] != company["canonicalName"]],
+            "rollupChildren": [
+                *[child["ownerName"] for child in rollup_parts if child["ownerName"] != company["canonicalName"]],
+                *suppressed_names,
+            ],
             "topCrops": merge_counter_lists(rollup_parts, "topCrops", "crop"),
             "topJurisdictions": merge_counter_lists(rollup_parts, "topJurisdictions", "jurisdiction"),
             "topBreeders": merge_counter_lists(rollup_parts, "topBreeders", "name"),
