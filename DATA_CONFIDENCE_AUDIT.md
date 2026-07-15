@@ -20,7 +20,7 @@ This dashboard now treats data confidence as separate from sourcing score. A pro
 
 - Added `data/data_confidence.json` and `data/data_confidence.csv` as the main confidence layer.
 - Added `data/rollup_review_queue.csv` for the highest-priority owner and breeder rollup review queue.
-- Added a dashboard `Data QA` tab that shows audit counts, actionability gates, and the highest-priority review rows.
+- Kept data confidence as an internal rebuild/audit layer rather than a visible dashboard tab.
 - Added source-backed profile seeds for Edward Vinson Limited, Angus Soft Fruits, Stargrow Cultivar Development, and ABZ Seeds.
 - Updated the profile audit to distinguish confirmed legal-owner records from breeder-only CPVO signals.
 
@@ -55,4 +55,4 @@ The top rollup-risk profiles are all currently `holder_verification_required`. N
 
 ## Practical Rule
 
-Use the `Sourcing` tab to find interesting targets. Use the `Data QA` tab to decide whether the target is trusted enough for business review.
+Use the `Sourcing` tab to find interesting targets. Treat the confidence files and rollup review queue as internal QA outputs that should be checked before trusting a profile for business review.

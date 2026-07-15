@@ -340,10 +340,6 @@ button:hover {
   margin-top: 14px;
 }
 
-.dataqa-section {
-  margin-top: 14px;
-}
-
 .methodology-hero {
   display: grid;
   gap: 10px;
@@ -461,22 +457,6 @@ button:hover {
 
 .owner-table {
   min-width: 1320px;
-}
-
-.dataqa-table {
-  min-width: 1120px;
-}
-
-.dataqa-table-wrap {
-  max-height: 520px;
-}
-
-.dataqa-queue-panel {
-  margin-top: 14px;
-}
-
-.dataqa-card strong {
-  font-size: 18px;
 }
 
 .owner-table th:nth-child(1),
