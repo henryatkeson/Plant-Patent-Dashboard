@@ -8,7 +8,10 @@
     "contactUrl": "https://www.bloomfresh.com/contact/",
     "targetFit": "Too large for the current $1-5m EBITDA acquisition target; important benchmark because it combines IFG and SNFL table-grape genetics.",
     "description": "Global fruit-breeding and licensing platform formed by combining major proprietary table grape breeding programs including IFG and SNFL.",
-    "sourceUrl": "https://www.bloomfresh.com/"
+    "sourceUrl": "https://www.bloomfresh.com/",
+    "newsLinks": [
+      {"label": "Bloom Fresh news", "url": "https://www.bloomfresh.com/news/"}
+    ]
   },
   {
     "canonicalName": "Sun World International",
@@ -18,7 +21,10 @@
     "contactUrl": "https://www.sun-world.com/contact",
     "targetFit": "Too large for the current $1-5m EBITDA acquisition target; useful as a strategic benchmark or buyer/license counterparty.",
     "description": "Proprietary fruit genetics and licensing company with a major table grape program and additional stone-fruit variety activity.",
-    "sourceUrl": "https://www.sun-world.com/"
+    "sourceUrl": "https://www.sun-world.com/",
+    "newsLinks": [
+      {"label": "Sun World news", "url": "https://www.sun-world.com/news"}
+    ]
   },
   {
     "canonicalName": "International Fruit Genetics",
@@ -28,7 +34,10 @@
     "contactUrl": "https://ifg.world/contact/",
     "targetFit": "Likely too large or already institutionally owned; useful as a benchmark for grape breeding and licensing models.",
     "description": "Fruit-breeding company known for proprietary table grape and cherry varieties, including globally licensed branded grape programs.",
-    "sourceUrl": "https://ifg.world/"
+    "sourceUrl": "https://ifg.world/",
+    "newsLinks": [
+      {"label": "IFG news", "url": "https://ifg.world/news/"}
+    ]
   },
   {
     "canonicalName": "SNFL Group",
@@ -38,7 +47,10 @@
     "contactUrl": "https://snflgroup.com/contact/",
     "targetFit": "Likely too large for the current target range; useful as a table-grape licensing benchmark.",
     "description": "Table grape breeding and licensing group with international variety commercialization activity.",
-    "sourceUrl": "https://snflgroup.com/"
+    "sourceUrl": "https://snflgroup.com/",
+    "newsLinks": [
+      {"label": "SNFL news", "url": "https://snflgroup.com/news/"}
+    ]
   },
   {
     "canonicalName": "Driscoll's",
@@ -48,7 +60,10 @@
     "contactUrl": "https://www.driscolls.com/contact-us",
     "targetFit": "Far too large for the current target range; useful as a benchmark only.",
     "description": "Global berry company with proprietary strawberry, raspberry, blackberry, and blueberry breeding programs licensed through approved growers.",
-    "sourceUrl": "https://www.driscolls.com/"
+    "sourceUrl": "https://www.driscolls.com/",
+    "newsLinks": [
+      {"label": "Driscoll's newsroom", "url": "https://www.driscolls.com/about/newsroom"}
+    ]
   },
   {
     "canonicalName": "BerryWorld Plus",
@@ -68,7 +83,10 @@
     "contactUrl": "https://www.fallcreeknursery.com/contact",
     "targetFit": "Likely too large for the current target range; useful as a blueberry breeding benchmark.",
     "description": "Blueberry breeding and nursery company supplying proprietary blueberry varieties and plants to growers globally.",
-    "sourceUrl": "https://www.fallcreeknursery.com/"
+    "sourceUrl": "https://www.fallcreeknursery.com/",
+    "newsLinks": [
+      {"label": "Fall Creek news", "url": "https://www.fallcreeknursery.com/news"}
+    ]
   },
   {
     "canonicalName": "Zaiger's Genetics",
@@ -88,7 +106,10 @@
     "contactUrl": "https://www.plantsciences.com/contact",
     "targetFit": "Probably above the current target range, but closer to the desired category than global strategics: berry genetics, nursery, and licensing capabilities.",
     "description": "Berry breeding, nursery, and genetics business with strawberry and other berry variety development activity.",
-    "sourceUrl": "https://www.plantsciences.com/"
+    "sourceUrl": "https://www.plantsciences.com/",
+    "newsLinks": [
+      {"label": "Plant Sciences news", "url": "https://www.plantsciences.com/news"}
+    ]
   },
   {
     "canonicalName": "Florida Foundation Seed Producers",
@@ -128,7 +149,10 @@
     "contactUrl": "https://planasa.com/contact/",
     "targetFit": "Far too large for the current target range; useful as a benchmark for diversified breeding/nursery platforms.",
     "description": "International berry and specialty crop breeding and nursery group with programs in strawberries, raspberries, blueberries, blackberries, garlic, asparagus, avocado, and cherry.",
-    "sourceUrl": "https://planasa.com/"
+    "sourceUrl": "https://planasa.com/",
+    "newsLinks": [
+      {"label": "Planasa news", "url": "https://planasa.com/news/"}
+    ]
   },
   {
     "canonicalName": "Costa Berry International",
@@ -148,6 +172,63 @@
     "contactUrl": "https://ifas.ufl.edu/contact/",
     "targetFit": "Not an acquisition target; useful as a licensing source and breeder relationship map.",
     "description": "Public university agricultural research system with fruit, citrus, vegetable, and berry breeding programs whose varieties may be licensed through affiliated entities.",
-    "sourceUrl": "https://ifas.ufl.edu/"
+    "sourceUrl": "https://ifas.ufl.edu/",
+    "newsLinks": [
+      {"label": "UF/IFAS news", "url": "https://news.ifas.ufl.edu/"}
+    ]
+  },
+  {
+    "canonicalName": "INRAE",
+    "aliases": ["INRAE", "Institut National de Recherche pour l'Agriculture l'Alimentation et l'Environnement", "Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement", "Institut National de la Recherche Agronomique", "INRA - Institut National de la Recherche Agronomique"],
+    "website": "https://www.inrae.fr/en",
+    "linkedinUrl": "https://www.linkedin.com/company/inrae/",
+    "contactUrl": "https://www.inrae.fr/en/contact",
+    "targetFit": "Not an acquisition target; useful as a public research and licensing signal.",
+    "description": "French public research institute with fruit, crop, and agricultural science programs that appear throughout CPVO breeder records.",
+    "sourceUrl": "https://www.inrae.fr/en",
+    "newsLinks": [
+      {"label": "INRAE news briefs", "url": "https://www.inrae.fr/en/news-brief"},
+      {"label": "INRAE press", "url": "https://www.inrae.fr/en/press"}
+    ]
+  },
+  {
+    "canonicalName": "Plant & Food Research",
+    "aliases": ["The New Zealand Institute for Plant and Food Research Limited", "Plant & Food Research", "Plant and Food Research", "New Zealand Institute for Plant and Food Research"],
+    "website": "https://www.plantandfood.com/en-nz",
+    "linkedinUrl": "https://www.linkedin.com/company/plant-&-food-research/",
+    "contactUrl": "https://www.plantandfood.com/en-nz/contact-us",
+    "targetFit": "Not an acquisition target; useful as a major New Zealand breeder and commercialization relationship map.",
+    "description": "New Zealand research organization with plant-variety breeding and commercialization activity across tree crops, berries, vegetables, and vine crops.",
+    "sourceUrl": "https://www.plantandfood.com/en-nz",
+    "newsLinks": [
+      {"label": "Plant & Food latest news", "url": "https://www.plantandfood.com/en-nz/news"},
+      {"label": "Plant varieties", "url": "https://www.plantandfood.com/en-nz/working-together/plant-varieties"}
+    ]
+  },
+  {
+    "canonicalName": "University of California",
+    "aliases": ["University of California", "University of California Davis", "UC Davis", "Douglas V. Shaw", "DOUGLAS V. SHAW", "Kirk D. Larson", "KIRK D. LARSON"],
+    "website": "https://itc.ucdavis.edu/",
+    "linkedinUrl": "https://www.linkedin.com/school/uc-davis/",
+    "contactUrl": "https://itc.ucdavis.edu/contact",
+    "targetFit": "Not an acquisition target; useful as a public breeding and licensing source, especially in strawberries.",
+    "description": "University of California strawberry and specialty crop varieties are licensed through UC Davis Innovation and Technology Commercialization.",
+    "sourceUrl": "https://itc.ucdavis.edu/",
+    "newsLinks": [
+      {"label": "UC Davis innovation news", "url": "https://itc.ucdavis.edu/news"}
+    ]
+  },
+  {
+    "canonicalName": "University of Arkansas System Division of Agriculture",
+    "aliases": ["University of Arkansas", "University of Arkansas System Division of Agriculture", "John R. Clark", "JOHN REUBEN CLARK"],
+    "website": "https://aaes.uada.edu/research/horticulture/fruit-breeding/",
+    "linkedinUrl": "https://www.linkedin.com/school/university-of-arkansas/",
+    "contactUrl": "https://aaes.uada.edu/contact/",
+    "targetFit": "Not an acquisition target; useful as a public fruit-breeding and licensing source.",
+    "description": "Public fruit-breeding program associated with blackberry, peach, blueberry, grape, and other specialty crop varieties.",
+    "sourceUrl": "https://aaes.uada.edu/research/horticulture/fruit-breeding/",
+    "newsLinks": [
+      {"label": "Arkansas Ag news", "url": "https://www.uaex.uada.edu/media-resources/news/"}
+    ]
   }
 ]

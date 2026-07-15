@@ -31,7 +31,6 @@ const els = {
   ownerSearchInput: document.querySelector("#ownerSearchInput"),
   ownerView: document.querySelector("#ownerView"),
   ownerSort: document.querySelector("#ownerSort"),
-  ownerInsight: document.querySelector("#ownerInsight"),
   ownerBody: document.querySelector("#ownerBody"),
   timelineCount: document.querySelector("#timelineCount"),
   cropCount: document.querySelector("#cropCount"),
@@ -215,6 +214,20 @@ function companyActions(profile) {
   return links.join("");
 }
 
+function renderNewsLinks(profile) {
+  const links = (profile.newsLinks || []).slice(0, 3);
+  if (!links.length) return "";
+  return `
+    <div class="news-link-list">
+      ${links.map((link) => `
+        <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener">
+          ${escapeHtml(link.label || link.url)}
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderCompanyCards(profiles) {
   if (!profiles.length) return "";
   return `
@@ -227,6 +240,7 @@ function renderCompanyCards(profiles) {
           </div>
           ${profile.description ? `<p>${escapeHtml(profile.description)}</p>` : ""}
           <div class="detail-actions">${companyActions(profile)}</div>
+          ${renderNewsLinks(profile)}
         </div>
       `).join("")}
     </div>
@@ -329,7 +343,6 @@ function ownerSearchText(owner) {
     ...(owner.topCrops || []).map((item) => item.crop),
     ...(owner.topJurisdictions || []).map((item) => item.jurisdiction),
     ...(owner.topBreeders || []).map((item) => item.name),
-    ...(owner.topInventors || []).map((item) => item.name),
     ...(owner.sourcingFlags || []),
   ].join(" "));
 }
@@ -337,18 +350,16 @@ function ownerSearchText(owner) {
 function ownerSignalSummary(owner) {
   const legal = Number(owner.legalOwnerRecordCount || 0);
   const breeder = Number(owner.breederSignalRecordCount || 0);
-  const inventor = Number(owner.inventorSignalRecordCount || 0);
   const lineage = Number((owner.ownerRoleCounts || {})["Program lineage"] || 0);
   const parts = [];
   if (legal) parts.push(`${legal.toLocaleString()} confirmed assignee`);
   if (breeder) parts.push(`${breeder.toLocaleString()} breeder signal`);
   if (lineage) parts.push(`${lineage.toLocaleString()} program lineage`);
-  if (inventor) parts.push(`${inventor.toLocaleString()} inventor signal`);
   return parts.join(" | ") || "Owner signal";
 }
 
 function sortOwners(owners) {
-  const mode = els.ownerSort?.value || "confidence";
+  const mode = els.ownerSort?.value || "score";
   const sorters = {
     confidence: (a, b) => (b.relevantLegalOwnerRecordCount || 0) - (a.relevantLegalOwnerRecordCount || 0) || (b.relevantIpRecordCount || 0) - (a.relevantIpRecordCount || 0) || (b.legalOwnerRecordCount || 0) - (a.legalOwnerRecordCount || 0) || (b.sourcingScore || 0) - (a.sourcingScore || 0),
     score: (a, b) => (b.sourcingScore || 0) - (a.sourcingScore || 0),
@@ -601,23 +612,10 @@ function renderOwners() {
   const owners = state.filteredOwners;
   const shown = owners.slice(0, 250);
   els.ownerCount.textContent = `${owners.length.toLocaleString()} profiles`;
-  const protectedTotal = owners.reduce((sum, owner) => sum + Number(owner.protectedIpCount || 0), 0);
-  const cliffTotal = owners.reduce((sum, owner) => sum + Number(owner.expirationNext5Years || 0), 0);
-  const individualCount = owners.filter((owner) => owner.individualOwner).length;
-  const legalOwnerCount = owners.filter((owner) => Number(owner.legalOwnerRecordCount || 0) > 0).length;
-  const relevantTotal = owners.reduce((sum, owner) => sum + Number(owner.relevantIpRecordCount || 0), 0);
-  const topOwner = owners[0];
-  els.ownerInsight.innerHTML = `
-    <div class="insight-pill"><span>Top signal</span><strong>${escapeHtml(topOwner?.ownerName || "--")}</strong></div>
-    <div class="insight-pill"><span>Confirmed owners</span><strong>${legalOwnerCount.toLocaleString()}</strong></div>
-    <div class="insight-pill"><span>Relevant records</span><strong>${relevantTotal.toLocaleString()}</strong></div>
-    <div class="insight-pill"><span>Protected IP</span><strong>${protectedTotal.toLocaleString()} records</strong></div>
-    <div class="insight-pill"><span>5-year cliff</span><strong>${cliffTotal.toLocaleString()} records</strong></div>
-  `;
 
   els.ownerBody.innerHTML = "";
   if (!shown.length) {
-    els.ownerBody.innerHTML = `<tr><td colspan="6"><p class="empty-state">No owner profiles match the search.</p></td></tr>`;
+    els.ownerBody.innerHTML = `<tr><td colspan="7"><p class="empty-state">No owner profiles match the search.</p></td></tr>`;
     return;
   }
 
@@ -639,7 +637,9 @@ function renderOwners() {
       </td>
       <td>
         ${escapeHtml(listSummary(owner.topCrops, "crop", "count", 4) || "--")}
-        <span class="subtle">${escapeHtml(listSummary(owner.topJurisdictions, "jurisdiction", "count", 4) || "No jurisdictions")}</span>
+      </td>
+      <td>
+        ${escapeHtml(listSummary(owner.topJurisdictions, "jurisdiction", "count", 4) || "No jurisdictions")}
       </td>
       <td>
         <strong>${escapeHtml(yearRange(owner.firstYear, owner.lastYear))}</strong>
@@ -877,6 +877,7 @@ function openOwnerDrawer(ownerKey) {
   const sourceAction = owner.companySourceUrl && owner.companySourceUrl !== owner.companyWebsite
     ? `<a class="detail-button-muted" href="${escapeHtml(owner.companySourceUrl)}" target="_blank" rel="noopener">Profile source</a>`
     : "";
+  const ownerNewsLinks = renderNewsLinks({ newsLinks: owner.companyNewsLinks || [] });
   els.drawerEyebrow.textContent = "Owner / breeder profile";
   els.drawerTitle.textContent = displayText(owner.ownerName, "Owner profile");
   els.drawerBody.innerHTML = `
@@ -888,6 +889,7 @@ function openOwnerDrawer(ownerKey) {
       <span class="score-pill large">${Number(owner.sourcingScore || 0)} sourcing score</span>
       ${flags || '<span class="badge baseline">No major flags</span>'}
     </div>
+    ${ownerNewsLinks}
     ${owner.companyDescription ? `<p class="company-description">${escapeHtml(owner.companyDescription)}</p>` : ""}
     ${owner.targetFit ? `<p class="company-description target-fit">${escapeHtml(owner.targetFit)}</p>` : ""}
     <div class="detail-grid">
@@ -902,7 +904,6 @@ function openOwnerDrawer(ownerKey) {
       ${renderMiniList("Top crops", owner.topCrops, "crop")}
       ${renderMiniList("Jurisdictions", owner.topJurisdictions, "jurisdiction")}
       ${renderMiniList("Named breeders", owner.topBreeders, "name")}
-      ${renderMiniList("Named inventors", owner.topInventors, "name")}
     </div>
     <div class="profile-chart-grid">
       ${renderProfileBarChart("Annual patent/PBR activity", owner.annualCounts || [], "year", "count", 12)}
@@ -1005,9 +1006,10 @@ async function init() {
     .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
   state.byKey = new Map(state.records.map((row) => [row.__key, row]));
   state.filtered = [...state.records];
-  const generatedAt = payload.metadata?.generatedAt ? new Date(payload.metadata.generatedAt) : null;
+  const generatedAtValue = state.sourceStatus?.generatedAt || payload.metadata?.generatedAt;
+  const generatedAt = generatedAtValue ? new Date(generatedAtValue) : null;
   els.lastRefresh.textContent = generatedAt && !Number.isNaN(generatedAt.getTime())
-    ? `Data refreshed ${generatedAt.toLocaleString()}`
+    ? `Dashboard refreshed ${generatedAt.toLocaleString()}`
     : "Data loaded";
   populateFilters();
   render();

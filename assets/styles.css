@@ -370,13 +370,6 @@ button:hover {
   line-height: 1;
 }
 
-.owner-insight {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
 .owner-table-wrap {
   width: 100%;
   max-height: 560px;
@@ -386,7 +379,7 @@ button:hover {
 }
 
 .owner-table {
-  min-width: 1180px;
+  min-width: 1280px;
 }
 
 .owner-table th:nth-child(1),
@@ -401,11 +394,18 @@ button:hover {
 
 .owner-table th:nth-child(3),
 .owner-table td:nth-child(3) {
-  width: 230px;
+  width: 210px;
 }
 
+.owner-table th:nth-child(4),
+.owner-table td:nth-child(4),
 .owner-table th:nth-child(5),
 .owner-table td:nth-child(5) {
+  width: 170px;
+}
+
+.owner-table th:nth-child(6),
+.owner-table td:nth-child(6) {
   width: 190px;
 }
 
@@ -782,6 +782,19 @@ tbody tr:hover td {
   line-height: 1.45;
 }
 
+.news-link-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.news-link-list a {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
 .profile-chart-grid {
   display: grid;
   gap: 12px;
@@ -884,7 +897,6 @@ tbody tr:hover td {
   .section-tabs,
   .sourcing-brief,
   .owner-toolbar,
-  .owner-insight,
   .control-strip,
   .latest-list,
   .chart-insight {

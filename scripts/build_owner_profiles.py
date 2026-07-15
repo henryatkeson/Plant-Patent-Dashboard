@@ -484,6 +484,7 @@ def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "companySourceUrl": company.get("sourceUrl", ""),
             "companyContactUrl": company.get("contactUrl", ""),
             "companyLinkedInUrl": company.get("linkedinUrl", ""),
+            "companyNewsLinks": company.get("newsLinks", []),
             "targetFit": company.get("targetFit", ""),
             "recordCount": sum(int(child.get("recordCount") or 0) for child in rollup_parts),
             "protectedIpCount": sum(int(child.get("protectedIpCount") or 0) for child in rollup_parts),
@@ -553,6 +554,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "companySourceUrl": company_profile.get("sourceUrl", "") if company_profile else "",
                     "companyContactUrl": company_profile.get("contactUrl", "") if company_profile else "",
                     "companyLinkedInUrl": company_profile.get("linkedinUrl", "") if company_profile else "",
+                    "companyNewsLinks": company_profile.get("newsLinks", []) if company_profile else [],
                     "targetFit": company_profile.get("targetFit", "") if company_profile else "",
                     "recordCount": 0,
                     "ownerRoleCounts": Counter(),
@@ -590,6 +592,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 profile["companySourceUrl"] = company_profile.get("sourceUrl", "")
                 profile["companyContactUrl"] = company_profile.get("contactUrl", "")
                 profile["companyLinkedInUrl"] = company_profile.get("linkedinUrl", "")
+                profile["companyNewsLinks"] = company_profile.get("newsLinks", [])
                 profile["targetFit"] = company_profile.get("targetFit", "")
 
             profile["recordCount"] += 1
@@ -722,6 +725,7 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "companySourceUrl",
         "companyContactUrl",
         "companyLinkedInUrl",
+        "companyNewsLinks",
         "targetFit",
         "recordCount",
         "protectedIpCount",
