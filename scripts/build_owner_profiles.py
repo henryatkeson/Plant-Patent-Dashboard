@@ -183,6 +183,17 @@ PROGRAM_LINEAGE_RULES = [
     },
 ]
 
+NON_OWNER_NORMALIZED_NAMES = {
+    "0",
+    "942 0",
+    "domaine public",
+    "public domain",
+    "varios obtentores",
+    "various breeders",
+    "unknown breeder",
+    "unknown owner",
+}
+
 
 def load_records(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
@@ -235,11 +246,28 @@ def build_company_alias_index() -> list[tuple[str, dict[str, Any]]]:
 
 
 COMPANY_ALIAS_INDEX = build_company_alias_index()
+COMPANY_EXCLUSION_INDEX = {
+    profile.get("canonicalName", ""): [
+        normalized
+        for normalized in (normalize_alias_search(exclusion) for exclusion in (profile.get("excludeMatches", []) or []))
+        if normalized
+    ]
+    for profile in COMPANY_PROFILES
+}
+
+
+def company_profile_excluded(profile: dict[str, Any], normalized_name: str) -> bool:
+    for exclusion_normalized in COMPANY_EXCLUSION_INDEX.get(profile.get("canonicalName", ""), []):
+        if exclusion_normalized in normalized_name:
+            return True
+    return False
 
 
 def company_profile_for_name(name: str) -> dict[str, Any] | None:
     normalized = f" {normalize_alias_search(name)} "
     for alias_normalized, profile in COMPANY_ALIAS_INDEX:
+        if company_profile_excluded(profile, normalized):
+            continue
         if len(alias_normalized) <= 4:
             if f" {alias_normalized} " in normalized:
                 return profile
@@ -255,6 +283,8 @@ def company_profiles_for_name(name: str) -> list[dict[str, Any]]:
     for alias_normalized, profile in COMPANY_ALIAS_INDEX:
         canonical = profile["canonicalName"]
         if canonical in seen:
+            continue
+        if company_profile_excluded(profile, normalized):
             continue
         if len(alias_normalized) <= 4:
             matched = f" {alias_normalized} " in normalized
@@ -534,7 +564,7 @@ def owner_candidates(row: dict[str, Any], alias_map: dict[str, str]) -> list[tup
     def add_candidate(name: str, role: str, confidence: str) -> None:
         name = canonical_named_party(name, alias_map)
         key = normalize_owner_name(display_owner_name(name))
-        if not key or key in seen:
+        if not key or key in seen or key in NON_OWNER_NORMALIZED_NAMES:
             return
         seen.add(key)
         candidates.append((name, role, confidence))

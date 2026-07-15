@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "title": "Company Profile Manual Audit Evidence",
+    "purpose": "Durable hand-reviewed evidence for company profile enrichment, contact discovery, trademark follow-up, and website cultivar-count checks.",
+    "notes": [
+      "Do not edit data/owner_profiles.json directly; it is generated.",
+      "Use this file for sourced manual evidence that should survive data rebuilds.",
+      "Leave fields blank when evidence has not been reviewed."
+    ]
+  },
+  "profiles": [
+    {
+      "canonicalName": "Bloom Fresh International",
+      "auditStatus": "seeded_profile_needs_full_review",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://www.bloomfresh.com/",
+      "primaryContactName": "",
+      "primaryContactTitle": "",
+      "primaryContactUrl": "",
+      "contactSourceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": ["Sweet Celebration", "Sweet Globe", "Sweet Sapphire"],
+      "auditNotes": "Parent rollup for IFG, SNFL, and Sheehan-branded grape genetics. Large benchmark platform, not a target in current size range."
+    },
+    {
+      "canonicalName": "SNFL Group",
+      "auditStatus": "seeded_profile_needs_full_review",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://snflgroup.com/varieties/",
+      "primaryContactName": "",
+      "primaryContactTitle": "",
+      "primaryContactUrl": "",
+      "contactSourceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "SNFL site and social links use Sheehan grape branding; Sheehan Genetics and Timothy P. Sheehan are rolled into SNFL for sourcing-table hygiene."
+    },
+    {
+      "canonicalName": "Mountain Blue Orchards Pty Ltd",
+      "auditStatus": "seeded_profile_needs_full_review",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://mountainblue.com.au/",
+      "primaryContactName": "",
+      "primaryContactTitle": "",
+      "primaryContactUrl": "",
+      "contactSourceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "Private blueberry platform; Ridley Bell rollup needs continued evidence review."
+    },
+    {
+      "canonicalName": "Plant Sciences Genetics",
+      "auditStatus": "seeded_profile_needs_full_review",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://www.plantsciencesgenetics.com/",
+      "primaryContactName": "",
+      "primaryContactTitle": "",
+      "primaryContactUrl": "",
+      "contactSourceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "Remove broad aliases that could pull unrelated university plant-science departments into the company profile."
+    },
+    {
+      "canonicalName": "Arsene et Laurence Maillard",
+      "auditStatus": "breeder_only_candidate_parent",
+      "auditConfidence": "low",
+      "candidateParent": "Agro Selections Fruits S.A.S.",
+      "candidateParentBasis": "Local US patent records list Agro Selections Fruits with Arsene/Laurence Maillard as breeders, but many CPVO records are breeder-only and should not be merged until holder/applicant evidence is verified.",
+      "candidateParentEvidenceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "High-count peach/stone-fruit breeder signal. Keep visible in QA queue until legal holder evidence is clearer."
+    },
+    {
+      "canonicalName": "Laurence Maillard",
+      "auditStatus": "breeder_only_candidate_parent",
+      "auditConfidence": "low",
+      "candidateParent": "Agro Selections Fruits S.A.S.",
+      "candidateParentBasis": "Local US patent records list Agro Selections Fruits with Arsene/Laurence Maillard as breeders, but CPVO rows split the person names in multiple forms.",
+      "candidateParentEvidenceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "Do not merge yet because this may double-count the combined Arsene/Laurence profile."
+    },
+    {
+      "canonicalName": "Rene Monteux-Caillet",
+      "auditStatus": "breeder_only_needs_holder_verification",
+      "auditConfidence": "low",
+      "candidateParent": "",
+      "candidateParentBasis": "Large CPVO peach/nectarine breeder signal, but current local data does not identify a reliable company holder.",
+      "candidateParentEvidenceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "Potentially interesting succession-style profile; needs source-linked company/holder research before consolidation."
+    },
+    {
+      "canonicalName": "Bradford Lowell Glen",
+      "auditStatus": "breeder_only_needs_holder_verification",
+      "auditConfidence": "low",
+      "candidateParent": "",
+      "candidateParentBasis": "Large CPVO stone-fruit breeder signal with repeated co-breeder names; current local data does not identify a reliable parent company.",
+      "candidateParentEvidenceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "Do not roll into Zaiger or another platform without holder evidence."
+    }
+  ]
+}

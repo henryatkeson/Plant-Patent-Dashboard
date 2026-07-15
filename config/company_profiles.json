@@ -2,7 +2,7 @@
   {
     "canonicalName": "Bloom Fresh International",
     "aliases": ["Bloom Fresh", "Bloomfresh", "Bloom Fresh International"],
-    "rollupChildren": ["International Fruit Genetics", "SNFL Group"],
+    "rollupChildren": ["International Fruit Genetics", "SNFL Group", "Sheehan Genetics", "Timothy P. Sheehan"],
     "suppressProfiles": ["David W. Cain", "David Cain", "Cain David", "Juan Carreño Espín", "Scharchar Karniel", "Shachar Karniel"],
     "website": "https://www.bloomfresh.com/",
     "linkedinUrl": "https://www.linkedin.com/company/bloomfresh-global/",
@@ -38,6 +38,7 @@
   {
     "canonicalName": "SNFL Group",
     "aliases": ["SNFL", "Special New Fruit Licensing", "Special New Fruit Licensing Limited", "SNFL Mediterraneo"],
+    "rollupChildren": ["Sheehan Genetics", "Timothy P. Sheehan"],
     "website": "https://snflgroup.com/",
     "linkedinUrl": "https://www.linkedin.com/company/special-new-fruit-licensing-limited/",
     "contactUrl": "https://snflgroup.com/contact/",
@@ -95,6 +96,7 @@
   {
     "canonicalName": "Plant Sciences Genetics",
     "aliases": ["Plant Sciences Genetics", "Plant Sciences Inc", "Plant Sciences, Inc.", "Plant Sciences, Watsonville"],
+    "excludeMatches": ["University of California, Plant Sciences", "Department of Botany and Plant Sciences", "Fragaria Plant Sciences"],
     "suppressProfiles": ["Scott W. Adams", "Stephen M. Ackerman", "Kendra M. Gray-Jones", "Michael D. Nelson", "Michele Lorraine Krucker"],
     "website": "https://www.plantsciencesgenetics.com/",
     "linkedinUrl": "",
