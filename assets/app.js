@@ -3,6 +3,9 @@ const state = {
   filtered: [],
   byKey: new Map(),
   cpvoVarieties: [],
+  ownerProfiles: [],
+  filteredOwners: [],
+  ownerByKey: new Map(),
 };
 
 const els = {
@@ -23,6 +26,12 @@ const els = {
   cropInsight: document.querySelector("#cropInsight"),
   latestList: document.querySelector("#latestList"),
   sourceSummary: document.querySelector("#sourceSummary"),
+  ownerCount: document.querySelector("#ownerCount"),
+  ownerSearchInput: document.querySelector("#ownerSearchInput"),
+  ownerView: document.querySelector("#ownerView"),
+  ownerSort: document.querySelector("#ownerSort"),
+  ownerInsight: document.querySelector("#ownerInsight"),
+  ownerBody: document.querySelector("#ownerBody"),
   timelineCount: document.querySelector("#timelineCount"),
   cropCount: document.querySelector("#cropCount"),
   latestCount: document.querySelector("#latestCount"),
@@ -128,6 +137,20 @@ function formatDate(value) {
   return date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
 }
 
+function debounce(fn, delay = 180) {
+  let timer = 0;
+  return (...args) => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => fn(...args), delay);
+  };
+}
+
+function yearRange(firstYear, lastYear) {
+  if (!firstYear && !lastYear) return "--";
+  if (firstYear === lastYear) return String(firstYear);
+  return `${firstYear || "--"}-${lastYear || "--"}`;
+}
+
 function normalize(value) {
   return String(value || "").toLowerCase();
 }
@@ -229,6 +252,52 @@ function topEntries(counts, limit) {
   return Object.entries(counts)
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
     .slice(0, limit);
+}
+
+function listSummary(items, labelKey = "crop", countKey = "count", limit = 3) {
+  return (items || [])
+    .slice(0, limit)
+    .map((item) => `${displayText(item[labelKey])} ${Number(item[countKey] || 0).toLocaleString()}`)
+    .join(" | ");
+}
+
+function ownerSearchText(owner) {
+  return normalize([
+    owner.ownerName,
+    owner.normalizedOwnerName,
+    ...(owner.topCrops || []).map((item) => item.crop),
+    ...(owner.topJurisdictions || []).map((item) => item.jurisdiction),
+    ...(owner.topBreeders || []).map((item) => item.name),
+    ...(owner.topInventors || []).map((item) => item.name),
+    ...(owner.sourcingFlags || []),
+  ].join(" "));
+}
+
+function ownerSignalSummary(owner) {
+  const legal = Number(owner.legalOwnerRecordCount || 0);
+  const breeder = Number(owner.breederSignalRecordCount || 0);
+  const inventor = Number(owner.inventorSignalRecordCount || 0);
+  const parts = [];
+  if (legal) parts.push(`${legal.toLocaleString()} confirmed assignee`);
+  if (breeder) parts.push(`${breeder.toLocaleString()} breeder signal`);
+  if (inventor) parts.push(`${inventor.toLocaleString()} inventor signal`);
+  return parts.join(" | ") || "Owner signal";
+}
+
+function sortOwners(owners) {
+  const mode = els.ownerSort?.value || "confidence";
+  const sorters = {
+    confidence: (a, b) => (b.relevantLegalOwnerRecordCount || 0) - (a.relevantLegalOwnerRecordCount || 0) || (b.relevantIpRecordCount || 0) - (a.relevantIpRecordCount || 0) || (b.legalOwnerRecordCount || 0) - (a.legalOwnerRecordCount || 0) || (b.sourcingScore || 0) - (a.sourcingScore || 0),
+    score: (a, b) => (b.sourcingScore || 0) - (a.sourcingScore || 0),
+    protected: (a, b) => (b.protectedIpCount || 0) - (a.protectedIpCount || 0),
+    recent: (a, b) => (b.lastYear || 0) - (a.lastYear || 0),
+    cliff: (a, b) => (b.expirationNext5Years || 0) - (a.expirationNext5Years || 0),
+    velocity: (a, b) => (b.filingVelocity5Year || 0) - (a.filingVelocity5Year || 0),
+  };
+  return [...owners].sort((a, b) => {
+    const primary = (sorters[mode] || sorters.score)(a, b);
+    return primary || (b.protectedIpCount || 0) - (a.protectedIpCount || 0) || (b.recordCount || 0) - (a.recordCount || 0);
+  });
 }
 
 function formatSigned(value) {
@@ -390,6 +459,82 @@ function renderSources(rows) {
   }
 }
 
+function applyOwnerFilters() {
+  if (!els.ownerBody) return;
+  const term = normalize(els.ownerSearchInput?.value || "");
+  const view = els.ownerView?.value || "relevant";
+  let owners = term
+    ? state.ownerProfiles.filter((owner) => ownerSearchText(owner).includes(term))
+    : [...state.ownerProfiles];
+  if (view === "relevant") {
+    owners = owners.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
+  } else if (view === "legal") {
+    owners = owners.filter((owner) => Number(owner.legalOwnerRecordCount || 0) > 0);
+  } else if (view === "succession") {
+    owners = owners.filter((owner) => owner.individualOwner || owner.soleNamedBreeder || (owner.sourcingFlags || []).includes("Dormant portfolio"));
+  } else if (view === "cliff") {
+    owners = owners.filter((owner) => Number(owner.expirationNext5Years || 0) > 0);
+  }
+  state.filteredOwners = sortOwners(owners);
+  renderOwners();
+}
+
+function renderOwners() {
+  if (!els.ownerBody) return;
+  const owners = state.filteredOwners;
+  const shown = owners.slice(0, 250);
+  els.ownerCount.textContent = `${owners.length.toLocaleString()} profiles`;
+  const protectedTotal = owners.reduce((sum, owner) => sum + Number(owner.protectedIpCount || 0), 0);
+  const cliffTotal = owners.reduce((sum, owner) => sum + Number(owner.expirationNext5Years || 0), 0);
+  const individualCount = owners.filter((owner) => owner.individualOwner).length;
+  const legalOwnerCount = owners.filter((owner) => Number(owner.legalOwnerRecordCount || 0) > 0).length;
+  const relevantTotal = owners.reduce((sum, owner) => sum + Number(owner.relevantIpRecordCount || 0), 0);
+  const topOwner = owners[0];
+  els.ownerInsight.innerHTML = `
+    <div class="insight-pill"><span>Top signal</span><strong>${escapeHtml(topOwner?.ownerName || "--")}</strong></div>
+    <div class="insight-pill"><span>Confirmed owners</span><strong>${legalOwnerCount.toLocaleString()}</strong></div>
+    <div class="insight-pill"><span>Relevant records</span><strong>${relevantTotal.toLocaleString()}</strong></div>
+    <div class="insight-pill"><span>Protected IP</span><strong>${protectedTotal.toLocaleString()} records</strong></div>
+    <div class="insight-pill"><span>5-year cliff</span><strong>${cliffTotal.toLocaleString()} records</strong></div>
+  `;
+
+  els.ownerBody.innerHTML = "";
+  if (!shown.length) {
+    els.ownerBody.innerHTML = `<tr><td colspan="6"><p class="empty-state">No owner profiles match the search.</p></td></tr>`;
+    return;
+  }
+
+  for (const owner of shown) {
+    const row = document.createElement("tr");
+    row.dataset.ownerKey = owner.__key;
+    const flags = (owner.sourcingFlags || []).slice(0, 3).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
+    row.innerHTML = `
+      <td><strong class="score-pill">${Number(owner.sourcingScore || 0)}</strong></td>
+      <td>
+        <strong class="record-title">${escapeHtml(displayText(owner.ownerName, "Unknown owner"))}</strong>
+        <span class="subtle">${escapeHtml(ownerSignalSummary(owner))}</span>
+      </td>
+      <td>
+        <strong>${Number(owner.recordCount || 0).toLocaleString()} records</strong>
+        <span class="subtle">${Number(owner.relevantIpRecordCount || 0).toLocaleString()} relevant | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected | ${Number(owner.usPlantPatentCount || 0).toLocaleString()} USPP | ${Number(owner.cpvoPbrCount || 0).toLocaleString()} CPVO PBR</span>
+      </td>
+      <td>
+        ${escapeHtml(listSummary(owner.topCrops, "crop", "count", 4) || "--")}
+        <span class="subtle">${escapeHtml(listSummary(owner.topJurisdictions, "jurisdiction", "count", 4) || "No jurisdictions")}</span>
+      </td>
+      <td>
+        <strong>${escapeHtml(yearRange(owner.firstYear, owner.lastYear))}</strong>
+        <span class="subtle">${Number(owner.recordsLast5Years || 0).toLocaleString()} records last 5 yrs | ${Number(owner.filingVelocity5Year || 0).toLocaleString()} / yr</span>
+      </td>
+      <td>
+        <strong>${Number(owner.expirationNext5Years || 0).toLocaleString()} expiring in 5 yrs</strong>
+        <span class="flag-list">${flags || '<span class="subtle">No major flags</span>'}</span>
+      </td>
+    `;
+    els.ownerBody.appendChild(row);
+  }
+}
+
 function renderCharts(rows) {
   const byYear = countBy(rows, (row) => (row.date || "").slice(0, 4));
   const yearEntries = Object.entries(byYear)
@@ -475,6 +620,15 @@ function renderDetailItem(label, value) {
   `;
 }
 
+function renderMiniList(label, items, keyName = "name") {
+  if (!items || !items.length) return "";
+  const text = items
+    .slice(0, 8)
+    .map((item) => `${item[keyName] || item.crop || item.jurisdiction}: ${Number(item.count || 0).toLocaleString()}`)
+    .join(" | ");
+  return renderDetailItem(label, text);
+}
+
 function openRecordDrawer(recordKey) {
   const row = state.byKey.get(recordKey);
   if (!row) return;
@@ -537,6 +691,38 @@ function openRecordDrawer(recordKey) {
   els.drawer.setAttribute("aria-hidden", "false");
 }
 
+function openOwnerDrawer(ownerKey) {
+  const owner = state.ownerByKey.get(ownerKey);
+  if (!owner) return;
+  const flags = (owner.sourcingFlags || []).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
+  els.drawerTitle.textContent = displayText(owner.ownerName, "Owner profile");
+  els.drawerBody.innerHTML = `
+    <div class="detail-actions">
+      <span class="score-pill large">${Number(owner.sourcingScore || 0)} sourcing score</span>
+      ${flags || '<span class="badge baseline">No major flags</span>'}
+    </div>
+    <div class="detail-grid">
+      ${renderDetailItem("Records", `${Number(owner.recordCount || 0).toLocaleString()} total | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}
+      ${renderDetailItem("Relevant crop exposure", `${Number(owner.relevantIpRecordCount || 0).toLocaleString()} fruit/nut/vegetable records | ${Number(owner.relevantLegalOwnerRecordCount || 0).toLocaleString()} confirmed assignee records`)}
+      ${renderDetailItem("US / CPVO protected", `${Number(owner.usPlantPatentCount || 0).toLocaleString()} US plant patents | ${Number(owner.cpvoPbrCount || 0).toLocaleString()} CPVO PBR`)}
+      ${renderDetailItem("Filing years", `${yearRange(owner.firstYear, owner.lastYear)} | ${Number(owner.recordsLast5Years || 0).toLocaleString()} records last 5 years`)}
+      ${renderDetailItem("Expiration curve", `${Number(owner.expirationNext1Year || 0).toLocaleString()} in 1 yr | ${Number(owner.expirationNext3Years || 0).toLocaleString()} in 3 yrs | ${Number(owner.expirationNext5Years || 0).toLocaleString()} in 5 yrs | ${Number(owner.expiredProtectionCount || 0).toLocaleString()} expired`)}
+      ${renderDetailItem("Signal confidence", ownerSignalSummary(owner))}
+      ${renderDetailItem("Owner signal", Object.entries(owner.ownerRoleCounts || {}).map(([key, value]) => `${key}: ${value}`).join(" | "))}
+      ${renderMiniList("Top crops", owner.topCrops, "crop")}
+      ${renderMiniList("Jurisdictions", owner.topJurisdictions, "jurisdiction")}
+      ${renderMiniList("Named breeders", owner.topBreeders, "name")}
+      ${renderMiniList("Named inventors", owner.topInventors, "name")}
+    </div>
+    <p class="detail-note">
+      Owner profiles are sourcing signals. USPTO records use assignee first when available. CPVO profiles currently use breeder names from the Variety Finder export because holder/applicant fields are not in the downloaded workbook.
+    </p>
+  `;
+  els.drawerBackdrop.hidden = false;
+  els.drawer.classList.add("open");
+  els.drawer.setAttribute("aria-hidden", "false");
+}
+
 function closeRecordDrawer() {
   els.drawer.classList.remove("open");
   els.drawer.setAttribute("aria-hidden", "true");
@@ -558,6 +744,28 @@ function resetFilters() {
   els.fromDate.value = "";
   els.toDate.value = "";
   applyFilters();
+}
+
+async function loadOwnerProfiles() {
+  if (els.ownerCount) els.ownerCount.textContent = "Loading owners...";
+  try {
+    const response = await fetch("data/owner_profiles.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`Could not load owner profiles: ${response.status}`);
+    const ownerProfilesPayload = await response.json();
+    const ownerRows = ownerProfilesPayload.owners || [];
+    const ownerFields = ownerProfilesPayload.ownerFields || [];
+    const owners = ownerFields.length
+      ? ownerRows.map((row) => Object.fromEntries(ownerFields.map((field, index) => [field, row[index]])))
+      : ownerRows;
+    state.ownerProfiles = owners
+      .map((owner, index) => ({ ...owner, __key: `${index}-${owner.id || owner.normalizedOwnerName || "owner"}` }));
+    state.ownerByKey = new Map(state.ownerProfiles.map((owner) => [owner.__key, owner]));
+    applyOwnerFilters();
+  } catch (error) {
+    if (els.ownerCount) els.ownerCount.textContent = "Owner profiles unavailable";
+    if (els.ownerBody) els.ownerBody.innerHTML = `<tr><td colspan="6"><p class="empty-state">Owner profiles could not be loaded.</p></td></tr>`;
+    console.error(error);
+  }
 }
 
 async function init() {
@@ -582,11 +790,17 @@ async function init() {
     : "Data loaded";
   populateFilters();
   render();
+  loadOwnerProfiles();
 }
 
+const debouncedApplyFilters = debounce(applyFilters);
+const debouncedApplyOwnerFilters = debounce(applyOwnerFilters);
 for (const input of [els.searchInput, els.cropFilter, els.sourceFilter, els.fromDate, els.toDate]) {
-  input.addEventListener("input", applyFilters);
+  input.addEventListener("input", debouncedApplyFilters);
 }
+if (els.ownerSearchInput) els.ownerSearchInput.addEventListener("input", debouncedApplyOwnerFilters);
+if (els.ownerView) els.ownerView.addEventListener("input", applyOwnerFilters);
+if (els.ownerSort) els.ownerSort.addEventListener("input", applyOwnerFilters);
 els.resetButton.addEventListener("click", resetFilters);
 els.latestList.addEventListener("click", (event) => {
   const card = event.target.closest("[data-record-key]");
@@ -605,6 +819,13 @@ els.recordsBody.addEventListener("click", (event) => {
   if (!row || event.target.closest("a")) return;
   openRecordDrawer(row.dataset.recordKey);
 });
+if (els.ownerBody) {
+  els.ownerBody.addEventListener("click", (event) => {
+    const row = event.target.closest("[data-owner-key]");
+    if (!row || event.target.closest("a")) return;
+    openOwnerDrawer(row.dataset.ownerKey);
+  });
+}
 els.drawerClose.addEventListener("click", closeRecordDrawer);
 els.drawerBackdrop.addEventListener("click", closeRecordDrawer);
 document.addEventListener("keydown", (event) => {

@@ -315,6 +315,81 @@ button:hover {
   overflow: hidden;
 }
 
+.owner-section {
+  margin-top: 14px;
+}
+
+.owner-toolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 220px 220px;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.owner-insight {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.owner-table-wrap {
+  width: 100%;
+  max-height: 560px;
+  overflow: auto;
+  border: 1px solid #e1e7e1;
+  border-radius: 8px;
+}
+
+.owner-table {
+  min-width: 1180px;
+}
+
+.owner-table th:nth-child(1),
+.owner-table td:nth-child(1) {
+  width: 86px;
+}
+
+.owner-table th:nth-child(2),
+.owner-table td:nth-child(2) {
+  width: 270px;
+}
+
+.owner-table th:nth-child(3),
+.owner-table td:nth-child(3) {
+  width: 230px;
+}
+
+.owner-table th:nth-child(5),
+.owner-table td:nth-child(5) {
+  width: 190px;
+}
+
+.score-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #274f3c;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.score-pill.large {
+  min-height: 38px;
+  border-radius: 6px;
+}
+
+.flag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
 .table-wrap {
   width: 100%;
   max-height: 620px;
@@ -643,6 +718,8 @@ tbody tr:hover td {
   .summary-grid,
   .visual-grid,
   .workbench-grid,
+  .owner-toolbar,
+  .owner-insight,
   .control-strip,
   .latest-list,
   .chart-insight {

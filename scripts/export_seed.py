@@ -28,10 +28,10 @@ def text(value: Any) -> str:
 
 def source_kind(primary_source: str) -> str:
     source = primary_source.upper().strip()
-    if source.startswith("USPP"):
-        return "Issued plant patent"
     if source.startswith("USPPA"):
         return "Published plant application"
+    if source.startswith("USPP"):
+        return "Issued plant patent"
     if source.startswith("USPVPA") or source.startswith("USPVP"):
         return "USDA PVPA/PVP"
     if source.startswith("HORTSCIENCE") or source.startswith("ACTA"):

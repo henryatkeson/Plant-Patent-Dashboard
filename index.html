@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Plant Patent Dashboard</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260714-relevant-latest">
+    <link rel="stylesheet" href="assets/styles.css?v=20260714-owner-census">
   </head>
   <body>
     <header class="topbar">
@@ -81,6 +81,59 @@
         </div>
       </section>
 
+      <section class="owner-section panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Sourcing intelligence</p>
+            <h2>Owner / Breeder Census</h2>
+          </div>
+          <span id="ownerCount"></span>
+        </div>
+        <div class="owner-toolbar">
+          <label>
+            Search profiles
+            <input id="ownerSearchInput" type="search" placeholder="Owner, breeder, crop, jurisdiction, signal">
+          </label>
+          <label>
+            View
+            <select id="ownerView">
+              <option value="relevant">Fruit, nut, and vegetable signals</option>
+              <option value="all">All sourcing signals</option>
+              <option value="legal">Confirmed patent assignees</option>
+              <option value="succession">Succession leads</option>
+              <option value="cliff">Patent/PBR cliffs</option>
+            </select>
+          </label>
+          <label>
+            Sort
+            <select id="ownerSort">
+              <option value="confidence">Owner confidence</option>
+              <option value="score">Sourcing score</option>
+              <option value="protected">Protected IP count</option>
+              <option value="recent">Recent activity</option>
+              <option value="cliff">5-year expiry cliff</option>
+              <option value="velocity">5-year filing velocity</option>
+            </select>
+          </label>
+        </div>
+        <div id="ownerInsight" class="owner-insight"></div>
+        <div class="owner-table-wrap">
+          <table class="owner-table">
+            <thead>
+              <tr>
+                <th>Score</th>
+                <th>Name / Signal</th>
+                <th>Portfolio</th>
+                <th>Crop Mix</th>
+                <th>Activity</th>
+                <th>Durability / Flags</th>
+              </tr>
+            </thead>
+            <tbody id="ownerBody"></tbody>
+          </table>
+        </div>
+      </section>
+
       <section class="visual-grid">
         <div class="panel">
           <div class="panel-head">
@@ -135,6 +188,6 @@
       <div id="drawerBody" class="drawer-body"></div>
     </aside>
 
-    <script src="assets/app.js?v=20260714-relevant-latest"></script>
+    <script src="assets/app.js?v=20260714-owner-census"></script>
   </body>
 </html>

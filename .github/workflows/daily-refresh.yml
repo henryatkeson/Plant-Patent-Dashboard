@@ -20,10 +20,12 @@ jobs:
         run: python scripts/refresh_uspto_grants.py --issues 8
       - name: Enrich patent source links
         run: python scripts/enrich_patent_links.py
+      - name: Rebuild owner sourcing profiles
+        run: python scripts/build_owner_profiles.py
       - name: Commit data update
         run: |
           git config user.name "plant-patent-dashboard"
           git config user.email "plant-patent-dashboard@example.com"
-          git add data/plant_patents.json data/link_enrichment_cache.json
+          git add data/plant_patents.json data/link_enrichment_cache.json data/owner_profiles.json
           git diff --cached --quiet || git commit -m "Refresh plant patent data"
           git push
