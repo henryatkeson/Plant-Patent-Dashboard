@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-07-15T13:57:58.042830+00:00",
+  "generatedAt": "2026-07-15T15:06:53.464769+00:00",
   "strategy": "USPTO Official Gazette refreshes automatically through GitHub Actions. CPVO is currently refreshed when new Variety Finder Excel exports are saved and imported. Owner profiles are rebuilt after each data refresh.",
   "sources": [
     {
       "name": "USPTO Official Gazette plant grants",
       "mode": "automated",
       "cadence": "Daily check for weekly Gazette issues",
-      "recordCount": 2691,
+      "recordCount": 2708,
       "latestRecordDate": "2026-07-14",
-      "lastFileUpdate": "2026-07-14T16:21:51.558820+00:00",
+      "lastFileUpdate": "2026-07-15T15:04:12.868387+00:00",
       "nextStep": "Keep the scheduled GitHub Action active; it will pick up newly published Gazette issues."
     },
     {
@@ -24,9 +24,9 @@
       "name": "Owner / breeder sourcing profiles",
       "mode": "derived",
       "cadence": "Rebuilt after USPTO or CPVO data changes",
-      "recordCount": 17688,
+      "recordCount": 17535,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-07-15T04:16:49.926910+00:00",
+      "lastFileUpdate": "2026-07-15T15:06:17.445881+00:00",
       "nextStep": "Review aliases in config/company_profiles.json as new breeders appear."
     }
   ],
