@@ -6,6 +6,7 @@ const state = {
   ownerProfiles: [],
   filteredOwners: [],
   ownerByKey: new Map(),
+  lastFocus: null,
 };
 
 const els = {
@@ -41,8 +42,11 @@ const els = {
   drawer: document.querySelector("#recordDrawer"),
   drawerBackdrop: document.querySelector("#drawerBackdrop"),
   drawerClose: document.querySelector("#drawerClose"),
+  drawerEyebrow: document.querySelector("#drawerEyebrow"),
   drawerTitle: document.querySelector("#drawerTitle"),
   drawerBody: document.querySelector("#drawerBody"),
+  tabButtons: document.querySelectorAll("[data-tab-target]"),
+  viewPanels: document.querySelectorAll("[data-view-panel]"),
 };
 
 const LATEST_RELEVANT_CROPS = new Set([
@@ -507,6 +511,8 @@ function renderOwners() {
   for (const owner of shown) {
     const row = document.createElement("tr");
     row.dataset.ownerKey = owner.__key;
+    row.tabIndex = 0;
+    row.setAttribute("role", "button");
     const flags = (owner.sourcingFlags || []).slice(0, 3).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
     row.innerHTML = `
       <td><strong class="score-pill">${Number(owner.sourcingScore || 0)}</strong></td>
@@ -629,9 +635,48 @@ function renderMiniList(label, items, keyName = "name") {
   return renderDetailItem(label, text);
 }
 
+function renderProfileBarChart(title, items, labelKey = "year", countKey = "count", limit = 12) {
+  const values = (items || []).slice(-limit);
+  if (!values.length) {
+    return `
+      <div class="profile-chart">
+        <h3>${escapeHtml(title)}</h3>
+        <p class="subtle">No dated records available.</p>
+      </div>
+    `;
+  }
+  const max = Math.max(...values.map((item) => Number(item[countKey] || 0)), 1);
+  return `
+    <div class="profile-chart">
+      <h3>${escapeHtml(title)}</h3>
+      <div class="profile-bars">
+        ${values.map((item) => {
+          const value = Number(item[countKey] || 0);
+          const height = Math.max(8, Math.round((value / max) * 72));
+          return `
+            <div class="profile-bar-item" title="${escapeHtml(String(item[labelKey]))}: ${value.toLocaleString()}">
+              <span class="profile-bar-value">${value.toLocaleString()}</span>
+              <span class="profile-bar" style="height:${height}px"></span>
+              <span class="profile-bar-label">${escapeHtml(String(item[labelKey]))}</span>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function futureExpirationItems(owner) {
+  const currentYear = new Date().getFullYear();
+  return (owner.expirationSchedule || [])
+    .filter((item) => Number(item.year) >= currentYear - 1)
+    .slice(0, 14);
+}
+
 function openRecordDrawer(recordKey) {
   const row = state.byKey.get(recordKey);
   if (!row) return;
+  state.lastFocus = document.activeElement;
 
   const title = displayText(row.cultivar || row.title || row.tradeName, "Patent record");
   const sourceText = displayText(row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind, "Source unknown");
@@ -645,6 +690,7 @@ function openRecordDrawer(recordKey) {
     ? `<a class="detail-link" href="${escapeHtml(lookupUrl)}" target="_blank" rel="noopener">${escapeHtml(patentLookupLabel(row))}</a>`
     : `<span class="detail-button-muted">No direct source link yet</span>`;
 
+  els.drawerEyebrow.textContent = "Record detail";
   els.drawerTitle.textContent = title;
   els.drawerBody.innerHTML = `
     <div class="detail-actions">
@@ -689,18 +735,30 @@ function openRecordDrawer(recordKey) {
   els.drawerBackdrop.hidden = false;
   els.drawer.classList.add("open");
   els.drawer.setAttribute("aria-hidden", "false");
+  els.drawerClose.focus();
 }
 
 function openOwnerDrawer(ownerKey) {
   const owner = state.ownerByKey.get(ownerKey);
   if (!owner) return;
+  state.lastFocus = document.activeElement;
   const flags = (owner.sourcingFlags || []).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
+  const websiteAction = owner.companyWebsite
+    ? `<a class="detail-link" href="${escapeHtml(owner.companyWebsite)}" target="_blank" rel="noopener">Company website</a>`
+    : "";
+  const sourceAction = owner.companySourceUrl && owner.companySourceUrl !== owner.companyWebsite
+    ? `<a class="detail-button-muted" href="${escapeHtml(owner.companySourceUrl)}" target="_blank" rel="noopener">Profile source</a>`
+    : "";
+  els.drawerEyebrow.textContent = "Owner / breeder profile";
   els.drawerTitle.textContent = displayText(owner.ownerName, "Owner profile");
   els.drawerBody.innerHTML = `
     <div class="detail-actions">
+      ${websiteAction}
+      ${sourceAction}
       <span class="score-pill large">${Number(owner.sourcingScore || 0)} sourcing score</span>
       ${flags || '<span class="badge baseline">No major flags</span>'}
     </div>
+    ${owner.companyDescription ? `<p class="company-description">${escapeHtml(owner.companyDescription)}</p>` : ""}
     <div class="detail-grid">
       ${renderDetailItem("Records", `${Number(owner.recordCount || 0).toLocaleString()} total | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}
       ${renderDetailItem("Relevant crop exposure", `${Number(owner.relevantIpRecordCount || 0).toLocaleString()} fruit/nut/vegetable records | ${Number(owner.relevantLegalOwnerRecordCount || 0).toLocaleString()} confirmed assignee records`)}
@@ -714,6 +772,10 @@ function openOwnerDrawer(ownerKey) {
       ${renderMiniList("Named breeders", owner.topBreeders, "name")}
       ${renderMiniList("Named inventors", owner.topInventors, "name")}
     </div>
+    <div class="profile-chart-grid">
+      ${renderProfileBarChart("Annual patent/PBR activity", owner.annualCounts || [], "year", "count", 12)}
+      ${renderProfileBarChart("Estimated expiration cliff", futureExpirationItems(owner), "year", "count", 14)}
+    </div>
     <p class="detail-note">
       Owner profiles are sourcing signals. USPTO records use assignee first when available. CPVO profiles currently use breeder names from the Variety Finder export because holder/applicant fields are not in the downloaded workbook.
     </p>
@@ -721,12 +783,29 @@ function openOwnerDrawer(ownerKey) {
   els.drawerBackdrop.hidden = false;
   els.drawer.classList.add("open");
   els.drawer.setAttribute("aria-hidden", "false");
+  els.drawerClose.focus();
 }
 
 function closeRecordDrawer() {
   els.drawer.classList.remove("open");
   els.drawer.setAttribute("aria-hidden", "true");
   els.drawerBackdrop.hidden = true;
+  if (state.lastFocus && typeof state.lastFocus.focus === "function") {
+    state.lastFocus.focus();
+  }
+}
+
+function setActiveTab(tabName) {
+  els.tabButtons.forEach((button) => {
+    const isActive = button.dataset.tabTarget === tabName;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+    button.tabIndex = isActive ? 0 : -1;
+  });
+  els.viewPanels.forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.viewPanel === tabName);
+    panel.hidden = panel.dataset.viewPanel !== tabName;
+  });
 }
 
 function render() {
@@ -790,6 +869,7 @@ async function init() {
     : "Data loaded";
   populateFilters();
   render();
+  setActiveTab("overview");
   loadOwnerProfiles();
 }
 
@@ -798,6 +878,24 @@ const debouncedApplyOwnerFilters = debounce(applyOwnerFilters);
 for (const input of [els.searchInput, els.cropFilter, els.sourceFilter, els.fromDate, els.toDate]) {
   input.addEventListener("input", debouncedApplyFilters);
 }
+els.tabButtons.forEach((button) => {
+  button.addEventListener("click", () => setActiveTab(button.dataset.tabTarget));
+  button.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const buttons = [...els.tabButtons];
+    const currentIndex = buttons.indexOf(button);
+    const nextIndex = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? buttons.length - 1
+        : event.key === "ArrowRight"
+          ? (currentIndex + 1) % buttons.length
+          : (currentIndex - 1 + buttons.length) % buttons.length;
+    buttons[nextIndex].focus();
+    setActiveTab(buttons[nextIndex].dataset.tabTarget);
+  });
+});
 if (els.ownerSearchInput) els.ownerSearchInput.addEventListener("input", debouncedApplyOwnerFilters);
 if (els.ownerView) els.ownerView.addEventListener("input", applyOwnerFilters);
 if (els.ownerSort) els.ownerSort.addEventListener("input", applyOwnerFilters);
@@ -823,6 +921,13 @@ if (els.ownerBody) {
   els.ownerBody.addEventListener("click", (event) => {
     const row = event.target.closest("[data-owner-key]");
     if (!row || event.target.closest("a")) return;
+    openOwnerDrawer(row.dataset.ownerKey);
+  });
+  els.ownerBody.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const row = event.target.closest("[data-owner-key]");
+    if (!row) return;
+    event.preventDefault();
     openOwnerDrawer(row.dataset.ownerKey);
   });
 }

@@ -14,9 +14,11 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
+CONFIG_DIR = ROOT / "config"
 PATENT_PATH = DATA_DIR / "plant_patents.json"
 CPVO_PATH = DATA_DIR / "cpvo_varieties.json"
 OUTPUT_PATH = DATA_DIR / "owner_profiles.json"
+COMPANY_PROFILE_PATH = CONFIG_DIR / "company_profiles.json"
 TODAY = dt.date.today()
 
 LEGAL_TERMS = {
@@ -151,6 +153,12 @@ def load_records(path: Path) -> list[dict[str, Any]]:
     return payload.get("records", [])
 
 
+def load_company_profiles() -> list[dict[str, Any]]:
+    if not COMPANY_PROFILE_PATH.exists():
+        return []
+    return json.loads(COMPANY_PROFILE_PATH.read_text(encoding="utf-8"))
+
+
 def clean_text(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
@@ -159,14 +167,77 @@ def normalize_owner_name(name: str) -> str:
     text = clean_text(name)
     text = re.sub(r"\([^)]*\)", " ", text)
     text = text.replace("&", " and ")
-    text = re.sub(r"['’]", "", text)
+    text = re.sub(r"['`’]", "", text)
     text = re.sub(r"[^A-Za-z0-9]+", " ", text).lower().strip()
     parts = [part for part in text.split() if part not in LEGAL_TERMS]
     return " ".join(parts)
 
 
-def display_owner_name(name: str) -> str:
+def normalize_alias_search(name: str) -> str:
     text = clean_text(name)
+    text = text.replace("&", " and ")
+    text = re.sub(r"['`’]", "", text)
+    text = re.sub(r"[^A-Za-z0-9]+", " ", text).lower().strip()
+    parts = [part for part in text.split() if part not in LEGAL_TERMS]
+    return " ".join(parts)
+
+
+COMPANY_PROFILES = load_company_profiles()
+
+
+def build_company_alias_index() -> list[tuple[str, dict[str, Any]]]:
+    index: list[tuple[str, dict[str, Any]]] = []
+    for profile in COMPANY_PROFILES:
+        aliases = [profile.get("canonicalName", ""), *(profile.get("aliases") or [])]
+        for alias in aliases:
+            alias_normalized = normalize_alias_search(alias)
+            if alias_normalized:
+                index.append((alias_normalized, profile))
+    return sorted(index, key=lambda item: len(item[0]), reverse=True)
+
+
+COMPANY_ALIAS_INDEX = build_company_alias_index()
+
+
+def company_profile_for_name(name: str) -> dict[str, Any] | None:
+    normalized = f" {normalize_alias_search(name)} "
+    for alias_normalized, profile in COMPANY_ALIAS_INDEX:
+        if len(alias_normalized) <= 4:
+            if f" {alias_normalized} " in normalized:
+                return profile
+        elif alias_normalized in normalized:
+            return profile
+    return None
+
+
+def company_profiles_for_name(name: str) -> list[dict[str, Any]]:
+    normalized = f" {normalize_alias_search(name)} "
+    profiles: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for alias_normalized, profile in COMPANY_ALIAS_INDEX:
+        canonical = profile["canonicalName"]
+        if canonical in seen:
+            continue
+        if len(alias_normalized) <= 4:
+            matched = f" {alias_normalized} " in normalized
+        else:
+            matched = alias_normalized in normalized
+        if matched:
+            profiles.append(profile)
+            seen.add(canonical)
+    return profiles
+
+
+def canonical_owner_name(name: str) -> str:
+    text = clean_text(name)
+    profile = company_profile_for_name(text)
+    if profile:
+        return profile["canonicalName"]
+    return text
+
+
+def display_owner_name(name: str) -> str:
+    text = canonical_owner_name(name)
     text = re.sub(r"\s*,?\s*\((?:US|CA|GB|AU|NZ|IT|FR|ES|NL|DE|BR|CL|ZA|JP|KR|CN|MX|AR|IL|BE|DK|SE|CH|PL|QZ)\)\s*$", "", text)
     return text.strip(" ,") or "Unknown owner"
 
@@ -177,9 +248,10 @@ def split_people_or_entities(value: str) -> list[str]:
     if not text or lowered in {"n/a", "na", "none", "unknown"} or lowered.startswith("information not available"):
         return []
     text = text.replace("\\,", ",")
+    text = text.replace("^^^", "|")
     text = text.replace(" / ", "|")
     text = re.sub(r"\s*;\s*", "|", text)
-    parts = [display_owner_name(part) for part in text.split("|")]
+    parts = [clean_text(part).strip(" ,") for part in text.split("|")]
     return [part for part in parts if normalize_owner_name(part) not in {"n a", "na", "none", "unknown"}]
 
 
@@ -234,18 +306,27 @@ def expiration_date(row: dict[str, Any]) -> tuple[str, str]:
 
 def owner_candidates(row: dict[str, Any]) -> list[tuple[str, str, str]]:
     candidates: list[tuple[str, str, str]] = []
+    seen: set[tuple[str, str]] = set()
+
+    def add_from_value(value: str, role: str, confidence: str) -> None:
+        for name in split_people_or_entities(value):
+            company_profiles = company_profiles_for_name(name)
+            names = [profile["canonicalName"] for profile in company_profiles] or [name]
+            for expanded_name in names:
+                key = (normalize_owner_name(display_owner_name(expanded_name)), role)
+                if key in seen:
+                    continue
+                seen.add(key)
+                candidates.append((expanded_name, role, confidence))
+
     if is_cpvo(row):
-        for name in split_people_or_entities(row.get("breeders", "")):
-            candidates.append((name, "CPVO breeder", "medium"))
+        add_from_value(row.get("breeders", ""), "CPVO breeder", "medium")
     else:
-        for name in split_people_or_entities(row.get("assignee", "")):
-            candidates.append((name, "Patent assignee", "high"))
+        add_from_value(row.get("assignee", ""), "Patent assignee", "high")
         if not candidates:
-            for name in split_people_or_entities(row.get("breeders", "")):
-                candidates.append((name, "Breeder", "medium"))
+            add_from_value(row.get("breeders", ""), "Breeder", "medium")
         if not candidates:
-            for name in split_people_or_entities(row.get("inventors", "")):
-                candidates.append((name, "Inventor", "low"))
+            add_from_value(row.get("inventors", ""), "Inventor", "low")
     return candidates
 
 
@@ -336,15 +417,20 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
 
         for raw_owner, owner_role, confidence in owners:
-            normalized = normalize_owner_name(raw_owner)
+            owner_display = display_owner_name(raw_owner)
+            normalized = normalize_owner_name(owner_display)
             if not normalized:
                 continue
+            company_profile = company_profile_for_name(owner_display)
             profile = grouped.setdefault(
                 normalized,
                 {
                     "id": owner_id(normalized),
-                    "ownerName": display_owner_name(raw_owner),
+                    "ownerName": owner_display,
                     "normalizedOwnerName": normalized,
+                    "companyWebsite": company_profile.get("website", "") if company_profile else "",
+                    "companyDescription": company_profile.get("description", "") if company_profile else "",
+                    "companySourceUrl": company_profile.get("sourceUrl", "") if company_profile else "",
                     "recordCount": 0,
                     "ownerRoleCounts": Counter(),
                     "confidenceCounts": Counter(),
@@ -354,6 +440,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "registerCounts": Counter(),
                     "statusCounts": Counter(),
                     "years": Counter(),
+                    "expirationYears": Counter(),
                     "namedBreeders": Counter(),
                     "namedInventors": Counter(),
                     "sampleRecords": [],
@@ -371,9 +458,13 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "inventorSignalRecordCount": 0,
                     "relevantIpRecordCount": 0,
                     "relevantLegalOwnerRecordCount": 0,
-                    "individualOwner": looks_individual(raw_owner),
+                    "individualOwner": False if company_profile else looks_individual(owner_display),
                 },
             )
+            if company_profile and not profile.get("companyWebsite"):
+                profile["companyWebsite"] = company_profile.get("website", "")
+                profile["companyDescription"] = company_profile.get("description", "")
+                profile["companySourceUrl"] = company_profile.get("sourceUrl", "")
 
             profile["recordCount"] += 1
             profile["ownerRoleCounts"][owner_role] += 1
@@ -424,6 +515,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                             profile["expirationNext3Years"] += 1
                         if days <= 365 * 5:
                             profile["expirationNext5Years"] += 1
+                    profile["expirationYears"][exp.year] += 1
                 if exp_basis:
                     profile["expirationBasisCounts"][exp_basis] += 1
 
@@ -452,6 +544,8 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
         profile["recordsLast3Years"] = sum(count for year, count in profile["years"].items() if year >= current_year - 2)
         profile["recordsLast5Years"] = sum(count for year, count in profile["years"].items() if year >= current_year - 4)
         profile["filingVelocity5Year"] = round(profile["recordsLast5Years"] / 5, 2)
+        profile["annualCounts"] = [{"year": year, "count": count} for year, count in sorted(profile["years"].items())]
+        profile["expirationSchedule"] = [{"year": year, "count": count} for year, count in sorted(profile["expirationYears"].items())]
         profile["cropConcentration"] = round(top_crop_count / record_count, 3) if record_count else 0
         profile["soleNamedBreeder"] = (len(profile["namedBreeders"]) + len(profile["namedInventors"])) == 1 and record_count >= 2
         score, flags = score_profile(profile)
@@ -480,6 +574,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "expirationBasisCounts",
             "cropCounts",
             "jurisdictionCounts",
+            "expirationYears",
             "namedBreeders",
             "namedInventors",
             "sampleRecords",
@@ -495,6 +590,9 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "id",
         "ownerName",
         "normalizedOwnerName",
+        "companyWebsite",
+        "companyDescription",
+        "companySourceUrl",
         "recordCount",
         "protectedIpCount",
         "usPlantPatentCount",
@@ -523,6 +621,8 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "topBreeders",
         "topInventors",
         "ownerRoleCounts",
+        "annualCounts",
+        "expirationSchedule",
     ]
     metadata = {
         "title": "Owner Sourcing Profiles",

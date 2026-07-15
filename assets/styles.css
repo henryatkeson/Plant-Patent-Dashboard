@@ -103,6 +103,46 @@ h2 {
   margin-top: 14px;
 }
 
+.section-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.tab-button {
+  width: auto;
+  min-height: 38px;
+  padding: 0 16px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+}
+
+.tab-button:hover,
+.tab-button.active {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.view-panel {
+  display: none;
+}
+
+.view-panel.active {
+  display: block;
+}
+
+.workbench-grid.view-panel.active,
+.visual-grid.view-panel.active,
+.control-strip.view-panel.active {
+  display: grid;
+}
+
 .metric,
 .panel,
 .table-section {
@@ -668,6 +708,67 @@ tbody tr:hover td {
   gap: 12px;
 }
 
+.company-description {
+  margin: 0 0 16px;
+  padding: 12px;
+  border: 1px solid #dfe7df;
+  border-radius: 8px;
+  background: #fbfcfa;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.profile-chart-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.profile-chart {
+  padding: 12px;
+  border: 1px solid #dfe7df;
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.profile-chart h3 {
+  margin: 0 0 12px;
+  font-size: 13px;
+}
+
+.profile-bars {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(30px, 1fr);
+  gap: 6px;
+  align-items: end;
+  min-height: 112px;
+  overflow-x: auto;
+}
+
+.profile-bar-item {
+  display: grid;
+  grid-template-rows: 18px 76px 18px;
+  align-items: end;
+  justify-items: center;
+  min-width: 30px;
+}
+
+.profile-bar-value,
+.profile-bar-label {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.profile-bar {
+  display: block;
+  width: 100%;
+  max-width: 22px;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(180deg, var(--blue), var(--green));
+}
+
 .detail-item {
   padding-bottom: 12px;
   border-bottom: 1px solid #edf0eb;
@@ -718,12 +819,17 @@ tbody tr:hover td {
   .summary-grid,
   .visual-grid,
   .workbench-grid,
+  .section-tabs,
   .owner-toolbar,
   .owner-insight,
   .control-strip,
   .latest-list,
   .chart-insight {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .section-tabs {
+    display: grid;
   }
 }
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Plant Patent Dashboard</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260714-owner-census">
+    <link rel="stylesheet" href="assets/styles.css?v=20260715-tabs-owner-alias">
   </head>
   <body>
     <header class="topbar">
@@ -38,6 +38,13 @@
         </div>
       </section>
 
+      <nav class="section-tabs" role="tablist" aria-label="Dashboard sections">
+        <button id="tab-overview" class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="panel-overview" data-tab-target="overview">Overview</button>
+        <button id="tab-sourcing" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-sourcing" data-tab-target="sourcing">Sourcing</button>
+        <button id="tab-analytics" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-analytics" data-tab-target="analytics">Analytics</button>
+        <button id="tab-records" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-records" data-tab-target="records">Records</button>
+      </nav>
+
       <section class="control-strip" aria-label="Filters">
         <label>
           Search
@@ -64,7 +71,7 @@
         <button id="resetButton" type="button" title="Clear filters">Reset</button>
       </section>
 
-      <section class="workbench-grid">
+      <section id="panel-overview" class="workbench-grid view-panel active" role="tabpanel" aria-labelledby="tab-overview" data-view-panel="overview">
         <div class="panel latest-panel">
           <div class="panel-head">
             <h2>Latest Records</h2>
@@ -81,7 +88,7 @@
         </div>
       </section>
 
-      <section class="owner-section panel">
+      <section id="panel-sourcing" class="owner-section panel view-panel" role="tabpanel" aria-labelledby="tab-sourcing" data-view-panel="sourcing">
         <div class="panel-head">
           <div>
             <p class="eyebrow">Sourcing intelligence</p>
@@ -134,7 +141,7 @@
         </div>
       </section>
 
-      <section class="visual-grid">
+      <section id="panel-analytics" class="visual-grid view-panel" role="tabpanel" aria-labelledby="tab-analytics" data-view-panel="analytics">
         <div class="panel">
           <div class="panel-head">
             <h2>Annual Activity</h2>
@@ -153,7 +160,7 @@
         </div>
       </section>
 
-      <section class="table-section">
+      <section id="panel-records" class="table-section view-panel" role="tabpanel" aria-labelledby="tab-records" data-view-panel="records">
         <div class="panel-head">
           <h2>Records</h2>
           <span id="rowCount"></span>
@@ -177,17 +184,17 @@
     </main>
 
     <div id="drawerBackdrop" class="drawer-backdrop" hidden></div>
-    <aside id="recordDrawer" class="record-drawer" aria-labelledby="drawerTitle" aria-hidden="true">
+    <aside id="recordDrawer" class="record-drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
       <div class="drawer-head">
         <div>
-          <p class="eyebrow">Record detail</p>
+          <p id="drawerEyebrow" class="eyebrow">Record detail</p>
           <h2 id="drawerTitle">Patent record</h2>
         </div>
-        <button id="drawerClose" class="icon-button" type="button" aria-label="Close details">×</button>
+        <button id="drawerClose" class="icon-button" type="button" aria-label="Close details">X</button>
       </div>
       <div id="drawerBody" class="drawer-body"></div>
     </aside>
 
-    <script src="assets/app.js?v=20260714-owner-census"></script>
+    <script src="assets/app.js?v=20260715-tabs-owner-alias"></script>
   </body>
 </html>
