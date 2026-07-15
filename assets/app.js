@@ -291,6 +291,179 @@ function renderOwnerAudit(owner) {
   `;
 }
 
+function ownerContactStatus(owner) {
+  const namedContact = [owner.primaryContactName, owner.primaryContactTitle].filter(Boolean).join(" - ");
+  if (namedContact && (owner.primaryContactUrl || owner.contactSourceUrl)) {
+    return {
+      label: "Named contact sourced",
+      confidence: "High",
+      body: namedContact,
+      action: owner.primaryContactUrl || owner.contactSourceUrl,
+      actionLabel: "Open contact evidence",
+    };
+  }
+  if (owner.companyContactUrl) {
+    return {
+      label: "Company contact page",
+      confidence: "High",
+      body: "Use the official company contact page as the first outreach path.",
+      action: owner.companyContactUrl,
+      actionLabel: "Open contact page",
+    };
+  }
+  if (owner.companyWebsite) {
+    return {
+      label: "Website only",
+      confidence: "Medium",
+      body: "Company website is verified, but a direct contact page or named decision maker is not yet captured.",
+      action: owner.companyWebsite,
+      actionLabel: "Open website",
+    };
+  }
+  if (owner.candidateParent) {
+    return {
+      label: "Needs holder verification",
+      confidence: "Low",
+      body: `Possible parent: ${displayText(owner.candidateParent)}. Verify holder/applicant evidence before outreach.`,
+      action: owner.candidateParentEvidenceUrl,
+      actionLabel: "Open evidence",
+    };
+  }
+  return {
+    label: "No public contact found",
+    confidence: "Low",
+    body: "No source-backed company contact is captured yet. Do not infer a contact from breeder-only records.",
+    action: "",
+    actionLabel: "",
+  };
+}
+
+function acquisitionFit(owner) {
+  const targetFit = normalize(owner.targetFit);
+  const name = normalize(owner.ownerName);
+  const recordCount = Number(owner.recordCount || 0);
+  const protectedCount = Number(owner.protectedIpCount || 0);
+  if (targetFit.includes("too large") || targetFit.includes("far too large") || targetFit.includes("benchmark only")) {
+    return { label: "Benchmark / likely too large", className: "warn" };
+  }
+  if (targetFit.includes("above the current target range") || targetFit.includes("larger than the current target range") || targetFit.includes("likely larger")) {
+    return { label: "Needs company sizing", className: "neutral" };
+  }
+  if (name.includes("university") || name.includes("usda") || name.includes("institute") || name.includes("research")) {
+    return { label: "Public or institutional signal", className: "muted" };
+  }
+  if (owner.companyWebsite && protectedCount >= 2 && protectedCount <= 100 && recordCount <= 150) {
+    return { label: "Potential acquisition lead", className: "good" };
+  }
+  if (owner.companyWebsite || owner.companyDescription) {
+    return { label: "Company profile needs sizing", className: "neutral" };
+  }
+  return { label: "Needs profile verification", className: "muted" };
+}
+
+function profileNextAction(owner, contact) {
+  const fit = normalize(owner.targetFit);
+  if (fit.includes("too large") || fit.includes("benchmark only")) {
+    return "Use as a market benchmark or buyer/license counterparty, not a near-term acquisition target.";
+  }
+  if (fit.includes("above the current target range") || fit.includes("larger than the current target range") || fit.includes("likely larger")) {
+    return "Verify company scale, ownership, and whether a separable breeding asset exists before treating this as an acquisition lead.";
+  }
+  if (!owner.companyWebsite && !owner.companyDescription) {
+    return "Verify the legal holder and identify a real company profile before outreach.";
+  }
+  if (!owner.companyContactUrl && !owner.primaryContactUrl && !owner.contactSourceUrl) {
+    return "Find a source-backed contact path or named owner/operator before moving to outreach.";
+  }
+  if (contact.confidence === "High") {
+    return "Ready for business review once ownership, size, and fit are checked.";
+  }
+  return "Keep in research queue until contact and ownership evidence are stronger.";
+}
+
+function profileBlockers(owner) {
+  const blockers = [];
+  const targetFit = normalize(owner.targetFit);
+  if (targetFit.includes("too large") || targetFit.includes("far too large")) blockers.push("Likely too large for the $1-5m EBITDA target range.");
+  if (!owner.companyWebsite) blockers.push("No verified company website captured.");
+  if (!owner.companyContactUrl && !owner.primaryContactUrl && !owner.contactSourceUrl) blockers.push("No source-backed contact path captured.");
+  if (Number(owner.legalOwnerRecordCount || 0) === 0) blockers.push("No confirmed legal-owner records in the current profile.");
+  if (owner.auditConfidence && normalize(owner.auditConfidence) === "low") blockers.push("Manual audit confidence is low.");
+  if (!blockers.length) blockers.push("No major data blocker captured yet; still verify company size and ownership before outreach.");
+  return blockers;
+}
+
+function renderProfileSnapshot(owner) {
+  const contact = ownerContactStatus(owner);
+  const fit = acquisitionFit(owner);
+  const protectedCount = Number(owner.protectedIpCount || 0);
+  const relevantCount = Number(owner.relevantIpRecordCount || 0);
+  return `
+    <section class="profile-snapshot">
+      <div class="profile-kpi">
+        <span>Sourcing score</span>
+        <strong>${Number(owner.sourcingScore || 0)}</strong>
+      </div>
+      <div class="profile-kpi ${fit.className}">
+        <span>Acquisition fit</span>
+        <strong>${escapeHtml(fit.label)}</strong>
+      </div>
+      <div class="profile-kpi">
+        <span>Protected IP</span>
+        <strong>${protectedCount.toLocaleString()}</strong>
+      </div>
+      <div class="profile-kpi">
+        <span>Relevant records</span>
+        <strong>${relevantCount.toLocaleString()}</strong>
+      </div>
+    </section>
+    ${renderContactPanel(owner, contact)}
+  `;
+}
+
+function renderContactPanel(owner, contact = ownerContactStatus(owner)) {
+  const contactAction = contact.action
+    ? `<a class="detail-link" href="${escapeHtml(contact.action)}" target="_blank" rel="noopener">${escapeHtml(contact.actionLabel || "Open contact")}</a>`
+    : "";
+  const supportLinks = [
+    owner.companyWebsite ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyWebsite)}" target="_blank" rel="noopener">Website</a>` : "",
+    owner.companyLinkedInUrl ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyLinkedInUrl)}" target="_blank" rel="noopener">LinkedIn</a>` : "",
+    owner.companySourceUrl && owner.companySourceUrl !== owner.companyWebsite ? `<a class="detail-button-muted" href="${escapeHtml(owner.companySourceUrl)}" target="_blank" rel="noopener">Profile source</a>` : "",
+  ].filter(Boolean).join("");
+  return `
+    <section class="profile-panel contact-panel">
+      <div>
+        <p class="eyebrow">Best public contact path</p>
+        <h3>${escapeHtml(contact.label)}</h3>
+        <p>${escapeHtml(contact.body)}</p>
+        <span class="confidence-chip">${escapeHtml(contact.confidence)} confidence</span>
+      </div>
+      <div class="detail-actions compact">
+        ${contactAction}
+        ${supportLinks}
+      </div>
+    </section>
+  `;
+}
+
+function renderAcquisitionMemo(owner) {
+  const contact = ownerContactStatus(owner);
+  const blockers = profileBlockers(owner);
+  return `
+    <section class="profile-panel">
+      <p class="eyebrow">Acquisition memo</p>
+      <h3>Why this profile matters</h3>
+      <p>${escapeHtml(owner.targetFit || owner.companyDescription || "Needs more company-level research before the profile can be used as an actionable sourcing target.")}</p>
+      <h3>Recommended next action</h3>
+      <p>${escapeHtml(profileNextAction(owner, contact))}</p>
+      <h3>Diligence blockers</h3>
+      <ul class="blocker-list">
+        ${blockers.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+      </ul>
+    </section>
+  `;
+}
+
 function titleCaseWord(word) {
   const lower = word.toLowerCase();
   if (["and", "or", "of", "the", "in"].includes(lower)) return lower;
@@ -836,6 +1009,7 @@ function openRecordDrawer(recordKey) {
   const row = state.byKey.get(recordKey);
   if (!row) return;
   state.lastFocus = document.activeElement;
+  els.drawer.classList.remove("profile-drawer");
 
   const title = displayText(row.cultivar || row.title || row.tradeName, "Patent record");
   const sourceText = displayText(row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind, "Source unknown");
@@ -911,33 +1085,19 @@ function openOwnerDrawer(ownerKey) {
   if (!owner) return;
   state.lastFocus = document.activeElement;
   const flags = (owner.sourcingFlags || []).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
-  const websiteAction = owner.companyWebsite
-    ? `<a class="detail-link" href="${escapeHtml(owner.companyWebsite)}" target="_blank" rel="noopener">Company website</a>`
-    : "";
-  const contactAction = owner.companyContactUrl
-    ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyContactUrl)}" target="_blank" rel="noopener">Contact page</a>`
-    : "";
-  const linkedInAction = owner.companyLinkedInUrl
-    ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyLinkedInUrl)}" target="_blank" rel="noopener">LinkedIn</a>`
-    : "";
-  const sourceAction = owner.companySourceUrl && owner.companySourceUrl !== owner.companyWebsite
-    ? `<a class="detail-button-muted" href="${escapeHtml(owner.companySourceUrl)}" target="_blank" rel="noopener">Profile source</a>`
-    : "";
   const ownerNewsLinks = renderNewsLinks({ newsLinks: owner.companyNewsLinks || [] });
-  els.drawerEyebrow.textContent = "Owner / breeder profile";
+  const isCompanyProfile = Boolean(owner.companyWebsite || owner.companyDescription || owner.companyContactUrl);
+  els.drawer.classList.add("profile-drawer");
+  els.drawerEyebrow.textContent = isCompanyProfile ? "Company profile" : "Owner / breeder profile";
   els.drawerTitle.textContent = displayText(owner.ownerName, "Owner profile");
   els.drawerBody.innerHTML = `
+    ${renderProfileSnapshot(owner)}
+    ${owner.companyDescription ? `<p class="company-description">${escapeHtml(owner.companyDescription)}</p>` : ""}
+    ${renderAcquisitionMemo(owner)}
     <div class="detail-actions">
-      ${websiteAction}
-      ${contactAction}
-      ${linkedInAction}
-      ${sourceAction}
-      <span class="score-pill large">${Number(owner.sourcingScore || 0)} sourcing score</span>
       ${flags || '<span class="badge baseline">No major flags</span>'}
     </div>
     ${ownerNewsLinks}
-    ${owner.companyDescription ? `<p class="company-description">${escapeHtml(owner.companyDescription)}</p>` : ""}
-    ${owner.targetFit ? `<p class="company-description target-fit">${escapeHtml(owner.targetFit)}</p>` : ""}
     ${renderOwnerAudit(owner)}
     <div class="detail-grid">
       ${renderDetailItem("Records", `${Number(owner.recordCount || 0).toLocaleString()} total | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}

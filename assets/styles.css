@@ -766,6 +766,10 @@ tbody tr:hover td {
   transition: transform 180ms ease;
 }
 
+.record-drawer.profile-drawer {
+  width: min(760px, 100%);
+}
+
 .record-drawer.open {
   transform: translateX(0);
 }
@@ -794,6 +798,10 @@ tbody tr:hover td {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 18px;
+}
+
+.detail-actions.compact {
+  margin: 12px 0 0;
 }
 
 .detail-link,
@@ -826,6 +834,104 @@ tbody tr:hover td {
 .detail-grid {
   display: grid;
   gap: 12px;
+}
+
+.profile-drawer .detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.profile-snapshot {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.profile-kpi,
+.profile-panel {
+  border: 1px solid #dfe7df;
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.profile-kpi {
+  min-height: 86px;
+  padding: 13px;
+}
+
+.profile-kpi span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.profile-kpi strong {
+  display: block;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.profile-kpi.good {
+  border-color: #b9d3c2;
+  background: #f4faf5;
+}
+
+.profile-kpi.warn {
+  border-color: #dcc8a2;
+  background: #fffaf0;
+}
+
+.profile-kpi.muted {
+  background: #f5f6f4;
+}
+
+.profile-panel {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 14px;
+}
+
+.profile-panel h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.profile-panel p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.contact-panel {
+  background: #f7faf6;
+}
+
+.confidence-chip {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e8f0e7;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.blocker-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .company-description {
@@ -1044,6 +1150,8 @@ tbody tr:hover td {
   .control-strip,
   .latest-list,
   .chart-insight,
+  .profile-snapshot,
+  .profile-drawer .detail-grid,
   .methodology-grid,
   .methodology-columns {
     grid-template-columns: minmax(0, 1fr);
