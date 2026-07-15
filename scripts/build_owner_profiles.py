@@ -145,6 +145,24 @@ RELEVANT_SOURCE_CROPS = set(CROP_ATTRACTIVENESS) | {
     "watermelon",
 }
 
+PROGRAM_LINEAGE_RULES = [
+    {
+        "canonicalName": "International Fruit Genetics",
+        "pattern": re.compile(r"\bIFG(?:\b|[\s-]|\d)|\bSweet\s*(?:Celebration|Globe|Sapphire)\b", re.I),
+        "fields": ["cultivar", "tradeName", "title", "primarySource"],
+    },
+    {
+        "canonicalName": "SNFL Group",
+        "pattern": re.compile(r"\bGensel\b", re.I),
+        "fields": ["cultivar", "tradeName", "title", "primarySource"],
+    },
+    {
+        "canonicalName": "Bloom Fresh International",
+        "pattern": re.compile(r"\bBLOM[A-Z0-9-]*\b|\bBloom\s*Fresh\b", re.I),
+        "fields": ["cultivar", "tradeName", "title", "primarySource", "breeders", "assignee"],
+    },
+]
+
 
 def load_records(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
@@ -306,18 +324,27 @@ def expiration_date(row: dict[str, Any]) -> tuple[str, str]:
 
 def owner_candidates(row: dict[str, Any]) -> list[tuple[str, str, str]]:
     candidates: list[tuple[str, str, str]] = []
-    seen: set[tuple[str, str]] = set()
+    seen: set[str] = set()
+
+    def add_candidate(name: str, role: str, confidence: str) -> None:
+        key = normalize_owner_name(display_owner_name(name))
+        if not key or key in seen:
+            return
+        seen.add(key)
+        candidates.append((name, role, confidence))
 
     def add_from_value(value: str, role: str, confidence: str) -> None:
         for name in split_people_or_entities(value):
             company_profiles = company_profiles_for_name(name)
             names = [profile["canonicalName"] for profile in company_profiles] or [name]
             for expanded_name in names:
-                key = (normalize_owner_name(display_owner_name(expanded_name)), role)
-                if key in seen:
-                    continue
-                seen.add(key)
-                candidates.append((expanded_name, role, confidence))
+                add_candidate(expanded_name, role, confidence)
+
+    def add_program_lineage() -> None:
+        for rule in PROGRAM_LINEAGE_RULES:
+            haystack = " ".join(clean_text(row.get(field)) for field in rule["fields"])
+            if rule["pattern"].search(haystack):
+                add_candidate(rule["canonicalName"], "Program lineage", "medium")
 
     if is_cpvo(row):
         add_from_value(row.get("breeders", ""), "CPVO breeder", "medium")
@@ -327,6 +354,7 @@ def owner_candidates(row: dict[str, Any]) -> list[tuple[str, str, str]]:
             add_from_value(row.get("breeders", ""), "Breeder", "medium")
         if not candidates:
             add_from_value(row.get("inventors", ""), "Inventor", "low")
+    add_program_lineage()
     return candidates
 
 
@@ -369,7 +397,7 @@ def score_profile(profile: dict[str, Any]) -> tuple[int, list[str]]:
     protected_count = profile["protectedIpCount"]
     legal_owner_count = profile["legalOwnerRecordCount"]
     relevant_count = profile["relevantIpRecordCount"]
-    jurisdictions = len(profile["jurisdictionCounts"])
+    jurisdictions = len(profile.get("jurisdictionCounts") or profile.get("topJurisdictions") or [])
     latest_year = profile.get("lastYear") or 0
     recency = max(0, min(20, latest_year - 2006)) if latest_year else 0
     scale = min(25, math.log1p(max(record_count, relevant_count)) * 4.5)
@@ -377,12 +405,15 @@ def score_profile(profile: dict[str, Any]) -> tuple[int, list[str]]:
     jurisdiction_score = min(12, jurisdictions * 2.5)
     velocity = min(12, profile["recordsLast5Years"] * 1.2)
     durability = min(8, profile["activeProtectionCount"] / max(1, protected_count) * 8) if protected_count else 0
-    crop_score = max((CROP_ATTRACTIVENESS.get(crop.lower(), 5) for crop in profile["cropCounts"]), default=5)
+    crop_names = list((profile.get("cropCounts") or {}).keys()) or [item.get("crop", "") for item in profile.get("topCrops", [])]
+    crop_score = max((CROP_ATTRACTIVENESS.get(crop.lower(), 5) for crop in crop_names), default=5)
     legal_confidence = min(12, legal_owner_count * 1.2)
     relevance = min(10, relevant_count * 0.8)
     score = round(scale + protected + jurisdiction_score + velocity + durability + crop_score + legal_confidence + relevance + recency * 0.35)
 
     flags: list[str] = []
+    if profile.get("isParentRollup"):
+        flags.append("Parent-company rollup")
     if legal_owner_count:
         flags.append("Confirmed patent assignee")
     if profile["breederSignalRecordCount"] and not legal_owner_count:
@@ -402,6 +433,95 @@ def score_profile(profile: dict[str, Any]) -> tuple[int, list[str]]:
     if jurisdictions >= 4:
         flags.append("Multi-jurisdiction program")
     return min(100, score), flags
+
+
+def merge_counter_lists(children: list[dict[str, Any]], field: str, label_key: str) -> list[dict[str, Any]]:
+    counter: Counter[str] = Counter()
+    for child in children:
+        for item in child.get(field, []) or []:
+            label = clean_text(item.get(label_key))
+            if label:
+                counter[label] += int(item.get("count") or 0)
+    return [{label_key: key, "count": value} for key, value in counter.most_common(8)]
+
+
+def merge_year_lists(children: list[dict[str, Any]], field: str) -> list[dict[str, int]]:
+    counter: Counter[int] = Counter()
+    for child in children:
+        for item in child.get(field, []) or []:
+            try:
+                year = int(item.get("year"))
+            except (TypeError, ValueError):
+                continue
+            counter[year] += int(item.get("count") or 0)
+    return [{"year": year, "count": counter[year]} for year in sorted(counter)]
+
+
+def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    by_owner = {profile["ownerName"]: profile for profile in profiles}
+    by_normalized = {profile["normalizedOwnerName"]: profile for profile in profiles}
+    output = list(profiles)
+    for company in COMPANY_PROFILES:
+        children = [by_owner[name] for name in company.get("rollupChildren", []) if name in by_owner]
+        if not children:
+            continue
+        normalized = normalize_owner_name(company["canonicalName"])
+        existing_parent = by_normalized.get(normalized)
+        rollup_parts = []
+        if existing_parent:
+            rollup_parts.append(existing_parent)
+        rollup_parts.extend(child for child in children if child.get("normalizedOwnerName") != normalized)
+        output = [profile for profile in output if profile.get("normalizedOwnerName") != normalized]
+        role_counts: Counter[str] = Counter()
+        for child in rollup_parts:
+            role_counts.update(child.get("ownerRoleCounts") or {})
+        rollup = {
+            "id": owner_id(normalized),
+            "ownerName": company["canonicalName"],
+            "normalizedOwnerName": normalized,
+            "companyWebsite": company.get("website", ""),
+            "companyDescription": company.get("description", ""),
+            "companySourceUrl": company.get("sourceUrl", ""),
+            "companyContactUrl": company.get("contactUrl", ""),
+            "companyLinkedInUrl": company.get("linkedinUrl", ""),
+            "targetFit": company.get("targetFit", ""),
+            "recordCount": sum(int(child.get("recordCount") or 0) for child in rollup_parts),
+            "protectedIpCount": sum(int(child.get("protectedIpCount") or 0) for child in rollup_parts),
+            "usPlantPatentCount": sum(int(child.get("usPlantPatentCount") or 0) for child in rollup_parts),
+            "cpvoPbrCount": sum(int(child.get("cpvoPbrCount") or 0) for child in rollup_parts),
+            "legalOwnerRecordCount": sum(int(child.get("legalOwnerRecordCount") or 0) for child in rollup_parts),
+            "breederSignalRecordCount": sum(int(child.get("breederSignalRecordCount") or 0) for child in rollup_parts),
+            "inventorSignalRecordCount": sum(int(child.get("inventorSignalRecordCount") or 0) for child in rollup_parts),
+            "relevantIpRecordCount": sum(int(child.get("relevantIpRecordCount") or 0) for child in rollup_parts),
+            "relevantLegalOwnerRecordCount": sum(int(child.get("relevantLegalOwnerRecordCount") or 0) for child in rollup_parts),
+            "firstYear": min((child.get("firstYear") for child in rollup_parts if child.get("firstYear")), default=None),
+            "lastYear": max((child.get("lastYear") for child in rollup_parts if child.get("lastYear")), default=None),
+            "recordsLast5Years": sum(int(child.get("recordsLast5Years") or 0) for child in rollup_parts),
+            "expirationNext1Year": sum(int(child.get("expirationNext1Year") or 0) for child in rollup_parts),
+            "expirationNext3Years": sum(int(child.get("expirationNext3Years") or 0) for child in rollup_parts),
+            "expirationNext5Years": sum(int(child.get("expirationNext5Years") or 0) for child in rollup_parts),
+            "expiredProtectionCount": sum(int(child.get("expiredProtectionCount") or 0) for child in rollup_parts),
+            "activeProtectionCount": sum(int(child.get("activeProtectionCount") or 0) for child in rollup_parts),
+            "individualOwner": False,
+            "soleNamedBreeder": False,
+            "isParentRollup": True,
+            "rollupChildren": [child["ownerName"] for child in rollup_parts if child["ownerName"] != company["canonicalName"]],
+            "topCrops": merge_counter_lists(rollup_parts, "topCrops", "crop"),
+            "topJurisdictions": merge_counter_lists(rollup_parts, "topJurisdictions", "jurisdiction"),
+            "topBreeders": merge_counter_lists(rollup_parts, "topBreeders", "name"),
+            "topInventors": merge_counter_lists(rollup_parts, "topInventors", "name"),
+            "ownerRoleCounts": dict(role_counts),
+            "annualCounts": merge_year_lists(rollup_parts, "annualCounts"),
+            "expirationSchedule": merge_year_lists(rollup_parts, "expirationSchedule"),
+        }
+        rollup["filingVelocity5Year"] = round(rollup["recordsLast5Years"] / 5, 2)
+        top_crop_count = max((item["count"] for item in rollup["topCrops"]), default=0)
+        rollup["cropConcentration"] = round(top_crop_count / max(1, rollup["recordCount"]), 3)
+        score, flags = score_profile(rollup)
+        rollup["sourcingScore"] = score
+        rollup["sourcingFlags"] = flags
+        output.append(rollup)
+    return output
 
 
 def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -431,6 +551,9 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "companyWebsite": company_profile.get("website", "") if company_profile else "",
                     "companyDescription": company_profile.get("description", "") if company_profile else "",
                     "companySourceUrl": company_profile.get("sourceUrl", "") if company_profile else "",
+                    "companyContactUrl": company_profile.get("contactUrl", "") if company_profile else "",
+                    "companyLinkedInUrl": company_profile.get("linkedinUrl", "") if company_profile else "",
+                    "targetFit": company_profile.get("targetFit", "") if company_profile else "",
                     "recordCount": 0,
                     "ownerRoleCounts": Counter(),
                     "confidenceCounts": Counter(),
@@ -465,6 +588,9 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 profile["companyWebsite"] = company_profile.get("website", "")
                 profile["companyDescription"] = company_profile.get("description", "")
                 profile["companySourceUrl"] = company_profile.get("sourceUrl", "")
+                profile["companyContactUrl"] = company_profile.get("contactUrl", "")
+                profile["companyLinkedInUrl"] = company_profile.get("linkedinUrl", "")
+                profile["targetFit"] = company_profile.get("targetFit", "")
 
             profile["recordCount"] += 1
             profile["ownerRoleCounts"][owner_role] += 1
@@ -582,6 +708,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             profile.pop(bulky_key, None)
         profiles.append(profile)
 
+    profiles = add_parent_rollups(profiles)
     return sorted(profiles, key=lambda item: (item["sourcingScore"], item["protectedIpCount"], item["recordCount"]), reverse=True)
 
 
@@ -593,6 +720,9 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "companyWebsite",
         "companyDescription",
         "companySourceUrl",
+        "companyContactUrl",
+        "companyLinkedInUrl",
+        "targetFit",
         "recordCount",
         "protectedIpCount",
         "usPlantPatentCount",
@@ -623,6 +753,8 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "ownerRoleCounts",
         "annualCounts",
         "expirationSchedule",
+        "isParentRollup",
+        "rollupChildren",
     ]
     metadata = {
         "title": "Owner Sourcing Profiles",

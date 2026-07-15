@@ -82,15 +82,10 @@ h2 {
   padding: 22px 38px 38px;
 }
 
-.summary-grid,
 .visual-grid,
 .workbench-grid {
   display: grid;
   gap: 14px;
-}
-
-.summary-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .visual-grid {
@@ -143,30 +138,12 @@ h2 {
   display: grid;
 }
 
-.metric,
 .panel,
 .table-section {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
-}
-
-.metric {
-  min-height: 98px;
-  padding: 18px;
-}
-
-.metric-label {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
-.metric strong {
-  font-size: 30px;
-  line-height: 1;
 }
 
 .control-strip {
@@ -364,6 +341,33 @@ button:hover {
   grid-template-columns: minmax(260px, 1fr) 220px 220px;
   gap: 10px;
   margin-bottom: 14px;
+}
+
+.sourcing-brief {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.brief-tile {
+  min-height: 82px;
+  padding: 14px;
+  border: 1px solid #dfe7df;
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.brief-tile span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.brief-tile strong {
+  font-size: 24px;
+  line-height: 1;
 }
 
 .owner-insight {
@@ -605,6 +609,28 @@ a:hover {
   font-size: 16px;
 }
 
+.live-status {
+  display: grid;
+  gap: 12px;
+}
+
+.live-strategy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.live-source-row span {
+  display: grid;
+  gap: 3px;
+}
+
+.live-source-row small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .record-title {
   display: block;
   margin-bottom: 2px;
@@ -719,6 +745,43 @@ tbody tr:hover td {
   line-height: 1.45;
 }
 
+.company-description.target-fit {
+  border-color: #d9d0ba;
+  background: #fffaf0;
+}
+
+.matched-company-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.matched-company {
+  padding: 12px;
+  border: 1px solid #dfe7df;
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.matched-company-head {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.matched-company-head span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.matched-company p {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 .profile-chart-grid {
   display: grid;
   gap: 12px;
@@ -816,10 +879,10 @@ tbody tr:hover td {
     padding: 16px;
   }
 
-  .summary-grid,
   .visual-grid,
   .workbench-grid,
   .section-tabs,
+  .sourcing-brief,
   .owner-toolbar,
   .owner-insight,
   .control-strip,
@@ -836,19 +899,6 @@ tbody tr:hover td {
 @media (max-width: 680px) {
   h1 {
     font-size: 27px;
-  }
-
-  .summary-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .metric {
-    min-height: 86px;
-    padding: 14px;
-  }
-
-  .metric strong {
-    font-size: 24px;
   }
 
   .bar-row,

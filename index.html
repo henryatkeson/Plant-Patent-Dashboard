@@ -3,73 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Plant Patent Dashboard</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260715-tabs-owner-alias">
+    <title>Variety Rights Sourcing Engine</title>
+    <link rel="stylesheet" href="assets/styles.css?v=20260715-sourcing-engine">
   </head>
   <body>
     <header class="topbar">
       <div class="title-block">
-        <p class="eyebrow">Fruit, tree nut, and vegetable IP watch</p>
-        <h1>Plant Patent Dashboard</h1>
+        <p class="eyebrow">Fruit, tree nut, and vegetable IP sourcing</p>
+        <h1>Variety Rights Sourcing Engine</h1>
       </div>
       <div class="refresh-note" aria-live="polite">
-        <strong>Public patent and variety monitor</strong>
+        <strong>Public IP and variety monitor</strong>
         <span id="lastRefresh">Loading data...</span>
       </div>
     </header>
 
     <main class="page-shell">
-      <section class="summary-grid" aria-label="Dashboard summary">
-        <div class="metric">
-          <span class="metric-label">Records</span>
-          <strong id="metricRecords">0</strong>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Latest Date</span>
-          <strong id="metricLatest">--</strong>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Issued USPP</span>
-          <strong id="metricIssued">0</strong>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Applications</span>
-          <strong id="metricPending">0</strong>
-        </div>
-      </section>
-
       <nav class="section-tabs" role="tablist" aria-label="Dashboard sections">
         <button id="tab-overview" class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="panel-overview" data-tab-target="overview">Overview</button>
         <button id="tab-sourcing" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-sourcing" data-tab-target="sourcing">Sourcing</button>
         <button id="tab-analytics" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-analytics" data-tab-target="analytics">Analytics</button>
         <button id="tab-records" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-records" data-tab-target="records">Records</button>
       </nav>
-
-      <section class="control-strip" aria-label="Filters">
-        <label>
-          Search
-          <input id="searchInput" type="search" placeholder="Cultivar, crop, breeder, assignee, country">
-        </label>
-        <label>
-          Crop
-          <select id="cropFilter"></select>
-        </label>
-        <label>
-          Source
-          <select id="sourceFilter">
-            <option value="">All sources</option>
-          </select>
-        </label>
-        <label>
-          From
-          <input id="fromDate" type="date">
-        </label>
-        <label>
-          To
-          <input id="toDate" type="date">
-        </label>
-        <button id="resetButton" type="button" title="Clear filters">Reset</button>
-      </section>
 
       <section id="panel-overview" class="workbench-grid view-panel active" role="tabpanel" aria-labelledby="tab-overview" data-view-panel="overview">
         <div class="panel latest-panel">
@@ -86,6 +41,12 @@
           </div>
           <div id="sourceSummary" class="source-list"></div>
         </div>
+        <div class="panel live-panel">
+          <div class="panel-head">
+            <h2>Live Update Status</h2>
+          </div>
+          <div id="liveStatus" class="live-status"></div>
+        </div>
       </section>
 
       <section id="panel-sourcing" class="owner-section panel view-panel" role="tabpanel" aria-labelledby="tab-sourcing" data-view-panel="sourcing">
@@ -96,6 +57,7 @@
           </div>
           <span id="ownerCount"></span>
         </div>
+        <div id="sourcingBrief" class="sourcing-brief" aria-live="polite"></div>
         <div class="owner-toolbar">
           <label>
             Search profiles
@@ -104,8 +66,9 @@
           <label>
             View
             <select id="ownerView">
-              <option value="relevant">Fruit, nut, and vegetable signals</option>
-              <option value="all">All sourcing signals</option>
+                <option value="relevant">Fruit, nut, and vegetable signals</option>
+                <option value="acquisition">Acquisition leads</option>
+                <option value="all">All sourcing signals</option>
               <option value="legal">Confirmed patent assignees</option>
               <option value="succession">Succession leads</option>
               <option value="cliff">Patent/PBR cliffs</option>
@@ -161,6 +124,31 @@
       </section>
 
       <section id="panel-records" class="table-section view-panel" role="tabpanel" aria-labelledby="tab-records" data-view-panel="records">
+        <section class="control-strip" aria-label="Record filters">
+          <label>
+            Search
+            <input id="searchInput" type="search" placeholder="Cultivar, crop, breeder, assignee, country">
+          </label>
+          <label>
+            Crop
+            <select id="cropFilter"></select>
+          </label>
+          <label>
+            Source
+            <select id="sourceFilter">
+              <option value="">All sources</option>
+            </select>
+          </label>
+          <label>
+            From
+            <input id="fromDate" type="date">
+          </label>
+          <label>
+            To
+            <input id="toDate" type="date">
+          </label>
+          <button id="resetButton" type="button" title="Clear filters">Reset</button>
+        </section>
         <div class="panel-head">
           <h2>Records</h2>
           <span id="rowCount"></span>
@@ -195,6 +183,6 @@
       <div id="drawerBody" class="drawer-body"></div>
     </aside>
 
-    <script src="assets/app.js?v=20260715-tabs-owner-alias"></script>
+    <script src="assets/app.js?v=20260715-sourcing-engine"></script>
   </body>
 </html>

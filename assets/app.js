@@ -6,15 +6,14 @@ const state = {
   ownerProfiles: [],
   filteredOwners: [],
   ownerByKey: new Map(),
+  companyProfiles: [],
+  sourceStatus: null,
   lastFocus: null,
 };
 
 const els = {
   lastRefresh: document.querySelector("#lastRefresh"),
-  metricRecords: document.querySelector("#metricRecords"),
-  metricLatest: document.querySelector("#metricLatest"),
-  metricIssued: document.querySelector("#metricIssued"),
-  metricPending: document.querySelector("#metricPending"),
+  sourcingBrief: document.querySelector("#sourcingBrief"),
   searchInput: document.querySelector("#searchInput"),
   cropFilter: document.querySelector("#cropFilter"),
   sourceFilter: document.querySelector("#sourceFilter"),
@@ -27,6 +26,7 @@ const els = {
   cropInsight: document.querySelector("#cropInsight"),
   latestList: document.querySelector("#latestList"),
   sourceSummary: document.querySelector("#sourceSummary"),
+  liveStatus: document.querySelector("#liveStatus"),
   ownerCount: document.querySelector("#ownerCount"),
   ownerSearchInput: document.querySelector("#ownerSearchInput"),
   ownerView: document.querySelector("#ownerView"),
@@ -159,6 +159,15 @@ function normalize(value) {
   return String(value || "").toLowerCase();
 }
 
+function normalizeCompany(value) {
+  return normalize(value)
+    .replace(/['`']/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\b(inc|llc|ltd|limited|corp|corporation|company|co|gmbh|bv|sa|sas|ag|nv|plc|pty|pte|holdings|holding)\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function escapeHtml(value) {
   return String(value || "")
     .replaceAll("&", "&amp;")
@@ -174,6 +183,54 @@ function displayText(value, fallback = "") {
     .replace(/\s+/g, " ")
     .trim();
   return text || fallback;
+}
+
+function companyProfileMatchesText(profile, text) {
+  const haystack = ` ${normalizeCompany(text)} `;
+  const aliases = [profile.canonicalName, ...(profile.aliases || [])];
+  return aliases.some((alias) => {
+    const needle = normalizeCompany(alias);
+    if (!needle) return false;
+    return needle.length <= 4 ? haystack.includes(` ${needle} `) : haystack.includes(needle);
+  });
+}
+
+function companyProfilesForText(text) {
+  const matches = [];
+  const seen = new Set();
+  for (const profile of state.companyProfiles) {
+    if (!companyProfileMatchesText(profile, text)) continue;
+    if (seen.has(profile.canonicalName)) continue;
+    seen.add(profile.canonicalName);
+    matches.push(profile);
+  }
+  return matches;
+}
+
+function companyActions(profile) {
+  const links = [];
+  if (profile.website) links.push(`<a class="detail-link" href="${escapeHtml(profile.website)}" target="_blank" rel="noopener">Company website</a>`);
+  if (profile.contactUrl) links.push(`<a class="detail-button-muted" href="${escapeHtml(profile.contactUrl)}" target="_blank" rel="noopener">Contact page</a>`);
+  if (profile.linkedinUrl) links.push(`<a class="detail-button-muted" href="${escapeHtml(profile.linkedinUrl)}" target="_blank" rel="noopener">LinkedIn</a>`);
+  return links.join("");
+}
+
+function renderCompanyCards(profiles) {
+  if (!profiles.length) return "";
+  return `
+    <div class="matched-company-list">
+      ${profiles.map((profile) => `
+        <div class="matched-company">
+          <div class="matched-company-head">
+            <strong>${escapeHtml(profile.canonicalName || "Company profile")}</strong>
+            <span>${escapeHtml(profile.targetFit || "Target fit not yet assessed")}</span>
+          </div>
+          ${profile.description ? `<p>${escapeHtml(profile.description)}</p>` : ""}
+          <div class="detail-actions">${companyActions(profile)}</div>
+        </div>
+      `).join("")}
+    </div>
+  `;
 }
 
 function titleCaseWord(word) {
@@ -281,9 +338,11 @@ function ownerSignalSummary(owner) {
   const legal = Number(owner.legalOwnerRecordCount || 0);
   const breeder = Number(owner.breederSignalRecordCount || 0);
   const inventor = Number(owner.inventorSignalRecordCount || 0);
+  const lineage = Number((owner.ownerRoleCounts || {})["Program lineage"] || 0);
   const parts = [];
   if (legal) parts.push(`${legal.toLocaleString()} confirmed assignee`);
   if (breeder) parts.push(`${breeder.toLocaleString()} breeder signal`);
+  if (lineage) parts.push(`${lineage.toLocaleString()} program lineage`);
   if (inventor) parts.push(`${inventor.toLocaleString()} inventor signal`);
   return parts.join(" | ") || "Owner signal";
 }
@@ -387,14 +446,43 @@ function applyFilters() {
 }
 
 function renderMetrics(rows) {
-  const latest = rows.find((row) => row.date)?.date || "";
-  const issued = rows.filter((row) => normalize(row.sourceKind).includes("issued plant patent")).length;
-  const pending = rows.filter((row) => normalize(row.status).includes("pending") || normalize(row.status).includes("application") || normalize(row.sourceKind).includes("application")).length;
+  renderSourcingMetrics();
+}
 
-  els.metricRecords.textContent = rows.length.toLocaleString();
-  els.metricLatest.textContent = formatDate(latest);
-  els.metricIssued.textContent = issued.toLocaleString();
-  els.metricPending.textContent = pending.toLocaleString();
+function isAcquisitionLead(owner) {
+  const flags = owner.sourcingFlags || [];
+  const name = normalize(owner.ownerName);
+  const targetFit = normalize(owner.targetFit);
+  const tooLarge = targetFit.includes("too large") || targetFit.includes("far too large") || targetFit.includes("benchmark only");
+  const publicInstitution = name.includes("university") || name.includes("foundation seed") || name.includes("usda");
+  const protectedCount = Number(owner.protectedIpCount || 0);
+  const recordCount = Number(owner.recordCount || 0);
+  return Number(owner.relevantIpRecordCount || 0) > 0
+    && protectedCount >= 2
+    && protectedCount <= 100
+    && recordCount <= 150
+    && !owner.isParentRollup
+    && !tooLarge
+    && !publicInstitution
+    && (owner.companyWebsite || Number(owner.legalOwnerRecordCount || 0) > 0 || owner.soleNamedBreeder || flags.includes("Dormant portfolio") || Number(owner.expirationNext5Years || 0) > 0);
+}
+
+function renderSourcingMetrics() {
+  if (!els.sourcingBrief) return;
+  if (!state.ownerProfiles.length) {
+    els.sourcingBrief.innerHTML = `<div class="brief-tile"><span>Sourcing brief</span><strong>Loading profiles</strong></div>`;
+    return;
+  }
+  const relevant = state.ownerProfiles.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
+  const leads = relevant.filter(isAcquisitionLead);
+  const cliffs = relevant.filter((owner) => Number(owner.expirationNext5Years || 0) > 0);
+  const intel = relevant.filter((owner) => owner.companyWebsite || owner.companyContactUrl || owner.companyLinkedInUrl);
+  els.sourcingBrief.innerHTML = `
+    <div class="brief-tile"><span>Screened profiles</span><strong>${relevant.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Acquisition leads</span><strong>${leads.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Near-term cliffs</span><strong>${cliffs.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Company intel linked</span><strong>${intel.length.toLocaleString()}</strong></div>
+  `;
 }
 
 function statusClass(row) {
@@ -463,6 +551,29 @@ function renderSources(rows) {
   }
 }
 
+function renderLiveStatus() {
+  if (!els.liveStatus) return;
+  if (!state.sourceStatus?.sources?.length) {
+    els.liveStatus.innerHTML = `<p class="empty-state">Live source status will appear after the next refresh manifest is built.</p>`;
+    return;
+  }
+  els.liveStatus.innerHTML = `
+    <p class="live-strategy">${escapeHtml(state.sourceStatus.strategy || "")}</p>
+    <div class="source-list">
+      ${state.sourceStatus.sources.map((source) => `
+        <div class="source-row live-source-row">
+          <span>
+            <strong>${escapeHtml(source.name)}</strong>
+            <small>${escapeHtml(source.mode)} | ${escapeHtml(source.cadence)}</small>
+            <small>Latest record: ${escapeHtml(formatDate(source.latestRecordDate) || "n/a")}</small>
+          </span>
+          <strong>${Number(source.recordCount || 0).toLocaleString()}</strong>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function applyOwnerFilters() {
   if (!els.ownerBody) return;
   const term = normalize(els.ownerSearchInput?.value || "");
@@ -472,6 +583,8 @@ function applyOwnerFilters() {
     : [...state.ownerProfiles];
   if (view === "relevant") {
     owners = owners.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
+  } else if (view === "acquisition") {
+    owners = owners.filter(isAcquisitionLead);
   } else if (view === "legal") {
     owners = owners.filter((owner) => Number(owner.legalOwnerRecordCount || 0) > 0);
   } else if (view === "succession") {
@@ -681,6 +794,14 @@ function openRecordDrawer(recordKey) {
   const title = displayText(row.cultivar || row.title || row.tradeName, "Patent record");
   const sourceText = displayText(row.primarySource || row.patentNumber || row.publicationNumber || row.sourceKind, "Source unknown");
   const owner = detailValue(row, ["assignee", "breeders", "inventors"]);
+  const matchedCompanies = companyProfilesForText([
+    row.assignee,
+    row.breeders,
+    row.inventors,
+    row.title,
+    row.cultivar,
+    row.tradeName,
+  ].join(" "));
   const isCpvo = isCpvoRecord(row);
   const lookupUrl = patentLookupUrl(row);
   const gazetteAction = row.gazetteUrl
@@ -722,6 +843,7 @@ function openRecordDrawer(recordKey) {
       ${renderDetailItem("List", row.list)}
       ${renderDetailItem("Notes", row.notes)}
     </div>
+    ${renderCompanyCards(matchedCompanies)}
     <p class="detail-note">
       ${isCpvo
         ? "This record comes from the CPVO Variety Finder export. The button above opens the CPVO search site; the row-specific details are stored in the dashboard data from the Excel export."
@@ -746,6 +868,12 @@ function openOwnerDrawer(ownerKey) {
   const websiteAction = owner.companyWebsite
     ? `<a class="detail-link" href="${escapeHtml(owner.companyWebsite)}" target="_blank" rel="noopener">Company website</a>`
     : "";
+  const contactAction = owner.companyContactUrl
+    ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyContactUrl)}" target="_blank" rel="noopener">Contact page</a>`
+    : "";
+  const linkedInAction = owner.companyLinkedInUrl
+    ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyLinkedInUrl)}" target="_blank" rel="noopener">LinkedIn</a>`
+    : "";
   const sourceAction = owner.companySourceUrl && owner.companySourceUrl !== owner.companyWebsite
     ? `<a class="detail-button-muted" href="${escapeHtml(owner.companySourceUrl)}" target="_blank" rel="noopener">Profile source</a>`
     : "";
@@ -754,11 +882,14 @@ function openOwnerDrawer(ownerKey) {
   els.drawerBody.innerHTML = `
     <div class="detail-actions">
       ${websiteAction}
+      ${contactAction}
+      ${linkedInAction}
       ${sourceAction}
       <span class="score-pill large">${Number(owner.sourcingScore || 0)} sourcing score</span>
       ${flags || '<span class="badge baseline">No major flags</span>'}
     </div>
     ${owner.companyDescription ? `<p class="company-description">${escapeHtml(owner.companyDescription)}</p>` : ""}
+    ${owner.targetFit ? `<p class="company-description target-fit">${escapeHtml(owner.targetFit)}</p>` : ""}
     <div class="detail-grid">
       ${renderDetailItem("Records", `${Number(owner.recordCount || 0).toLocaleString()} total | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}
       ${renderDetailItem("Relevant crop exposure", `${Number(owner.relevantIpRecordCount || 0).toLocaleString()} fruit/nut/vegetable records | ${Number(owner.relevantLegalOwnerRecordCount || 0).toLocaleString()} confirmed assignee records`)}
@@ -766,6 +897,7 @@ function openOwnerDrawer(ownerKey) {
       ${renderDetailItem("Filing years", `${yearRange(owner.firstYear, owner.lastYear)} | ${Number(owner.recordsLast5Years || 0).toLocaleString()} records last 5 years`)}
       ${renderDetailItem("Expiration curve", `${Number(owner.expirationNext1Year || 0).toLocaleString()} in 1 yr | ${Number(owner.expirationNext3Years || 0).toLocaleString()} in 3 yrs | ${Number(owner.expirationNext5Years || 0).toLocaleString()} in 5 yrs | ${Number(owner.expiredProtectionCount || 0).toLocaleString()} expired`)}
       ${renderDetailItem("Signal confidence", ownerSignalSummary(owner))}
+      ${renderDetailItem("Rollup includes", (owner.rollupChildren || []).join(" | "))}
       ${renderDetailItem("Owner signal", Object.entries(owner.ownerRoleCounts || {}).map(([key, value]) => `${key}: ${value}`).join(" | "))}
       ${renderMiniList("Top crops", owner.topCrops, "crop")}
       ${renderMiniList("Jurisdictions", owner.topJurisdictions, "jurisdiction")}
@@ -812,6 +944,7 @@ function render() {
   renderMetrics(state.filtered);
   renderLatest(state.filtered);
   renderSources(state.filtered);
+  renderLiveStatus();
   renderCharts(state.filtered);
   renderTable(state.filtered);
 }
@@ -840,6 +973,7 @@ async function loadOwnerProfiles() {
       .map((owner, index) => ({ ...owner, __key: `${index}-${owner.id || owner.normalizedOwnerName || "owner"}` }));
     state.ownerByKey = new Map(state.ownerProfiles.map((owner) => [owner.__key, owner]));
     applyOwnerFilters();
+    renderSourcingMetrics();
   } catch (error) {
     if (els.ownerCount) els.ownerCount.textContent = "Owner profiles unavailable";
     if (els.ownerBody) els.ownerBody.innerHTML = `<tr><td colspan="6"><p class="empty-state">Owner profiles could not be loaded.</p></td></tr>`;
@@ -848,12 +982,20 @@ async function loadOwnerProfiles() {
 }
 
 async function init() {
-  const [response, cpvoVarietiesResponse] = await Promise.all([
+  const [response, cpvoVarietiesResponse, companyProfilesResponse, sourceStatusResponse] = await Promise.all([
     fetch("data/plant_patents.json", { cache: "no-store" }),
     fetch("data/cpvo_varieties.json", { cache: "no-store" }).catch(() => null),
+    fetch("config/company_profiles.json", { cache: "no-store" }).catch(() => null),
+    fetch("data/source_status.json", { cache: "no-store" }).catch(() => null),
   ]);
   if (!response.ok) throw new Error(`Could not load data: ${response.status}`);
   const payload = await response.json();
+  if (companyProfilesResponse && companyProfilesResponse.ok) {
+    state.companyProfiles = await companyProfilesResponse.json();
+  }
+  if (sourceStatusResponse && sourceStatusResponse.ok) {
+    state.sourceStatus = await sourceStatusResponse.json();
+  }
   if (cpvoVarietiesResponse && cpvoVarietiesResponse.ok) {
     const cpvoVarietiesPayload = await cpvoVarietiesResponse.json();
     state.cpvoVarieties = cpvoVarietiesPayload.records || [];

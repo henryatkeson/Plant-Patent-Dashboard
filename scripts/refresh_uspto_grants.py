@@ -272,7 +272,8 @@ def refresh(issue_limit: int) -> int:
     for issue in find_issues(issue_limit):
         for item in parse_issue(issue):
             checked += 1
-            matching_rows = rows_by_patent.get(item["number"], [])
+            item_key = patent_key(item["number"])
+            matching_rows = rows_by_patent.get(item_key, [])
             if matching_rows:
                 if all(row.get("sourceUrl") for row in matching_rows):
                     continue
@@ -283,13 +284,13 @@ def refresh(issue_limit: int) -> int:
                     if merge_detail(row, item, detail):
                         enriched += 1
                 continue
-            if item["number"] in existing_ids or "US" + item["number"] in existing_ids:
+            if item["number"] in existing_ids or "US" + item["number"] in existing_ids or item_key in rows_by_patent:
                 continue
             record = parse_patent_detail(item, keywords)
             if record:
                 records.append(record)
                 existing_ids.add(record["id"])
-                rows_by_patent.setdefault(item["number"], []).append(record)
+                rows_by_patent.setdefault(item_key, []).append(record)
                 added += 1
 
     payload.setdefault("metadata", {})["lastGrantRefresh"] = datetime.now(timezone.utc).isoformat()
