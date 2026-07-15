@@ -7,6 +7,7 @@ import datetime as dt
 import json
 import math
 import re
+import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -65,6 +66,25 @@ INSTITUTION_TERMS = {
     "minister",
     "usda",
     "state of",
+}
+
+PERSON_STOPWORDS = {
+    "dr",
+    "prof",
+    "phd",
+    "ph",
+    "d",
+    "mr",
+    "mrs",
+    "ms",
+    "miss",
+    "jr",
+    "sr",
+    "ii",
+    "iii",
+    "iv",
+    "et",
+    "al",
 }
 
 CPVO_TREE_OR_VINE_CROPS = {
@@ -260,6 +280,29 @@ def display_owner_name(name: str) -> str:
     return text.strip(" ,") or "Unknown owner"
 
 
+def ascii_key(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", clean_text(value))
+    return normalized.encode("ascii", "ignore").decode("ascii")
+
+
+def split_conjoined_people_text(part: str) -> list[str]:
+    if not re.search(r"\s+and\s+", part, flags=re.I):
+        return [part]
+    normalized = normalize_owner_name(part)
+    tokens = set(normalized.split())
+    if tokens & LEGAL_TERMS or tokens & INSTITUTION_TERMS:
+        return [part]
+    pieces = [clean_text(piece).strip(" ,") for piece in re.split(r"\s+and\s+", part, flags=re.I)]
+    if len(pieces) != 2:
+        return [part]
+
+    def personish(value: str) -> bool:
+        words = re.findall(r"[A-Za-z]+", ascii_key(value))
+        return 2 <= len([word for word in words if word.lower() not in PERSON_STOPWORDS]) <= 4
+
+    return pieces if all(personish(piece) for piece in pieces) else [part]
+
+
 def split_people_or_entities(value: str) -> list[str]:
     text = clean_text(value)
     lowered = text.lower()
@@ -269,8 +312,170 @@ def split_people_or_entities(value: str) -> list[str]:
     text = text.replace("^^^", "|")
     text = text.replace(" / ", "|")
     text = re.sub(r"\s*;\s*", "|", text)
-    parts = [clean_text(part).strip(" ,") for part in text.split("|")]
+    parts = []
+    for part in [clean_text(part).strip(" ,") for part in text.split("|")]:
+        parts.extend(split_conjoined_people_text(part))
     return [part for part in parts if normalize_owner_name(part) not in {"n a", "na", "none", "unknown"}]
+
+
+def likely_entity_name(name: str) -> bool:
+    if company_profile_for_name(name):
+        return True
+    normalized = normalize_owner_name(name)
+    if not normalized:
+        return False
+    tokens = set(normalized.split())
+    if tokens & LEGAL_TERMS or tokens & INSTITUTION_TERMS:
+        return True
+    entity_terms = {
+        "breeding",
+        "cultivar",
+        "cultivars",
+        "genetics",
+        "nursery",
+        "plant",
+        "plants",
+        "research",
+        "seed",
+        "seeds",
+        "foundation",
+        "program",
+        "station",
+        "department",
+        "division",
+        "center",
+        "centre",
+        "association",
+        "group",
+        "farm",
+        "farms",
+        "fresh",
+        "fruit",
+        "fruits",
+        "berry",
+        "berries",
+    }
+    return bool(tokens & entity_terms)
+
+
+def person_tokens(name: str) -> list[str]:
+    text = ascii_key(name)
+    text = re.sub(r"\([^)]*\)", " ", text)
+    text = text.replace("_", " ")
+    text = re.sub(r"\b(?:et\s+al|and\s+others)\b", " ", text, flags=re.I)
+    text = re.sub(r"['`]", "", text)
+    text = re.sub(r"[^A-Za-z]+", " ", text).lower().strip()
+    tokens = [token for token in text.split() if token not in PERSON_STOPWORDS]
+    return tokens
+
+
+def person_keys(name: str) -> list[str]:
+    if likely_entity_name(name):
+        return []
+    text = clean_text(name)
+    tokens = person_tokens(text)
+    if len(tokens) < 2 or len(tokens) > 4:
+        return []
+    if "," in text:
+        key = f"{tokens[-1]} {tokens[0]}"
+        return [key]
+    first = tokens[0]
+    last = tokens[-1]
+    first_last = f"{first} {last}"
+    last_first = f"{last} {first}"
+    initial_last = f"{first[0]} {last}" if first else ""
+    last_initial = f"{last} {first[0]}" if first else ""
+    return [key for key in dict.fromkeys([first_last, last_first, initial_last, last_initial]) if key.strip()]
+
+
+def display_person_name(name: str) -> str:
+    text = clean_text(name)
+    text = re.sub(r"\([^)]*\)", " ", text)
+    text = text.replace("_", " ")
+    text = re.sub(r"\b(?:et\s+al|and\s+others)\b", " ", text, flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip(" ,")
+    if "," in text:
+        parts = [part.strip() for part in text.split(",", 1)]
+        if len(parts) == 2 and parts[0] and parts[1]:
+            text = f"{parts[1]} {parts[0]}"
+    else:
+        raw_words = text.split()
+        if (
+            len(raw_words) == 3
+            and len(raw_words[2].strip(".")) == 1
+            and len(raw_words[1].strip(".")) > 1
+        ):
+            text = f"{raw_words[1]} {raw_words[2]} {raw_words[0]}"
+    words = []
+    for word in text.split():
+        if len(word) == 1:
+            words.append(f"{word.upper()}.")
+        elif word.isupper():
+            words.append(word.title())
+        else:
+            words.append(word)
+    return " ".join(words).replace("..", ".")
+
+
+def person_display_score(name: str, count: int) -> int:
+    text = clean_text(name)
+    score = count
+    if re.search(r"\b[A-Z]\.\s*[A-Z][A-Za-z-]+$", text):
+        score += 15
+    if "," in text:
+        score -= 8
+    if "_" in text:
+        score -= 8
+    if text.isupper():
+        score -= 12
+    if re.search(r"\bet\s+al\b", text, re.I):
+        score -= 20
+    if len(person_tokens(text)) == 2:
+        score += 2
+    return score
+
+
+def build_name_alias_map(records: list[dict[str, Any]]) -> dict[str, str]:
+    counts: Counter[str] = Counter()
+    key_to_names: dict[str, Counter[str]] = defaultdict(Counter)
+    for row in records:
+        for field in ("breeders", "inventors"):
+            for raw_name in split_people_or_entities(row.get(field, "")):
+                company_profile = company_profile_for_name(raw_name)
+                if company_profile:
+                    display = company_profile["canonicalName"]
+                    key_to_names[f"entity:{normalize_owner_name(display)}"][display] += 1
+                    continue
+                keys = person_keys(raw_name)
+                if not keys:
+                    display = display_owner_name(raw_name)
+                    key_to_names[f"entity:{normalize_owner_name(display)}"][display] += 1
+                    continue
+                display = display_person_name(raw_name)
+                counts[display] += 1
+                for key in keys:
+                    key_to_names[f"person:{key}"][display] += 1
+
+    alias_choices: dict[str, tuple[str, int]] = {}
+    for names in key_to_names.values():
+        if not names:
+            continue
+        best = max(names, key=lambda name: (person_display_score(name, names[name]), names[name], -len(name)))
+        best_score = person_display_score(best, names[best])
+        for name in names:
+            key = normalize_owner_name(name)
+            current = alias_choices.get(key)
+            if not current or best_score > current[1]:
+                alias_choices[key] = (best, best_score)
+    return {key: value for key, (value, _score) in alias_choices.items()}
+
+
+def canonical_named_party(name: str, alias_map: dict[str, str]) -> str:
+    company_profile = company_profile_for_name(name)
+    if company_profile:
+        return company_profile["canonicalName"]
+    display = display_person_name(name) if person_keys(name) else display_owner_name(name)
+    return alias_map.get(normalize_owner_name(display), display)
 
 
 def parse_date(value: Any) -> dt.date | None:
@@ -322,11 +527,12 @@ def expiration_date(row: dict[str, Any]) -> tuple[str, str]:
     return "", ""
 
 
-def owner_candidates(row: dict[str, Any]) -> list[tuple[str, str, str]]:
+def owner_candidates(row: dict[str, Any], alias_map: dict[str, str]) -> list[tuple[str, str, str]]:
     candidates: list[tuple[str, str, str]] = []
     seen: set[str] = set()
 
     def add_candidate(name: str, role: str, confidence: str) -> None:
+        name = canonical_named_party(name, alias_map)
         key = normalize_owner_name(display_owner_name(name))
         if not key or key in seen:
             return
@@ -528,12 +734,13 @@ def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     current_year = TODAY.year
+    alias_map = build_name_alias_map(records)
 
     for row in records:
         year = record_year(row)
         exp_date, exp_basis = expiration_date(row)
         exp = parse_date(exp_date)
-        owners = owner_candidates(row)
+        owners = owner_candidates(row, alias_map)
         if not owners:
             continue
 
@@ -619,9 +826,17 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             if year:
                 profile["years"][year] += 1
 
-            for breeder in split_people_or_entities(row.get("breeders", "")):
+            breeder_names = {
+                canonical_named_party(breeder, alias_map)
+                for breeder in split_people_or_entities(row.get("breeders", ""))
+            }
+            inventor_names = {
+                canonical_named_party(inventor, alias_map)
+                for inventor in split_people_or_entities(row.get("inventors", ""))
+            }
+            for breeder in breeder_names:
                 profile["namedBreeders"][breeder] += 1
-            for inventor in split_people_or_entities(row.get("inventors", "")):
+            for inventor in inventor_names:
                 profile["namedInventors"][inventor] += 1
 
             source_kind = clean_text(row.get("sourceKind")).lower()
