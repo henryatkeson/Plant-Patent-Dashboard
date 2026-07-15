@@ -20,6 +20,7 @@ PATENT_PATH = DATA_DIR / "plant_patents.json"
 CPVO_PATH = DATA_DIR / "cpvo_varieties.json"
 OUTPUT_PATH = DATA_DIR / "owner_profiles.json"
 COMPANY_PROFILE_PATH = CONFIG_DIR / "company_profiles.json"
+AUDIT_OVERRIDE_PATH = CONFIG_DIR / "company_profile_audits.json"
 TODAY = dt.date.today()
 
 LEGAL_TERMS = {
@@ -186,6 +187,9 @@ PROGRAM_LINEAGE_RULES = [
 NON_OWNER_NORMALIZED_NAMES = {
     "0",
     "942 0",
+    "desconocido",
+    "desconocido inscripci n de oficio",
+    "inconnu",
     "domaine public",
     "public domain",
     "varios obtentores",
@@ -232,6 +236,40 @@ def normalize_alias_search(name: str) -> str:
 
 
 COMPANY_PROFILES = load_company_profiles()
+
+AUDIT_FIELDS = [
+    "auditStatus",
+    "auditConfidence",
+    "websiteCultivarCount",
+    "websiteCultivarCountBasis",
+    "websiteCultivarEvidenceUrl",
+    "primaryContactName",
+    "primaryContactTitle",
+    "primaryContactUrl",
+    "contactSourceUrl",
+    "trademarkStatus",
+    "brandExamples",
+    "auditNotes",
+    "candidateParent",
+    "candidateParentBasis",
+    "candidateParentEvidenceUrl",
+]
+
+
+def load_profile_audits() -> dict[str, dict[str, Any]]:
+    if not AUDIT_OVERRIDE_PATH.exists():
+        return {}
+    payload = json.loads(AUDIT_OVERRIDE_PATH.read_text(encoding="utf-8"))
+    rows = payload.get("profiles", payload) if isinstance(payload, dict) else payload
+    audits: dict[str, dict[str, Any]] = {}
+    for row in rows or []:
+        name = clean_text(row.get("canonicalName") or row.get("ownerName"))
+        if name:
+            audits[normalize_alias_search(name)] = row
+    return audits
+
+
+PROFILE_AUDITS = load_profile_audits()
 
 
 def build_company_alias_index() -> list[tuple[str, dict[str, Any]]]:
@@ -693,6 +731,19 @@ def merge_year_lists(children: list[dict[str, Any]], field: str) -> list[dict[st
     return [{"year": year, "count": counter[year]} for year in sorted(counter)]
 
 
+def unique_names(names: list[str]) -> list[str]:
+    seen: set[str] = set()
+    unique: list[str] = []
+    for name in names:
+        cleaned = clean_text(name)
+        normalized = normalize_owner_name(cleaned)
+        if not cleaned or normalized in seen:
+            continue
+        seen.add(normalized)
+        unique.append(cleaned)
+    return unique
+
+
 def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
     by_owner = {profile["ownerName"]: profile for profile in profiles}
     by_normalized = {profile["normalizedOwnerName"]: profile for profile in profiles}
@@ -758,10 +809,10 @@ def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "individualOwner": False,
             "soleNamedBreeder": False,
             "isParentRollup": True,
-            "rollupChildren": [
+            "rollupChildren": unique_names([
                 *[child["ownerName"] for child in rollup_parts if child["ownerName"] != company["canonicalName"]],
                 *suppressed_names,
-            ],
+            ]),
             "topCrops": merge_counter_lists(rollup_parts, "topCrops", "crop"),
             "topJurisdictions": merge_counter_lists(rollup_parts, "topJurisdictions", "jurisdiction"),
             "topBreeders": merge_counter_lists(rollup_parts, "topBreeders", "name"),
@@ -778,6 +829,13 @@ def add_parent_rollups(profiles: list[dict[str, Any]]) -> list[dict[str, Any]]:
         rollup["sourcingFlags"] = flags
         output.append(rollup)
     return output
+
+
+def apply_profile_audits(profiles: list[dict[str, Any]]) -> None:
+    for profile in profiles:
+        audit = PROFILE_AUDITS.get(normalize_alias_search(profile.get("ownerName", "")))
+        for field in AUDIT_FIELDS:
+            profile[field] = audit.get(field, "") if audit else ""
 
 
 def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -976,6 +1034,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
         profiles.append(profile)
 
     profiles = add_parent_rollups(profiles)
+    apply_profile_audits(profiles)
     return sorted(profiles, key=lambda item: (item["sourcingScore"], item["protectedIpCount"], item["recordCount"]), reverse=True)
 
 
@@ -1023,6 +1082,21 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "expirationSchedule",
         "isParentRollup",
         "rollupChildren",
+        "auditStatus",
+        "auditConfidence",
+        "websiteCultivarCount",
+        "websiteCultivarCountBasis",
+        "websiteCultivarEvidenceUrl",
+        "primaryContactName",
+        "primaryContactTitle",
+        "primaryContactUrl",
+        "contactSourceUrl",
+        "trademarkStatus",
+        "brandExamples",
+        "auditNotes",
+        "candidateParent",
+        "candidateParentBasis",
+        "candidateParentEvidenceUrl",
     ]
     metadata = {
         "title": "Owner Sourcing Profiles",

@@ -844,6 +844,56 @@ tbody tr:hover td {
   background: #fffaf0;
 }
 
+.audit-panel {
+  margin: 0 0 16px;
+  padding: 12px;
+  border: 1px solid #dfe7df;
+  border-radius: 8px;
+  background: #f7faf6;
+}
+
+.audit-panel h3 {
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.audit-panel dl {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+}
+
+.audit-panel dl div {
+  display: grid;
+  gap: 3px;
+}
+
+.audit-panel dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.audit-panel dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.audit-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.audit-links a {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .matched-company-list {
   display: grid;
   gap: 12px;

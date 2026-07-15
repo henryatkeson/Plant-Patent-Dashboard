@@ -247,6 +247,50 @@ function renderCompanyCards(profiles) {
   `;
 }
 
+function displayAuditValue(value) {
+  return displayText(value)
+    .replaceAll("_", " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function renderOwnerAudit(owner) {
+  const brandExamples = Array.isArray(owner.brandExamples)
+    ? owner.brandExamples.filter(Boolean)
+    : String(owner.brandExamples || "").split("|").map((item) => item.trim()).filter(Boolean);
+  const contactName = [owner.primaryContactName, owner.primaryContactTitle].filter(Boolean).join(" - ");
+  const contactLink = owner.primaryContactUrl || owner.contactSourceUrl;
+  const evidenceLink = owner.websiteCultivarEvidenceUrl || owner.candidateParentEvidenceUrl;
+  const rows = [
+    owner.auditStatus ? ["Audit status", displayAuditValue(owner.auditStatus)] : null,
+    owner.auditConfidence ? ["Audit confidence", displayAuditValue(owner.auditConfidence)] : null,
+    owner.trademarkStatus ? ["Trademark check", displayAuditValue(owner.trademarkStatus)] : null,
+    brandExamples.length ? ["Brand examples", brandExamples.slice(0, 5).map(displayText).join(" | ")] : null,
+    owner.websiteCultivarCount ? ["Website cultivar count", `${Number(owner.websiteCultivarCount).toLocaleString()}${owner.websiteCultivarCountBasis ? ` - ${displayText(owner.websiteCultivarCountBasis)}` : ""}`] : null,
+    contactName ? ["Primary contact", contactName] : null,
+    owner.candidateParent ? ["Candidate parent", `${displayText(owner.candidateParent)}${owner.candidateParentBasis ? ` - ${displayText(owner.candidateParentBasis)}` : ""}`] : null,
+    owner.auditNotes ? ["Audit notes", displayText(owner.auditNotes)] : null,
+  ].filter(Boolean);
+  const links = [
+    contactLink ? `<a href="${escapeHtml(contactLink)}" target="_blank" rel="noopener">Contact evidence</a>` : "",
+    evidenceLink ? `<a href="${escapeHtml(evidenceLink)}" target="_blank" rel="noopener">Cultivar evidence</a>` : "",
+  ].filter(Boolean).join("");
+  if (!rows.length && !links) return "";
+  return `
+    <div class="audit-panel">
+      <h3>Diligence Notes</h3>
+      <dl>
+        ${rows.map(([label, value]) => `
+          <div>
+            <dt>${escapeHtml(label)}</dt>
+            <dd>${escapeHtml(value)}</dd>
+          </div>
+        `).join("")}
+      </dl>
+      ${links ? `<div class="audit-links">${links}</div>` : ""}
+    </div>
+  `;
+}
+
 function titleCaseWord(word) {
   const lower = word.toLowerCase();
   if (["and", "or", "of", "the", "in"].includes(lower)) return lower;
@@ -894,6 +938,7 @@ function openOwnerDrawer(ownerKey) {
     ${ownerNewsLinks}
     ${owner.companyDescription ? `<p class="company-description">${escapeHtml(owner.companyDescription)}</p>` : ""}
     ${owner.targetFit ? `<p class="company-description target-fit">${escapeHtml(owner.targetFit)}</p>` : ""}
+    ${renderOwnerAudit(owner)}
     <div class="detail-grid">
       ${renderDetailItem("Records", `${Number(owner.recordCount || 0).toLocaleString()} total | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}
       ${renderDetailItem("Relevant crop exposure", `${Number(owner.relevantIpRecordCount || 0).toLocaleString()} fruit/nut/vegetable records | ${Number(owner.relevantLegalOwnerRecordCount || 0).toLocaleString()} confirmed assignee records`)}
