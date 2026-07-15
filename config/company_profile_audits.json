@@ -449,6 +449,66 @@
       "trademarkStatus": "not_checked",
       "brandExamples": [],
       "auditNotes": "Added James Olmstead public blueberry breeder rows to avoid standalone acquisition-lead noise."
+    },
+    {
+      "canonicalName": "Edward Vinson Limited",
+      "auditStatus": "company_profile_created_from_official_website",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://www.edwardvinson.co.uk/",
+      "primaryContactName": "",
+      "primaryContactTitle": "",
+      "primaryContactUrl": "",
+      "contactSourceUrl": "",
+      "trademarkStatus": "not_checked",
+      "brandExamples": ["Eves Delight", "Eves Joy", "Eves Glory"],
+      "auditNotes": "Promoted from legal-entity breeder signal to company profile after official website verification. Contact page still needs direct confirmation."
+    },
+    {
+      "canonicalName": "Angus Soft Fruits",
+      "auditStatus": "company_profile_created_from_official_website",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://www.angussoftfruits.co.uk/breeding/",
+      "primaryContactName": "General enquiries",
+      "primaryContactTitle": "Angus Soft Fruits",
+      "primaryContactUrl": "https://www.angussoftfruits.co.uk/locations/",
+      "contactSourceUrl": "https://www.angussoftfruits.co.uk/locations/",
+      "trademarkStatus": "not_checked",
+      "brandExamples": ["AVA Berries", "Good Natured Berries"],
+      "auditNotes": "Official site states the AVA Berries breeding programme develops strawberry, raspberry, and blackberry varieties."
+    },
+    {
+      "canonicalName": "Stargrow Cultivar Development",
+      "auditStatus": "company_profile_created_from_official_website",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://stargrow.co.za/",
+      "primaryContactName": "General enquiries",
+      "primaryContactTitle": "Stargrow",
+      "primaryContactUrl": "https://stargrow.co.za/contact-us/",
+      "contactSourceUrl": "https://stargrow.co.za/contact-us/",
+      "trademarkStatus": "not_checked",
+      "brandExamples": [],
+      "auditNotes": "Official site describes cultivar development, commercialization of cultivars, and IP-rights management."
+    },
+    {
+      "canonicalName": "ABZ Seeds",
+      "auditStatus": "company_profile_created_from_official_website",
+      "auditConfidence": "medium",
+      "websiteCultivarCount": "",
+      "websiteCultivarCountBasis": "",
+      "websiteCultivarEvidenceUrl": "https://abzseeds.abzstrawberry.nl/en/assortment",
+      "primaryContactName": "General enquiries",
+      "primaryContactTitle": "ABZ Seeds",
+      "primaryContactUrl": "https://abzseeds.abzstrawberry.nl/en/contact",
+      "contactSourceUrl": "https://abzseeds.abzstrawberry.nl/en/contact",
+      "trademarkStatus": "not_checked",
+      "brandExamples": ["Soraya F1", "Tiraya", "Elara", "Delaya"],
+      "auditNotes": "Official site describes ABZ Seeds as a strawberry-from-seed specialist and reports ABZ Seeds was acquired by Planasa."
     }
   ]
 }

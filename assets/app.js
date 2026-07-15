@@ -8,6 +8,7 @@ const state = {
   ownerByKey: new Map(),
   companyProfiles: [],
   sourceStatus: null,
+  dataConfidence: null,
   lastFocus: null,
 };
 
@@ -27,6 +28,9 @@ const els = {
   latestList: document.querySelector("#latestList"),
   sourceSummary: document.querySelector("#sourceSummary"),
   liveStatus: document.querySelector("#liveStatus"),
+  dataConfidenceSummary: document.querySelector("#dataConfidenceSummary"),
+  dataConfidenceGates: document.querySelector("#dataConfidenceGates"),
+  dataConfidenceQueue: document.querySelector("#dataConfidenceQueue"),
   ownerCount: document.querySelector("#ownerCount"),
   ownerSearchInput: document.querySelector("#ownerSearchInput"),
   ownerView: document.querySelector("#ownerView"),
@@ -133,6 +137,26 @@ const LATEST_RELEVANT_CROPS = new Set([
   "walnut-black",
 ]);
 
+const DATA_CONFIDENCE_GATE_LABELS = {
+  ready_for_business_review: "Ready for business review",
+  company_profile_needs_enrichment: "Company profile needs enrichment",
+  legal_entity_profile_needed: "Legal entity profile needed",
+  legal_owner_needs_company_profile: "Legal owner needs company profile",
+  holder_verification_required: "Holder verification required",
+  public_program_reference: "Public program reference",
+  triage_queue: "Triage queue",
+};
+
+const DATA_CONFIDENCE_PRIORITY = [
+  "holder_verification_required",
+  "legal_entity_profile_needed",
+  "legal_owner_needs_company_profile",
+  "company_profile_needs_enrichment",
+  "ready_for_business_review",
+  "public_program_reference",
+  "triage_queue",
+];
+
 function formatDate(value) {
   if (!value) return "--";
   const date = new Date(`${value}T00:00:00`);
@@ -182,6 +206,16 @@ function displayText(value, fallback = "") {
     .replace(/\s+/g, " ")
     .trim();
   return text || fallback;
+}
+
+function labelFromKey(value) {
+  return String(value || "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function confidenceGateLabel(value) {
+  return DATA_CONFIDENCE_GATE_LABELS[value] || labelFromKey(value);
 }
 
 function companyProfileMatchesText(profile, text) {
@@ -629,6 +663,92 @@ function renderLiveStatus() {
   `;
 }
 
+function renderDataConfidence() {
+  if (!els.dataConfidenceSummary || !els.dataConfidenceGates || !els.dataConfidenceQueue) return;
+  const metadata = state.dataConfidence?.metadata;
+  const profiles = state.dataConfidence?.profiles || [];
+  if (!metadata) {
+    els.dataConfidenceSummary.innerHTML = `<div class="brief-tile"><span>Data QA</span><strong>Loading audit</strong></div>`;
+    els.dataConfidenceGates.innerHTML = "";
+    els.dataConfidenceQueue.innerHTML = `<tr><td colspan="6"><p class="empty-state">Data confidence file has not loaded yet.</p></td></tr>`;
+    return;
+  }
+
+  const tiers = metadata.confidenceTierCounts || {};
+  const gates = metadata.actionabilityGateCounts || {};
+  const critical = metadata.criticalIssues || {};
+  const auditedAt = metadata.generatedAt ? formatDate(metadata.generatedAt.slice(0, 10)) : "Unknown";
+  els.dataConfidenceSummary.innerHTML = `
+    <div class="brief-tile"><span>Profiles audited</span><strong>${Number(metadata.profileCount || 0).toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>High / medium confidence</span><strong>${Number((tiers.high || 0) + (tiers.medium || 0)).toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Needs holder verification</span><strong>${Number(critical.holderVerificationRequired || 0).toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Audit generated</span><strong>${escapeHtml(auditedAt)}</strong></div>
+  `;
+
+  const gateEntries = DATA_CONFIDENCE_PRIORITY
+    .map((gate) => [gate, Number(gates[gate] || 0)])
+    .filter((entry) => entry[1] > 0);
+  els.dataConfidenceGates.innerHTML = gateEntries.map(([gate, count]) => `
+    <article class="panel methodology-card dataqa-card">
+      <h3>${escapeHtml(confidenceGateLabel(gate))}</h3>
+      <strong>${count.toLocaleString()} profiles</strong>
+      <p>${escapeHtml(dataQaGateDescription(gate))}</p>
+    </article>
+  `).join("");
+
+  const priorityProfiles = profiles
+    .filter((profile) => DATA_CONFIDENCE_PRIORITY.includes(profile.actionabilityGate))
+    .sort((a, b) => {
+      const gateDelta = DATA_CONFIDENCE_PRIORITY.indexOf(a.actionabilityGate) - DATA_CONFIDENCE_PRIORITY.indexOf(b.actionabilityGate);
+      if (gateDelta !== 0) return gateDelta;
+      return Number(b.recordCount || 0) - Number(a.recordCount || 0);
+    })
+    .slice(0, 40);
+  if (!priorityProfiles.length) {
+    els.dataConfidenceQueue.innerHTML = `<tr><td colspan="6"><p class="empty-state">No active review queue items.</p></td></tr>`;
+    return;
+  }
+  els.dataConfidenceQueue.innerHTML = priorityProfiles.map((profile, index) => {
+    const evidence = [
+      profile.candidateParent ? `Possible parent: ${profile.candidateParent}` : "",
+      profile.topCrops || "",
+      profile.rawEvidenceRoles ? `Raw roles: ${profile.rawEvidenceRoles}` : "",
+    ].filter(Boolean).map(escapeHtml).join("<br>");
+    const evidenceUrl = profile.candidateParentEvidenceUrl
+      ? `<a href="${escapeHtml(profile.candidateParentEvidenceUrl)}" target="_blank" rel="noopener">Open evidence</a>`
+      : "";
+    return `
+      <tr>
+        <td class="row-number">${index + 1}</td>
+        <td>
+          <strong class="record-title">${escapeHtml(displayText(profile.ownerName, "Unknown profile"))}</strong>
+          <span class="subtle">${escapeHtml(labelFromKey(profile.ownershipStatus))} | ${escapeHtml(labelFromKey(profile.dataConfidenceTier))} confidence</span>
+        </td>
+        <td>${escapeHtml(confidenceGateLabel(profile.actionabilityGate))}</td>
+        <td>
+          <strong>${Number(profile.recordCount || 0).toLocaleString()}</strong>
+          <span class="subtle">${Number(profile.legalOwnerRecordCount || 0).toLocaleString()} legal owner | ${Number(profile.breederSignalRecordCount || 0).toLocaleString()} breeder signal</span>
+        </td>
+        <td>${evidence}${evidenceUrl ? `<br>${evidenceUrl}` : ""}</td>
+        <td>${escapeHtml(displayText(profile.recommendedNextStep, "Verify legal holder and profile relationship."))}</td>
+      </tr>
+    `;
+  }).join("");
+}
+
+function dataQaGateDescription(gate) {
+  const descriptions = {
+    ready_for_business_review: "Profile has enough sourced identity evidence to move into commercial diligence.",
+    company_profile_needs_enrichment: "Likely real company, but website, contact, LinkedIn, or cultivar evidence is still incomplete.",
+    legal_entity_profile_needed: "Name looks like a company or legal entity, but it has not been converted into a sourced company profile.",
+    legal_owner_needs_company_profile: "Records show legal-owner evidence, but the company profile is not yet built.",
+    holder_verification_required: "High-count breeder-only signal. Do not treat as an owner until applicant or holder evidence is checked.",
+    public_program_reference: "Public or university program. Useful for context, usually not an acquisition target.",
+    triage_queue: "Low-confidence long tail that should be handled after higher-value names.",
+  };
+  return descriptions[gate] || "Needs review.";
+}
+
 function applyOwnerFilters() {
   if (!els.ownerBody) return;
   const term = normalize(els.ownerSearchInput?.value || "");
@@ -993,6 +1113,7 @@ function render() {
   renderLatest(state.filtered);
   renderSources(state.filtered);
   renderLiveStatus();
+  renderDataConfidence();
   renderCharts(state.filtered);
   renderTable(state.filtered);
 }
@@ -1030,11 +1151,12 @@ async function loadOwnerProfiles() {
 }
 
 async function init() {
-  const [response, cpvoVarietiesResponse, companyProfilesResponse, sourceStatusResponse] = await Promise.all([
+  const [response, cpvoVarietiesResponse, companyProfilesResponse, sourceStatusResponse, dataConfidenceResponse] = await Promise.all([
     fetch("data/plant_patents.json", { cache: "no-store" }),
     fetch("data/cpvo_varieties.json", { cache: "no-store" }).catch(() => null),
     fetch("config/company_profiles.json", { cache: "no-store" }).catch(() => null),
     fetch("data/source_status.json", { cache: "no-store" }).catch(() => null),
+    fetch("data/data_confidence.json", { cache: "no-store" }).catch(() => null),
   ]);
   if (!response.ok) throw new Error(`Could not load data: ${response.status}`);
   const payload = await response.json();
@@ -1043,6 +1165,9 @@ async function init() {
   }
   if (sourceStatusResponse && sourceStatusResponse.ok) {
     state.sourceStatus = await sourceStatusResponse.json();
+  }
+  if (dataConfidenceResponse && dataConfidenceResponse.ok) {
+    state.dataConfidence = await dataConfidenceResponse.json();
   }
   if (cpvoVarietiesResponse && cpvoVarietiesResponse.ok) {
     const cpvoVarietiesPayload = await cpvoVarietiesResponse.json();

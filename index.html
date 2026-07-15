@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Variety Rights Sourcing Engine</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260715-methodology">
+    <link rel="stylesheet" href="assets/styles.css?v=20260715-dataqa">
   </head>
   <body>
     <header class="topbar">
@@ -25,6 +25,7 @@
         <button id="tab-analytics" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-analytics" data-tab-target="analytics">Analytics</button>
         <button id="tab-records" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-records" data-tab-target="records">Records</button>
         <button id="tab-methodology" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-methodology" data-tab-target="methodology">Methodology</button>
+        <button id="tab-dataqa" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-dataqa" data-tab-target="dataqa">Data QA</button>
       </nav>
 
       <section id="panel-overview" class="workbench-grid view-panel active" role="tabpanel" aria-labelledby="tab-overview" data-view-panel="overview">
@@ -261,6 +262,40 @@
           </p>
         </div>
       </section>
+
+      <section id="panel-dataqa" class="dataqa-section view-panel" role="tabpanel" aria-labelledby="tab-dataqa" data-view-panel="dataqa">
+        <div class="panel methodology-hero">
+          <p class="eyebrow">Data confidence</p>
+          <h2>Audit status and review queue</h2>
+          <p>
+            This section separates records we can treat as legal-owner evidence from records that are still breeder-only signals.
+            It is meant to keep the sourcing engine honest before a company is treated as an actionable acquisition lead.
+          </p>
+        </div>
+        <div id="dataConfidenceSummary" class="sourcing-brief" aria-live="polite"></div>
+        <div id="dataConfidenceGates" class="methodology-grid"></div>
+        <div class="panel dataqa-queue-panel">
+          <div class="panel-head">
+            <h2>Highest-Priority Review Queue</h2>
+            <span>Needs source-backed cleanup</span>
+          </div>
+          <div class="owner-table-wrap dataqa-table-wrap">
+            <table class="owner-table dataqa-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Profile</th>
+                  <th>Gate</th>
+                  <th>Records</th>
+                  <th>Evidence</th>
+                  <th>Next Step</th>
+                </tr>
+              </thead>
+              <tbody id="dataConfidenceQueue"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="drawerBackdrop" class="drawer-backdrop" hidden></div>
@@ -275,6 +310,6 @@
       <div id="drawerBody" class="drawer-body"></div>
     </aside>
 
-    <script src="assets/app.js?v=20260715-methodology"></script>
+    <script src="assets/app.js?v=20260715-dataqa"></script>
   </body>
 </html>
