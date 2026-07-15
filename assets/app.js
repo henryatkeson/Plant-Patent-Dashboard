@@ -615,17 +615,18 @@ function renderOwners() {
 
   els.ownerBody.innerHTML = "";
   if (!shown.length) {
-    els.ownerBody.innerHTML = `<tr><td colspan="7"><p class="empty-state">No owner profiles match the search.</p></td></tr>`;
+    els.ownerBody.innerHTML = `<tr><td colspan="8"><p class="empty-state">No owner profiles match the search.</p></td></tr>`;
     return;
   }
 
-  for (const owner of shown) {
+  shown.forEach((owner, index) => {
     const row = document.createElement("tr");
     row.dataset.ownerKey = owner.__key;
     row.tabIndex = 0;
     row.setAttribute("role", "button");
     const flags = (owner.sourcingFlags || []).slice(0, 3).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
     row.innerHTML = `
+      <td class="row-number">${(index + 1).toLocaleString()}</td>
       <td><strong class="score-pill">${Number(owner.sourcingScore || 0)}</strong></td>
       <td>
         <strong class="record-title">${escapeHtml(displayText(owner.ownerName, "Unknown owner"))}</strong>
@@ -651,7 +652,7 @@ function renderOwners() {
       </td>
     `;
     els.ownerBody.appendChild(row);
-  }
+  });
 }
 
 function renderCharts(rows) {
@@ -706,7 +707,7 @@ function renderTable(rows) {
   els.rowCount.textContent = `${rows.length.toLocaleString()} matching rows`;
   els.recordsBody.innerHTML = "";
 
-  for (const row of rows.slice(0, 500)) {
+  rows.slice(0, 500).forEach((row, index) => {
     const title = displayText(row.cultivar || row.title || row.tradeName, "Untitled record");
     const sourceUrl = patentLookupUrl(row);
     const link = sourceUrl
@@ -718,6 +719,7 @@ function renderTable(rows) {
     const tr = document.createElement("tr");
     tr.dataset.recordKey = row.__key;
     tr.innerHTML = `
+      <td class="row-number">${(index + 1).toLocaleString()}</td>
       <td>${formatDate(row.date)}</td>
       <td><span class="badge">${escapeHtml(displayCrop(row.crop))}</span></td>
       <td><strong class="record-title">${escapeHtml(title)}</strong>${subtitle ? `<span class="subtle">${escapeHtml(subtitle)}</span>` : ""}</td>
@@ -726,7 +728,7 @@ function renderTable(rows) {
       <td>${escapeHtml(owner)}</td>
     `;
     els.recordsBody.appendChild(tr);
-  }
+  });
 }
 
 function renderDetailItem(label, value) {

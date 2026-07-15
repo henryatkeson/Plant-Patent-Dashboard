@@ -379,34 +379,46 @@ button:hover {
 }
 
 .owner-table {
-  min-width: 1280px;
+  min-width: 1320px;
 }
 
 .owner-table th:nth-child(1),
 .owner-table td:nth-child(1) {
-  width: 86px;
+  width: 56px;
 }
 
 .owner-table th:nth-child(2),
 .owner-table td:nth-child(2) {
-  width: 270px;
+  width: 86px;
 }
 
 .owner-table th:nth-child(3),
 .owner-table td:nth-child(3) {
-  width: 210px;
+  width: 270px;
 }
 
 .owner-table th:nth-child(4),
-.owner-table td:nth-child(4),
+.owner-table td:nth-child(4) {
+  width: 210px;
+}
+
 .owner-table th:nth-child(5),
-.owner-table td:nth-child(5) {
+.owner-table td:nth-child(5),
+.owner-table th:nth-child(6),
+.owner-table td:nth-child(6) {
   width: 170px;
 }
 
-.owner-table th:nth-child(6),
-.owner-table td:nth-child(6) {
+.owner-table th:nth-child(7),
+.owner-table td:nth-child(7) {
   width: 190px;
+}
+
+.row-number {
+  color: var(--muted);
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .score-pill {
@@ -444,7 +456,7 @@ button:hover {
 
 table {
   width: 100%;
-  min-width: 1040px;
+  min-width: 1080px;
   table-layout: fixed;
   border-collapse: collapse;
   background: #ffffff;
@@ -476,21 +488,26 @@ td {
 
 th:nth-child(1),
 td:nth-child(1) {
-  width: 116px;
+  width: 56px;
 }
 
 th:nth-child(2),
 td:nth-child(2) {
-  width: 138px;
+  width: 116px;
 }
 
-th:nth-child(4),
-td:nth-child(4) {
-  width: 190px;
+th:nth-child(3),
+td:nth-child(3) {
+  width: 138px;
 }
 
 th:nth-child(5),
 td:nth-child(5) {
+  width: 190px;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
   width: 112px;
 }
 
