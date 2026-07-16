@@ -39,13 +39,16 @@ def main() -> int:
     plant_path = DATA_DIR / "plant_patents.json"
     cpvo_path = DATA_DIR / "cpvo_varieties.json"
     owner_path = DATA_DIR / "owner_profiles.json"
+    research_path = DATA_DIR / "web_research_queue.json"
     plant_records = records_from(plant_path)
     cpvo_records = records_from(cpvo_path)
     owner_payload = load_json(owner_path)
+    research_payload = load_json(research_path)
+    research_metadata = research_payload.get("metadata", {})
 
     payload = {
         "generatedAt": dt.datetime.now(dt.timezone.utc).isoformat(),
-        "strategy": "USPTO Official Gazette refreshes automatically through GitHub Actions. CPVO is currently refreshed when new Variety Finder Excel exports are saved and imported. Owner profiles are rebuilt after each data refresh.",
+        "strategy": "USPTO Official Gazette refreshes automatically through GitHub Actions. CPVO is currently refreshed when new Variety Finder Excel exports are saved and imported. Owner profiles, internal research queues, and data-contract health checks are rebuilt after each data refresh.",
         "sources": [
             {
                 "name": "USPTO Official Gazette plant grants",
@@ -74,12 +77,23 @@ def main() -> int:
                 "lastFileUpdate": file_timestamp(owner_path),
                 "nextStep": "Review aliases in config/company_profiles.json as new breeders appear.",
             },
+            {
+                "name": "Company and breeder web research ledger",
+                "mode": "continuous public-source review",
+                "cadence": "Resumable evidence batches; known domains rechecked during QA passes",
+                "recordCount": research_metadata.get("profileCount", 0),
+                "completedCount": research_metadata.get("reviewLevelCounts", {}).get("complete", 0),
+                "partialCount": research_metadata.get("reviewLevelCounts", {}).get("partial", 0),
+                "latestRecordDate": "",
+                "lastFileUpdate": file_timestamp(research_path),
+                "nextStep": "Work the highest-priority unresolved companies and breeder affiliations, recording only source-backed findings.",
+            },
         ],
         "futureFeeds": [
             "USPTO assignment alerts for ownership changes",
-            "Trademark status checks for variety brands",
+            "Automated trademark status-change monitoring for source-linked variety brands",
             "Additional national PBR databases where bulk exports or stable gazettes are available",
-            "Company website portfolio monitors for known breeders and nurseries",
+            "Broader holder/applicant fields from future CPVO or UPOV exports",
         ],
     }
     OUTPUT_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

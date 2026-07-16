@@ -78,7 +78,8 @@
           <label>
             Sort
             <select id="ownerSort">
-              <option value="score" selected>Sourcing score</option>
+              <option value="acquisition" selected>Acquisition fit</option>
+              <option value="score">IP score</option>
               <option value="confidence">Owner confidence</option>
               <option value="protected">Protected IP count</option>
               <option value="recent">Recent activity</option>
@@ -92,7 +93,7 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Score</th>
+                <th>Fit</th>
                 <th>Name / Signal</th>
                 <th>Portfolio</th>
                 <th>Crop Mix</th>
@@ -176,18 +177,48 @@
       <section id="panel-methodology" class="methodology-section view-panel" role="tabpanel" aria-labelledby="tab-methodology" data-view-panel="methodology">
         <div class="panel methodology-hero">
           <p class="eyebrow">Scoring methodology</p>
-          <h2>What the breeder score is trying to measure</h2>
+          <h2>How the sourcing engine scores targets</h2>
           <p>
-            The sourcing score ranks owners, breeders, nurseries, and breeding programs by how useful they may be for acquisition sourcing.
-            It is a prioritization signal, not a valuation or a recommendation to acquire.
+            The engine now uses two separate scores. Acquisition fit ranks which profiles deserve diligence first for the current target range.
+            IP score ranks the depth and activity of the underlying patent/PBR signal.
           </p>
         </div>
 
         <div class="methodology-grid">
           <article class="panel methodology-card">
+            <h3>Acquisition Fit</h3>
+            <strong>Default table sort</strong>
+            <p>Rewards focused crop mix, manageable portfolio size, recent activity, private-company signals, source-backed contact paths, and durable protection.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Size Discipline</h3>
+            <strong>Penalty / cap</strong>
+            <p>Large strategic platforms, public institutions, and benchmark-scale owners are capped or downranked even when their IP portfolios are very strong.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Verification Burden</h3>
+            <strong>Blocker logic</strong>
+            <p>Profiles without a verified company website, contact path, or legal-owner evidence are kept in research until the holder and operating company are clearer.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Affiliation Gate</h3>
+            <strong>Confidence cap</strong>
+            <p>Unresearched breeder-only names without legal-owner evidence are capped at 50. Unresolved identities are capped at 25 until the person and rights holder can be matched reliably.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Web Evidence</h3>
+            <strong>Source-backed only</strong>
+            <p>Ownership, leadership, contacts, and company relationships are shown only when an official or otherwise attributable public source is captured.</p>
+          </article>
+          <article class="panel methodology-card">
+            <h3>Trademark Evidence</h3>
+            <strong>Registry status matters</strong>
+            <p>Registered or live marks are distinguished from brand use on a company website. Brand use alone does not prove trademark registration or ownership.</p>
+          </article>
+          <article class="panel methodology-card">
             <h3>Portfolio Scale</h3>
             <strong>Up to 25 points</strong>
-            <p>Larger portfolios get more credit, with a cap so very large strategics do not overwhelm the list purely because of size.</p>
+            <p>The IP score gives credit for portfolio depth, with a cap so very large strategics do not overwhelm the list purely because of size.</p>
           </article>
           <article class="panel methodology-card">
             <h3>Protected IP Share</h3>
@@ -254,6 +285,9 @@
           <p>
             CPVO exports often identify breeders more cleanly than legal holders, so some profiles are breeder-led signals rather than confirmed owners.
             The dashboard uses company rollups where the relationship is clear, but ambiguous people are left visible instead of being forced into a company.
+          </p>
+          <p>
+            Record count is not cultivar count. One cultivar can produce multiple applications, grants, renewals, jurisdictions, and holder records; inherited assignments can also make a portfolio appear smaller until ownership changes are imported.
           </p>
           <p>
             The score should be used to decide where to diligence first. It should be paired with company size, ownership, trademarks, active licenses,

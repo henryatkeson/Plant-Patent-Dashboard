@@ -14,6 +14,7 @@ DATA_DIR = ROOT / "data"
 OWNER_PROFILE_PATH = ROOT / "data" / "owner_profiles.json"
 COMPANY_PROFILE_PATH = ROOT / "config" / "company_profiles.json"
 AUDIT_OVERRIDE_PATH = ROOT / "config" / "company_profile_audits.json"
+WEB_RESEARCH_PATHS = sorted((ROOT / "config").glob("profile_web_research*.json"))
 SITE_PROBE_PATH = ROOT / "data" / "company_site_probe.json"
 PATENT_PATH = DATA_DIR / "plant_patents.json"
 CPVO_PATH = DATA_DIR / "cpvo_varieties.json"
@@ -121,13 +122,16 @@ def compact_owner_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def load_audit_overrides() -> dict[str, dict[str, Any]]:
-    payload = read_json(AUDIT_OVERRIDE_PATH, {})
-    rows = payload.get("profiles", payload) if isinstance(payload, dict) else payload
     overrides: dict[str, dict[str, Any]] = {}
-    for row in rows or []:
-        name = clean_text(row.get("canonicalName") or row.get("ownerName"))
-        if name:
-            overrides[normalize_name(name)] = row
+    for path in (AUDIT_OVERRIDE_PATH, *WEB_RESEARCH_PATHS):
+        payload = read_json(path, {})
+        rows = payload.get("profiles", payload) if isinstance(payload, dict) else payload
+        for row in rows or []:
+            name = clean_text(row.get("canonicalName") or row.get("ownerName"))
+            if not name:
+                continue
+            key = normalize_name(name)
+            overrides[key] = {**overrides.get(key, {}), **row}
     return overrides
 
 
@@ -200,12 +204,10 @@ def summarize_links(items: Any, limit: int = 5) -> str:
         return ""
     chunks = []
     for item in items[:limit]:
-        if not isinstance(item, dict):
-            continue
-        label = clean_text(item.get("label")) or "Evidence"
-        url = clean_text(item.get("url"))
+        label = clean_text(item.get("label")) if isinstance(item, dict) else "Evidence"
+        url = clean_text(item.get("url")) if isinstance(item, dict) else clean_text(item)
         if url:
-            chunks.append(f"{label} <{url}>")
+            chunks.append(f"{label or 'Evidence'} <{url}>")
     return " | ".join(chunks)
 
 
@@ -352,6 +354,8 @@ def issue_priority(issues: list[str], record_count: int, score: int) -> tuple[st
         "website_count_mismatch": 20,
         "missing_website": 18,
         "missing_contact": 10,
+        "ownership_not_verified": 10,
+        "web_research_incomplete": 8,
         "trademark_not_checked": 8,
         "cultivar_count_not_verified": 8,
         "linkedin_not_verified": 3,
@@ -393,6 +397,8 @@ def recommended_next_step(issues: list[str]) -> str:
         return "Find official website and ownership context before using this as an acquisition target."
     if "website_count_mismatch" in issues:
         return "Compare public cultivar list against patent/PBR records and document why counts differ."
+    if "ownership_not_verified" in issues or "web_research_incomplete" in issues:
+        return "Verify ownership, parent-company status, and official company sources before acquisition review."
     if "trademark_not_checked" in issues:
         return "Run trademark/brand search for the top cultivar and trade names."
     return "No urgent action; revisit after higher-priority profiles."
@@ -781,8 +787,14 @@ def build_row(
         issues.append("cultivar_count_not_verified")
     if count_comparison and count_comparison != "roughly_in_line":
         issues.append("website_count_mismatch")
-    if is_company_profile and not clean_text(override.get("trademarkStatus")):
+    trademark_status = clean_text(override.get("trademarkStatus")).lower()
+    if is_company_profile and trademark_status in {"", "not_checked", "not reviewed"}:
         issues.append("trademark_not_checked")
+    web_research_status = clean_text(override.get("webResearchStatus")).lower()
+    if is_company_profile and web_research_status not in {"verified", "not_actionable_verified"}:
+        issues.append("web_research_incomplete")
+    if is_company_profile and not clean_text(override.get("ownershipType")):
+        issues.append("ownership_not_verified")
     if not is_company_profile and is_parent_rollup and not profile.get("rollupChildren"):
         issues.append("likely_duplicate_or_rollup")
 
@@ -839,6 +851,15 @@ def build_row(
         "recommendedNextStep": clean_text(override.get("recommendedNextStep")) or recommended_next_step(issues),
         "auditStatus": clean_text(override.get("auditStatus")) or ("company_profile_seeded" if is_company_profile else "needs_triage"),
         "auditConfidence": clean_text(override.get("auditConfidence")) or ("medium" if is_company_profile else "low"),
+        "webResearchStatus": clean_text(override.get("webResearchStatus")),
+        "webResearchReviewedAt": clean_text(override.get("webResearchReviewedAt")),
+        "webResearchSources": summarize_links(override.get("webResearchSources")),
+        "webResearchNotes": clean_text(override.get("webResearchNotes")),
+        "ownershipType": clean_text(override.get("ownershipType")),
+        "ownershipSummary": clean_text(override.get("ownershipSummary")),
+        "parentCompany": clean_text(override.get("parentCompany")),
+        "headquarters": clean_text(override.get("headquarters")),
+        "leadershipSummary": clean_text(override.get("leadershipSummary")),
         "candidateParent": candidate_parent,
         "candidateParentBasis": clean_text(override.get("candidateParentBasis")) or (
             f"USPTO breeder string contains entity hint {auto_parent_hint!r}."
@@ -869,9 +890,14 @@ def build_row(
         "siteProbeEvidenceLinks": summarize_links(site_probe.get("evidenceLinks")),
         "primaryContactName": clean_text(override.get("primaryContactName")),
         "primaryContactTitle": clean_text(override.get("primaryContactTitle")),
+        "primaryContactEmail": clean_text(override.get("primaryContactEmail")),
+        "primaryContactPhone": clean_text(override.get("primaryContactPhone")),
         "primaryContactUrl": clean_text(override.get("primaryContactUrl")),
         "contactSourceUrl": clean_text(override.get("contactSourceUrl")),
         "trademarkStatus": clean_text(override.get("trademarkStatus")),
+        "trademarkOwner": clean_text(override.get("trademarkOwner")),
+        "trademarkEvidenceUrl": clean_text(override.get("trademarkEvidenceUrl")),
+        "trademarkLastCheckedAt": clean_text(override.get("trademarkLastCheckedAt")),
         "brandExamples": " | ".join(override.get("brandExamples") or []),
         "auditNotes": clean_text(override.get("auditNotes")),
     }

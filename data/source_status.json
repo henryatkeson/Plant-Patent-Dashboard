@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-07-15T20:09:11.030054+00:00",
-  "strategy": "USPTO Official Gazette refreshes automatically through GitHub Actions. CPVO is currently refreshed when new Variety Finder Excel exports are saved and imported. Owner profiles are rebuilt after each data refresh.",
+  "generatedAt": "2026-07-16T05:37:48.461739+00:00",
+  "strategy": "USPTO Official Gazette refreshes automatically through GitHub Actions. CPVO is currently refreshed when new Variety Finder Excel exports are saved and imported. Owner profiles, internal research queues, and data-contract health checks are rebuilt after each data refresh.",
   "sources": [
     {
       "name": "USPTO Official Gazette plant grants",
       "mode": "automated",
       "cadence": "Daily check for weekly Gazette issues",
-      "recordCount": 2708,
+      "recordCount": 2691,
       "latestRecordDate": "2026-07-14",
-      "lastFileUpdate": "2026-07-15T15:38:00.509341+00:00",
+      "lastFileUpdate": "2026-07-14T16:21:51.558820+00:00",
       "nextStep": "Keep the scheduled GitHub Action active; it will pick up newly published Gazette issues."
     },
     {
@@ -24,16 +24,27 @@
       "name": "Owner / breeder sourcing profiles",
       "mode": "derived",
       "cadence": "Rebuilt after USPTO or CPVO data changes",
-      "recordCount": 14138,
+      "recordCount": 12139,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-07-15T20:07:00.511322+00:00",
+      "lastFileUpdate": "2026-07-16T05:37:37.678942+00:00",
       "nextStep": "Review aliases in config/company_profiles.json as new breeders appear."
+    },
+    {
+      "name": "Company and breeder web research ledger",
+      "mode": "continuous public-source review",
+      "cadence": "Resumable evidence batches; known domains rechecked during QA passes",
+      "recordCount": 12139,
+      "completedCount": 193,
+      "partialCount": 157,
+      "latestRecordDate": "",
+      "lastFileUpdate": "2026-07-16T05:37:46.511545+00:00",
+      "nextStep": "Work the highest-priority unresolved companies and breeder affiliations, recording only source-backed findings."
     }
   ],
   "futureFeeds": [
     "USPTO assignment alerts for ownership changes",
-    "Trademark status checks for variety brands",
+    "Automated trademark status-change monitoring for source-linked variety brands",
     "Additional national PBR databases where bulk exports or stable gazettes are available",
-    "Company website portfolio monitors for known breeders and nurseries"
+    "Broader holder/applicant fields from future CPVO or UPOV exports"
   ]
 }

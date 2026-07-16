@@ -8,20 +8,49 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: plant-patent-dashboard-refresh
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Refresh USPTO Official Gazette plant grants
         run: python scripts/refresh_uspto_grants.py --issues 8
+      - name: Enrich patent source links
+        run: python scripts/enrich_patent_links.py
+      - name: Rebuild owner sourcing profiles
+        run: python scripts/build_owner_profiles.py
+      - name: Recheck configured company websites and links
+        run: |
+          python scripts/probe_company_sites.py
+          python scripts/probe_profile_evidence.py
+      - name: Rebuild internal confidence and research queues
+        run: |
+          python scripts/build_profile_audit.py
+          python scripts/build_web_research_queue.py
+      - name: Rebuild source status
+        run: python scripts/build_source_status.py
+      - name: Validate dashboard data contracts
+        run: python scripts/validate_dashboard_data.py --strict
+      - name: Preserve refresh health report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: dashboard-refresh-health
+          path: data/refresh_health.json
+          if-no-files-found: warn
+          retention-days: 30
       - name: Commit data update
         run: |
           git config user.name "plant-patent-dashboard"
           git config user.email "plant-patent-dashboard@example.com"
-          git add data/plant_patents.json
+          git add data/plant_patents.json data/link_enrichment_cache.json data/owner_profiles.json data/source_status.json data/company_site_probe.json data/company_site_probe.csv data/profile_evidence_probe.json data/profile_evidence_probe.csv data/profile_audit.json data/profile_audit.csv data/data_confidence.json data/data_confidence.csv data/rollup_review_queue.csv data/web_research_queue.json data/web_research_queue.csv data/refresh_health.json
           git diff --cached --quiet || git commit -m "Refresh plant patent data"
           git push

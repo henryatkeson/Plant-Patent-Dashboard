@@ -1,0 +1,270 @@
+{
+  "metadata": {
+    "title": "Breeder profile web research - July 15 company and institution rollups",
+    "reviewedAt": "2026-07-15",
+    "notes": "Company-level profiles created from source-backed breeder affiliation research. Cultivar-specific holders and historical employers remain distinct where title varies."
+  },
+  "profiles": [
+    {
+      "canonicalName": "Rusticas del Guadalquivir S.L.",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private family-owned breeding company within an operating fruit group",
+      "ownershipSummary": "Rusticas del Guadalquivir S.L. is named as breeder or rightsholder in current Spanish records and operates within the Royal family fruit group; Royal branding is not treated as a blanket assignment.",
+      "headquarters": "Andalusia, Spain",
+      "leadershipSummary": "Royal identifies founder Jose Gandia as president, Macarena Garcia-Otero as CEO, and Pascal Boutin as general manager, indicating multigenerational ownership with professional leadership.",
+      "primaryContactEmail": "hello@royal.es",
+      "primaryContactUrl": "https://royal.es/contactar-con-royal/",
+      "contactSourceUrl": "https://royal.es/contactar-con-royal/",
+      "webResearchSources": [
+        {"label": "Royal breeding program", "url": "https://royal.es/investigacion-royal/"},
+        {"label": "Royal leadership", "url": "https://royal.es/equipo/"},
+        {"label": "Spanish variety bulletin", "url": "https://www.mapa.gob.es/dam/mapa/contenido/agricultura/temas/medios-de-produccion/semillas-y-plantas-de-vivero/registro-de-variedades/boletines/boletines-bimensuales/bolrvp-12025_-0.pdf"}
+      ],
+      "webResearchNotes": "Verify the legal perimeter between Rusticas and Royal, current cap table, financial scale, and cultivar-level title."
+    },
+    {
+      "canonicalName": "Nova Siri Genetics S.r.l.",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private shareholder-owned breeding company",
+      "ownershipSummary": "Nova Siri Genetics is the supported applicant, assignee, or holder for cited strawberry varieties; breeder Nicola Tufaro is publicly identified as a shareholder rather than the personal portfolio owner.",
+      "headquarters": "Policoro, Italy",
+      "leadershipSummary": "Pasquale Casalnuovo is publicly identified as sole administrator, with Carmela Suriano, Jose Miguel Arias, Nicola Tufaro, and a broader research team providing operating depth.",
+      "primaryContactEmail": "info@novasirigenetics.com",
+      "primaryContactUrl": "https://www.novasirigenetics.com/contatti/",
+      "contactSourceUrl": "https://www.novasirigenetics.com/contatti/",
+      "webResearchSources": [
+        {"label": "Research program and breeder role", "url": "https://www.novasirigenetics.com/2026/04/08/innovazione-varietale-e-filiera-al-centro-del-quinto-open-day/"},
+        {"label": "Company contact", "url": "https://www.novasirigenetics.com/contatti/"},
+        {"label": "Melissa patent", "url": "https://patentimages.storage.googleapis.com/c5/3a/64/0d59a6e06c8bf5/US20160029528P1.pdf"}
+      ],
+      "webResearchNotes": "Verify shareholder percentages, standalone financial scale, territorial licenses, and cultivar-level title."
+    },
+    {
+      "canonicalName": "Gradilis Holding SAS",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private family breeding and licensing platform with external assignees",
+      "ownershipSummary": "Gradilis Holding and Gradilis Recherche are associated with Olivier and Alexandre Grard, while specific varieties have been assigned to third parties such as ABCz Group BV.",
+      "headquarters": "France",
+      "leadershipSummary": "Olivier Grard remains the public editorial lead and Alexandre Grard is a visible co-breeder; title can move outside the family platform by cultivar.",
+      "primaryContactEmail": "contact@gradilis.com",
+      "primaryContactUrl": "https://gradilis.com/mentions-legales/",
+      "contactSourceUrl": "https://gradilis.com/mentions-legales/",
+      "webResearchSources": [
+        {"label": "Gradilis legal notice", "url": "https://gradilis.com/mentions-legales/"},
+        {"label": "Gradisca assignment chain", "url": "https://patents.google.com/patent/USPP30008P3/en"},
+        {"label": "Current Canadian holder", "url": "https://active.inspection.gc.ca/english/plaveg/pbrpov/cropreport/app/app00012957e.shtml"}
+      ],
+      "webResearchNotes": "Potential target, but the rights perimeter must be reconciled among the holding company, research company, individuals, and external assignees."
+    },
+    {
+      "canonicalName": "Institute of Experimental Botany Apple Breeding",
+      "webResearchStatus": "not_actionable_verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "public academy research institute",
+      "ownershipSummary": "The Institute of Experimental Botany of the Czech Academy of Sciences is the supported assignee and program owner for cited modern apple selections.",
+      "headquarters": "Czech Republic",
+      "leadershipSummary": "Radek Cerny succeeded program founder Jaroslav Tupy as breeding-station head, with Jan Zima and a broader team providing institutional continuity.",
+      "primaryContactEmail": "ueb.strizovice@seznam.cz",
+      "primaryContactUrl": "https://applebreeding.ueb.cas.cz/team/",
+      "contactSourceUrl": "https://applebreeding.ueb.cas.cz/team/",
+      "webResearchSources": [
+        {"label": "Program history", "url": "https://applebreeding.ueb.cas.cz/about/"},
+        {"label": "Team and succession", "url": "https://applebreeding.ueb.cas.cz/team/"},
+        {"label": "Institute-assigned patent", "url": "https://patents.google.com/patent/USPP15963P2/en"}
+      ],
+      "webResearchNotes": "Public licensing relationship; exclude from acquisition ranking."
+    },
+    {
+      "canonicalName": "University of Minnesota Fruit Breeding",
+      "webResearchStatus": "not_actionable_verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "public university breeding and licensing program",
+      "ownershipSummary": "The Regents of the University of Minnesota, sometimes with USDA for specific germplasm, are the supported rights and licensing principals rather than breeder Jim Luby personally.",
+      "headquarters": "Minnesota, United States",
+      "leadershipSummary": "Matthew Clark succeeded Jim Luby after Luby's 2024 retirement, providing a documented institutional transition.",
+      "primaryContactUrl": "https://license.umn.edu/product/minnesota-first-kiss-apple-mn55-variety",
+      "contactSourceUrl": "https://license.umn.edu/product/minnesota-first-kiss-apple-mn55-variety",
+      "webResearchSources": [
+        {"label": "Jim Luby profile", "url": "https://horticulture.umn.edu/people/jim-luby"},
+        {"label": "Leadership succession", "url": "https://msi.umn.edu/msi-news/msi-pi-matthew-clark-takes-helm-us-fruit-breeding-program"},
+        {"label": "University licensing", "url": "https://license.umn.edu/product/minnesota-first-kiss-apple-mn55-variety"}
+      ],
+      "webResearchNotes": "Public licensing relationship; exclude from acquisition ranking."
+    },
+    {
+      "canonicalName": "ARO Volcani Citrus Breeding",
+      "webResearchStatus": "not_actionable_verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "Israeli public agricultural research program",
+      "ownershipSummary": "ARO or the State of Israel is the supported applicant or institutional rights principal for cited citrus selections; program leader Nir Carmi is not the personal holder.",
+      "headquarters": "Rishon LeZion, Israel",
+      "leadershipSummary": "Nir Carmi leads a multi-researcher citrus program with an active cultivar pipeline and institutional continuity.",
+      "primaryContactName": "Nir Carmi",
+      "primaryContactTitle": "Citrus breeding program leader",
+      "primaryContactEmail": "vhncarmi@volcani.agri.gov.il",
+      "primaryContactUrl": "https://www.agri.gov.il/en/author/vhncarmivolcani-agri-gov-il",
+      "contactSourceUrl": "https://www.agri.gov.il/en/author/vhncarmivolcani-agri-gov-il",
+      "webResearchSources": [
+        {"label": "Citrus breeding program", "url": "https://www.agri.gov.il/en/breeding-projects/citrus-breeding/"},
+        {"label": "Program leader", "url": "https://www.agri.gov.il/en/author/vhncarmivolcani-agri-gov-il"}
+      ],
+      "webResearchNotes": "Public licensing and relationship profile; exclude from acquisition ranking."
+    },
+    {
+      "canonicalName": "M.M. Gryshko National Botanical Garden",
+      "webResearchStatus": "not_actionable_verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "Ukrainian public national-academy botanical garden",
+      "ownershipSummary": "The Botanical Garden is the supported applicant or holder for the cited apple portfolio; the named researchers are authors and institutional employees rather than personal owners.",
+      "headquarters": "Kyiv, Ukraine",
+      "leadershipSummary": "Svitlana Klymenko leads a visible team including Inna Honcharovska and Volodymyr Kuznetsov, creating institutional continuity.",
+      "primaryContactEmail": "nbg@nbg.kyiv.ua",
+      "primaryContactUrl": "https://nbg.kyiv.ua/ua/contacts.html",
+      "contactSourceUrl": "https://nbg.kyiv.ua/ua/contacts.html",
+      "webResearchSources": [
+        {"label": "Department and staff", "url": "https://www.old.nas.gov.ua/UA/Department/Pages/default.aspx?DepartmentID=0001507"},
+        {"label": "Official contact", "url": "https://nbg.kyiv.ua/ua/contacts.html"},
+        {"label": "Ukraine variety bulletin", "url": "https://sops.gov.ua/uploads/page/buleten/2022/2022.5.pdf"}
+      ],
+      "webResearchNotes": "Public research profile; exclude from acquisition ranking and preserve cultivar-level state title."
+    },
+    {
+      "canonicalName": "IMIDA Fruit Breeding",
+      "webResearchStatus": "not_actionable_verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "Spanish regional public research institute",
+      "ownershipSummary": "IMIDA is the public employer and a named co-holder for cited fruit selections; NOVAMED and other partners retain their cultivar-specific interests.",
+      "headquarters": "Murcia, Spain",
+      "leadershipSummary": "Jose Enrique Cos Terrer leads an active multi-researcher project that includes Antonio Carrillo Navarro and Alfonso Guevara Gazquez.",
+      "primaryContactEmail": "imida@carm.es",
+      "primaryContactUrl": "https://www.imida.es/contacto",
+      "contactSourceUrl": "https://www.imida.es/contacto",
+      "webResearchSources": [
+        {"label": "Active fruit breeding project", "url": "https://www.imida.es/-/mg-frutales"},
+        {"label": "IMIDA contact", "url": "https://www.imida.es/contacto"},
+        {"label": "Spanish title grants", "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-11659"}
+      ],
+      "webResearchNotes": "Public licensing and partnership profile. Keep IMIDA, NOVAMED, ITUM, and other holders distinct by cultivar."
+    },
+    {
+      "canonicalName": "Splendor Produce",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private Mexican produce and genetics company",
+      "ownershipSummary": "Splendor Produce is the supported applicant for several berry cultivars, while other related records identify individual or different commercial rightsholders.",
+      "headquarters": "Mexico",
+      "leadershipSummary": "The company describes an institutional genetics program begun after its 2007 founding; a complete ownership and leadership schedule was not found.",
+      "primaryContactEmail": "contact@splendorproduce.com",
+      "primaryContactUrl": "https://splendorproduce.com/actualmente/",
+      "contactSourceUrl": "https://splendorproduce.com/actualmente/",
+      "webResearchSources": [
+        {"label": "Company genetics program", "url": "https://splendorproduce.com/actualmente/"},
+        {"label": "Moroccan PBR bulletin", "url": "https://www.onssa.gov.ma/wp-content/uploads/2025/06/bulletin-protection-n43-avril-2025-onssa-dcsp.pdf"}
+      ],
+      "webResearchNotes": "Verify the operating entity, cap table, financial scale, and cultivar-level title split before ranking as an acquisition target."
+    },
+    {
+      "canonicalName": "COTEVISA",
+      "webResearchStatus": "not_actionable_verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "strategic-scale private nursery and propagation company",
+      "ownershipSummary": "COMERCIAL TECNICA Y VIVEROS, S.L. trades as COTEVISA. The short S.L. Viveros record is a parser fragment of this legal entity, not a separate owner.",
+      "headquarters": "Spain",
+      "leadershipSummary": "The official site describes more than 30 years of operations, more than 10 hectares of greenhouses, and production capacity up to 12 million plants annually; current ownership is not publicly detailed.",
+      "primaryContactEmail": "comercial@cotevisa.com",
+      "primaryContactUrl": "https://www.cotevisa.es/",
+      "contactSourceUrl": "https://www.cotevisa.es/",
+      "webResearchSources": [
+        {"label": "COTEVISA official site", "url": "https://www.cotevisa.es/"},
+        {"label": "Spanish Ministry entity record", "url": "https://servicio.mapa.gob.es/germenwai/DetalleEntidad.aspx?IDSolicitante=100678&id=es"}
+      ],
+      "webResearchNotes": "Strategic relationship profile. Deduplicate S.L. Viveros into COTEVISA and verify title by cultivar."
+    },
+    {
+      "canonicalName": "Sino-NZ Innovation Limited",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private kiwifruit rights platform with portfolio sale signal",
+      "ownershipSummary": "SNZI states that it acquired the Skelton breeding business and worldwide rights to about 42 varieties in 2018, while acknowledging that some varieties had already been sold and later territorial rights were also transferred.",
+      "headquarters": "New Zealand",
+      "leadershipSummary": "Allan Rutledge leads the acquired-rights platform, which publicly described culling the portfolio and preparing the remaining business for sale.",
+      "primaryContactName": "Allan Rutledge",
+      "primaryContactEmail": "allan@snzi.kiwi",
+      "primaryContactUrl": "https://www.snzi.kiwi/contact",
+      "contactSourceUrl": "https://www.snzi.kiwi/contact",
+      "webResearchSources": [
+        {"label": "SNZI acquisition and portfolio review", "url": "https://www.snzi.kiwi/about"},
+        {"label": "SNZI contact", "url": "https://www.snzi.kiwi/contact"},
+        {"label": "Skelton A19 prior assignment", "url": "https://patents.google.com/patent/USPP20671P3/en"}
+      ],
+      "webResearchNotes": "High-priority chain-of-title and sale-process diligence. Do not roll every Skelton record into SNZI without assignment evidence."
+    },
+    {
+      "canonicalName": "Feno Scarl",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private apple-variety consortium and rights holder",
+      "ownershipSummary": "Patent assignment and Canadian PBR evidence place Fengapi rights with Feno entities rather than breeder Reinhard Kaneppele personally.",
+      "headquarters": "Italy",
+      "leadershipSummary": "The consortium provides institutional commercialization continuity; member ownership and transfer restrictions require diligence.",
+      "primaryContactEmail": "info@feno.it",
+      "primaryContactUrl": "https://feno.it/en/contacts/",
+      "contactSourceUrl": "https://feno.it/en/contacts/",
+      "brandExamples": ["Tessa", "Fengapi"],
+      "webResearchSources": [
+        {"label": "Canadian Fengapi holder record", "url": "https://active.inspection.gc.ca/english/plaveg/pbrpov/cropreport/app/app00011956e.shtml"},
+        {"label": "Fengapi patent assignment", "url": "https://patents.google.com/patent/USPP30863"},
+        {"label": "Feno contact", "url": "https://feno.it/en/contacts/"}
+      ],
+      "webResearchNotes": "Verify member ownership, change-of-control restrictions, licensing economics, and cultivar-level title. Tessa is treated as a trade name, not a confirmed registered mark."
+    },
+    {
+      "canonicalName": "Berryneo S.L.",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private berry breeding company",
+      "ownershipSummary": "Recent official PBR records name Berryneo as breeder and applicant, with Javier Velo Prieto acting as company representative rather than personal owner.",
+      "headquarters": "Spain",
+      "leadershipSummary": "Velo Prieto is the visible principal-level representative; no public successor or broader executive bench was identified.",
+      "primaryContactName": "Javier Velo Prieto",
+      "primaryContactEmail": "info@berryum.es",
+      "primaryContactUrl": "https://www.berryneo.com/contacto/",
+      "contactSourceUrl": "https://www.berryneo.com/en/legal-notice/",
+      "brandExamples": ["BerrYum"],
+      "webResearchSources": [
+        {"label": "Berryneo legal notice", "url": "https://www.berryneo.com/en/legal-notice/"},
+        {"label": "Berryneo varieties", "url": "https://www.berryneo.com/en/varieties-berryum/"},
+        {"label": "Moroccan PBR bulletin", "url": "https://www.onssa.gov.ma/wp-content/uploads/2025/12/bulletin-protection-n44-septembre-2025-onssa-dcsp.pdf"}
+      ],
+      "webResearchNotes": "High-priority private target. Verify cap table, operating scale, BerrYum trademark ownership, and application-level title."
+    },
+    {
+      "canonicalName": "Escande Breeding Group",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private third-generation family breeding and nursery group",
+      "ownershipSummary": "Benoit Escande Editions is the documented breeder or IP holder for cited varieties, while SCEA Pepinieres et Vergers Escande is the operating nursery and maintainer.",
+      "headquarters": "Saint-Vite, France",
+      "leadershipSummary": "Benoit Escande is the third-generation director with a visible technical, commercial, and administrative team; no named next-generation legal successor was found.",
+      "primaryContactName": "Benoit Escande",
+      "primaryContactEmail": "info@pepinieres-escande.com",
+      "primaryContactPhone": "+33 5 53 71 22 13",
+      "primaryContactUrl": "https://www.pepinieres-escande.com/contact/",
+      "contactSourceUrl": "https://www.pepinieres-escande.com/contact/",
+      "trademarkStatus": "live_mark_evidence",
+      "trademarkOwner": "Benoit Escande Editions",
+      "trademarkEvidenceUrl": "https://euipo.europa.eu/eSearch/#details/trademarks/015034242",
+      "trademarkLastCheckedAt": "2026-07-15",
+      "brandExamples": ["ESCANDE"],
+      "webResearchSources": [
+        {"label": "Escande official site", "url": "https://www.pepinieres-escande.com/"},
+        {"label": "Official breeder and maintainer record", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000035505478"},
+        {"label": "ESCANDE trademark record", "url": "https://euipo.europa.eu/eSearch/#details/trademarks/015034242"}
+      ],
+      "webResearchNotes": "High-priority private platform. Verify the rights perimeter, family ownership, financial scale, and cultivar-level title before outreach."
+    }
+  ]
+}

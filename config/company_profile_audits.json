@@ -11,18 +11,18 @@
   "profiles": [
     {
       "canonicalName": "Bloom Fresh International",
-      "auditStatus": "seeded_profile_needs_full_review",
-      "auditConfidence": "medium",
+      "auditStatus": "website_and_parent_verified",
+      "auditConfidence": "high",
       "websiteCultivarCount": "",
-      "websiteCultivarCountBasis": "",
-      "websiteCultivarEvidenceUrl": "https://www.bloomfresh.com/",
+      "websiteCultivarCountBasis": "Official site publishes variety catalogues but not a single consolidated cultivar count.",
+      "websiteCultivarEvidenceUrl": "https://bloomfreshglobal.com/products/",
       "primaryContactName": "",
       "primaryContactTitle": "",
       "primaryContactUrl": "",
-      "contactSourceUrl": "",
+      "contactSourceUrl": "https://bloomfreshglobal.com/#contact",
       "trademarkStatus": "not_checked",
-      "brandExamples": ["Sweet Celebration", "Sweet Globe", "Sweet Sapphire"],
-      "auditNotes": "Parent rollup for IFG, SNFL, and Sheehan-branded grape genetics. Large benchmark platform, not a target in current size range."
+      "brandExamples": ["Sweet Celebration", "Sweet Globe", "Sweet Sapphire", "Cotton Candy", "Allison"],
+      "auditNotes": "Corrected prior florist-domain false positive. Official Bloom Fresh Global site, EQT portfolio page, and LinkedIn profile identify Bloom Fresh as the IFG/SNFL fruit-breeding platform. Large benchmark platform, not a target in current size range."
     },
     {
       "canonicalName": "SNFL Group",

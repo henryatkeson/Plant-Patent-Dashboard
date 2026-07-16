@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "title": "Dashboard Refresh Health",
+    "checkedAt": "2026-07-16T05:45:53.017421+00:00",
+    "status": "warning",
+    "errorCount": 0,
+    "warningCount": 2
+  },
+  "counts": {
+    "plantPatents": 2708,
+    "cpvoRecords": 115141,
+    "ownerProfiles": 12139,
+    "companyProfiles": 179,
+    "manualAudits": 35,
+    "webEvidenceProfiles": 485,
+    "profileEvidenceLinks": 1419,
+    "webResearchRows": 12139
+  },
+  "checks": [
+    {
+      "name": "patent_dataset_present",
+      "ok": true,
+      "severity": "error",
+      "detail": "2,708 plant-patent rows"
+    },
+    {
+      "name": "cpvo_dataset_present",
+      "ok": true,
+      "severity": "error",
+      "detail": "115,141 CPVO rows"
+    },
+    {
+      "name": "owner_profiles_present",
+      "ok": true,
+      "severity": "error",
+      "detail": "12,139 owner profiles"
+    },
+    {
+      "name": "profile_audit_covers_every_owner",
+      "ok": true,
+      "severity": "error",
+      "detail": "12,139 audit rows for 12,139 owners"
+    },
+    {
+      "name": "web_research_covers_every_owner",
+      "ok": true,
+      "severity": "error",
+      "detail": "12,139 research rows for 12,139 owners"
+    },
+    {
+      "name": "unique_company_profiles",
+      "ok": true,
+      "severity": "error",
+      "detail": "No duplicate canonical company names"
+    },
+    {
+      "name": "company_aliases_unambiguous",
+      "ok": true,
+      "severity": "error",
+      "detail": "No company alias maps to more than one profile"
+    },
+    {
+      "name": "unique_manual_audits",
+      "ok": true,
+      "severity": "error",
+      "detail": "No duplicate manual audit names"
+    },
+    {
+      "name": "unique_web_research_evidence",
+      "ok": true,
+      "severity": "error",
+      "detail": "No duplicate web-research evidence names"
+    },
+    {
+      "name": "web_research_has_ownership_context",
+      "ok": true,
+      "severity": "error",
+      "detail": "Every researched profile has status and ownership context"
+    },
+    {
+      "name": "completed_web_research_has_sources",
+      "ok": true,
+      "severity": "error",
+      "detail": "Completed research rows include source evidence"
+    },
+    {
+      "name": "company_urls_well_formed",
+      "ok": true,
+      "severity": "error",
+      "detail": "All configured URLs use HTTP(S)"
+    },
+    {
+      "name": "no_suspected_wrong_company_sites",
+      "ok": true,
+      "severity": "error",
+      "detail": "No configured site looks like an unrelated business"
+    },
+    {
+      "name": "configured_sites_reachable",
+      "ok": false,
+      "severity": "warning",
+      "detail": "Unreachable: Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce"
+    },
+    {
+      "name": "profile_evidence_links_reachable",
+      "ok": false,
+      "severity": "warning",
+      "detail": "2 evidence links need replacement or manual review"
+    },
+    {
+      "name": "research_status_totals_match",
+      "ok": true,
+      "severity": "error",
+      "detail": "Status totals 12,139; research rows 12,139"
+    }
+  ]
+}

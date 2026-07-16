@@ -422,7 +422,7 @@ button:hover {
 
 .sourcing-brief {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
   margin: 14px 0;
 }
@@ -466,7 +466,7 @@ button:hover {
 
 .owner-table th:nth-child(2),
 .owner-table td:nth-child(2) {
-  width: 86px;
+  width: 112px;
 }
 
 .owner-table th:nth-child(3),
@@ -885,6 +885,11 @@ tbody tr:hover td {
   background: #fffaf0;
 }
 
+.profile-kpi.neutral {
+  border-color: #cad9ce;
+  background: #f8fbf7;
+}
+
 .profile-kpi.muted {
   background: #f5f6f4;
 }
@@ -932,6 +937,10 @@ tbody tr:hover td {
   color: var(--ink);
   font-size: 13px;
   line-height: 1.45;
+}
+
+.blocker-list.positive {
+  color: #274f3c;
 }
 
 .company-description {

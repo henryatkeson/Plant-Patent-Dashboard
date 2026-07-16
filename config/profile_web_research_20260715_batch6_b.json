@@ -1,0 +1,251 @@
+{
+  "metadata": {
+    "title": "Breeder profile web research - July 15 batch 6 B",
+    "reviewedAt": "2026-07-15",
+    "notes": "Public-web research only. Historical breeder, employer, applicant, assignee, licensee, successor, and trademark roles remain distinct; no external communication was made. Supplied canonicalName strings are preserved even where a record has reversed name order."
+  },
+  "profiles": [
+    {
+      "canonicalName": "Aldo Telch",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - independent private breeder with multiple commercial rightsholders",
+      "ownershipSummary": "Independent raspberry breeder associated with Faver, Trentino. Rights are cultivar-specific: Sant'Orsola entities appear on Vajolet Plus and Lagorai Plus records, while Molari & Gatti or related Molari entities appear on Enrosadira and other records; no source supports rolling his entire historical portfolio into one company.",
+      "headquarters": "Breeder activity associated with Faver, Trentino, Italy; Enrosadira commercialization contact in Cesena, Emilia-Romagna, Italy",
+      "leadershipSummary": "No named personal successor was found. Molari's family management provides commercialization continuity for its records, but that does not establish ownership of Telch cultivars held by Sant'Orsola or by Telch himself.",
+      "primaryContactName": "Molari nursery team",
+      "primaryContactPhone": "+39 0547 630540",
+      "primaryContactUrl": "https://www.vivaimolari.it/",
+      "brandExamples": ["Vajolet Plus", "Lagorai Plus", "Enrosadira", "Castion", "Halley", "TD13"],
+      "webResearchSources": [
+        {"label": "Lagorai Plus official PBR journal", "url": "https://beta.ipaustralia.gov.au/tools-and-research/professional-resources/ip-rights-journals/~/-/media/Project/IPA/IPAustralia/PDF/PBR-Journals/Volume-30-Number-3.pdf"},
+        {"label": "Enrosadira patent record", "url": "https://patents.google.com/patent/US20140317798P1/en"},
+        {"label": "Molari official website", "url": "https://www.vivaimolari.it/"}
+      ],
+      "webResearchNotes": "Verified as one individual, not a company or duplicate. Preserve the applicant, assignee, and holder shown for each cultivar and territory."
+    },
+    {
+      "canonicalName": "Bessho Hideo",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - former public-institution breeder and research director",
+      "ownershipSummary": "Hideo Bessho was a NARO fruit-breeding researcher and division director. NARO and its Ministry of Agriculture predecessor entities, not Bessho personally, are the documented institutional owners of the associated apple and grape work.",
+      "headquarters": "NARO headquarters, 3-1-1 Kannondai, Tsukuba, Ibaraki, Japan; apple breeding historically centered at the Morioka fruit-tree station",
+      "leadershipSummary": "He was Director of NARO's Division of Fruit Breeding and Genetics in 2018 and is now publicly described as former NARO. Program continuity is institutional and team-based; no evidence supports personal ownership or a private successor vehicle.",
+      "primaryContactName": "NARO collaboration and licensing team",
+      "primaryContactEmail": "joint_research@naro.affrc.go.jp",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "brandExamples": ["Sansa", "Morinokagayaki", "BENIMINORI", "KINSHU", "Ruby Sweet", "Rose Pearl"],
+      "webResearchSources": [
+        {"label": "NARO public lecture profile", "url": "https://www.naro.go.jp/english/outreach/public/140946.html"},
+        {"label": "Public researcher profile", "url": "https://researchmap.jp/besshoh007?lang=en"},
+        {"label": "Sansa patent and public assignee", "url": "https://patents.google.com/patent/USPP6519P/en"}
+      ],
+      "webResearchNotes": "Name order follows the supplied source string. Treat this as Hideo Bessho and retain the public institution named on each historical filing."
+    },
+    {
+      "canonicalName": "Crista Fischer",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - legacy public-institution breeder",
+      "ownershipSummary": "Legacy apple breeder from the Dresden-Pillnitz public breeding program, now represented by the Julius Kuhn Institute (JKI) and its federal predecessors. The cultivar rights are institutional public-sector assets, not personal property.",
+      "headquarters": "JKI Institute for Breeding Research on Fruit Crops, Pillnitzer Platz 3a, 01326 Dresden-Pillnitz, Germany",
+      "leadershipSummary": "Completed institutional succession. Crista Fischer is absent from the current staff roster; Henryk Flachowsky is institute head and Andreas Peil is a current apple-breeding scientist.",
+      "primaryContactName": "JKI Institute for Breeding Research on Fruit Crops",
+      "primaryContactEmail": "zo@julius-kuehn.de",
+      "primaryContactPhone": "+49 3946 47 8001",
+      "primaryContactUrl": "https://www.julius-kuehn.de/zo",
+      "brandExamples": ["Rewena", "Retina", "Releika", "Rea Bellina", "Rea Agata", "Rea Cadis", "Rea Gold"],
+      "webResearchSources": [
+        {"label": "Official Pillnitz cultivar brochure", "url": "https://www.julius-kuehn.de/media/Veroeffentlichungen/Flyer/PillnitzerObstsortenbroschuere.pdf"},
+        {"label": "Current JKI fruit-breeding staff", "url": "https://www.julius-kuehn.de/zo/personal"},
+        {"label": "JKI institute and contact", "url": "https://www.julius-kuehn.de/zo"}
+      ],
+      "webResearchNotes": "Treat East German, later federal, and JKI naming as institutional succession. Do not assign Fischer's historical cultivars to current staff personally."
+    },
+    {
+      "canonicalName": "Craig Robert Pressler",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - private family-company founder and breeder",
+      "ownershipSummary": "Australian citrus breeder and family-business founder. Historical title is split among Craig Pressler personally, Craig and Bindi Pressler as trustees for the C&B Pressler Family Trust, and 2PH entities. Costa acquired the 2PH operating business and assets in 2021, but public evidence does not support reassigning every earlier Pressler or trust-held right to Costa.",
+      "headquarters": "Superior Production Company and the Pressler breeding activity, Emerald, Queensland 4720, Australia",
+      "leadershipSummary": "Craig Pressler and family remain publicly associated with Superior Production Company; Andrew Miles joined as Research Director in 2018. This is evidence of an active post-2PH breeding platform rather than a completed handoff to Costa.",
+      "primaryContactName": "Superior Production Company",
+      "primaryContactUrl": "https://www.futurefoodsystems.com.au/partner/superior-production-company/",
+      "brandExamples": ["2PH Seedless", "Phoenix 66-75", "Amorette AC41114", "Code 3X97", "7B97"],
+      "webResearchSources": [
+        {"label": "AC41114 official PBR journal", "url": "https://www.ipaustralia.gov.au/tools-and-research/professional-resources/ip-rights-journals/~/-/media/Project/IPA/IPAustralia/PDF/PBR-Journals/Volume-32-Number-3.pdf?rev=da81db5a54d2487f90f098415aa8db2f"},
+        {"label": "Costa completion of 2PH acquisition", "url": "https://investors.costagroup.com.au/DownloadFile.axd?file=%2FReport%2FComNews%2F20210719%2F02396845.pdf"},
+        {"label": "Superior Production Company partner profile", "url": "https://www.futurefoodsystems.com.au/partner/superior-production-company/"}
+      ],
+      "webResearchNotes": "Independent family-company target. Verify title and any 2021 asset transfer cultivar by cultivar; do not treat the sale of 2PH operations as a blanket patent assignment."
+    },
+    {
+      "canonicalName": "Joseph Maranto",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - retired public extension breeder with separate private breeding records",
+      "ownershipSummary": "Former UC Cooperative Extension farm advisor who co-developed UC pistachios while also appearing on unrelated private table-grape records. The Regents of the University of California own the UC pistachio cultivars; private grape rights were assigned record-by-record to parties including Anton Caratan & Son and, in later foreign records, Luribay Business Inc.",
+      "headquarters": "UC Cooperative Extension Kern County, Bakersfield, California, and UC Davis, California; private grape work associated with the Delano area",
+      "leadershipSummary": "Maranto is retired or emeritus. Craig Kallsen continued the Kern County pistachio evaluation and extension role, giving the UC program visible institutional succession; that succession has no bearing on Maranto's separate private grape assignments.",
+      "primaryContactName": "Craig Kallsen, UC Cooperative Extension",
+      "primaryContactEmail": "cekallsen@ucdavis.edu",
+      "primaryContactPhone": "+1 661-868-6221",
+      "primaryContactUrl": "https://ucanr.edu/county-office/kern-county/citrus-subtropical-horticulture-pistachios",
+      "brandExamples": ["Randy", "Golden Hills", "Lost Hills", "Famoso", "Cara Seedless", "Mara Seedless", "Blanc Seedless"],
+      "webResearchSources": [
+        {"label": "UC Davis pistachio program", "url": "https://fps.ucdavis.edu/pistachio.cfm"},
+        {"label": "Cara Seedless patent and assignee", "url": "https://patents.google.com/patent/USPP19429P3/en"},
+        {"label": "Current UC Kern pistachio contact", "url": "https://ucanr.edu/county-office/kern-county/citrus-subtropical-horticulture-pistachios"}
+      ],
+      "webResearchNotes": "Do not combine the public UC pistachio portfolio with the privately assigned grape portfolio. Historical employer and private assignee must be retained per record."
+    },
+    {
+      "canonicalName": "Ito Yuji",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - retired public-institution breeder",
+      "ownershipSummary": "Yuji Ito is a NARO researcher whose documented career spans apple, citrus, blueberry, and pear programs. Official Japanese variety records name NARO as titleholder, so the mixed-crop portfolio reflects transfers within the public research system rather than duplicate identities or personal ownership.",
+      "headquarters": "NARO headquarters, Tsukuba, Ibaraki, Japan; last documented institutional base at NARO Hokkaido Agricultural Research Center, Sapporo, Japan",
+      "leadershipSummary": "A 2025 NARO award notice identifies Ito as retired. Succession is institutional and team-based across NARO centers; no private successor or personal rights vehicle was found.",
+      "primaryContactName": "NARO collaboration and licensing team",
+      "primaryContactEmail": "joint_research@naro.affrc.go.jp",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "brandExamples": ["HAREHIME", "Jade Sweet", "Rose Pearl", "KINSHU", "BENIMINORI", "Ruby Sweet"],
+      "webResearchSources": [
+        {"label": "Official HAREHIME variety record", "url": "https://www.hinshu2.maff.go.jp/vips/cmm/apCMM112.aspx?LANGUAGE=English&TOUROKU_NO=12069"},
+        {"label": "MAFF public researcher record", "url": "https://agresearcher.maff.go.jp/kenkyuusha/show/134"},
+        {"label": "NARO retirement and award notice", "url": "https://www.naro.go.jp/project/research_activities/laboratory/nifts/168784.html"}
+      ],
+      "webResearchNotes": "Name order follows the supplied source string. Treat this as Yuji Ito and retain NARO or the named predecessor public body on each historical record."
+    },
+    {
+      "canonicalName": "Yoshiie Kazuo",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - independent grower-breeder and personal rightsholder",
+      "ownershipSummary": "Kazuo Yoshiie is an independent apple grower-breeder associated with Imashirushi Yoshiie Orchard in Nakano, Nagano. Official variety records name him as breeder and holder for cultivars including Moon Rouge and Kirameki, supporting personal rather than institutional title for those records.",
+      "headquarters": "Nakano, Nagano Prefecture, Japan",
+      "leadershipSummary": "A 2026 Nagano Prefecture release still identifies Yoshiie and his orchard with active cultivar commercialization. No named family or management successor was found, so the portfolio has a visible individual key-person and succession signal.",
+      "brandExamples": ["Moon Rouge", "Kirameki", "Irodori", "Nakanoshinku", "Enbu", "Tosaika", "Hoshino Spice"],
+      "webResearchSources": [
+        {"label": "Official Moon Rouge registration summary", "url": "https://www.hinshu2.maff.go.jp/gazette/touroku/contents/457gaiyou.pdf"},
+        {"label": "Official Swiss Kirameki breeder and owner record", "url": "https://www.blw.admin.ch/dam/en/sd-web/jSKJ59x2UJaD/plantvar%20268%20Nov%2021.pdf"}
+      ],
+      "webResearchNotes": "Verified as Kazuo Yoshiie despite occasional foreign-record transliteration errors. No official public business contact path was located, so no personal address, email, or phone is included."
+    },
+    {
+      "canonicalName": "Ronald E. Tarailo",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - former federal research technician and breeder",
+      "ownershipSummary": "Former USDA Agricultural Research Service grape research technician and co-breeder in the David Ramming program at Parlier. Patents identify the United States, represented by the Secretary of Agriculture, as assignee; the portfolio is federal institutional IP, not Tarailo's personal property.",
+      "headquarters": "USDA-ARS San Joaquin Valley Agricultural Sciences Center, 9611 S. Riverbend Avenue, Parlier, California 93648",
+      "leadershipSummary": "The Ramming-Tarailo generation is a completed federal-program handoff. Current continuity sits with USDA-ARS and the Parlier center; no personal or family successor vehicle was found.",
+      "primaryContactName": "USDA-ARS San Joaquin Valley Agricultural Sciences Center",
+      "primaryContactPhone": "+1 559-596-2702",
+      "primaryContactUrl": "https://www.ars.usda.gov/pacific-west-area/parlier/sjvasc/",
+      "brandExamples": ["Autumn King", "Scarlet Royal", "Sweet Scarlet", "Valley Pearl", "Princess", "Autumn Royal"],
+      "webResearchSources": [
+        {"label": "USDA Scarlet Royal release", "url": "https://www.ars.usda.gov/news-events/news/research-news/2006/quotscarlet-royalquot-grapes-delicious/"},
+        {"label": "Autumn King patent and federal assignee", "url": "https://patents.google.com/patent/USPP16284P2/en"},
+        {"label": "Current Parlier center contact", "url": "https://www.ars.usda.gov/pacific-west-area/parlier/sjvasc/"}
+      ],
+      "webResearchNotes": "Treat Tarailo as an individual employee-breeder within USDA-ARS. Preserve the United States or Secretary of Agriculture as holder on the historical records."
+    },
+    {
+      "canonicalName": "Joseph Stephens",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - research-institute breeder with later private assignees",
+      "ownershipSummary": "The cultivar and assignment trail resolves this shortened record to Mark Joseph Stephens of New Zealand's berry-breeding program. Older work was developed through HortResearch or Plant & Food Research, while later NN-series rights were assigned on specific records to Pacific Berries LLC; the two portfolios should not be collapsed into either owner.",
+      "headquarters": "Historical berry program at Mt Albert, Auckland, and Motueka, New Zealand; Plant & Food Research's current legal successor is the New Zealand Institute for Bioeconomy Science",
+      "leadershipSummary": "Institutional succession is explicit: Plant & Food Research became a division of the New Zealand Institute for Bioeconomy Science on July 1, 2025. Pacific Berries remains a separate private holder on assigned NN-series records; Stephens's current employment was not confirmed.",
+      "primaryContactName": "New Zealand Institute for Bioeconomy Science",
+      "primaryContactUrl": "https://www.bioeconomyscience.co.nz/contact-us",
+      "brandExamples": ["Moutere", "Wakefield", "NR7", "NN08002", "WakeHaven", "NN12026", "N1237057"],
+      "webResearchSources": [
+        {"label": "NN08002 patent assignment history", "url": "https://patents.google.com/patent/US20170172037P1/en"},
+        {"label": "Official NN08002 PBR record", "url": "https://active.inspection.gc.ca/english/plaveg/pbrpov/cropreport/ra/app00010991e.shtml"},
+        {"label": "Official Bioeconomy Science succession announcement", "url": "https://www.plantandfood.com/en-nz/article/new-bioeconomy-science-institute-to-be-formed"}
+      ],
+      "webResearchNotes": "Not a duplicate, but the supplied name omits the first name Mark used in newer records. Keep historical institution-owned cultivars separate from Pacific Berries assignments and verify each territory independently."
+    },
+    {
+      "canonicalName": "Bermudo Antonio A. Alamo",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "malformed name-order record - individual corporate breeder",
+      "ownershipSummary": "Malformed reversal of Antonio A. Alamo Bermudo, a blueberry breeder on Fall Creek filings. Most cited FCE and FCM applications are assigned to Fall Creek Farm and Nursery, while ZF06-051 is documented under The Conrad-Pyle Company; neither pattern supports personal title or a blanket single-company rollup.",
+      "headquarters": "Fall Creek corporate headquarters in Lowell, Oregon, USA; breeder activity and the EMEA operation in the Seville area, Spain",
+      "leadershipSummary": "Recent 2025 filings continue to list Antonio A. Alamo Bermudo with Fall Creek breeder Peter Boches, showing an active team rather than a completed succession. Fall Creek's global private breeding platform provides institutional continuity.",
+      "primaryContactName": "Fall Creek commercial grower team",
+      "primaryContactPhone": "+34 954 491 931",
+      "primaryContactUrl": "https://www.fallcreeknursery.com/commercial-fruit-growers/varieties/inquire",
+      "brandExamples": ["FCE18-015", "FCM14-031", "FCM14-057", "FCM12-045", "ZF08-070", "ZF06-051"],
+      "webResearchSources": [
+        {"label": "Inventor portfolio and assignees", "url": "https://patents.justia.com/inventor/antonio-a-alamo-bermudo"},
+        {"label": "Recent FCE18-015 filing", "url": "https://patents.justia.com/patent/20250280745"},
+        {"label": "Fall Creek official locations and contacts", "url": "https://www.fallcreeknursery.com/careers/our-locations"}
+      ],
+      "webResearchNotes": "Preserve the supplied canonicalName but normalize identity matching to Antonio A. Alamo Bermudo. Do not merge the Conrad-Pyle record into Fall Creek ownership."
+    },
+    {
+      "canonicalName": "Renae R. Robertson",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - corporate breeder",
+      "ownershipSummary": "Strawberry breeder working in Driscoll's corporate program on the cited records. PBR and patent records identify Driscoll's, Inc. or predecessor Driscoll Strawberry Associates as holder or assignee; no personal ownership evidence was found.",
+      "headquarters": "Driscoll's, Inc., Watsonville, California, USA",
+      "leadershipSummary": "The relevant releases are products of a multi-breeder corporate program with continuing institutional ownership. Robertson's exact current role was not confirmed, but no sole-person succession dependency or personal rights vehicle appears in the records.",
+      "primaryContactName": "Driscoll's consumer relations",
+      "primaryContactPhone": "+1 800-871-3333",
+      "primaryContactUrl": "https://www.driscolls.com/about/Contact-Us",
+      "brandExamples": ["DrisStrawFortyOne", "DrisStrawFiftySix", "DrisStrawSixtySix", "Fortaleza", "DrisStrawSixtyEight", "Xareni", "DrisStrawSeventyNine", "Yunuen"],
+      "webResearchSources": [
+        {"label": "Official DrisStrawSeventyNine PBR record", "url": "https://active.inspection.gc.ca/english/plaveg/pbrpov/cropreport/str/app00011980e.shtml"},
+        {"label": "Official DrisStrawSixtySix PBR record", "url": "https://active.inspection.gc.ca/english/plaveg/pbrpov/cropreport/str/app00011532e.shtml"},
+        {"label": "DrisStrawFortyOne patent assignment", "url": "https://patents.google.com/patent/USPP25699/en"}
+      ],
+      "webResearchNotes": "Roll the cited records into the Driscoll's corporate portfolio while preserving the legal entity named at each filing date. Do not create a personal Robertson ownership record."
+    },
+    {
+      "canonicalName": "Vardi Aliza",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "malformed name-order record - deceased public-institution breeder",
+      "ownershipSummary": "Malformed reversal of Aliza Vardi (1935-2014), a Volcani Center citriculture breeder. Patents assign her releases to the State of Israel through the Ministry of Agriculture and Agricultural Research Organization, not to Vardi personally.",
+      "headquarters": "Volcani Institute, Agricultural Research Organization, 68 HaMakabim Street, Rishon LeZion, Israel; historical breeding work at Bet Dagan, Israel",
+      "leadershipSummary": "Vardi died in 2014, so succession is complete and institutional. Current Volcani leadership is headed by Director Benny Chefetz; later program scientists should not be treated as owners of Vardi's historical releases.",
+      "primaryContactName": "Volcani Institute, Agricultural Research Organization",
+      "primaryContactPhone": "+972 3-968-3226",
+      "primaryContactUrl": "https://www.agri.gov.il/en/contact-us/",
+      "brandExamples": ["Shani", "Orri", "Orah", "Mor", "Odem", "Winola", "Tami"],
+      "webResearchSources": [
+        {"label": "Official Volcani biography", "url": "https://www.agri.gov.il/en/golden-researchers/aliza-vardi/"},
+        {"label": "Shani patent and state assignee", "url": "https://patents.google.com/patent/USPP13634P2/en"},
+        {"label": "Current Volcani leadership", "url": "https://www.agri.gov.il/en/leadership/"}
+      ],
+      "webResearchNotes": "Preserve the supplied canonicalName but normalize identity matching to Aliza Vardi. Keep the State of Israel or the named ARO/Ministry entity as historical rightsholder."
+    },
+    {
+      "canonicalName": "Michelangelo Grandi",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "individual - public university breeder",
+      "ownershipSummary": "Sweet-cherry and plum breeder in the University of Bologna program. University cultivar and patent pages name Alma Mater Studiorum - University of Bologna as the owner or applicant, with Michelangelo Grandi as a breeder or inventor rather than personal rightsholder.",
+      "headquarters": "University of Bologna, Department of Agricultural and Food Sciences, Viale Giuseppe Fanin 44-46, Bologna, Italy",
+      "leadershipSummary": "The Sweet series is documented as team work with Stefano Lugli and Riccardo Correale, providing institutional bench continuity. Grandi's exact current position was not confirmed, but no personal ownership or private successor vehicle was found.",
+      "primaryContactName": "University of Bologna plant-variety rights team",
+      "primaryContactUrl": "https://distal.unibo.it/en/university-outreach/businesses/the-plant-varieties-rights",
+      "brandExamples": ["Sweet Aryana", "Sweet Lorenz", "Sweet Gabriel", "Sweet Valina", "Sweet Saretta", "Sweet Marysa", "Sweet Stephany", "Sweet Dave"],
+      "webResearchSources": [
+        {"label": "University PA8UNIBO Sweet Dave record", "url": "https://www.unibo.it/it/con-societa-e-impresa/imprese-e-non-profit/brevetti-ateneo/brevetti-ateneo/scheda/2384"},
+        {"label": "University Sweet-series portfolio brochure", "url": "https://distal.unibo.it/en/university-outreach/businesses/the-plant-varieties-rights/unibo.tiles.multi.links_attachments/3b95d53123164cd285067e02cc7b5051/%40%40objects-download/6f10731b4370425a96d9530f3faff4b1/file/ciliegie%20pieghevole%20A5%20%20ENG_2023_pagina%20singola%20per%20web.pdf"},
+        {"label": "Sweet Aryana patent record", "url": "https://patents.google.com/patent/US20130326772P1/en"}
+      ],
+      "webResearchNotes": "Treat as a University of Bologna breeder profile. Preserve the university and any territory-specific licensee or holder; do not assign the portfolio to Grandi personally."
+    }
+  ]
+}

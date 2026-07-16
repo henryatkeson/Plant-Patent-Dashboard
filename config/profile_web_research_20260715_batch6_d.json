@@ -1,0 +1,289 @@
+{
+  "metadata": {
+    "title": "Breeder profile web research - July 15 batch 6 D",
+    "reviewedAt": "2026-07-15",
+    "notes": "Public-web research only. Employer, breeder, applicant, licensee, assignee, and legal-holder roles remain distinct. Historical patents and PBR records were not reassigned to later employers, and no external communication was made."
+  },
+  "profiles": [
+    {
+      "canonicalName": "Hirabayashi Toshio",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "romanization-variant duplicate of a public-institution breeder",
+      "ownershipSummary": "NARO sources use both Toshio HIRABAYASHI and Toshiro HIRABAYASHI for the Japanese name Hirabayashi Toshiro (Hirabayashi Toshio in register order). The evidence points to one NARO/National Institute of Fruit Tree Science breeder, not a separate private owner. Cultivar rights belong to NARO or the holder named in each register record, not to Hirabayashi personally.",
+      "headquarters": "Tsukuba, Ibaraki, Japan (NARO headquarters; historical fruit-breeding work also used NARO research stations)",
+      "leadershipSummary": "A legacy member of multi-person NARO fruit-breeding teams. Current personal employment was not established; the active cultivars and licensing path continue institutionally through NARO.",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "primaryContactPhone": "+81-29-838-7698",
+      "brandExamples": ["Sunny Rouge", "Narumi", "Natsushizuku"],
+      "webResearchSources": [
+        {"label": "NARO repository: Sunny Rouge (Toshiro romanization)", "url": "https://repository.naro.go.jp/records/1697"},
+        {"label": "NARO fruit bulletin (Toshio romanization)", "url": "https://www.naro.go.jp/publicity_report/publication/files/naro-se/fruit9_02.pdf"},
+        {"label": "NARO cultivar page: Narumi", "url": "https://www.naro.go.jp/collab/breed/0400/0415/060813.html"}
+      ],
+      "webResearchNotes": "Treat the exact input as a duplicate romanization, while preserving it as canonicalName for matching. Do not create a second ownership rollup or infer that every Hirabayashi cultivar has the same present holder."
+    },
+    {
+      "canonicalName": "Sone Kazuyoshi",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "public national-research manager and breeder",
+      "ownershipSummary": "Current NARO manager for hilly and semi-mountainous horticulture and a named strawberry breeder. The Yotsuboshi registration lists Mie Prefecture, Kagawa Prefecture, NARO, and Chiba Prefecture as joint title holders; Sone is a breeder, not the personal owner. Other cultivars must retain their own holder records.",
+      "headquarters": "Fukuyama, Hiroshima, Japan (Western Region Agricultural Research Center; NARO legal headquarters in Tsukuba)",
+      "leadershipSummary": "Active division manager with a continuing multi-institution strawberry team. Current NARO leadership and joint public-sector title holders provide a clear institutional succession path.",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "primaryContactEmail": "joint_research@naro.affrc.go.jp",
+      "primaryContactPhone": "+81-29-838-7698",
+      "brandExamples": ["Yotsuboshi", "Koiminori", "Oishi Berry"],
+      "webResearchSources": [
+        {"label": "MAFF variety registration: Yotsuboshi", "url": "https://www.hinshu2.maff.go.jp/vips/cmm/apCMM112.aspx?LANGUAGE=English&TOUROKU_NO=25605"},
+        {"label": "NARO Research Prize: Koiminori", "url": "https://www.naro.go.jp/english/research-programs/researchprize/2019/index.html"}
+      ],
+      "webResearchNotes": "Link Sone to NARO operationally, but preserve joint ownership and other cultivar-specific holder combinations. Cultivar names are portfolio evidence, not asserted trademarks."
+    },
+    {
+      "canonicalName": "Yoshida Toshio",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "retired public-institution citrus breeder",
+      "ownershipSummary": "Historical Okitsu/National Institute of Fruit Tree Science breeder. MAFF records identify NARO as title holder and Yoshida as breeder; a 2011 NARO bulletin identifies him as formerly with the Fruit Tree Research Institute. The portfolio is institutional, not personally owned.",
+      "headquarters": "Shizuoka, Shizuoka, Japan (historical Okitsu citrus station; NARO legal headquarters in Tsukuba)",
+      "leadershipSummary": "Former NARO fruit-tree researcher by 2011. Later registrations include larger NARO teams, showing institutional continuation, but no authoritative current personal role was found.",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "primaryContactPhone": "+81-29-838-7698",
+      "brandExamples": ["Asumi", "Harehime", "Puchimaru", "Minimyrtle No. 1"],
+      "webResearchSources": [
+        {"label": "MAFF variety registration: Asumi", "url": "https://www.hinshu2.maff.go.jp/vips/cmm/apCMM112.aspx?LANGUAGE=English&TOUROKU_NO=23723"},
+        {"label": "MAFF variety registration: Harehime", "url": "https://www.hinshu2.maff.go.jp/vips/cmm/apCMM112.aspx?LANGUAGE=English&TOUROKU_NO=12069"},
+        {"label": "NARO bulletin: Minimyrtle No. 1 and former affiliation", "url": "https://www.naro.go.jp/publicity_report/publication/archive/files/fruit12_1.pdf"}
+      ],
+      "webResearchNotes": "Use NARO as the historical employer/rightsholder relationship. Do not infer current employment or personal ownership from later publication and registration dates."
+    },
+    {
+      "canonicalName": "Esther J. Pullen",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "historical corporate berry breeder",
+      "ownershipSummary": "Named breeder on Driscoll strawberry protection records. The Canadian PBR record names Driscoll's, Inc. as applicant and holder, and the corresponding US patent record identifies a Driscoll entity as assignee; Pullen is not the documented personal rightsholder.",
+      "headquarters": "Watsonville, California, United States (Driscoll's)",
+      "leadershipSummary": "The filings place Pullen within a team-based Driscoll breeding program. No authoritative current role was found for her, while Driscoll's continues as the institutional contact and portfolio steward.",
+      "primaryContactUrl": "https://www.driscolls.com/about/Contact-Us",
+      "primaryContactPhone": "+1-800-871-3333",
+      "brandExamples": ["DrisStrawTwentyFour", "Driscoll's Pilgrim"],
+      "webResearchSources": [
+        {"label": "CFIA PBR record: DrisStrawTwentyFour / Driscoll's Pilgrim", "url": "https://active.inspection.gc.ca/english/plaveg/pbrpov/cropreport/str/app00008916e.shtml"},
+        {"label": "US plant patent record: DrisStrawTwentyFour", "url": "https://patents.google.com/patent/USPP23378P2/en"},
+        {"label": "Driscoll's public contact path", "url": "https://www.driscolls.com/about/Contact-Us"}
+      ],
+      "webResearchNotes": "Treat as a historical Driscoll relationship unless newer primary evidence is found. Do not assign the patents to Pullen personally or assume she remains employed there."
+    },
+    {
+      "canonicalName": "Klymenko Svitlana Valentynivna",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "public-academy department head and breeder",
+      "ownershipSummary": "Head of the Fruit Plant Acclimatization Department at the M.M. Gryshko National Botanical Garden of the National Academy of Sciences of Ukraine. State variety materials name her as an author, while the Botanical Garden is identified as applicant and patent/dissemination-right holder for the cited apple portfolio; the rights are institutional.",
+      "headquarters": "Kyiv, Ukraine",
+      "leadershipSummary": "Long-tenured department head with Honcharovska and Kuznetsov visible in the current departmental team. The Botanical Garden and its broader research bench provide an institutional succession signal beyond one breeder.",
+      "primaryContactUrl": "https://nbg.kyiv.ua/ua/contacts.html",
+      "primaryContactEmail": "nbg@nbg.kyiv.ua",
+      "primaryContactPhone": "+38-044-285-41-05",
+      "brandExamples": ["Darunok Valerii", "Zymova Vitaminka", "Kamila"],
+      "webResearchSources": [
+        {"label": "NAS Ukraine department and staff", "url": "https://www.old.nas.gov.ua/UA/Department/Pages/default.aspx?DepartmentID=0001507"},
+        {"label": "Ukraine 2022 variety-certificate bulletin", "url": "https://sops.gov.ua/uploads/page/buleten/2022/2022.5.pdf"},
+        {"label": "State-register mirror: Darunok Valerii holder", "url": "https://agrarii-razom.com.ua/culture-variety/darunok-valerii"}
+      ],
+      "webResearchNotes": "Use the Botanical Garden as the employer and relevant portfolio holder, subject to cultivar-level register checks. The listed cultivar denominations are not asserted trademarks."
+    },
+    {
+      "canonicalName": "Tereshcenko Tamara Petrivna",
+      "webResearchStatus": "partial",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "malformed spelling of a public-institution cultivar co-breeder record",
+      "ownershipSummary": "The exact input is a misspelling of Tereshchenko Tamara Petrivna, the spelling used in Ukraine's official 2022 variety bulletin for the same apple team and cultivars. Those portfolio records point to the M.M. Gryshko National Botanical Garden as institutional holder, but no authoritative current staff role for Tereshchenko was located, so a current employer relationship is not asserted.",
+      "headquarters": "Kyiv, Ukraine (rightsholder institution for the cited portfolio; current personal workplace unconfirmed)",
+      "leadershipSummary": "Current personal role and succession status remain unconfirmed. The cited cultivar rights and active breeding team continue through the Botanical Garden rather than through a personal holding.",
+      "primaryContactUrl": "https://nbg.kyiv.ua/ua/contacts.html",
+      "primaryContactEmail": "nbg@nbg.kyiv.ua",
+      "primaryContactPhone": "+38-044-285-41-05",
+      "brandExamples": ["Darunok Valerii", "Zymova Vitaminka", "Teofiilia"],
+      "webResearchSources": [
+        {"label": "Ukraine 2022 bulletin using Tereshchenko spelling", "url": "https://sops.gov.ua/uploads/page/buleten/2022/2022.5.pdf"},
+        {"label": "State-register mirror: Darunok Valerii holder", "url": "https://agrarii-razom.com.ua/culture-variety/darunok-valerii"},
+        {"label": "Current NAS Ukraine department and staff", "url": "https://www.old.nas.gov.ua/UA/Department/Pages/default.aspx?DepartmentID=0001507"}
+      ],
+      "webResearchNotes": "Normalize only for identity matching to Tereshchenko Tamara Petrivna; preserve the exact canonicalName supplied. Do not treat the Botanical Garden as a confirmed current employer without a staff or biographical source."
+    },
+    {
+      "canonicalName": "Kuznetsov Volodymyr Viktorovych",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "public-academy research engineer and breeder",
+      "ownershipSummary": "Leading engineer in the Fruit Plant Acclimatization Department at the M.M. Gryshko National Botanical Garden and named author on its apple registrations. The Botanical Garden, not Kuznetsov personally, is the documented portfolio holder for the cited cultivars.",
+      "headquarters": "Kyiv, Ukraine",
+      "leadershipSummary": "Active member of the department led by Svitlana Klymenko, alongside a broader scientific team. The portfolio has institutional and team continuity rather than single-person dependency.",
+      "primaryContactUrl": "https://nbg.kyiv.ua/ua/contacts.html",
+      "primaryContactEmail": "nbg@nbg.kyiv.ua",
+      "primaryContactPhone": "+38-044-285-41-05",
+      "brandExamples": ["Darunok Valerii", "Vinter Hold", "Podolianka"],
+      "webResearchSources": [
+        {"label": "NAS Ukraine department and staff", "url": "https://www.old.nas.gov.ua/UA/Department/Pages/default.aspx?DepartmentID=0001507"},
+        {"label": "Ukraine 2022 variety-certificate bulletin", "url": "https://sops.gov.ua/uploads/page/buleten/2022/2022.5.pdf"},
+        {"label": "State-register mirror: Darunok Valerii holder", "url": "https://agrarii-razom.com.ua/culture-variety/darunok-valerii"}
+      ],
+      "webResearchNotes": "Identity is resolved by the exact patronymic, current department listing, and repeated co-breeder team. Keep rights with the holder named for each cultivar."
+    },
+    {
+      "canonicalName": "Honcharovska Inna Valeriivna",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "public-academy research scientist and breeder",
+      "ownershipSummary": "Research scientist in the Fruit Plant Acclimatization Department at the M.M. Gryshko National Botanical Garden and named author on its apple registrations. The Botanical Garden is the documented holder for the cited portfolio, not Honcharovska personally.",
+      "headquarters": "Kyiv, Ukraine",
+      "leadershipSummary": "Official NAS status history shows progression from leading engineer to research scientist in 2020. She remains part of Klymenko's active departmental team, supporting an institutional succession bench.",
+      "primaryContactUrl": "https://nbg.kyiv.ua/ua/contacts.html",
+      "primaryContactEmail": "nbg@nbg.kyiv.ua",
+      "primaryContactPhone": "+38-044-285-41-05",
+      "brandExamples": ["Darunok Valerii", "Lidiia", "Lakomka"],
+      "webResearchSources": [
+        {"label": "NAS Ukraine role history", "url": "https://old.nas.gov.ua/UA/PersonalSite/Statuses/Pages/default.aspx?PersonID=0000023179"},
+        {"label": "Ukraine 2022 variety-certificate bulletin", "url": "https://sops.gov.ua/uploads/page/buleten/2022/2022.5.pdf"},
+        {"label": "State-register mirror: Darunok Valerii holder", "url": "https://agrarii-razom.com.ua/culture-variety/darunok-valerii"}
+      ],
+      "webResearchNotes": "Use the current public-institution role while retaining cultivar-level title. Cultivar denominations are portfolio evidence, not asserted trademarks."
+    },
+    {
+      "canonicalName": "Daniele Bassi",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "public-university breeder in a collaborative public-private program",
+      "ownershipSummary": "Current contract professor at the University of Milan and scientific breeder in the MAS.PES stone-fruit program. UniMi provides scientific leadership, Ri.Nova coordinates operational work, and commercial propagation or foreign distribution may sit with separate partners. Earlier MAS.PES material originated at the University of Bologna, so historical rights cannot be reassigned wholesale to UniMi or Bassi.",
+      "headquarters": "Milan, Italy",
+      "leadershipSummary": "Active contract professor and project lead with a visible university and Ri.Nova breeding bench. The program has transitioned across universities and commercial partners, making record-level succession stronger than a single-owner rollup.",
+      "primaryContactUrl": "https://www.unimi.it/it/ugov/person/daniele-bassi",
+      "primaryContactName": "Daniele Bassi",
+      "primaryContactTitle": "Contract Professor, Department of Agricultural and Environmental Sciences, University of Milan",
+      "primaryContactEmail": "daniele.bassi@unimi.it",
+      "contactSourceUrl": "https://www.unimi.it/it/ugov/person/daniele-bassi",
+      "brandExamples": ["Nirosa 1", "Ariel"],
+      "webResearchSources": [
+        {"label": "University of Milan current profile", "url": "https://www.unimi.it/it/ugov/person/daniele-bassi"},
+        {"label": "Ri.Nova cultivar sheet: Nirosa 1", "url": "https://rinova.eu/media/lbckggir/albicocca-nirosa-1.pdf"},
+        {"label": "Ri.Nova MAS.PES program and commercialization structure", "url": "https://rinova.eu/media/xu4plo15/sette-variet%C3%A0-di-albicocco-studiate-per-il-mercato-italiano.pdf"}
+      ],
+      "webResearchNotes": "Do not create a blanket parent-company or personal-owner assignment. Verify each cultivar's registry holder, licensee, and geography separately; listed cultivar names are not asserted trademarks."
+    },
+    {
+      "canonicalName": "Kotobuki Kazuo",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "retired public-institution pear breeder",
+      "ownershipSummary": "Historical National Institute of Fruit Tree Science/NARO pear breeder. Official NARO cultivar papers identify the institute's breeding team and show Kotobuki as formerly with the institute; NARO or the register title holder owns the rights, not Kotobuki personally.",
+      "headquarters": "Tsukuba, Ibaraki, Japan",
+      "leadershipSummary": "Former NARO researcher by the 2009 Natsushizuku bulletin. Multi-generation NARO pear teams and the continuing institutional licensing route show completed program succession.",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "primaryContactPhone": "+81-29-838-7698",
+      "brandExamples": ["Akizuki", "Shuurei", "Hatsumaru"],
+      "webResearchSources": [
+        {"label": "NARO repository: Akizuki", "url": "https://repository.naro.go.jp/records/1667"},
+        {"label": "NARO repository: Shuurei", "url": "https://repository.naro.go.jp/records/1815"},
+        {"label": "NARO fruit bulletin showing former affiliation", "url": "https://www.naro.go.jp/publicity_report/publication/files/naro-se/fruit9_02.pdf"}
+      ],
+      "webResearchNotes": "Historical institutional rollup only. Confirm current holder and expiration by cultivar; do not infer a private Kotobuki portfolio."
+    },
+    {
+      "canonicalName": "Soejima Junichi",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "former public-institution apple breeder with later cooperative employment",
+      "ownershipSummary": "Historical NIFTS/NARO apple breeder. A 2013 NARO rootstock paper lists a then-current affiliation with Iwate Chuo Agricultural Cooperative, but that later employment does not transfer the older NIFTS/MAFF/NARO cultivar rights to the cooperative or to Soejima personally.",
+      "headquarters": "Morioka, Iwate, Japan (historical NIFTS apple program and later cooperative role)",
+      "leadershipSummary": "Former NARO breeder with a documented later cooperative role as of 2013; no newer authoritative personal status was found. The apple portfolio continues through NARO's team and rights-management structure.",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "primaryContactPhone": "+81-29-838-7698",
+      "brandExamples": ["JM2", "JM5", "Santaro", "Ruby Sweet"],
+      "webResearchSources": [
+        {"label": "NARO bulletin: JM2/JM5 and later affiliation", "url": "https://www.naro.go.jp/publicity_report/publication/archive/files/fruit16_Apple_Cultivar_JM2_JM5.pdf"},
+        {"label": "NARO repository: Santaro", "url": "https://repository.naro.go.jp/records/2140"},
+        {"label": "NARO repository: Ruby Sweet", "url": "https://repository.naro.go.jp/records/291"}
+      ],
+      "webResearchNotes": "Preserve historical rights with the named public holder. The later cooperative affiliation is an employment signal only, not an assignment record."
+    },
+    {
+      "canonicalName": "Olivier Grard",
+      "webResearchStatus": "verified_record_split_required",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "private-company breeder and executive with record-level assignee changes",
+      "ownershipSummary": "Editorial lead of Gradilis Holding SAS and co-breeder with Alexandre Grard. Gradisca was assigned from the Grards to Gradilis Recherche and later to ABCz Group BV, which is the current holder in the cited Canadian PBR record. This assignment supports a cultivar-specific chain, not blanket ownership of every Grard or Gradilis variety.",
+      "headquarters": "Mudaison, Herault, France",
+      "leadershipSummary": "Olivier remains the named Gradilis Holding editorial lead, with Alexandre visible as co-breeder. The family/company platform continues, but title can move to external commercial partners such as ABCz.",
+      "primaryContactUrl": "https://gradilis.com/mentions-legales/",
+      "primaryContactEmail": "contact@gradilis.com",
+      "primaryContactPhone": "+33-4-67-29-60-06",
+      "brandExamples": ["Gradisca"],
+      "webResearchSources": [
+        {"label": "Gradilis legal notice and public contact", "url": "https://gradilis.com/mentions-legales/"},
+        {"label": "Gradisca patent and assignment chain", "url": "https://patents.google.com/patent/USPP30008P3/en"},
+        {"label": "CFIA PBR record: Gradisca current holder", "url": "https://active.inspection.gc.ca/english/plaveg/pbrpov/cropreport/app/app00012957e.shtml"}
+      ],
+      "webResearchNotes": "Keep Gradilis Holding, Gradilis Recherche, the Grard individuals, and ABCz as distinct entities. Confirm the holder, assignment, and license chain for every cultivar."
+    },
+    {
+      "canonicalName": "Tsuchiya Shichiro",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "retired public-institution apple breeder",
+      "ownershipSummary": "Historical NIFTS/MAFF/NARO apple breeder. NARO's JM2/JM5 bulletin lists Tsuchiya as retired and documents the institutional breeding program; rights remain with the public holder named for each cultivar, not with Tsuchiya personally.",
+      "headquarters": "Morioka, Iwate, Japan (historical NIFTS apple program)",
+      "leadershipSummary": "Retired by the 2013 NARO bulletin. Later NARO teams, publications, and rights-management channels demonstrate completed institutional succession.",
+      "primaryContactUrl": "https://www.naro.go.jp/english/research-programs/industry-academia-government/contact/index.html",
+      "primaryContactPhone": "+81-29-838-7698",
+      "brandExamples": ["JM2", "JM5", "Kotaro"],
+      "webResearchSources": [
+        {"label": "NARO bulletin: JM2/JM5 and retired status", "url": "https://www.naro.go.jp/publicity_report/publication/archive/files/fruit16_Apple_Cultivar_JM2_JM5.pdf"},
+        {"label": "NARO repository: Kotaro", "url": "https://repository.naro.go.jp/records/2120"},
+        {"label": "NARO bulletin: Kotaro", "url": "https://www.naro.go.jp/publicity_report/publication/archive/files/fruit14_Apple_Kotaro_1.pdf"}
+      ],
+      "webResearchNotes": "Use as a retired institutional breeder profile. Do not infer current employment, personal rights, or transfer to later co-breeders."
+    },
+    {
+      "canonicalName": "Antonio Carrillo Navarro",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "active public-research institute breeder",
+      "ownershipSummary": "Active fruit-breeding researcher at IMIDA, the Murcia regional public research institute. The cited 2021 Spanish titles for Alisio25, Bora20, and Levante45 were granted to IMIDA and NOVAMED; Carrillo is a breeder, not the personal owner. Other IMIDA cultivars may have different applicant or co-holder combinations.",
+      "headquarters": "La Alberca, Murcia, Spain",
+      "leadershipSummary": "Active in IMIDA's 2023-2027 fruit-breeding project led by Jose Enrique Cos Terrer and publicly presented IMIDA cultivars in 2025. The program has a visible multi-researcher succession bench.",
+      "primaryContactUrl": "https://www.imida.es/contacto",
+      "primaryContactEmail": "imida@carm.es",
+      "primaryContactPhone": "+34-968-366-716",
+      "brandExamples": ["Alisio25", "Bora20", "Levante45"],
+      "webResearchSources": [
+        {"label": "IMIDA active fruit-breeding project", "url": "https://www.imida.es/-/mg-frutales"},
+        {"label": "IMIDA 2025 researcher presentation", "url": "https://www.imida.es/-/diversificacion-de-cultivos-y-actividades-de-demostracion-en-proyectos-de-transferencia-del-conociminento-dentro-de-los-objetivos-pepac"},
+        {"label": "Spanish title grant for Alisio25, Bora20, and Levante45", "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-11659"}
+      ],
+      "webResearchNotes": "Roll up the employment relationship to IMIDA but retain IMIDA/NOVAMED and any other cultivar-specific title combinations. Cultivar denominations are not asserted trademarks."
+    },
+    {
+      "canonicalName": "Alfonso Guevara Gazquez",
+      "webResearchStatus": "verified",
+      "webResearchReviewedAt": "2026-07-15",
+      "ownershipType": "active public-research institute breeder and project lead",
+      "ownershipSummary": "Active member of IMIDA's fruit-breeding team; official sources spell the surname Guevara Gazquez with an accent on the first 'a' in Gazquez. The cited 2021 titles for Alisio25, Bora20, and Levante45 belong to IMIDA and NOVAMED, not to Guevara personally, and other cultivars require record-level holder review.",
+      "headquarters": "La Alberca, Murcia, Spain",
+      "leadershipSummary": "Current IMIDA team member and principal investigator for work supporting commercial exploitation of the Lucia and Victoria Myrtea plums. The broader team led by Jose Enrique Cos Terrer provides program continuity.",
+      "primaryContactUrl": "https://www.imida.es/contacto",
+      "primaryContactEmail": "imida@carm.es",
+      "primaryContactPhone": "+34-968-366-716",
+      "brandExamples": ["Alisio25", "Bora20", "Levante45", "Lucia Myrtea", "Victoria Myrtea"],
+      "webResearchSources": [
+        {"label": "IMIDA active fruit-breeding project", "url": "https://www.imida.es/-/mg-frutales"},
+        {"label": "IMIDA Myrtea commercialization project", "url": "https://www.imida.es/proyectos-imida/-/asset_publisher/Baf6t6ar33Wn/content/21667-pdc-21?inheritRedirect=false"},
+        {"label": "Spanish title grant for Alisio25, Bora20, and Levante45", "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-11659"}
+      ],
+      "webResearchNotes": "The exact canonicalName is a no-diacritic variant, not a separate record. Keep IMIDA, NOVAMED, and any licensees distinct; cultivar denominations are not asserted trademarks."
+    }
+  ]
+}

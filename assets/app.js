@@ -179,6 +179,9 @@ function escapeHtml(value) {
 function displayText(value, fallback = "") {
   const text = String(value || "")
     .replace(/\?{2,}/g, "patent unknown")
+    .replace(/Investigaci\uFFFDn/gi, "Investigacion")
+    .replace(/f\uFFFDr/gi, "fuer")
+    .replace(/\uFFFD/g, "")
     .replace(/\s+/g, " ")
     .trim();
   return text || fallback;
@@ -260,19 +263,38 @@ function renderOwnerAudit(owner) {
   const contactName = [owner.primaryContactName, owner.primaryContactTitle].filter(Boolean).join(" - ");
   const contactLink = owner.primaryContactUrl || owner.contactSourceUrl;
   const evidenceLink = owner.websiteCultivarEvidenceUrl || owner.candidateParentEvidenceUrl;
+  const researchSources = Array.isArray(owner.webResearchSources)
+    ? owner.webResearchSources
+    : [];
   const rows = [
+    owner.webResearchStatus ? ["Web research", `${displayAuditValue(owner.webResearchStatus)}${owner.webResearchReviewedAt ? ` - reviewed ${displayText(owner.webResearchReviewedAt)}` : ""}`] : null,
     owner.auditStatus ? ["Audit status", displayAuditValue(owner.auditStatus)] : null,
     owner.auditConfidence ? ["Audit confidence", displayAuditValue(owner.auditConfidence)] : null,
+    owner.ownershipType ? ["Ownership", displayAuditValue(owner.ownershipType)] : null,
+    owner.parentCompany ? ["Parent company", displayText(owner.parentCompany)] : null,
+    owner.ownershipSummary ? ["Ownership notes", displayText(owner.ownershipSummary)] : null,
+    owner.headquarters ? ["Headquarters", displayText(owner.headquarters)] : null,
+    owner.leadershipSummary ? ["Leadership", displayText(owner.leadershipSummary)] : null,
     owner.trademarkStatus ? ["Trademark check", displayAuditValue(owner.trademarkStatus)] : null,
+    owner.trademarkOwner ? ["Trademark owner", displayText(owner.trademarkOwner)] : null,
     brandExamples.length ? ["Brand examples", brandExamples.slice(0, 5).map(displayText).join(" | ")] : null,
     owner.websiteCultivarCount ? ["Website cultivar count", `${Number(owner.websiteCultivarCount).toLocaleString()}${owner.websiteCultivarCountBasis ? ` - ${displayText(owner.websiteCultivarCountBasis)}` : ""}`] : null,
     contactName ? ["Primary contact", contactName] : null,
-    owner.candidateParent ? ["Candidate parent", `${displayText(owner.candidateParent)}${owner.candidateParentBasis ? ` - ${displayText(owner.candidateParentBasis)}` : ""}`] : null,
+    owner.primaryContactEmail ? ["Public business email", displayText(owner.primaryContactEmail)] : null,
+    owner.primaryContactPhone ? ["Public business phone", displayText(owner.primaryContactPhone)] : null,
+    owner.candidateParent ? ["Candidate parent", `${displayText(owner.candidateParent)}${owner.candidateParentConfidence ? ` (${displayAuditValue(owner.candidateParentConfidence)} confidence)` : ""}${owner.candidateParentBasis ? ` - ${displayText(owner.candidateParentBasis)}` : ""}`] : null,
     owner.auditNotes ? ["Audit notes", displayText(owner.auditNotes)] : null,
+    owner.webResearchNotes ? ["Research notes", displayText(owner.webResearchNotes)] : null,
   ].filter(Boolean);
   const links = [
     contactLink ? `<a href="${escapeHtml(contactLink)}" target="_blank" rel="noopener">Contact evidence</a>` : "",
     evidenceLink ? `<a href="${escapeHtml(evidenceLink)}" target="_blank" rel="noopener">Cultivar evidence</a>` : "",
+    owner.trademarkEvidenceUrl ? `<a href="${escapeHtml(owner.trademarkEvidenceUrl)}" target="_blank" rel="noopener">Trademark evidence</a>` : "",
+    ...researchSources.slice(0, 4).map((source) => {
+      const url = typeof source === "string" ? source : source.url;
+      const label = typeof source === "string" ? "Research source" : (source.label || "Research source");
+      return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : "";
+    }),
   ].filter(Boolean).join("");
   if (!rows.length && !links) return "";
   return `
@@ -293,11 +315,12 @@ function renderOwnerAudit(owner) {
 
 function ownerContactStatus(owner) {
   const namedContact = [owner.primaryContactName, owner.primaryContactTitle].filter(Boolean).join(" - ");
+  const directDetails = [owner.primaryContactEmail, owner.primaryContactPhone].filter(Boolean).join(" | ");
   if (namedContact && (owner.primaryContactUrl || owner.contactSourceUrl)) {
     return {
       label: "Named contact sourced",
       confidence: "High",
-      body: namedContact,
+      body: [namedContact, directDetails].filter(Boolean).join(" | "),
       action: owner.primaryContactUrl || owner.contactSourceUrl,
       actionLabel: "Open contact evidence",
     };
@@ -339,6 +362,17 @@ function ownerContactStatus(owner) {
 }
 
 function acquisitionFit(owner) {
+  if (owner.acquisitionFitBand) {
+    const band = displayText(owner.acquisitionFitBand);
+    const className = normalize(band).includes("high")
+      ? "good"
+      : normalize(band).includes("benchmark") || normalize(band).includes("too large")
+        ? "warn"
+        : normalize(band).includes("public") || normalize(band).includes("partnership") || normalize(band).includes("verification") || normalize(band).includes("low")
+          ? "muted"
+          : "neutral";
+    return { label: band, className };
+  }
   const targetFit = normalize(owner.targetFit);
   const name = normalize(owner.ownerName);
   const recordCount = Number(owner.recordCount || 0);
@@ -362,6 +396,25 @@ function acquisitionFit(owner) {
 }
 
 function profileNextAction(owner, contact) {
+  const band = normalize(owner.acquisitionFitBand);
+  if (band.includes("high")) {
+    return "Prioritize company sizing, ownership confirmation, and a source-backed contact path; this profile fits the current acquisition screen better than most.";
+  }
+  if (band.includes("review")) {
+    return "Move into research review: confirm ownership, estimate scale, and check whether the breeding asset is separable.";
+  }
+  if (band.includes("needs verification")) {
+    return "Verify the holder, company website, and operating status before treating this as an actionable target.";
+  }
+  if (band.includes("public")) {
+    return "Treat as ecosystem intelligence or licensing context, not a company acquisition target.";
+  }
+  if (band.includes("partnership")) {
+    return "Treat as a licensing, partnership, or relationship opportunity unless a controllable asset or operating-company transaction becomes available.";
+  }
+  if (band.includes("benchmark")) {
+    return "Use as a market benchmark or buyer/license counterparty, not a near-term acquisition target.";
+  }
   const fit = normalize(owner.targetFit);
   if (fit.includes("too large") || fit.includes("benchmark only")) {
     return "Use as a market benchmark or buyer/license counterparty, not a near-term acquisition target.";
@@ -382,6 +435,9 @@ function profileNextAction(owner, contact) {
 }
 
 function profileBlockers(owner) {
+  if (Array.isArray(owner.acquisitionFitBlockers) && owner.acquisitionFitBlockers.length) {
+    return owner.acquisitionFitBlockers.map(displayText);
+  }
   const blockers = [];
   const targetFit = normalize(owner.targetFit);
   if (targetFit.includes("too large") || targetFit.includes("far too large")) blockers.push("Likely too large for the $1-5m EBITDA target range.");
@@ -397,24 +453,23 @@ function renderProfileSnapshot(owner) {
   const contact = ownerContactStatus(owner);
   const fit = acquisitionFit(owner);
   const protectedCount = Number(owner.protectedIpCount || 0);
-  const relevantCount = Number(owner.relevantIpRecordCount || 0);
   return `
     <section class="profile-snapshot">
       <div class="profile-kpi">
-        <span>Sourcing score</span>
-        <strong>${Number(owner.sourcingScore || 0)}</strong>
+        <span>Acquisition score</span>
+        <strong>${Number(owner.acquisitionFitScore ?? owner.sourcingScore ?? 0)}</strong>
       </div>
       <div class="profile-kpi ${fit.className}">
-        <span>Acquisition fit</span>
+        <span>Fit band</span>
         <strong>${escapeHtml(fit.label)}</strong>
+      </div>
+      <div class="profile-kpi">
+        <span>IP score</span>
+        <strong>${Number(owner.sourcingScore || 0)}</strong>
       </div>
       <div class="profile-kpi">
         <span>Protected IP</span>
         <strong>${protectedCount.toLocaleString()}</strong>
-      </div>
-      <div class="profile-kpi">
-        <span>Relevant records</span>
-        <strong>${relevantCount.toLocaleString()}</strong>
       </div>
     </section>
     ${renderContactPanel(owner, contact)}
@@ -426,6 +481,8 @@ function renderContactPanel(owner, contact = ownerContactStatus(owner)) {
     ? `<a class="detail-link" href="${escapeHtml(contact.action)}" target="_blank" rel="noopener">${escapeHtml(contact.actionLabel || "Open contact")}</a>`
     : "";
   const supportLinks = [
+    owner.primaryContactEmail ? `<a class="detail-button-muted" href="mailto:${escapeHtml(owner.primaryContactEmail)}">Email</a>` : "",
+    owner.primaryContactPhone ? `<a class="detail-button-muted" href="tel:${escapeHtml(owner.primaryContactPhone.replace(/[^+\d]/g, ""))}">Call</a>` : "",
     owner.companyWebsite ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyWebsite)}" target="_blank" rel="noopener">Website</a>` : "",
     owner.companyLinkedInUrl ? `<a class="detail-button-muted" href="${escapeHtml(owner.companyLinkedInUrl)}" target="_blank" rel="noopener">LinkedIn</a>` : "",
     owner.companySourceUrl && owner.companySourceUrl !== owner.companyWebsite ? `<a class="detail-button-muted" href="${escapeHtml(owner.companySourceUrl)}" target="_blank" rel="noopener">Profile source</a>` : "",
@@ -449,11 +506,18 @@ function renderContactPanel(owner, contact = ownerContactStatus(owner)) {
 function renderAcquisitionMemo(owner) {
   const contact = ownerContactStatus(owner);
   const blockers = profileBlockers(owner);
+  const reasons = Array.isArray(owner.acquisitionFitReasons) ? owner.acquisitionFitReasons.filter(Boolean) : [];
   return `
     <section class="profile-panel">
       <p class="eyebrow">Acquisition memo</p>
       <h3>Why this profile matters</h3>
       <p>${escapeHtml(owner.targetFit || owner.companyDescription || "Needs more company-level research before the profile can be used as an actionable sourcing target.")}</p>
+      ${reasons.length ? `
+        <h3>Fit drivers</h3>
+        <ul class="blocker-list positive">
+          ${reasons.map((item) => `<li>${escapeHtml(displayText(item))}</li>`).join("")}
+        </ul>
+      ` : ""}
       <h3>Recommended next action</h3>
       <p>${escapeHtml(profileNextAction(owner, contact))}</p>
       <h3>Diligence blockers</h3>
@@ -471,7 +535,10 @@ function titleCaseWord(word) {
 }
 
 function displayCrop(value) {
-  return displayText(value, "Unclassified")
+  let crop = displayText(value, "Unclassified");
+  if (crop.length > 90 && crop.includes("[")) crop = crop.split("[")[0].trim();
+  if (crop.length > 90) crop = `${crop.slice(0, 87).trim()}...`;
+  return crop
     .split(/([-\u2013\u2014/() ])/)
     .map((part) => (/^[A-Za-z]+$/.test(part) ? titleCaseWord(part) : part))
     .join("");
@@ -553,10 +620,32 @@ function listSummary(items, labelKey = "crop", countKey = "count", limit = 3) {
     .join(" | ");
 }
 
+function cropListSummary(items, limit = 4) {
+  return (items || [])
+    .slice(0, limit)
+    .map((item) => `${displayCrop(item.crop)} ${Number(item.count || 0).toLocaleString()}`)
+    .join(" | ");
+}
+
 function ownerSearchText(owner) {
   return normalize([
     owner.ownerName,
     owner.normalizedOwnerName,
+    owner.acquisitionFitBand,
+    owner.ownershipType,
+    owner.ownershipSummary,
+    owner.parentCompany,
+    owner.headquarters,
+    owner.leadershipSummary,
+    owner.primaryContactName,
+    owner.primaryContactTitle,
+    owner.primaryContactEmail,
+    owner.primaryContactPhone,
+    owner.trademarkOwner,
+    owner.trademarkStatus,
+    ...(Array.isArray(owner.brandExamples) ? owner.brandExamples : []),
+    ...(owner.acquisitionFitReasons || []),
+    ...(owner.acquisitionFitBlockers || []),
     ...(owner.topCrops || []).map((item) => item.crop),
     ...(owner.topJurisdictions || []).map((item) => item.jurisdiction),
     ...(owner.topBreeders || []).map((item) => item.name),
@@ -576,8 +665,9 @@ function ownerSignalSummary(owner) {
 }
 
 function sortOwners(owners) {
-  const mode = els.ownerSort?.value || "score";
+  const mode = els.ownerSort?.value || "acquisition";
   const sorters = {
+    acquisition: (a, b) => (b.acquisitionFitScore || 0) - (a.acquisitionFitScore || 0) || (b.sourcingScore || 0) - (a.sourcingScore || 0),
     confidence: (a, b) => (b.relevantLegalOwnerRecordCount || 0) - (a.relevantLegalOwnerRecordCount || 0) || (b.relevantIpRecordCount || 0) - (a.relevantIpRecordCount || 0) || (b.legalOwnerRecordCount || 0) - (a.legalOwnerRecordCount || 0) || (b.sourcingScore || 0) - (a.sourcingScore || 0),
     score: (a, b) => (b.sourcingScore || 0) - (a.sourcingScore || 0),
     protected: (a, b) => (b.protectedIpCount || 0) - (a.protectedIpCount || 0),
@@ -586,7 +676,7 @@ function sortOwners(owners) {
     velocity: (a, b) => (b.filingVelocity5Year || 0) - (a.filingVelocity5Year || 0),
   };
   return [...owners].sort((a, b) => {
-    const primary = (sorters[mode] || sorters.score)(a, b);
+    const primary = (sorters[mode] || sorters.acquisition)(a, b);
     return primary || (b.protectedIpCount || 0) - (a.protectedIpCount || 0) || (b.recordCount || 0) - (a.recordCount || 0);
   });
 }
@@ -678,21 +768,16 @@ function renderMetrics(rows) {
 }
 
 function isAcquisitionLead(owner) {
-  const flags = owner.sourcingFlags || [];
-  const name = normalize(owner.ownerName);
-  const targetFit = normalize(owner.targetFit);
-  const tooLarge = targetFit.includes("too large") || targetFit.includes("far too large") || targetFit.includes("benchmark only");
-  const publicInstitution = name.includes("university") || name.includes("foundation seed") || name.includes("usda");
+  const band = normalize(owner.acquisitionFitBand);
+  if (band.includes("benchmark") || band.includes("public") || band.includes("low") || band.includes("verify") || band.includes("verification")) return false;
+  if (band.includes("high") || band.includes("review")) return true;
+  if (Number(owner.acquisitionFitScore || 0) >= 75 && owner.companyWebsite) return true;
   const protectedCount = Number(owner.protectedIpCount || 0);
-  const recordCount = Number(owner.recordCount || 0);
   return Number(owner.relevantIpRecordCount || 0) > 0
     && protectedCount >= 2
     && protectedCount <= 100
-    && recordCount <= 150
-    && !owner.isParentRollup
-    && !tooLarge
-    && !publicInstitution
-    && (owner.companyWebsite || Number(owner.legalOwnerRecordCount || 0) > 0 || owner.soleNamedBreeder || flags.includes("Dormant portfolio") || Number(owner.expirationNext5Years || 0) > 0);
+    && Number(owner.recordCount || 0) <= 150
+    && !owner.isParentRollup;
 }
 
 function renderSourcingMetrics() {
@@ -703,12 +788,14 @@ function renderSourcingMetrics() {
   }
   const relevant = state.ownerProfiles.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
   const leads = relevant.filter(isAcquisitionLead);
-  const cliffs = relevant.filter((owner) => Number(owner.expirationNext5Years || 0) > 0);
+  const highFit = relevant.filter((owner) => normalize(owner.acquisitionFitBand).includes("high"));
+  const needsVerification = relevant.filter((owner) => normalize(owner.acquisitionFitBand).includes("verification") || normalize(owner.acquisitionFitBand).includes("verify"));
   const intel = relevant.filter((owner) => owner.companyWebsite || owner.companyContactUrl || owner.companyLinkedInUrl);
   els.sourcingBrief.innerHTML = `
     <div class="brief-tile"><span>Screened profiles</span><strong>${relevant.length.toLocaleString()}</strong></div>
-    <div class="brief-tile"><span>Acquisition leads</span><strong>${leads.length.toLocaleString()}</strong></div>
-    <div class="brief-tile"><span>Near-term cliffs</span><strong>${cliffs.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Review-or-better leads</span><strong>${leads.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>High-fit leads</span><strong>${highFit.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Needs verification</span><strong>${needsVerification.length.toLocaleString()}</strong></div>
     <div class="brief-tile"><span>Company intel linked</span><strong>${intel.length.toLocaleString()}</strong></div>
   `;
 }
@@ -842,19 +929,25 @@ function renderOwners() {
     row.tabIndex = 0;
     row.setAttribute("role", "button");
     const flags = (owner.sourcingFlags || []).slice(0, 3).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
+    const fitScore = Number(owner.acquisitionFitScore ?? owner.sourcingScore ?? 0);
+    const fitBand = displayText(owner.acquisitionFitBand || "Fit score");
     row.innerHTML = `
       <td class="row-number">${(index + 1).toLocaleString()}</td>
-      <td><strong class="score-pill">${Number(owner.sourcingScore || 0)}</strong></td>
+      <td>
+        <strong class="score-pill">${fitScore}</strong>
+        <span class="subtle">${escapeHtml(fitBand)}</span>
+        <span class="subtle">IP ${Number(owner.sourcingScore || 0)}</span>
+      </td>
       <td>
         <strong class="record-title">${escapeHtml(displayText(owner.ownerName, "Unknown owner"))}</strong>
         <span class="subtle">${escapeHtml(ownerSignalSummary(owner))}</span>
       </td>
       <td>
         <strong>${Number(owner.recordCount || 0).toLocaleString()} records</strong>
-        <span class="subtle">${Number(owner.relevantIpRecordCount || 0).toLocaleString()} relevant | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected | ${Number(owner.usPlantPatentCount || 0).toLocaleString()} USPP | ${Number(owner.cpvoPbrCount || 0).toLocaleString()} CPVO PBR</span>
+        <span class="subtle">${Number(owner.distinctCultivarCount || 0).toLocaleString()} variety labels | ${Number(owner.relevantIpRecordCount || 0).toLocaleString()} relevant | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected | ${Number(owner.usPlantPatentCount || 0).toLocaleString()} USPP | ${Number(owner.cpvoPbrCount || 0).toLocaleString()} CPVO PBR</span>
       </td>
       <td>
-        ${escapeHtml(listSummary(owner.topCrops, "crop", "count", 4) || "--")}
+        ${escapeHtml(cropListSummary(owner.topCrops, 4) || "--")}
       </td>
       <td>
         ${escapeHtml(listSummary(owner.topJurisdictions, "jurisdiction", "count", 4) || "No jurisdictions")}
@@ -1100,7 +1193,7 @@ function openOwnerDrawer(ownerKey) {
     ${ownerNewsLinks}
     ${renderOwnerAudit(owner)}
     <div class="detail-grid">
-      ${renderDetailItem("Records", `${Number(owner.recordCount || 0).toLocaleString()} total | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}
+      ${renderDetailItem("Portfolio observations", `${Number(owner.recordCount || 0).toLocaleString()} records | ${Number(owner.distinctCultivarCount || 0).toLocaleString()} distinct variety labels | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}
       ${renderDetailItem("Relevant crop exposure", `${Number(owner.relevantIpRecordCount || 0).toLocaleString()} fruit/nut/vegetable records | ${Number(owner.relevantLegalOwnerRecordCount || 0).toLocaleString()} confirmed assignee records`)}
       ${renderDetailItem("US / CPVO protected", `${Number(owner.usPlantPatentCount || 0).toLocaleString()} US plant patents | ${Number(owner.cpvoPbrCount || 0).toLocaleString()} CPVO PBR`)}
       ${renderDetailItem("Filing years", `${yearRange(owner.firstYear, owner.lastYear)} | ${Number(owner.recordsLast5Years || 0).toLocaleString()} records last 5 years`)}

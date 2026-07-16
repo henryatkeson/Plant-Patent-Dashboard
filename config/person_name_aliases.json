@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "title": "Named breeder display aliases",
+    "notes": "High-confidence public-name variants only. Compound groups preserve records that name multiple breeders in one source field."
+  },
+  "groups": [
+    {
+      "canonicalName": "Lowell Glen Bradford",
+      "aliases": [
+        "Bradford Lowell Glen",
+        "Lowell G. Bradford",
+        "USA Lowell Glen Bradford",
+        "Lowell Glen",
+        "Lowell Bradford",
+        "Lowell G Bradford",
+        "Bradford, Lowell G.",
+        "Bradford Lowell G.",
+        "Lowell Glen BRADFORD (US)",
+        "Lowell Glen Bradford, Bradford Farms, USA",
+        "Bradford Lowell Geln",
+        "Lowell G. Bradbford"
+      ]
+    },
+    {
+      "canonicalName": "Norman Glen Bradford",
+      "aliases": [
+        "Norman G. Bradford",
+        "Norman G. Bradford (US)",
+        "Bradford Norman Glen",
+        "BRADFORD NORMAN",
+        "Bradford, Norman G.",
+        "Bradford Norman G.",
+        "Norman Glen",
+        "Norman G Bradford"
+      ]
+    },
+    {
+      "canonicalName": "Yossef Ben-Dor",
+      "aliases": [
+        "Yossef Ben Dor",
+        "Yosef Ben-Dor",
+        "Yosef Ben Dor",
+        "YOSSEF BEN DOR",
+        "YOSEF BEN DOR",
+        "Joseph Ben-Dor",
+        "Joseph Ben Dor",
+        "Ben Dor, Joseph",
+        "Joseph (Seffi) Ben Dor",
+        "Mr. Joseph (Seffi) Ben Dor",
+        "Josef Ben-Dor, Israel",
+        "BEN DOR, Josef, IL"
+      ]
+    },
+    {
+      "canonicalName": "David W. Cain",
+      "aliases": [
+        "Cain David",
+        "David Cain",
+        "DAVID W. CAIN"
+      ]
+    },
+    {
+      "canonicalName": "Jon M. Quisenberry",
+      "aliases": [
+        "J.M. Quisenberry",
+        "Jon Quisenberry",
+        "Quisenberry Jon Michael"
+      ]
+    },
+    {
+      "canonicalName": "Antonio A. Alamo Bermudo",
+      "aliases": [
+        "Bermudo Antonio A. Alamo",
+        "Antonio Abad Alamo Bermudo"
+      ]
+    },
+    {
+      "canonicalName": "Peter Stefan Boches",
+      "aliases": [
+        "Boches Peter Stefan"
+      ]
+    },
+    {
+      "canonicalName": "Craig K. Chandler",
+      "aliases": [
+        "Craig Chandler"
+      ]
+    },
+    {
+      "canonicalName": "Frederick G. Gmitter Jr.",
+      "aliases": [
+        "F.G.Gmitter Jr.",
+        "Jr. Frederick G. Gmitter",
+        "Frederick G. Gmitter, Jr."
+      ]
+    },
+    {
+      "canonicalName": "Efraim Yosef",
+      "aliases": [
+        "Israel Efraim Yosef",
+        "Efraim Yosef, Israel"
+      ]
+    },
+    {
+      "canonicalName": "Asaf Meizles",
+      "aliases": [
+        "Asaf Meisles"
+      ]
+    }
+  ],
+  "compoundGroups": [
+    {
+      "members": [
+        "Lowell Glen Bradford",
+        "Jon M. Quisenberry"
+      ],
+      "aliases": [
+        "Lowell Glen Bradford (US)/Jon M. QUISENBERRY",
+        "Lowell Glen Bradford (US)/Jon M. QUISENBERRY (US)",
+        "Lowell Glen Bradford Jon Quisenberry, Lowell Glen Bradford & Jon M Quisenberry",
+        "Lowell Glen Bradford Jon M Quisenberry, Lowell Glen Bradford & Jon M Quisenberry",
+        "Lowell Glen Bradford Jon Quisenberry",
+        "Lowell Glen Bradford Jon M Quisenberry"
+      ]
+    },
+    {
+      "members": [
+        "Norman Glen Bradford",
+        "Lowell Glen Bradford"
+      ],
+      "aliases": [
+        "Norman Glen Bradford (US)/Lowell Glen Bradford",
+        "Norman Glen Bradford (US)/Lowell Glen Bradford (US)",
+        "Lowell G Bradford and Norman G Bradford",
+        "BRADFORD LOWELL GLEN / BRADFORD NORMAN",
+        "N.G. & L.G. Bradford",
+        "Lowell Glen & Norman Glen Bradford (US)",
+        "BRADFORD, NORMAN & LOWELL",
+        "BRADFORD GLEN NORMAN & LOWELL",
+        "Bradford, Norman & Lowell",
+        "N.&L. GLEN BRADFORD",
+        "Lowell G Bradford and Norman G Bradford, Lowell G Bradford and Norman G Bradford",
+        "Lowell G Bradbford, Lowell G Bradford and Norman G Bradford"
+      ]
+    },
+    {
+      "members": [
+        "Lowell Glen Bradford",
+        "Norman Glen Bradford",
+        "Rene Monteux-Caillet"
+      ],
+      "aliases": [
+        "Lowell Glen & Norman Glen Bradford (US)/Rene Monteux-Caillet",
+        "Lowell Glen & Norman Glen Bradford (US)/Rene Monteux-Caillet (FR)"
+      ]
+    }
+  ]
+}
