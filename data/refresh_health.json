@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-07-16T13:38:23.444696+00:00",
+    "checkedAt": "2026-07-16T13:43:01.811539+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -9,12 +9,12 @@
   "counts": {
     "plantPatents": 2708,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12139,
+    "ownerProfiles": 12143,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12139
+    "webResearchRows": 12143
   },
   "checks": [
     {
@@ -33,19 +33,19 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,139 owner profiles"
+      "detail": "12,143 owner profiles"
     },
     {
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,139 audit rows for 12,139 owners"
+      "detail": "12,143 audit rows for 12,143 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,139 research rows for 12,139 owners"
+      "detail": "12,143 research rows for 12,143 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -111,7 +111,7 @@
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,139; research rows 12,139"
+      "detail": "Status totals 12,143; research rows 12,143"
     }
   ]
 }
