@@ -767,7 +767,64 @@ function renderMetrics(rows) {
   renderSourcingMetrics();
 }
 
+function hasCompanySignal(owner) {
+  return Boolean(
+    owner.isParentRollup
+    || owner.companyWebsite
+    || owner.companyDescription
+    || owner.companyContactUrl
+    || owner.companyLinkedInUrl
+    || owner.companySourceUrl
+    || (!owner.individualOwner && Number(owner.legalOwnerRecordCount || 0) > 0)
+  );
+}
+
+function hasUnresolvedIdentity(owner) {
+  const band = normalize(owner.acquisitionFitBand);
+  const status = normalize(owner.webResearchStatus);
+  const ownership = normalize(owner.ownershipType);
+  return band.includes("identity unresolved")
+    || status.includes("identity_unresolved")
+    || status.includes("suppress_scoring")
+    || ownership.includes("identity unresolved");
+}
+
+function isIndependentOwnerSignal(owner) {
+  if (!owner.individualOwner || owner.candidateParent || owner.parentCompany || hasUnresolvedIdentity(owner)) return false;
+  const ownership = normalize(owner.ownershipType);
+  const researchStatus = normalize(owner.webResearchStatus);
+  const auditConfidence = normalize(owner.auditConfidence);
+  const independentlyOwned = [
+    "individual owner",
+    "individual breeder-owner",
+    "family-owned",
+    "founder-owned",
+    "owner-breeder",
+    "sole proprietor",
+    "privately held",
+  ].some((term) => ownership.includes(term));
+  const ownershipResearched = researchStatus.includes("verified")
+    || auditConfidence === "high"
+    || auditConfidence === "medium";
+  return independentlyOwned && ownershipResearched;
+}
+
+function isPrimarySourcingProfile(owner) {
+  if (Number(owner.relevantIpRecordCount || 0) <= 0 || hasUnresolvedIdentity(owner)) return false;
+  if (isIndependentOwnerSignal(owner)) return true;
+  if (owner.individualOwner) return false;
+  return hasCompanySignal(owner);
+}
+
+function isAffiliationResearchSignal(owner) {
+  return Number(owner.relevantIpRecordCount || 0) > 0
+    && Boolean(owner.individualOwner || owner.soleNamedBreeder)
+    && !isIndependentOwnerSignal(owner)
+    && !isPrimarySourcingProfile(owner);
+}
+
 function isAcquisitionLead(owner) {
+  if (!isPrimarySourcingProfile(owner)) return false;
   const band = normalize(owner.acquisitionFitBand);
   if (band.includes("benchmark") || band.includes("public") || band.includes("low") || band.includes("verify") || band.includes("verification")) return false;
   if (band.includes("high") || band.includes("review")) return true;
@@ -787,16 +844,17 @@ function renderSourcingMetrics() {
     return;
   }
   const relevant = state.ownerProfiles.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
-  const leads = relevant.filter(isAcquisitionLead);
-  const highFit = relevant.filter((owner) => normalize(owner.acquisitionFitBand).includes("high"));
-  const needsVerification = relevant.filter((owner) => normalize(owner.acquisitionFitBand).includes("verification") || normalize(owner.acquisitionFitBand).includes("verify"));
-  const intel = relevant.filter((owner) => owner.companyWebsite || owner.companyContactUrl || owner.companyLinkedInUrl);
+  const targets = relevant.filter(isPrimarySourcingProfile);
+  const leads = targets.filter(isAcquisitionLead);
+  const highFit = targets.filter((owner) => normalize(owner.acquisitionFitBand).includes("high"));
+  const independent = targets.filter(isIndependentOwnerSignal);
+  const affiliationQueue = relevant.filter(isAffiliationResearchSignal);
   els.sourcingBrief.innerHTML = `
-    <div class="brief-tile"><span>Screened profiles</span><strong>${relevant.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Company / owner targets</span><strong>${targets.length.toLocaleString()}</strong></div>
     <div class="brief-tile"><span>Review-or-better leads</span><strong>${leads.length.toLocaleString()}</strong></div>
     <div class="brief-tile"><span>High-fit leads</span><strong>${highFit.length.toLocaleString()}</strong></div>
-    <div class="brief-tile"><span>Needs verification</span><strong>${needsVerification.length.toLocaleString()}</strong></div>
-    <div class="brief-tile"><span>Company intel linked</span><strong>${intel.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Independent-owner signals</span><strong>${independent.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>Affiliation research queue</span><strong>${affiliationQueue.length.toLocaleString()}</strong></div>
   `;
 }
 
@@ -892,14 +950,20 @@ function renderLiveStatus() {
 function applyOwnerFilters() {
   if (!els.ownerBody) return;
   const term = normalize(els.ownerSearchInput?.value || "");
-  const view = els.ownerView?.value || "relevant";
+  const view = els.ownerView?.value || "targets";
   let owners = term
     ? state.ownerProfiles.filter((owner) => ownerSearchText(owner).includes(term))
     : [...state.ownerProfiles];
-  if (view === "relevant") {
+  if (view === "targets") {
+    owners = owners.filter(isPrimarySourcingProfile);
+  } else if (view === "relevant") {
     owners = owners.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
   } else if (view === "acquisition") {
     owners = owners.filter(isAcquisitionLead);
+  } else if (view === "independent") {
+    owners = owners.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0 && isIndependentOwnerSignal(owner));
+  } else if (view === "individuals") {
+    owners = owners.filter(isAffiliationResearchSignal);
   } else if (view === "legal") {
     owners = owners.filter((owner) => Number(owner.legalOwnerRecordCount || 0) > 0);
   } else if (view === "succession") {
