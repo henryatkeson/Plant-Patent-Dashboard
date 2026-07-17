@@ -11,6 +11,57 @@ SPEC.loader.exec_module(MODULE)
 
 
 class OwnerProfileTests(unittest.TestCase):
+    def test_person_entity_classification_uses_legal_tokens_not_substrings(self):
+        self.assertTrue(MODULE.looks_individual("Kostrikin Ivan ALEKSANDROVICh"))
+        self.assertTrue(MODULE.looks_individual("Meleshko Larysa Fedorivna"))
+        self.assertTrue(MODULE.looks_individual("Gianfranco Castagnoli"))
+        self.assertFalse(MODULE.looks_individual("Berrytech Srl"))
+        self.assertFalse(MODULE.looks_individual("Berries Del Oeste S.L."))
+        self.assertFalse(MODULE.looks_individual("Fukushima Prefecture"))
+        self.assertFalse(MODULE.looks_individual("University of Western Sydney"))
+
+    def test_state_prefixed_address_fragment_is_not_a_person(self):
+        self.assertTrue(MODULE.looks_like_address_or_location("Silverton, Or Robert Gabriel"))
+        self.assertFalse(MODULE.looks_individual("Silverton, Or Robert Gabriel"))
+
+    def test_cpvo_location_fragment_is_not_a_person(self):
+        self.assertTrue(MODULE.looks_like_address_or_location("CERCA DE DELANO"))
+        self.assertFalse(MODULE.looks_individual("CERCA DE DELANO"))
+
+    def test_multilingual_entity_and_location_fragments_are_not_people(self):
+        for value in [
+            "Saint-Jean-sur-Richelieu",
+            "Berrytech, Italy",
+            "Economic Development and Innovation",
+            "Sociedad Unipersonal",
+            "Pepinieres Et Roseraies",
+            "Grant &. Chris -. L. Gardner",
+            "Miho Akiba, Koriyama, Japan",
+            "STOV Enohrai",
+        ]:
+            with self.subTest(value=value):
+                self.assertFalse(MODULE.looks_individual(value))
+
+    def test_short_company_acronym_does_not_match_personal_name(self):
+        self.assertIsNone(MODULE.company_profile_for_name("Tulaieva Maia Ivanivna"))
+        self.assertEqual(
+            MODULE.company_profile_for_name("MAIA")["canonicalName"],
+            "Midwest Apple Improvement Association",
+        )
+
+    def test_trailing_comma_does_not_block_person_list_split(self):
+        names = MODULE.split_people_or_entities(
+            "Abliazova Aia Pavlivna, Tulaieva Maiia Ivanivna, Dokuchaieva IEvheniia Mykolaivna,"
+        )
+        self.assertEqual(
+            names,
+            [
+                "Abliazova Aia Pavlivna",
+                "Tulaieva Maiia Ivanivna",
+                "Dokuchaieva IEvheniia Mykolaivna",
+            ],
+        )
+
     def test_compound_breeder_aliases_preserve_both_people(self):
         names = MODULE.split_people_or_entities(
             "Lowell Glen Bradford (US)/Jon M. QUISENBERRY (US)"
@@ -91,6 +142,8 @@ class OwnerProfileTests(unittest.TestCase):
         self.assertEqual(result["distinctCultivarCount"], 1)
         self.assertEqual(result["protectedIpCount"], 1)
         self.assertEqual(result["legalOwnerRecordCount"], 1)
+        self.assertEqual(result["ownerScopedRecordCount"], 1)
+        self.assertEqual(result["ownerScopedProtectedIpCount"], 1)
         self.assertEqual(result["breederSignalRecordCount"], 1)
         self.assertEqual(result["ownerRoleCounts"]["Patent assignee"], 1)
         self.assertEqual(result["ownerRoleCounts"]["CPVO breeder"], 1)
@@ -149,6 +202,25 @@ class OwnerProfileTests(unittest.TestCase):
         self.assertLessEqual(score, 50)
         self.assertEqual(band, "Affiliation research needed")
 
+    def test_company_without_holder_evidence_cannot_rank_high_fit(self):
+        score, band, _reasons, blockers = MODULE.score_acquisition_fit(
+            {
+                "recordCount": 25,
+                "protectedIpCount": 20,
+                "relevantIpRecordCount": 25,
+                "activeProtectionCount": 20,
+                "recordsLast5Years": 8,
+                "cropConcentration": 1.0,
+                "companyWebsite": "https://example.com",
+                "companyDescription": "Private breeding company",
+                "legalOwnerRecordCount": 0,
+            }
+        )
+
+        self.assertLessEqual(score, 70)
+        self.assertEqual(band, "Rights-holder verification needed")
+        self.assertIn("No confirmed legal-owner records", blockers)
+
     def test_every_suppressed_profile_has_a_rollup_destination(self):
         rollup_names = {
             MODULE.normalize_owner_name(name)
@@ -170,6 +242,27 @@ class OwnerProfileTests(unittest.TestCase):
             if company["canonicalName"] == "Huron Plant Technologies LLC"
         )
         self.assertFalse(huron.get("rollupChildren"))
+
+    def test_company_rollup_does_not_absorb_individual_breeder_profile(self):
+        original_profiles = MODULE.COMPANY_PROFILES
+        MODULE.COMPANY_PROFILES = [{
+            "canonicalName": "Example Genetics LLC",
+            "rollupChildren": ["Jane Breeder"],
+            "suppressProfiles": ["Jane Breeder"],
+        }]
+        try:
+            person = {
+                "id": "person",
+                "ownerName": "Jane Breeder",
+                "normalizedOwnerName": MODULE.normalize_owner_name("Jane Breeder"),
+                "individualOwner": True,
+                "recordCount": 4,
+            }
+            output = MODULE.add_parent_rollups([person], {}, {})
+        finally:
+            MODULE.COMPANY_PROFILES = original_profiles
+
+        self.assertEqual(output, [person])
 
     def test_imida_public_program_is_not_an_alias_of_itum(self):
         itum = next(
@@ -194,6 +287,13 @@ class OwnerProfileTests(unittest.TestCase):
         self.assertEqual(profile["companyWebsite"], "https://yosefsfarm.com/")
         self.assertEqual(profile["candidateParentConfidence"], "high")
 
+    def test_research_alias_attaches_to_canonical_person(self):
+        research = MODULE.PROFILE_AUDITS[
+            MODULE.normalize_alias_search("Peter Stefan Boches")
+        ]
+        self.assertEqual(research["canonicalName"], "Boches Peter Stefan")
+        self.assertIn("Fall Creek", research["ownershipSummary"])
+
     def test_private_company_is_not_public_because_description_names_university_partner(self):
         profile = {
             "ownerName": "Todolivo S.L.",
@@ -210,6 +310,46 @@ class OwnerProfileTests(unittest.TestCase):
         )
         self.assertNotIn("S.L. Viveros", cotevisa.get("aliases", []))
         self.assertIn("S.L. Viveros", cotevisa.get("rollupChildren", []))
+
+    def test_affiliation_does_not_transfer_person_records_to_company(self):
+        person = {
+            "id": MODULE.owner_id(MODULE.normalize_owner_name("Jane Breeder")),
+            "ownerName": "Jane Breeder",
+            "normalizedOwnerName": MODULE.normalize_owner_name("Jane Breeder"),
+            "recordCount": 9,
+        }
+        company = {
+            "id": MODULE.owner_id(MODULE.normalize_owner_name("Example Genetics LLC")),
+            "ownerName": "Example Genetics LLC",
+            "normalizedOwnerName": MODULE.normalize_owner_name("Example Genetics LLC"),
+            "recordCount": 3,
+        }
+        MODULE.apply_breeder_affiliations(
+            [person, company],
+            [{
+                "breederId": person["id"],
+                "breederName": "Jane Breeder",
+                "normalizedBreederName": person["normalizedOwnerName"],
+                "companyName": "Example Genetics LLC",
+                "relationshipType": "employment",
+                "identityConfidence": "high",
+                "relationshipConfidence": "high",
+                "status": "verified_relationship",
+                "basis": "Official biography",
+                "source": "manual ledger",
+                "directEvidenceCount": 1,
+                "directEvidenceShare": 1.0,
+                "rightsBasis": "none",
+                "rightsRecordIds": [],
+                "evidenceRecordIds": ["TEST-1"],
+                "evidence": [],
+            }],
+        )
+
+        self.assertEqual(person["affiliatedCompany"], "Example Genetics LLC")
+        self.assertEqual(company["affiliatedBreederCount"], 1)
+        self.assertEqual(company["recordCount"], 3)
+        self.assertEqual(company["affiliatedBreeders"][0]["rightsBasis"], "none")
 
 
 if __name__ == "__main__":

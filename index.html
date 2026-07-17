@@ -70,6 +70,7 @@
               <option value="targets" selected>Companies and independent owners</option>
               <option value="acquisition">Acquisition leads</option>
               <option value="independent">Independent-owner signals</option>
+              <option value="affiliated">Resolved breeder affiliations</option>
               <option value="individuals">Individual breeder research</option>
               <option value="relevant">All crop-relevant signals</option>
               <option value="all">All sourcing signals</option>
@@ -98,7 +99,7 @@
                 <th>#</th>
                 <th>Fit</th>
                 <th>Name / Signal</th>
-                <th>Portfolio</th>
+                <th>Portfolio Signals</th>
                 <th>Crop Mix</th>
                 <th>Geographic Mix</th>
                 <th>Activity</th>
@@ -206,7 +207,7 @@
           <article class="panel methodology-card">
             <h3>Affiliation Gate</h3>
             <strong>Confidence cap</strong>
-            <p>Unresearched breeder-only names without legal-owner evidence are capped at 50. Unresolved identities are capped at 25 until the person and rights holder can be matched reliably.</p>
+            <p>Verified and probable breeder-to-program relationships are shown separately from ownership. Unresearched breeder-only names without legal-owner evidence are capped at 50, while unresolved identities are capped at 25.</p>
           </article>
           <article class="panel methodology-card">
             <h3>Web Evidence</h3>
@@ -226,7 +227,7 @@
           <article class="panel methodology-card">
             <h3>Protected IP Share</h3>
             <strong>Up to 20 points</strong>
-            <p>Issued US plant patents and granted CPVO PBR records matter more than application-only or breeder-only signals.</p>
+            <p>Issued US plant patents and granted CPVO PBR observations matter more than application-only signals. Company ownership and expiration curves use record-specific assignee or holder evidence separately.</p>
           </article>
           <article class="panel methodology-card">
             <h3>Jurisdiction Breadth</h3>
@@ -290,6 +291,12 @@
             The dashboard uses company rollups where the relationship is clear, but ambiguous people are left visible instead of being forced into a company.
           </p>
           <p>
+            A breeder affiliation is not a legal-owner conclusion. Employment, co-listing, or participation in a breeding program never transfers that breeder's full record history to the company; only record-specific assignee or holder evidence supports ownership attribution.
+          </p>
+          <p>
+            Portfolio observations are sourcing signals, not a legal title schedule. The owner-scoped figures and cliff charts include only records that specifically name the profile as assignee or holder; CPVO breeder-only rows remain outside those ownership figures until holder data is available.
+          </p>
+          <p>
             Record count is not cultivar count. One cultivar can produce multiple applications, grants, renewals, jurisdictions, and holder records; inherited assignments can also make a portfolio appear smaller until ownership changes are imported.
           </p>
           <p>
@@ -313,6 +320,6 @@
       <div id="drawerBody" class="drawer-body"></div>
     </aside>
 
-    <script src="assets/app.js?v=20260715-audit"></script>
+    <script src="assets/app.js?v=20260717-affiliations"></script>
   </body>
 </html>

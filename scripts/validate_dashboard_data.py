@@ -58,6 +58,7 @@ def main() -> int:
     patents = read_json(DATA / "plant_patents.json", {})
     cpvo = read_json(DATA / "cpvo_varieties.json", {})
     owners = read_json(DATA / "owner_profiles.json", {})
+    affiliations = read_json(DATA / "breeder_affiliations.json", {})
     audit = read_json(DATA / "profile_audit.json", {})
     research = read_json(DATA / "web_research_queue.json", {})
     probes = read_json(DATA / "company_site_probe.json", {})
@@ -77,6 +78,13 @@ def main() -> int:
     patent_count = compact_count(patents, "records")
     cpvo_count = compact_count(cpvo, "records")
     owner_count = compact_count(owners, "owners")
+    owner_fields = owners.get("ownerFields", []) if isinstance(owners, dict) else []
+    owner_rows = [
+        dict(zip(owner_fields, row))
+        for row in owners.get("owners", [])
+    ] if owner_fields else owners.get("owners", [])
+    affiliation_rows = affiliations.get("affiliations", []) if isinstance(affiliations, dict) else []
+    affiliation_count = len(affiliation_rows)
     audit_count = compact_count(audit, "profiles")
     research_count = compact_count(research, "profiles")
     checks: list[dict[str, Any]] = []
@@ -84,6 +92,135 @@ def main() -> int:
     add_check(checks, "patent_dataset_present", patent_count >= 100, f"{patent_count:,} plant-patent rows")
     add_check(checks, "cpvo_dataset_present", cpvo_count >= 100, f"{cpvo_count:,} CPVO rows")
     add_check(checks, "owner_profiles_present", owner_count >= 100, f"{owner_count:,} owner profiles")
+    add_check(checks, "breeder_affiliations_present", affiliation_count >= 100, f"{affiliation_count:,} breeder relationships")
+
+    valid_affiliation_statuses = {
+        "verified_relationship",
+        "probable_relationship",
+        "review_required",
+        "unresolved",
+    }
+    valid_affiliation_confidence = {"high", "medium", "low", "unverified"}
+    invalid_affiliations = [
+        clean(row.get("breederName"))
+        for row in affiliation_rows
+        if clean(row.get("status")) not in valid_affiliation_statuses
+        or clean(row.get("identityConfidence")) not in valid_affiliation_confidence
+        or clean(row.get("relationshipConfidence")) not in valid_affiliation_confidence
+    ]
+    add_check(
+        checks,
+        "breeder_affiliation_enums_valid",
+        not invalid_affiliations,
+        "All affiliation statuses and confidence values are valid"
+        if not invalid_affiliations
+        else "Invalid affiliation rows: " + ", ".join(invalid_affiliations[:10]),
+    )
+    verified_with_weak_identity = [
+        clean(row.get("breederName"))
+        for row in affiliation_rows
+        if clean(row.get("status")) == "verified_relationship"
+        and clean(row.get("identityConfidence")) != "high"
+    ]
+    add_check(
+        checks,
+        "verified_affiliations_have_verified_identity",
+        not verified_with_weak_identity,
+        "Every verified relationship also has high-confidence identity"
+        if not verified_with_weak_identity
+        else "Weak identities marked verified: " + ", ".join(verified_with_weak_identity[:10]),
+    )
+    known_false_identities = {
+        normalize(value)
+        for value in (
+            "Saint-Jean-sur-Richelieu",
+            "Italy Berrytech",
+            "Economic Development and Innovation",
+            "Sociedad Unipersonal",
+            "Pepinieres Et Roseraies",
+            "Grant &. Chris -. L. Gardner",
+            "Koriyama, Japan Miho Akiba",
+            "STOV Enohrai",
+        )
+    }
+    false_identity_rows = [
+        clean(row.get("breederName"))
+        for row in affiliation_rows
+        if normalize(row.get("breederName")) in known_false_identities
+    ]
+    add_check(
+        checks,
+        "known_registry_fragments_are_not_breeders",
+        not false_identity_rows,
+        "Known location and organization fragments are excluded from breeder identities"
+        if not false_identity_rows
+        else "False breeder identities: " + ", ".join(false_identity_rows),
+    )
+    self_affiliations = [
+        clean(row.get("breederName"))
+        for row in affiliation_rows
+        if clean(row.get("companyName"))
+        and normalize(row.get("breederName")) == normalize(row.get("companyName"))
+    ]
+    add_check(
+        checks,
+        "breeders_are_not_affiliated_to_themselves",
+        not self_affiliations,
+        "No self-referential breeder affiliations"
+        if not self_affiliations
+        else "Self affiliations: " + ", ".join(self_affiliations[:10]),
+    )
+
+    source_record_ids = {
+        clean(row.get("id"))
+        for row in [*(patents.get("records") or []), *(cpvo.get("records") or [])]
+        if clean(row.get("id"))
+    }
+    unscoped_rights = []
+    unknown_rights_records = []
+    for row in affiliation_rows:
+        rights_basis = clean(row.get("rightsBasis")) or "none"
+        rights_ids = [clean(value) for value in row.get("rightsRecordIds") or [] if clean(value)]
+        if rights_basis == "none" and rights_ids:
+            unscoped_rights.append(clean(row.get("breederName")))
+        if rights_basis != "none" and not rights_ids:
+            unscoped_rights.append(clean(row.get("breederName")))
+        unknown = sorted(set(rights_ids) - source_record_ids)
+        if unknown:
+            unknown_rights_records.append(f"{clean(row.get('breederName'))}: {unknown[0]}")
+    add_check(
+        checks,
+        "affiliation_rights_are_record_scoped",
+        not unscoped_rights,
+        "Affiliation never implies ownership without record-specific assignee or holder evidence"
+        if not unscoped_rights
+        else "Unscoped rights claims: " + ", ".join(unscoped_rights[:10]),
+    )
+    add_check(
+        checks,
+        "affiliation_rights_records_exist",
+        not unknown_rights_records,
+        "All scoped rights records exist in a source dataset"
+        if not unknown_rights_records
+        else "Unknown rights records: " + ", ".join(unknown_rights_records[:10]),
+    )
+
+    invalid_owner_scopes = []
+    for row in owner_rows:
+        legal = int(row.get("legalOwnerRecordCount") or 0)
+        scoped = int(row.get("ownerScopedRecordCount") or 0)
+        protected = int(row.get("ownerScopedProtectedIpCount") or 0)
+        cliff = int(row.get("ownerScopedExpirationNext5Years") or 0)
+        if scoped > legal or protected > scoped or cliff > protected:
+            invalid_owner_scopes.append(clean(row.get("ownerName")))
+    add_check(
+        checks,
+        "owner_scoped_portfolios_follow_title_evidence",
+        not invalid_owner_scopes,
+        "Owner-scoped portfolio and cliff counts never exceed confirmed title evidence"
+        if not invalid_owner_scopes
+        else "Invalid owner scopes: " + ", ".join(invalid_owner_scopes[:10]),
+    )
     add_check(
         checks,
         "profile_audit_covers_every_owner",
@@ -269,6 +406,7 @@ def main() -> int:
             "plantPatents": patent_count,
             "cpvoRecords": cpvo_count,
             "ownerProfiles": owner_count,
+            "breederAffiliations": affiliation_count,
             "companyProfiles": len(companies),
             "manualAudits": len(manual_audits),
             "webEvidenceProfiles": len(web_evidence),

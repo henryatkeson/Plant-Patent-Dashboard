@@ -313,6 +313,56 @@ function renderOwnerAudit(owner) {
   `;
 }
 
+function isResolvedAffiliation(owner) {
+  return ["verified_relationship", "probable_relationship"].includes(normalize(owner.affiliationStatus));
+}
+
+function renderAffiliationEvidence(owner) {
+  const linkedBreeders = Array.isArray(owner.affiliatedBreeders) ? owner.affiliatedBreeders : [];
+  if (linkedBreeders.length) {
+    return `
+      <div class="audit-panel">
+        <h3>Affiliated Breeders</h3>
+        <p class="detail-note">These are evidence-backed relationships to the breeding program. Their personal record histories are not added to this company's legal portfolio unless a specific record names the company as assignee or holder.</p>
+        <dl>
+          ${linkedBreeders.slice(0, 30).map((breeder) => `
+            <div>
+              <dt>${escapeHtml(displayText(breeder.name))}</dt>
+              <dd>${escapeHtml(displayAuditValue(breeder.confidence || "unverified"))} confidence${breeder.rightsRecordCount ? ` | ${Number(breeder.rightsRecordCount).toLocaleString()} scoped assignee records` : " | affiliation only"}</dd>
+            </div>
+          `).join("")}
+        </dl>
+        ${Number(owner.affiliatedBreederCount || 0) > 30 ? `<p class="detail-note">Showing 30 of ${Number(owner.affiliatedBreederCount).toLocaleString()} linked breeders.</p>` : ""}
+      </div>
+    `;
+  }
+  if (!owner.affiliatedCompany || !owner.affiliationStatus || owner.affiliationStatus === "unresolved") return "";
+  const status = displayAuditValue(owner.affiliationStatus);
+  const rightsIds = Array.isArray(owner.affiliationRightsRecordIds) ? owner.affiliationRightsRecordIds : [];
+  const rightsSummary = owner.affiliationRightsBasis === "assignee_on_scoped_patent_records"
+    ? `${rightsIds.length.toLocaleString()} patent records specifically name the company as assignee`
+    : "No portfolio ownership is inferred from this affiliation";
+  const evidence = Array.isArray(owner.affiliationEvidence) ? owner.affiliationEvidence : [];
+  const evidenceLinks = evidence.map((source) => {
+    const url = typeof source === "string" ? source : source.url;
+    const label = typeof source === "string" ? "Affiliation source" : (source.label || "Affiliation source");
+    return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : "";
+  }).filter(Boolean).join("");
+  return `
+    <div class="audit-panel">
+      <h3>${isResolvedAffiliation(owner) ? "Breeding Program Affiliation" : "Candidate Affiliation"}</h3>
+      <dl>
+        <div><dt>Company / program</dt><dd>${escapeHtml(displayText(owner.affiliatedCompany))}</dd></div>
+        <div><dt>Relationship status</dt><dd>${escapeHtml(status)} | ${escapeHtml(displayAuditValue(owner.affiliationConfidence || "unverified"))} confidence</dd></div>
+        ${owner.affiliationRelationshipType ? `<div><dt>Relationship</dt><dd>${escapeHtml(displayAuditValue(owner.affiliationRelationshipType))}</dd></div>` : ""}
+        ${owner.affiliationBasis ? `<div><dt>Evidence basis</dt><dd>${escapeHtml(displayText(owner.affiliationBasis))}</dd></div>` : ""}
+        <div><dt>Rights treatment</dt><dd>${escapeHtml(rightsSummary)}</dd></div>
+      </dl>
+      ${evidenceLinks ? `<div class="audit-links">${evidenceLinks}</div>` : ""}
+    </div>
+  `;
+}
+
 function ownerContactStatus(owner) {
   const namedContact = [owner.primaryContactName, owner.primaryContactTitle].filter(Boolean).join(" - ");
   const directDetails = [owner.primaryContactEmail, owner.primaryContactPhone].filter(Boolean).join(" | ");
@@ -452,7 +502,7 @@ function profileBlockers(owner) {
 function renderProfileSnapshot(owner) {
   const contact = ownerContactStatus(owner);
   const fit = acquisitionFit(owner);
-  const protectedCount = Number(owner.protectedIpCount || 0);
+  const protectedCount = Number(owner.ownerScopedProtectedIpCount || 0);
   return `
     <section class="profile-snapshot">
       <div class="profile-kpi">
@@ -468,7 +518,7 @@ function renderProfileSnapshot(owner) {
         <strong>${Number(owner.sourcingScore || 0)}</strong>
       </div>
       <div class="profile-kpi">
-        <span>Protected IP</span>
+        <span>Owner-scoped protected IP</span>
         <strong>${protectedCount.toLocaleString()}</strong>
       </div>
     </section>
@@ -643,6 +693,10 @@ function ownerSearchText(owner) {
     owner.primaryContactPhone,
     owner.trademarkOwner,
     owner.trademarkStatus,
+    owner.affiliatedCompany,
+    owner.affiliationStatus,
+    owner.affiliationBasis,
+    ...(owner.affiliatedBreeders || []).map((item) => item.name),
     ...(Array.isArray(owner.brandExamples) ? owner.brandExamples : []),
     ...(owner.acquisitionFitReasons || []),
     ...(owner.acquisitionFitBlockers || []),
@@ -670,9 +724,9 @@ function sortOwners(owners) {
     acquisition: (a, b) => (b.acquisitionFitScore || 0) - (a.acquisitionFitScore || 0) || (b.sourcingScore || 0) - (a.sourcingScore || 0),
     confidence: (a, b) => (b.relevantLegalOwnerRecordCount || 0) - (a.relevantLegalOwnerRecordCount || 0) || (b.relevantIpRecordCount || 0) - (a.relevantIpRecordCount || 0) || (b.legalOwnerRecordCount || 0) - (a.legalOwnerRecordCount || 0) || (b.sourcingScore || 0) - (a.sourcingScore || 0),
     score: (a, b) => (b.sourcingScore || 0) - (a.sourcingScore || 0),
-    protected: (a, b) => (b.protectedIpCount || 0) - (a.protectedIpCount || 0),
+    protected: (a, b) => (b.ownerScopedProtectedIpCount || 0) - (a.ownerScopedProtectedIpCount || 0) || (b.protectedIpCount || 0) - (a.protectedIpCount || 0),
     recent: (a, b) => (b.lastYear || 0) - (a.lastYear || 0),
-    cliff: (a, b) => (b.expirationNext5Years || 0) - (a.expirationNext5Years || 0),
+    cliff: (a, b) => (b.ownerScopedExpirationNext5Years || 0) - (a.ownerScopedExpirationNext5Years || 0),
     velocity: (a, b) => (b.filingVelocity5Year || 0) - (a.filingVelocity5Year || 0),
   };
   return [...owners].sort((a, b) => {
@@ -790,7 +844,7 @@ function hasUnresolvedIdentity(owner) {
 }
 
 function isIndependentOwnerSignal(owner) {
-  if (!owner.individualOwner || owner.candidateParent || owner.parentCompany || hasUnresolvedIdentity(owner)) return false;
+  if (!owner.individualOwner || owner.candidateParent || owner.parentCompany || isResolvedAffiliation(owner) || hasUnresolvedIdentity(owner)) return false;
   const ownership = normalize(owner.ownershipType);
   const researchStatus = normalize(owner.webResearchStatus);
   const auditConfidence = normalize(owner.auditConfidence);
@@ -819,6 +873,7 @@ function isPrimarySourcingProfile(owner) {
 function isAffiliationResearchSignal(owner) {
   return Number(owner.relevantIpRecordCount || 0) > 0
     && Boolean(owner.individualOwner || owner.soleNamedBreeder)
+    && !isResolvedAffiliation(owner)
     && !isIndependentOwnerSignal(owner)
     && !isPrimarySourcingProfile(owner);
 }
@@ -962,6 +1017,8 @@ function applyOwnerFilters() {
     owners = owners.filter(isAcquisitionLead);
   } else if (view === "independent") {
     owners = owners.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0 && isIndependentOwnerSignal(owner));
+  } else if (view === "affiliated") {
+    owners = owners.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0 && isResolvedAffiliation(owner));
   } else if (view === "individuals") {
     owners = owners.filter(isAffiliationResearchSignal);
   } else if (view === "legal") {
@@ -969,7 +1026,7 @@ function applyOwnerFilters() {
   } else if (view === "succession") {
     owners = owners.filter((owner) => owner.individualOwner || owner.soleNamedBreeder || (owner.sourcingFlags || []).includes("Dormant portfolio"));
   } else if (view === "cliff") {
-    owners = owners.filter((owner) => Number(owner.expirationNext5Years || 0) > 0);
+    owners = owners.filter((owner) => Number(owner.ownerScopedExpirationNext5Years || 0) > 0);
   }
   state.filteredOwners = sortOwners(owners);
   renderOwners();
@@ -995,6 +1052,9 @@ function renderOwners() {
     const flags = (owner.sourcingFlags || []).slice(0, 3).map((flag) => `<span class="badge">${escapeHtml(flag)}</span>`).join("");
     const fitScore = Number(owner.acquisitionFitScore ?? owner.sourcingScore ?? 0);
     const fitBand = displayText(owner.acquisitionFitBand || "Fit score");
+    const affiliationSummary = owner.affiliatedCompany && owner.affiliationStatus !== "unresolved"
+      ? `Affiliated with ${displayText(owner.affiliatedCompany)} | ${displayAuditValue(owner.affiliationConfidence || "unverified")} confidence`
+      : ownerSignalSummary(owner);
     row.innerHTML = `
       <td class="row-number">${(index + 1).toLocaleString()}</td>
       <td>
@@ -1004,11 +1064,11 @@ function renderOwners() {
       </td>
       <td>
         <strong class="record-title">${escapeHtml(displayText(owner.ownerName, "Unknown owner"))}</strong>
-        <span class="subtle">${escapeHtml(ownerSignalSummary(owner))}</span>
+        <span class="subtle">${escapeHtml(affiliationSummary)}</span>
       </td>
       <td>
-        <strong>${Number(owner.recordCount || 0).toLocaleString()} records</strong>
-        <span class="subtle">${Number(owner.distinctCultivarCount || 0).toLocaleString()} variety labels | ${Number(owner.relevantIpRecordCount || 0).toLocaleString()} relevant | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected | ${Number(owner.usPlantPatentCount || 0).toLocaleString()} USPP | ${Number(owner.cpvoPbrCount || 0).toLocaleString()} CPVO PBR</span>
+        <strong>${Number(owner.recordCount || 0).toLocaleString()} public records</strong>
+        <span class="subtle">${Number(owner.distinctCultivarCount || 0).toLocaleString()} variety labels | ${Number(owner.relevantIpRecordCount || 0).toLocaleString()} relevant signals | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected-right observations | ${Number(owner.ownerScopedRecordCount || 0).toLocaleString()} confirmed owner records</span>
       </td>
       <td>
         ${escapeHtml(cropListSummary(owner.topCrops, 4) || "--")}
@@ -1021,7 +1081,7 @@ function renderOwners() {
         <span class="subtle">${Number(owner.recordsLast5Years || 0).toLocaleString()} records last 5 yrs | ${Number(owner.filingVelocity5Year || 0).toLocaleString()} / yr</span>
       </td>
       <td>
-        <strong>${Number(owner.expirationNext5Years || 0).toLocaleString()} expiring in 5 yrs</strong>
+        <strong>${Number(owner.ownerScopedExpirationNext5Years || 0).toLocaleString()} owner-scoped expiries in 5 yrs</strong>
         <span class="flag-list">${flags || '<span class="subtle">No major flags</span>'}</span>
       </td>
     `;
@@ -1124,13 +1184,13 @@ function renderMiniList(label, items, keyName = "name") {
   return renderDetailItem(label, text);
 }
 
-function renderProfileBarChart(title, items, labelKey = "year", countKey = "count", limit = 12) {
+function renderProfileBarChart(title, items, labelKey = "year", countKey = "count", limit = 12, emptyText = "No dated records available.") {
   const values = (items || []).slice(-limit);
   if (!values.length) {
     return `
       <div class="profile-chart">
         <h3>${escapeHtml(title)}</h3>
-        <p class="subtle">No dated records available.</p>
+        <p class="subtle">${escapeHtml(emptyText)}</p>
       </div>
     `;
   }
@@ -1157,7 +1217,7 @@ function renderProfileBarChart(title, items, labelKey = "year", countKey = "coun
 
 function futureExpirationItems(owner) {
   const currentYear = new Date().getFullYear();
-  return (owner.expirationSchedule || [])
+  return (owner.ownerScopedExpirationSchedule || [])
     .filter((item) => Number(item.year) >= currentYear - 1)
     .slice(0, 14);
 }
@@ -1256,12 +1316,14 @@ function openOwnerDrawer(ownerKey) {
     </div>
     ${ownerNewsLinks}
     ${renderOwnerAudit(owner)}
+    ${renderAffiliationEvidence(owner)}
     <div class="detail-grid">
-      ${renderDetailItem("Portfolio observations", `${Number(owner.recordCount || 0).toLocaleString()} records | ${Number(owner.distinctCultivarCount || 0).toLocaleString()} distinct variety labels | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected IP`)}
+      ${renderDetailItem("Portfolio observations", `${Number(owner.recordCount || 0).toLocaleString()} public records | ${Number(owner.distinctCultivarCount || 0).toLocaleString()} distinct variety labels | ${Number(owner.protectedIpCount || 0).toLocaleString()} protected-right observations`)}
       ${renderDetailItem("Relevant crop exposure", `${Number(owner.relevantIpRecordCount || 0).toLocaleString()} fruit/nut/vegetable records | ${Number(owner.relevantLegalOwnerRecordCount || 0).toLocaleString()} confirmed assignee records`)}
+      ${renderDetailItem("Owner-scoped rights", `${Number(owner.ownerScopedRecordCount || 0).toLocaleString()} confirmed owner records | ${Number(owner.ownerScopedProtectedIpCount || 0).toLocaleString()} protected | ${Number(owner.ownerScopedActiveProtectionCount || 0).toLocaleString()} active`)}
       ${renderDetailItem("US / CPVO protected", `${Number(owner.usPlantPatentCount || 0).toLocaleString()} US plant patents | ${Number(owner.cpvoPbrCount || 0).toLocaleString()} CPVO PBR`)}
       ${renderDetailItem("Filing years", `${yearRange(owner.firstYear, owner.lastYear)} | ${Number(owner.recordsLast5Years || 0).toLocaleString()} records last 5 years`)}
-      ${renderDetailItem("Expiration curve", `${Number(owner.expirationNext1Year || 0).toLocaleString()} in 1 yr | ${Number(owner.expirationNext3Years || 0).toLocaleString()} in 3 yrs | ${Number(owner.expirationNext5Years || 0).toLocaleString()} in 5 yrs | ${Number(owner.expiredProtectionCount || 0).toLocaleString()} expired`)}
+      ${renderDetailItem("Owner-scoped expiration curve", `${Number(owner.ownerScopedExpirationNext1Year || 0).toLocaleString()} in 1 yr | ${Number(owner.ownerScopedExpirationNext3Years || 0).toLocaleString()} in 3 yrs | ${Number(owner.ownerScopedExpirationNext5Years || 0).toLocaleString()} in 5 yrs | ${Number(owner.ownerScopedExpiredProtectionCount || 0).toLocaleString()} expired`)}
       ${renderDetailItem("Signal confidence", ownerSignalSummary(owner))}
       ${renderDetailItem("Rollup includes", (owner.rollupChildren || []).join(" | "))}
       ${renderDetailItem("Owner signal", Object.entries(owner.ownerRoleCounts || {}).map(([key, value]) => `${key}: ${value}`).join(" | "))}
@@ -1270,11 +1332,11 @@ function openOwnerDrawer(ownerKey) {
       ${renderMiniList("Named breeders", owner.topBreeders, "name")}
     </div>
     <div class="profile-chart-grid">
-      ${renderProfileBarChart("Annual patent/PBR activity", owner.annualCounts || [], "year", "count", 12)}
-      ${renderProfileBarChart("Estimated expiration cliff", futureExpirationItems(owner), "year", "count", 14)}
+      ${renderProfileBarChart("Owner-scoped filing activity", owner.ownerScopedAnnualCounts || [], "year", "count", 12, "No record-specific owner filings captured.")}
+      ${renderProfileBarChart("Owner-scoped expiration cliff", futureExpirationItems(owner), "year", "count", 14, "No record-specific owner expirations captured.")}
     </div>
     <p class="detail-note">
-      Owner profiles are sourcing signals. USPTO records use assignee first when available. CPVO profiles currently use breeder names from the Variety Finder export because holder/applicant fields are not in the downloaded workbook.
+      Portfolio observations are sourcing signals rather than a legal title schedule. Owner-scoped figures use record-specific assignee evidence. CPVO profiles currently use breeder names from the Variety Finder export because holder/applicant fields are not in the downloaded workbook.
     </p>
   `;
   els.drawerBackdrop.hidden = false;

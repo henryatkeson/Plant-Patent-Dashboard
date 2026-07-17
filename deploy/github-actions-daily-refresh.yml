@@ -28,6 +28,9 @@ jobs:
       - name: Check for substantive patent changes
         id: material_changes
         run: python scripts/check_material_refresh.py
+      - name: Rebuild breeder affiliation graph
+        if: steps.material_changes.outputs.changed == 'true'
+        run: python scripts/build_breeder_affiliations.py
       - name: Rebuild owner sourcing profiles
         if: steps.material_changes.outputs.changed == 'true'
         run: python scripts/build_owner_profiles.py
@@ -60,6 +63,6 @@ jobs:
         run: |
           git config user.name "plant-patent-dashboard"
           git config user.email "plant-patent-dashboard@example.com"
-          git add data/plant_patents.json data/link_enrichment_cache.json data/owner_profiles.json data/source_status.json data/company_site_probe.json data/company_site_probe.csv data/profile_evidence_probe.json data/profile_evidence_probe.csv data/profile_audit.json data/profile_audit.csv data/data_confidence.json data/data_confidence.csv data/rollup_review_queue.csv data/web_research_queue.json data/web_research_queue.csv data/refresh_health.json
+          git add data/plant_patents.json data/link_enrichment_cache.json data/breeder_affiliations.json data/breeder_affiliations.csv data/owner_profiles.json data/source_status.json data/company_site_probe.json data/company_site_probe.csv data/profile_evidence_probe.json data/profile_evidence_probe.csv data/profile_audit.json data/profile_audit.csv data/data_confidence.json data/data_confidence.csv data/rollup_review_queue.csv data/web_research_queue.json data/web_research_queue.csv data/refresh_health.json
           git diff --cached --quiet || git commit -m "Refresh plant patent data"
           git push

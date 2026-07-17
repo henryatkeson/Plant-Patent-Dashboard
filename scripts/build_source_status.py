@@ -40,10 +40,12 @@ def main() -> int:
     cpvo_path = DATA_DIR / "cpvo_varieties.json"
     owner_path = DATA_DIR / "owner_profiles.json"
     research_path = DATA_DIR / "web_research_queue.json"
+    affiliation_path = DATA_DIR / "breeder_affiliations.json"
     plant_records = records_from(plant_path)
     cpvo_records = records_from(cpvo_path)
     owner_payload = load_json(owner_path)
     research_payload = load_json(research_path)
+    affiliation_payload = load_json(affiliation_path)
     research_metadata = research_payload.get("metadata", {})
 
     payload = {
@@ -87,6 +89,17 @@ def main() -> int:
                 "latestRecordDate": "",
                 "lastFileUpdate": file_timestamp(research_path),
                 "nextStep": "Work the highest-priority unresolved companies and breeder affiliations, recording only source-backed findings.",
+            },
+            {
+                "name": "Breeder affiliation graph",
+                "mode": "derived relationship evidence",
+                "cadence": "Rebuilt after USPTO or CPVO data changes",
+                "recordCount": affiliation_payload.get("metadata", {}).get("recordCount", 0),
+                "verifiedCount": affiliation_payload.get("metadata", {}).get("verifiedRelationshipCount", 0),
+                "probableCount": affiliation_payload.get("metadata", {}).get("probableRelationshipCount", 0),
+                "latestRecordDate": "",
+                "lastFileUpdate": file_timestamp(affiliation_path),
+                "nextStep": "Verify review-queue relationships with official company, university, and registry sources; never infer blanket ownership from employment.",
             },
         ],
         "futureFeeds": [

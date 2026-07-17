@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-07-16T13:43:01.811539+00:00",
+    "checkedAt": "2026-07-17T19:39:48.570350+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -9,12 +9,13 @@
   "counts": {
     "plantPatents": 2708,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12143,
+    "ownerProfiles": 12103,
+    "breederAffiliations": 9236,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12143
+    "webResearchRows": 12103
   },
   "checks": [
     {
@@ -33,19 +34,67 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,143 owner profiles"
+      "detail": "12,103 owner profiles"
+    },
+    {
+      "name": "breeder_affiliations_present",
+      "ok": true,
+      "severity": "error",
+      "detail": "9,236 breeder relationships"
+    },
+    {
+      "name": "breeder_affiliation_enums_valid",
+      "ok": true,
+      "severity": "error",
+      "detail": "All affiliation statuses and confidence values are valid"
+    },
+    {
+      "name": "verified_affiliations_have_verified_identity",
+      "ok": true,
+      "severity": "error",
+      "detail": "Every verified relationship also has high-confidence identity"
+    },
+    {
+      "name": "known_registry_fragments_are_not_breeders",
+      "ok": true,
+      "severity": "error",
+      "detail": "Known location and organization fragments are excluded from breeder identities"
+    },
+    {
+      "name": "breeders_are_not_affiliated_to_themselves",
+      "ok": true,
+      "severity": "error",
+      "detail": "No self-referential breeder affiliations"
+    },
+    {
+      "name": "affiliation_rights_are_record_scoped",
+      "ok": true,
+      "severity": "error",
+      "detail": "Affiliation never implies ownership without record-specific assignee or holder evidence"
+    },
+    {
+      "name": "affiliation_rights_records_exist",
+      "ok": true,
+      "severity": "error",
+      "detail": "All scoped rights records exist in a source dataset"
+    },
+    {
+      "name": "owner_scoped_portfolios_follow_title_evidence",
+      "ok": true,
+      "severity": "error",
+      "detail": "Owner-scoped portfolio and cliff counts never exceed confirmed title evidence"
     },
     {
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,143 audit rows for 12,143 owners"
+      "detail": "12,103 audit rows for 12,103 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,143 research rows for 12,143 owners"
+      "detail": "12,103 research rows for 12,103 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -111,7 +160,7 @@
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,143; research rows 12,143"
+      "detail": "Status totals 12,103; research rows 12,103"
     }
   ]
 }

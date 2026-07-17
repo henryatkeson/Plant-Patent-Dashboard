@@ -9,6 +9,7 @@ import math
 import re
 import unicodedata
 from collections import Counter, defaultdict
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,7 @@ CONFIG_DIR = ROOT / "config"
 PATENT_PATH = DATA_DIR / "plant_patents.json"
 CPVO_PATH = DATA_DIR / "cpvo_varieties.json"
 OUTPUT_PATH = DATA_DIR / "owner_profiles.json"
+AFFILIATION_PATH = DATA_DIR / "breeder_affiliations.json"
 COMPANY_PROFILE_PATH = CONFIG_DIR / "company_profiles.json"
 AUDIT_OVERRIDE_PATH = CONFIG_DIR / "company_profile_audits.json"
 WEB_RESEARCH_PATHS = sorted(CONFIG_DIR.glob("profile_web_research*.json"))
@@ -58,18 +60,54 @@ LEGAL_TERMS = {
 }
 
 INSTITUTION_TERMS = {
+    "agency",
+    "association",
     "university",
     "college",
+    "consortium",
+    "cooperative",
+    "council",
+    "county",
+    "department",
+    "development",
+    "faculty",
+    "federal",
+    "foundation",
     "institute",
     "institut",
+    "innovation",
+    "laboratory",
+    "ministry",
+    "national",
+    "organization",
+    "organisation",
+    "pepinieres",
+    "prefecture",
+    "provincial",
+    "roseraies",
     "research",
     "academy",
     "government",
-    "department",
     "minister",
+    "service",
+    "station",
+    "stov",
+    "sociedad",
+    "unipersonal",
     "usda",
     "state of",
 }
+
+LEGAL_ENTITY_PATTERN = re.compile(
+    r"(?:\binc(?:orporated)?\b|\bllc\b|\bl\.?\s*l\.?\s*c\.?\b|\bltd\b|\blimited\b|"
+    r"\bcorp(?:oration)?\b|\bcompany\b|\bco\.?\b|\bgmbh\b|\bb\.?\s*v\.?\b|"
+    r"\bn\.?\s*v\.?\b|\bs\.?\s*a\.?\s*r\.?\s*l\.?\b|\bs\.?\s*a\.?\s*s\.?\b|"
+    r"\bs\.?\s*a\.?\b|\ba\.?\s*g\.?\b|\bplc\b|\bpty\b|\bpte\b|\bllp\b|\blp\b|"
+    r"\bsrl\b|\bs\.?\s*r\.?\s*l\.?\b|\bspa\b|\bs\.?\s*p\.?\s*a\.?\b|\bsro\b|"
+    r"\bz\.?\s*o\.?\s*o\.?\b|\bgaec\b|\bscea\b|\bsnc\b|\bearl\b|\bkft\b|\bzrt\b|"
+    r"\bholdings?\b)",
+    re.I,
+)
 
 PERSON_STOPWORDS = {
     "dr",
@@ -324,6 +362,22 @@ AUDIT_FIELDS = [
     "candidateParentEvidenceUrl",
 ]
 
+AFFILIATION_FIELDS = [
+    "affiliatedCompany",
+    "affiliationRelationshipType",
+    "affiliationIdentityConfidence",
+    "affiliationConfidence",
+    "affiliationStatus",
+    "affiliationBasis",
+    "affiliationSource",
+    "affiliationDirectEvidenceCount",
+    "affiliationDirectEvidenceShare",
+    "affiliationRightsBasis",
+    "affiliationRightsRecordIds",
+    "affiliationEvidenceRecordIds",
+    "affiliationEvidence",
+]
+
 
 def load_profile_audits() -> dict[str, dict[str, Any]]:
     audits: dict[str, dict[str, Any]] = {}
@@ -345,7 +399,8 @@ def load_profile_audits() -> dict[str, dict[str, Any]]:
             name = clean_text(row.get("canonicalName") or row.get("ownerName"))
             if not name:
                 continue
-            key = normalize_alias_search(name)
+            canonical_person = PERSON_NAME_ALIASES.get(normalize_alias_search(name), name)
+            key = normalize_alias_search(canonical_person)
             audits[key] = {**audits.get(key, {}), **row}
     return audits
 
@@ -353,14 +408,21 @@ def load_profile_audits() -> dict[str, dict[str, Any]]:
 PROFILE_AUDITS = load_profile_audits()
 
 
-def build_company_alias_index() -> list[tuple[str, dict[str, Any]]]:
-    index: list[tuple[str, dict[str, Any]]] = []
+def load_breeder_affiliations() -> list[dict[str, Any]]:
+    if not AFFILIATION_PATH.exists():
+        return []
+    payload = json.loads(AFFILIATION_PATH.read_text(encoding="utf-8"))
+    return payload.get("affiliations", []) if isinstance(payload, dict) else payload
+
+
+def build_company_alias_index() -> list[tuple[str, str, dict[str, Any]]]:
+    index: list[tuple[str, str, dict[str, Any]]] = []
     for profile in COMPANY_PROFILES:
         aliases = [profile.get("canonicalName", ""), *(profile.get("aliases") or [])]
         for alias in aliases:
             alias_normalized = normalize_alias_search(alias)
             if alias_normalized:
-                index.append((alias_normalized, profile))
+                index.append((alias_normalized, clean_text(alias), profile))
     return sorted(index, key=lambda item: len(item[0]), reverse=True)
 
 
@@ -382,31 +444,39 @@ def company_profile_excluded(profile: dict[str, Any], normalized_name: str) -> b
     return False
 
 
+@lru_cache(maxsize=None)
 def company_profile_for_name(name: str) -> dict[str, Any] | None:
     normalized = f" {normalize_alias_search(name)} "
-    for alias_normalized, profile in COMPANY_ALIAS_INDEX:
+    for alias_normalized, raw_alias, profile in COMPANY_ALIAS_INDEX:
         if company_profile_excluded(profile, normalized):
             continue
         if len(alias_normalized) <= 4:
-            if f" {alias_normalized} " in normalized:
+            acronym_match = raw_alias.isupper() and bool(
+                re.search(rf"\b{re.escape(raw_alias)}\b", clean_text(name))
+            )
+            if acronym_match or (not raw_alias.isupper() and f" {alias_normalized} " in normalized):
                 return profile
         elif alias_normalized in normalized:
             return profile
     return None
 
 
+@lru_cache(maxsize=None)
 def company_profiles_for_name(name: str) -> list[dict[str, Any]]:
     normalized = f" {normalize_alias_search(name)} "
     profiles: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for alias_normalized, profile in COMPANY_ALIAS_INDEX:
+    for alias_normalized, raw_alias, profile in COMPANY_ALIAS_INDEX:
         canonical = profile["canonicalName"]
         if canonical in seen:
             continue
         if company_profile_excluded(profile, normalized):
             continue
         if len(alias_normalized) <= 4:
-            matched = f" {alias_normalized} " in normalized
+            matched = (
+                raw_alias.isupper()
+                and bool(re.search(rf"\b{re.escape(raw_alias)}\b", clean_text(name)))
+            ) or (not raw_alias.isupper() and f" {alias_normalized} " in normalized)
         else:
             matched = alias_normalized in normalized
         if matched:
@@ -434,6 +504,10 @@ def ascii_key(value: str) -> str:
     return normalized.encode("ascii", "ignore").decode("ascii")
 
 
+def has_legal_entity_marker(name: str) -> bool:
+    return bool(LEGAL_ENTITY_PATTERN.search(ascii_key(name)))
+
+
 def looks_like_address_or_location(name: str) -> bool:
     raw = ascii_key(name).strip()
     text = raw.lower()
@@ -452,9 +526,27 @@ def looks_like_address_or_location(name: str) -> bool:
         return True
     if re.search(r"\d", text):
         return True
+    if re.match(r"^(?:cerca\s+de|near|outside\s+of)\b", text):
+        return True
+    if re.match(r"^saint-[a-z-]+-sur-[a-z-]+$", text):
+        return True
     if re.match(r"^(?:[A-Z]{2})(?:,?\s+[A-Z]{2})?\b", raw):
         return True
     if re.search(r",\s*[A-Z]{2}$", raw):
+        return True
+    if re.search(
+        r",\s*(?:australia|belgium|brazil|canada|chile|china|france|germany|italy|"
+        r"japan|mexico|netherlands|new zealand|spain|united kingdom|united states)\b",
+        text,
+    ):
+        return True
+    if re.match(
+        r"^[^,]+,\s*(?:AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|"
+        r"MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|"
+        r"TX|UT|VT|VA|WA|WV|WI|WY)\b",
+        raw,
+        flags=re.I,
+    ):
         return True
     return bool(
         re.search(
@@ -487,7 +579,11 @@ def split_conjoined_people_text(part: str) -> list[str]:
     connector_pieces = [clean_text(piece).strip(" ,") for piece in re.split(connector, part, flags=re.I)]
     pieces: list[str] = []
     for piece in connector_pieces:
-        comma_pieces = [clean_text(item).strip(" ,") for item in piece.split(",")]
+        comma_pieces = [
+            cleaned
+            for item in piece.split(",")
+            if (cleaned := clean_text(item).strip(" ,"))
+        ]
         if len(comma_pieces) > 1 and all(personish(item) for item in comma_pieces):
             pieces.extend(comma_pieces)
         else:
@@ -511,7 +607,11 @@ def split_people_or_entities(value: str) -> list[str]:
     for part in [clean_text(part).strip(" ,") for part in text.split("|")]:
         conjoined = split_conjoined_people_text(part)
         for piece in conjoined:
-            comma_pieces = [clean_text(item).strip(" ,") for item in piece.split(",")]
+            comma_pieces = [
+                cleaned
+                for item in piece.split(",")
+                if (cleaned := clean_text(item).strip(" ,"))
+            ]
             if (
                 len(comma_pieces) > 1
                 and all(2 <= len(person_tokens(item)) <= 4 for item in comma_pieces)
@@ -526,11 +626,15 @@ def split_people_or_entities(value: str) -> list[str]:
 def likely_entity_name(name: str) -> bool:
     if company_profile_for_name(name):
         return True
-    normalized = normalize_owner_name(name)
-    if not normalized:
+    if has_legal_entity_marker(name):
+        return True
+    raw_normalized = re.sub(r"[^a-z0-9]+", " ", ascii_key(name).lower()).strip()
+    if not raw_normalized:
         return False
-    tokens = set(normalized.split())
-    if tokens & LEGAL_TERMS or tokens & INSTITUTION_TERMS:
+    tokens = set(raw_normalized.split())
+    if any(term in raw_normalized for term in INSTITUTION_TERMS if " " in term):
+        return True
+    if tokens & INSTITUTION_TERMS:
         return True
     entity_terms = {
         "breeding",
@@ -802,14 +906,11 @@ def jurisdiction(row: dict[str, Any]) -> str:
 
 
 def looks_individual(name: str) -> bool:
-    normalized = normalize_owner_name(name)
-    if not normalized:
+    if looks_like_address_or_location(name) or likely_entity_name(name):
         return False
-    if any(term in normalized for term in INSTITUTION_TERMS):
+    if re.search(r"(?:&\.|-\.)", clean_text(name)):
         return False
-    if any(term in clean_text(name).lower() for term in LEGAL_TERMS):
-        return False
-    words = normalized.split()
+    words = person_tokens(name)
     return 2 <= len(words) <= 4
 
 
@@ -1000,6 +1101,10 @@ def score_acquisition_fit(profile: dict[str, Any]) -> tuple[int, str, list[str],
     is_non_control = non_control_structure_signal(profile)
     scale_class = clean_text(profile.get("acquisitionScaleClass")).lower()
     scale_verification_required = scale_class == "scale_verification_required"
+    resolved_affiliation = clean_text(profile.get("affiliationStatus")) in {
+        "verified_relationship",
+        "probable_relationship",
+    }
     unresolved_identity = (
         web_research_status in {"unresolved", "identity_unresolved"}
         or "identity unresolved" in ownership_type
@@ -1019,6 +1124,11 @@ def score_acquisition_fit(profile: dict[str, Any]) -> tuple[int, str, list[str],
         "current_parent_medium" in web_research_status
         or "institutional ownership history" in clean_text(profile.get("ownershipType")).lower()
         or "current ultimate ownership requires" in clean_text(profile.get("targetFit")).lower()
+    )
+    rights_holder_verification_required = (
+        relevant_count > 0
+        and legal_owner_count == 0
+        and not profile.get("individualOwner")
     )
 
     score = 0
@@ -1089,9 +1199,12 @@ def score_acquisition_fit(profile: dict[str, Any]) -> tuple[int, str, list[str],
     # 4. Private / acquirable ownership: favor private or individual holders over institutions.
     if is_public:
         blockers.append("Public, university, government, or research-institution signal")
-    elif profile.get("individualOwner"):
+    elif profile.get("individualOwner") and not resolved_affiliation:
         score += 15
         reasons.append("Individual-owner or succession signal")
+    elif resolved_affiliation:
+        score += 2
+        blockers.append("Individual is affiliated with a company or breeding program; target the rights holder separately")
     elif has_profile:
         score += 12
         reasons.append("Private or company-level profile signal")
@@ -1128,7 +1241,7 @@ def score_acquisition_fit(profile: dict[str, Any]) -> tuple[int, str, list[str],
         blockers.append("No public commercial validation captured")
 
     # 7. Succession / relationship signal.
-    if profile.get("individualOwner") or profile.get("soleNamedBreeder"):
+    if (profile.get("individualOwner") or profile.get("soleNamedBreeder")) and not resolved_affiliation:
         score += 5
         reasons.append("Succession or thin-bench signal")
     elif int(profile.get("breederSignalRecordCount") or 0) and not legal_owner_count:
@@ -1206,6 +1319,12 @@ def score_acquisition_fit(profile: dict[str, Any]) -> tuple[int, str, list[str],
     elif scale_verification_required:
         score = min(score, 70)
         band = "Scale verification needed"
+    elif rights_holder_verification_required:
+        score = min(score, 70)
+        band = "Rights-holder verification needed"
+    elif resolved_affiliation and (profile.get("individualOwner") or profile.get("soleNamedBreeder")):
+        score = min(score, 40)
+        band = "Affiliated breeder / company target"
     elif (
         (profile.get("individualOwner") or profile.get("soleNamedBreeder"))
         and not has_profile
@@ -1299,6 +1418,8 @@ def summarize_rollup_records(
     cultivar_labels: set[str] = set()
     annual_counts: Counter[int] = Counter()
     expiration_counts: Counter[int] = Counter()
+    owner_scoped_annual_counts: Counter[int] = Counter()
+    owner_scoped_expiration_counts: Counter[int] = Counter()
     metrics = Counter()
 
     for record_id in record_ids:
@@ -1310,6 +1431,7 @@ def summarize_rollup_records(
             role_counts[role] += 1
         if "Patent assignee" in roles:
             metrics["legalOwnerRecordCount"] += 1
+            metrics["ownerScopedRecordCount"] += 1
         if roles & {"CPVO breeder", "Breeder"}:
             metrics["breederSignalRecordCount"] += 1
         if "Inventor" in roles:
@@ -1320,6 +1442,7 @@ def summarize_rollup_records(
             metrics["relevantIpRecordCount"] += 1
             if "Patent assignee" in roles:
                 metrics["relevantLegalOwnerRecordCount"] += 1
+                metrics["ownerScopedRelevantRecordCount"] += 1
 
         crop_counts[clean_text(row.get("crop")) or "Unclassified"] += 1
         jurisdiction_counts[jurisdiction(row)] += 1
@@ -1329,6 +1452,8 @@ def summarize_rollup_records(
         year = record_year(row)
         if year:
             annual_counts[year] += 1
+            if "Patent assignee" in roles:
+                owner_scoped_annual_counts[year] += 1
 
         for breeder in {
             canonical_named_party(name, alias_map)
@@ -1348,6 +1473,9 @@ def summarize_rollup_records(
         if not protected:
             continue
         metrics["protectedIpCount"] += 1
+        owner_scoped = "Patent assignee" in roles
+        if owner_scoped:
+            metrics["ownerScopedProtectedIpCount"] += 1
         if is_us_plant_patent(row):
             metrics["usPlantPatentCount"] += 1
         if is_cpvo(row) and clean_text(row.get("registerType")).upper() == "PBR":
@@ -1357,17 +1485,29 @@ def summarize_rollup_records(
         if not expiration:
             continue
         expiration_counts[expiration.year] += 1
+        if owner_scoped:
+            owner_scoped_expiration_counts[expiration.year] += 1
         if expiration < TODAY:
             metrics["expiredProtectionCount"] += 1
+            if owner_scoped:
+                metrics["ownerScopedExpiredProtectionCount"] += 1
             continue
         metrics["activeProtectionCount"] += 1
+        if owner_scoped:
+            metrics["ownerScopedActiveProtectionCount"] += 1
         days = (expiration - TODAY).days
         if days <= 365:
             metrics["expirationNext1Year"] += 1
+            if owner_scoped:
+                metrics["ownerScopedExpirationNext1Year"] += 1
         if days <= 365 * 3:
             metrics["expirationNext3Years"] += 1
+            if owner_scoped:
+                metrics["ownerScopedExpirationNext3Years"] += 1
         if days <= 365 * 5:
             metrics["expirationNext5Years"] += 1
+            if owner_scoped:
+                metrics["ownerScopedExpirationNext5Years"] += 1
 
     years = sorted(annual_counts)
     current_year = TODAY.year
@@ -1384,6 +1524,14 @@ def summarize_rollup_records(
         "inventorSignalRecordCount": metrics["inventorSignalRecordCount"],
         "relevantIpRecordCount": metrics["relevantIpRecordCount"],
         "relevantLegalOwnerRecordCount": metrics["relevantLegalOwnerRecordCount"],
+        "ownerScopedRecordCount": metrics["ownerScopedRecordCount"],
+        "ownerScopedRelevantRecordCount": metrics["ownerScopedRelevantRecordCount"],
+        "ownerScopedProtectedIpCount": metrics["ownerScopedProtectedIpCount"],
+        "ownerScopedActiveProtectionCount": metrics["ownerScopedActiveProtectionCount"],
+        "ownerScopedExpiredProtectionCount": metrics["ownerScopedExpiredProtectionCount"],
+        "ownerScopedExpirationNext1Year": metrics["ownerScopedExpirationNext1Year"],
+        "ownerScopedExpirationNext3Years": metrics["ownerScopedExpirationNext3Years"],
+        "ownerScopedExpirationNext5Years": metrics["ownerScopedExpirationNext5Years"],
         "firstYear": years[0] if years else None,
         "lastYear": years[-1] if years else None,
         "recordsLast5Years": records_last_5_years,
@@ -1402,8 +1550,16 @@ def summarize_rollup_records(
         "topInventors": [{"name": key, "count": value} for key, value in inventor_counts.most_common(8)],
         "ownerRoleCounts": dict(role_counts),
         "annualCounts": [{"year": year, "count": annual_counts[year]} for year in years],
+        "ownerScopedAnnualCounts": [
+            {"year": year, "count": owner_scoped_annual_counts[year]}
+            for year in sorted(owner_scoped_annual_counts)
+        ],
         "expirationSchedule": [
             {"year": year, "count": expiration_counts[year]} for year in sorted(expiration_counts)
+        ],
+        "ownerScopedExpirationSchedule": [
+            {"year": year, "count": owner_scoped_expiration_counts[year]}
+            for year in sorted(owner_scoped_expiration_counts)
         ],
         "_recordIds": record_ids,
         "_recordRoles": record_roles,
@@ -1424,13 +1580,19 @@ def add_parent_rollups(
         if normalized in absorbed_normalized:
             continue
         existing_parent = by_normalized.get(normalized)
-        children = [by_owner[name] for name in configured_rollup_children(company) if name in by_owner]
+        children = [
+            by_owner[name]
+            for name in configured_rollup_children(company)
+            if name in by_owner and not by_owner[name].get("individualOwner")
+        ]
         # A display suppression is safe only when another configured rollup retains
         # the source records. Unpaired suppressions remain visible in the census.
         suppressed_names = [
             clean_text(name)
             for name in company.get("suppressProfiles", [])
-            if clean_text(name) and normalize_owner_name(name) in ROLLUP_CHILD_NAMES
+            if clean_text(name)
+            and normalize_owner_name(name) in ROLLUP_CHILD_NAMES
+            and not by_normalized.get(normalize_owner_name(name), {}).get("individualOwner")
         ]
         if not children and not existing_parent and not suppressed_names:
             continue
@@ -1489,6 +1651,88 @@ def apply_profile_audits(profiles: list[dict[str, Any]]) -> None:
             profile["companyWebsite"] = official_website
 
 
+def apply_breeder_affiliations(
+    profiles: list[dict[str, Any]],
+    affiliations: list[dict[str, Any]] | None = None,
+) -> None:
+    """Attach relationship evidence without transferring portfolio ownership."""
+    rows = affiliations if affiliations is not None else load_breeder_affiliations()
+    by_id = {clean_text(profile.get("id")): profile for profile in profiles}
+    by_normalized = {
+        clean_text(profile.get("normalizedOwnerName")): profile
+        for profile in profiles
+        if clean_text(profile.get("normalizedOwnerName"))
+    }
+    for profile in profiles:
+        for field in AFFILIATION_FIELDS:
+            profile[field] = [] if field in {
+                "affiliationRightsRecordIds",
+                "affiliationEvidenceRecordIds",
+                "affiliationEvidence",
+            } else ""
+        profile["affiliatedBreederCount"] = 0
+        profile["affiliatedBreeders"] = []
+
+    confidence_rank = {"high": 3, "medium": 2, "low": 1, "unverified": 0}
+    company_breeders: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        breeder_profile = by_id.get(clean_text(row.get("breederId")))
+        if not breeder_profile:
+            breeder_profile = by_normalized.get(clean_text(row.get("normalizedBreederName")))
+        if breeder_profile:
+            values = {
+                "affiliatedCompany": row.get("companyName", ""),
+                "affiliationRelationshipType": row.get("relationshipType", ""),
+                "affiliationIdentityConfidence": row.get("identityConfidence", ""),
+                "affiliationConfidence": row.get("relationshipConfidence", ""),
+                "affiliationStatus": row.get("status", ""),
+                "affiliationBasis": row.get("basis", ""),
+                "affiliationSource": row.get("source", ""),
+                "affiliationDirectEvidenceCount": row.get("directEvidenceCount", 0),
+                "affiliationDirectEvidenceShare": row.get("directEvidenceShare", 0),
+                "affiliationRightsBasis": row.get("rightsBasis", "none"),
+                "affiliationRightsRecordIds": row.get("rightsRecordIds", []),
+                "affiliationEvidenceRecordIds": row.get("evidenceRecordIds", []),
+                "affiliationEvidence": row.get("evidence", []),
+            }
+            breeder_profile.update(values)
+
+        if row.get("status") not in {"verified_relationship", "probable_relationship"}:
+            continue
+        company_name = canonical_owner_name(clean_text(row.get("companyName")))
+        company_normalized = normalize_owner_name(company_name)
+        if not company_normalized:
+            continue
+        company_breeders[company_normalized].append(
+            {
+                "name": clean_text(row.get("breederName")),
+                "relationshipType": clean_text(row.get("relationshipType")),
+                "confidence": clean_text(row.get("relationshipConfidence")),
+                "status": clean_text(row.get("status")),
+                "basis": clean_text(row.get("basis")),
+                "rightsBasis": clean_text(row.get("rightsBasis")) or "none",
+                "rightsRecordCount": len(row.get("rightsRecordIds") or []),
+            }
+        )
+
+    for company_normalized, breeders in company_breeders.items():
+        company_profile = by_normalized.get(company_normalized)
+        if not company_profile:
+            continue
+        deduplicated = {normalize_alias_search(item["name"]): item for item in breeders if item["name"]}
+        ordered = sorted(
+            deduplicated.values(),
+            key=lambda item: (
+                confidence_rank.get(item["confidence"], 0),
+                item["rightsRecordCount"],
+                item["name"].lower(),
+            ),
+            reverse=True,
+        )
+        company_profile["affiliatedBreederCount"] = len(ordered)
+        company_profile["affiliatedBreeders"] = ordered[:75]
+
+
 def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     current_year = TODAY.year
@@ -1534,6 +1778,8 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "statusCounts": Counter(),
                     "years": Counter(),
                     "expirationYears": Counter(),
+                    "ownerScopedYears": Counter(),
+                    "ownerScopedExpirationYears": Counter(),
                     "namedBreeders": Counter(),
                     "namedInventors": Counter(),
                     "_recordIds": set(),
@@ -1553,6 +1799,14 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "inventorSignalRecordCount": 0,
                     "relevantIpRecordCount": 0,
                     "relevantLegalOwnerRecordCount": 0,
+                    "ownerScopedRecordCount": 0,
+                    "ownerScopedRelevantRecordCount": 0,
+                    "ownerScopedProtectedIpCount": 0,
+                    "ownerScopedActiveProtectionCount": 0,
+                    "ownerScopedExpiredProtectionCount": 0,
+                    "ownerScopedExpirationNext1Year": 0,
+                    "ownerScopedExpirationNext3Years": 0,
+                    "ownerScopedExpirationNext5Years": 0,
                     "individualOwner": False if company_profile else looks_individual(owner_display),
                 },
             )
@@ -1577,6 +1831,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             profile["confidenceCounts"][confidence] += 1
             if owner_role == "Patent assignee":
                 profile["legalOwnerRecordCount"] += 1
+                profile["ownerScopedRecordCount"] += 1
             elif owner_role in {"CPVO breeder", "Breeder"}:
                 profile["breederSignalRecordCount"] += 1
             elif owner_role == "Inventor":
@@ -1586,6 +1841,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 profile["relevantIpRecordCount"] += 1
                 if owner_role == "Patent assignee":
                     profile["relevantLegalOwnerRecordCount"] += 1
+                    profile["ownerScopedRelevantRecordCount"] += 1
             profile["cropCounts"][clean_text(row.get("crop")) or "Unclassified"] += 1
             profile["jurisdictionCounts"][jurisdiction(row)] += 1
             profile["sourceKindCounts"][clean_text(row.get("sourceKind")) or clean_text(row.get("source")) or "Unknown"] += 1
@@ -1595,6 +1851,8 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 profile["statusCounts"][clean_text(row.get("status"))] += 1
             if year:
                 profile["years"][year] += 1
+                if owner_role == "Patent assignee":
+                    profile["ownerScopedYears"][year] += 1
 
             breeder_names = {
                 canonical_named_party(breeder, alias_map)
@@ -1615,6 +1873,9 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             is_protected = is_us_plant_patent(row) or ("plant breeders" in source_kind and clean_text(row.get("registerType")).upper() == "PBR")
             if is_protected:
                 profile["protectedIpCount"] += 1
+                owner_scoped = owner_role == "Patent assignee"
+                if owner_scoped:
+                    profile["ownerScopedProtectedIpCount"] += 1
                 if is_us_plant_patent(row):
                     profile["usPlantPatentCount"] += 1
                 if is_cpvo(row) and clean_text(row.get("registerType")).upper() == "PBR":
@@ -1622,16 +1883,28 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 if exp:
                     if exp < TODAY:
                         profile["expiredProtectionCount"] += 1
+                        if owner_scoped:
+                            profile["ownerScopedExpiredProtectionCount"] += 1
                     else:
                         profile["activeProtectionCount"] += 1
+                        if owner_scoped:
+                            profile["ownerScopedActiveProtectionCount"] += 1
                         days = (exp - TODAY).days
                         if days <= 365:
                             profile["expirationNext1Year"] += 1
+                            if owner_scoped:
+                                profile["ownerScopedExpirationNext1Year"] += 1
                         if days <= 365 * 3:
                             profile["expirationNext3Years"] += 1
+                            if owner_scoped:
+                                profile["ownerScopedExpirationNext3Years"] += 1
                         if days <= 365 * 5:
                             profile["expirationNext5Years"] += 1
+                            if owner_scoped:
+                                profile["ownerScopedExpirationNext5Years"] += 1
                     profile["expirationYears"][exp.year] += 1
+                    if owner_scoped:
+                        profile["ownerScopedExpirationYears"][exp.year] += 1
                 if exp_basis:
                     profile["expirationBasisCounts"][exp_basis] += 1
 
@@ -1663,6 +1936,14 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
         profile["filingVelocity5Year"] = round(profile["recordsLast5Years"] / 5, 2)
         profile["annualCounts"] = [{"year": year, "count": count} for year, count in sorted(profile["years"].items())]
         profile["expirationSchedule"] = [{"year": year, "count": count} for year, count in sorted(profile["expirationYears"].items())]
+        profile["ownerScopedAnnualCounts"] = [
+            {"year": year, "count": count}
+            for year, count in sorted(profile["ownerScopedYears"].items())
+        ]
+        profile["ownerScopedExpirationSchedule"] = [
+            {"year": year, "count": count}
+            for year, count in sorted(profile["ownerScopedExpirationYears"].items())
+        ]
         profile["cropConcentration"] = round(top_crop_count / record_count, 3) if record_count else 0
         profile["soleNamedBreeder"] = (len(profile["namedBreeders"]) + len(profile["namedInventors"])) == 1 and record_count >= 2
         score, flags = score_profile(profile)
@@ -1692,6 +1973,8 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "cropCounts",
             "jurisdictionCounts",
             "expirationYears",
+            "ownerScopedYears",
+            "ownerScopedExpirationYears",
             "namedBreeders",
             "namedInventors",
             "sampleRecords",
@@ -1701,6 +1984,7 @@ def build_profiles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     profiles = add_parent_rollups(profiles, record_index, alias_map)
     apply_profile_audits(profiles)
+    apply_breeder_affiliations(profiles)
     apply_acquisition_scores(profiles)
     return sorted(
         profiles,
@@ -1737,6 +2021,14 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "inventorSignalRecordCount",
         "relevantIpRecordCount",
         "relevantLegalOwnerRecordCount",
+        "ownerScopedRecordCount",
+        "ownerScopedRelevantRecordCount",
+        "ownerScopedProtectedIpCount",
+        "ownerScopedActiveProtectionCount",
+        "ownerScopedExpiredProtectionCount",
+        "ownerScopedExpirationNext1Year",
+        "ownerScopedExpirationNext3Years",
+        "ownerScopedExpirationNext5Years",
         "firstYear",
         "lastYear",
         "recordsLast5Years",
@@ -1762,8 +2054,13 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
         "ownerRoleCounts",
         "annualCounts",
         "expirationSchedule",
+        "ownerScopedAnnualCounts",
+        "ownerScopedExpirationSchedule",
         "isParentRollup",
         "rollupChildren",
+        *AFFILIATION_FIELDS,
+        "affiliatedBreederCount",
+        "affiliatedBreeders",
         "auditStatus",
         "auditConfidence",
         "webResearchStatus",
@@ -1806,6 +2103,7 @@ def write_profiles(profiles: list[dict[str, Any]]) -> None:
             "US plant patent expiry is estimated as 20 years from filing date where filing date is available.",
             "CPVO PBR expiry is estimated as 25 years, or 30 years for tree/vine crops, from grant date when available or application date otherwise.",
             "Acquisition-fit score is separate from the IP/sourcing score and intentionally penalizes benchmark-scale, public, or institutionally owned platforms.",
+            "Breeder affiliations are relationship evidence only. They do not transfer portfolio ownership beyond record-specific assignee or holder evidence.",
         ],
     }
     rows = [[profile.get(field, "") for field in owner_fields] for profile in profiles]
