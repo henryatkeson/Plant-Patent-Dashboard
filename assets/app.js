@@ -13,6 +13,7 @@ const state = {
 
 const els = {
   lastRefresh: document.querySelector("#lastRefresh"),
+  lastDataUpdate: document.querySelector("#lastDataUpdate"),
   sourcingBrief: document.querySelector("#sourcingBrief"),
   searchInput: document.querySelector("#searchInput"),
   cropFilter: document.querySelector("#cropFilter"),
@@ -138,6 +139,21 @@ function formatDate(value) {
   const date = new Date(`${value}T00:00:00`);
   if (Number.isNaN(date.getTime())) return value;
   return date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+
+function formatEasternTimestamp(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+  }).format(date);
 }
 
 function debounce(fn, delay = 180) {
@@ -1432,11 +1448,12 @@ async function init() {
     .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
   state.byKey = new Map(state.records.map((row) => [row.__key, row]));
   state.filtered = [...state.records];
-  const generatedAtValue = state.sourceStatus?.generatedAt || payload.metadata?.generatedAt;
-  const generatedAt = generatedAtValue ? new Date(generatedAtValue) : null;
-  els.lastRefresh.textContent = generatedAt && !Number.isNaN(generatedAt.getTime())
-    ? `Dashboard refreshed ${generatedAt.toLocaleString()}`
-    : "Data loaded";
+  const checkedAt = formatEasternTimestamp(payload.metadata?.lastGrantRefresh || payload.metadata?.generatedAt);
+  const rebuiltAt = formatEasternTimestamp(state.sourceStatus?.generatedAt);
+  els.lastRefresh.textContent = checkedAt ? `USPTO checked ${checkedAt}` : "USPTO check time unavailable";
+  if (els.lastDataUpdate) {
+    els.lastDataUpdate.textContent = rebuiltAt ? `Data rebuilt ${rebuiltAt}` : "";
+  }
   populateFilters();
   render();
   setActiveTab("overview");
@@ -1509,5 +1526,6 @@ document.addEventListener("keydown", (event) => {
 
 init().catch((error) => {
   els.lastRefresh.textContent = "Could not load dashboard data";
+  if (els.lastDataUpdate) els.lastDataUpdate.textContent = "";
   console.error(error);
 });
