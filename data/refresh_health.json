@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-07-22T13:20:02.899992+00:00",
+    "checkedAt": "2026-07-23T13:18:46.384611+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Fruit Vision, VIF International, Berries Del Oeste S.L., Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., Fleuren Tree Nursery, JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce"
+      "detail": "Unreachable: Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, CREA Fruit Breeding, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "4 evidence links need replacement or manual review"
+      "detail": "16 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
