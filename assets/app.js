@@ -7,6 +7,7 @@ const state = {
   filteredOwners: [],
   ownerByKey: new Map(),
   companyProfiles: [],
+  targetPipeline: [],
   sourceStatus: null,
   lastFocus: null,
 };
@@ -712,6 +713,9 @@ function ownerSearchText(owner) {
     owner.affiliatedCompany,
     owner.affiliationStatus,
     owner.affiliationBasis,
+    owner.researchRole,
+    owner.researchSummary,
+    owner.researchPriority,
     ...(owner.affiliatedBreeders || []).map((item) => item.name),
     ...(Array.isArray(owner.brandExamples) ? owner.brandExamples : []),
     ...(owner.acquisitionFitReasons || []),
@@ -731,6 +735,11 @@ function ownerSignalSummary(owner) {
   if (legal) parts.push(`${legal.toLocaleString()} confirmed assignee`);
   if (breeder) parts.push(`${breeder.toLocaleString()} breeder signal`);
   if (lineage) parts.push(`${lineage.toLocaleString()} program lineage`);
+  if (owner.isResearchTarget) {
+    return parts.length
+      ? `Research candidate | ${parts.join(" | ")}`
+      : "Research candidate - legal ownership not yet confirmed";
+  }
   return parts.join(" | ") || "Owner signal";
 }
 
@@ -880,6 +889,7 @@ function isIndependentOwnerSignal(owner) {
 }
 
 function isPrimarySourcingProfile(owner) {
+  if (owner.isResearchTarget) return true;
   if (Number(owner.relevantIpRecordCount || 0) <= 0 || hasUnresolvedIdentity(owner)) return false;
   if (isIndependentOwnerSignal(owner)) return true;
   if (owner.individualOwner) return false;
@@ -896,6 +906,7 @@ function isAffiliationResearchSignal(owner) {
 
 function isAcquisitionLead(owner) {
   if (!isPrimarySourcingProfile(owner)) return false;
+  if (owner.isResearchTarget) return owner.researchPriority === "high";
   const band = normalize(owner.acquisitionFitBand);
   if (band.includes("benchmark") || band.includes("public") || band.includes("low") || band.includes("verify") || band.includes("verification")) return false;
   if (band.includes("high") || band.includes("review")) return true;
@@ -915,13 +926,15 @@ function renderSourcingMetrics() {
     return;
   }
   const relevant = state.ownerProfiles.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
-  const targets = relevant.filter(isPrimarySourcingProfile);
+  const targets = state.ownerProfiles.filter(isPrimarySourcingProfile);
+  const pipeline = state.targetPipeline || [];
   const leads = targets.filter(isAcquisitionLead);
   const highFit = targets.filter((owner) => normalize(owner.acquisitionFitBand).includes("high"));
   const independent = targets.filter(isIndependentOwnerSignal);
   const affiliationQueue = relevant.filter(isAffiliationResearchSignal);
   els.sourcingBrief.innerHTML = `
     <div class="brief-tile"><span>Company / owner targets</span><strong>${targets.length.toLocaleString()}</strong></div>
+    <div class="brief-tile"><span>California research leads</span><strong>${pipeline.length.toLocaleString()}</strong></div>
     <div class="brief-tile"><span>Review-or-better leads</span><strong>${leads.length.toLocaleString()}</strong></div>
     <div class="brief-tile"><span>High-fit leads</span><strong>${highFit.length.toLocaleString()}</strong></div>
     <div class="brief-tile"><span>Independent-owner signals</span><strong>${independent.length.toLocaleString()}</strong></div>
@@ -1027,6 +1040,8 @@ function applyOwnerFilters() {
     : [...state.ownerProfiles];
   if (view === "targets") {
     owners = owners.filter(isPrimarySourcingProfile);
+  } else if (view === "pipeline") {
+    owners = owners.filter((owner) => owner.isResearchTarget);
   } else if (view === "relevant") {
     owners = owners.filter((owner) => Number(owner.relevantIpRecordCount || 0) > 0);
   } else if (view === "acquisition") {
@@ -1326,6 +1341,12 @@ function openOwnerDrawer(ownerKey) {
   els.drawerBody.innerHTML = `
     ${renderProfileSnapshot(owner)}
     ${owner.companyDescription ? `<p class="company-description">${escapeHtml(owner.companyDescription)}</p>` : ""}
+    ${owner.isResearchTarget ? `
+      <div class="detail-actions">
+        ${owner.researchEvidenceUrl ? `<a class="detail-link" href="${escapeHtml(owner.researchEvidenceUrl)}" target="_blank" rel="noopener">Open source evidence</a>` : ""}
+        ${owner.companyWebsite ? `<a class="detail-link" href="${escapeHtml(owner.companyWebsite)}" target="_blank" rel="noopener">Company website</a>` : ""}
+      </div>
+    ` : ""}
     ${renderAcquisitionMemo(owner)}
     <div class="detail-actions">
       ${flags || '<span class="badge baseline">No major flags</span>'}
@@ -1341,6 +1362,9 @@ function openOwnerDrawer(ownerKey) {
       ${renderDetailItem("Filing years", `${yearRange(owner.firstYear, owner.lastYear)} | ${Number(owner.recordsLast5Years || 0).toLocaleString()} records last 5 years`)}
       ${renderDetailItem("Owner-scoped expiration curve", `${Number(owner.ownerScopedExpirationNext1Year || 0).toLocaleString()} in 1 yr | ${Number(owner.ownerScopedExpirationNext3Years || 0).toLocaleString()} in 3 yrs | ${Number(owner.ownerScopedExpirationNext5Years || 0).toLocaleString()} in 5 yrs | ${Number(owner.ownerScopedExpiredProtectionCount || 0).toLocaleString()} expired`)}
       ${renderDetailItem("Signal confidence", ownerSignalSummary(owner))}
+      ${owner.isResearchTarget ? renderDetailItem("Research role", owner.researchRole) : ""}
+      ${owner.isResearchTarget ? renderDetailItem("Research location", owner.headquarters) : ""}
+      ${owner.isResearchTarget ? renderDetailItem("Public-register check", `${Number(owner.usPlantPatentCount || 0).toLocaleString()} direct USPTO assignee matches | ${Number((owner.researchMatchedRecords || []).filter((record) => record.source === "USPTO").length).toLocaleString()} USPTO name matches | ${Number((owner.researchMatchedRecords || []).filter((record) => record.source === "CPVO").length).toLocaleString()} CPVO name matches | ${owner.researchPatentReviewStatus || "pending"}`) : ""}
       ${renderDetailItem("Rollup includes", (owner.rollupChildren || []).join(" | "))}
       ${renderDetailItem("Owner signal", Object.entries(owner.ownerRoleCounts || {}).map(([key, value]) => `${key}: ${value}`).join(" | "))}
       ${renderMiniList("Top crops", owner.topCrops, "crop")}
@@ -1412,7 +1436,16 @@ async function loadOwnerProfiles() {
     const owners = ownerFields.length
       ? ownerRows.map((row) => Object.fromEntries(ownerFields.map((field, index) => [field, row[index]])))
       : ownerRows;
-    state.ownerProfiles = owners
+    const pipelineByName = new Map((state.targetPipeline || []).map((lead) => [normalize(lead.companyName), lead]));
+    const enrichedOwners = owners.map((owner) => {
+      const lead = pipelineByName.get(normalize(owner.ownerName));
+      return lead ? attachResearchLead(owner, lead) : owner;
+    });
+    const existingNames = new Set(enrichedOwners.map((owner) => normalize(owner.ownerName)));
+    const pipelineOwners = (state.targetPipeline || [])
+      .filter((lead) => !existingNames.has(normalize(lead.companyName)))
+      .map((lead, index) => pipelineLeadToOwner(lead, index));
+    state.ownerProfiles = [...enrichedOwners, ...pipelineOwners]
       .map((owner, index) => ({ ...owner, __key: `${index}-${owner.id || owner.normalizedOwnerName || "owner"}` }));
     state.ownerByKey = new Map(state.ownerProfiles.map((owner) => [owner.__key, owner]));
     applyOwnerFilters();
@@ -1424,12 +1457,96 @@ async function loadOwnerProfiles() {
   }
 }
 
+function attachResearchLead(owner, lead) {
+  const researchOwner = pipelineLeadToOwner(lead, 0);
+  const flags = new Set([...(owner.sourcingFlags || []), "California research pipeline", `Role: ${lead.role || "research lead"}`]);
+  return {
+    ...owner,
+    isResearchTarget: true,
+    companyWebsite: owner.companyWebsite || lead.website || "",
+    companySourceUrl: owner.companySourceUrl || lead.sourceUrl || "",
+    companyDescription: owner.companyDescription || lead.summary || "",
+    headquarters: owner.headquarters || lead.location || "California",
+    researchRole: lead.role || "Research lead",
+    researchSummary: lead.summary || "",
+    researchPriority: researchOwner.researchPriority,
+    researchEvidenceUrl: lead.sourceUrl || "",
+    researchPatentReviewStatus: lead.patentReviewStatus || "pending_external_lookup",
+    researchMatchedRecords: researchOwner.researchMatchedRecords,
+    acquisitionFitScore: Math.max(Number(owner.acquisitionFitScore || 0), Number(researchOwner.acquisitionFitScore || 0)),
+    acquisitionFitBand: owner.acquisitionFitBand || researchOwner.acquisitionFitBand,
+    sourcingFlags: [...flags],
+  };
+}
+
+function pipelineLeadToOwner(lead, index) {
+  const priorityScore = { high: 74, review: 56, verify: 34, benchmark: 12 };
+  const priority = String(lead.priority || "verify").toLowerCase();
+  const matches = Array.isArray(lead.matchedRecords) ? lead.matchedRecords : [];
+  const usptoCount = Number(lead.usptoMatchCount || 0);
+  const cpvoCount = Number(lead.cpvoMatchCount || 0);
+  const directUsptoAssigneeCount = Number(lead.usptoDirectAssigneeCount || 0);
+  const totalMatches = usptoCount + cpvoCount;
+  return {
+    id: lead.id || `research-${index}`,
+    ownerName: lead.companyName || "Unnamed California research lead",
+    normalizedOwnerName: normalize(lead.companyName || lead.id || String(index)),
+    companyWebsite: lead.website || "",
+    companySourceUrl: lead.sourceUrl || "",
+    companyDescription: lead.summary || "",
+    targetFit: `California research pipeline: ${lead.summary || "requires further diligence."}`,
+    headquarters: lead.location || "California",
+    researchRole: lead.role || "Research lead",
+    researchSummary: lead.summary || "",
+    researchPriority: priority,
+    researchEvidenceUrl: lead.sourceUrl || "",
+    researchPatentReviewStatus: lead.patentReviewStatus || "pending_external_lookup",
+    researchMatchedRecords: matches,
+    researchDirectAssigneeRecords: Array.isArray(lead.directAssigneeRecords) ? lead.directAssigneeRecords : [],
+    isResearchTarget: true,
+    individualOwner: false,
+    isParentRollup: false,
+    acquisitionFitScore: priorityScore[priority] ?? 34,
+    acquisitionFitBand: `Research ${priority}`,
+    acquisitionFitReasons: [
+      `Role: ${lead.role || "research lead"}`,
+      directUsptoAssigneeCount ? `${directUsptoAssigneeCount.toLocaleString()} direct USPTO assignee matches` : "No direct USPTO assignee match is yet confirmed",
+      totalMatches ? `${totalMatches.toLocaleString()} local USPTO/CPVO name matches require record-level review` : "Public patent/PVR review is still in progress",
+    ],
+    sourcingScore: 0,
+    sourcingFlags: ["California research pipeline", `Role: ${lead.role || "unclassified"}`],
+    recordCount: totalMatches,
+    relevantIpRecordCount: totalMatches,
+    legalOwnerRecordCount: directUsptoAssigneeCount,
+    relevantLegalOwnerRecordCount: directUsptoAssigneeCount,
+    protectedIpCount: 0,
+    ownerScopedRecordCount: directUsptoAssigneeCount,
+    ownerScopedProtectedIpCount: 0,
+    ownerScopedActiveProtectionCount: 0,
+    distinctCultivarCount: 0,
+    topCrops: lead.cropFocus ? [{ crop: lead.cropFocus, count: totalMatches }] : [],
+    topJurisdictions: [],
+    topBreeders: [],
+    firstYear: "",
+    lastYear: "",
+    recordsLast5Years: 0,
+    ownerScopedExpirationNext1Year: 0,
+    ownerScopedExpirationNext3Years: 0,
+    ownerScopedExpirationNext5Years: 0,
+    ownerScopedExpiredProtectionCount: 0,
+    usPlantPatentCount: directUsptoAssigneeCount,
+    cpvoPbrCount: 0,
+    companyNewsLinks: [],
+  };
+}
+
 async function init() {
-  const [response, cpvoVarietiesResponse, companyProfilesResponse, sourceStatusResponse] = await Promise.all([
+  const [response, cpvoVarietiesResponse, companyProfilesResponse, sourceStatusResponse, targetPipelineResponse] = await Promise.all([
     fetch("data/plant_patents.json", { cache: "no-store" }),
     fetch("data/cpvo_varieties.json", { cache: "no-store" }).catch(() => null),
     fetch("config/company_profiles.json", { cache: "no-store" }).catch(() => null),
     fetch("data/source_status.json", { cache: "no-store" }).catch(() => null),
+    fetch("data/california_target_pipeline.json", { cache: "no-store" }).catch(() => null),
   ]);
   if (!response.ok) throw new Error(`Could not load data: ${response.status}`);
   const payload = await response.json();
@@ -1438,6 +1555,10 @@ async function init() {
   }
   if (sourceStatusResponse && sourceStatusResponse.ok) {
     state.sourceStatus = await sourceStatusResponse.json();
+  }
+  if (targetPipelineResponse && targetPipelineResponse.ok) {
+    const targetPipelinePayload = await targetPipelineResponse.json();
+    state.targetPipeline = targetPipelinePayload.records || [];
   }
   if (cpvoVarietiesResponse && cpvoVarietiesResponse.ok) {
     const cpvoVarietiesPayload = await cpvoVarietiesResponse.json();
