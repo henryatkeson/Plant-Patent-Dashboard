@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-02T12:51:41.317402+00:00",
+    "checkedAt": "2026-08-03T14:13:16.118183+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce"
+      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Gradilis Holding SAS, Splendor Produce, Embrapa Grape and Wine"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "35 evidence links need replacement or manual review"
+      "detail": "21 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
