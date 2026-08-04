@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-03T14:13:16.118183+00:00",
+    "checkedAt": "2026-08-04T13:39:47.717374+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2732,
+    "plantPatents": 2750,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12111,
+    "ownerProfiles": 12117,
     "breederAffiliations": 9236,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12111
+    "webResearchRows": 12117
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,732 plant-patent rows"
+      "detail": "2,750 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,7 +34,7 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,111 owner profiles"
+      "detail": "12,117 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,111 audit rows for 12,111 owners"
+      "detail": "12,117 audit rows for 12,117 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,111 research rows for 12,111 owners"
+      "detail": "12,117 research rows for 12,117 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,19 +148,19 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Gradilis Holding SAS, Splendor Produce, Embrapa Grape and Wine"
+      "detail": "Unreachable: Bloom Fresh International, International Fruit Genetics, Sunview Vineyards of California, OZblu / United Exports, University of Arkansas System Division of Agriculture, Sweet Darling Sales, Inc., Jeffries Nurseries Ltd., JFT Nurseries Pty Ltd., Mattivi Breeding S.S., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Gradilis Holding SAS, Splendor Produce, Embrapa Grape and Wine"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "21 evidence links need replacement or manual review"
+      "detail": "20 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,111; research rows 12,111"
+      "detail": "Status totals 12,117; research rows 12,117"
     }
   ]
 }
