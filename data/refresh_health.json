@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-09T12:17:16.164316+00:00",
+    "checkedAt": "2026-08-11T12:27:17.604905+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Frutaria Innovation, Advanced Berry Breeding, Fruit Vision, VIF International, Berries Del Oeste S.L., Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., Plants for Europe Ltd., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce, Feno Scarl, Embrapa Grape and Wine"
+      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., CREA Fruit Breeding, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Embrapa Grape and Wine"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "13 evidence links need replacement or manual review"
+      "detail": "17 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
