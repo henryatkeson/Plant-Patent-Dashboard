@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-11T12:27:17.604905+00:00",
+    "checkedAt": "2026-08-12T12:29:46.300563+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2750,
+    "plantPatents": 2767,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12117,
-    "breederAffiliations": 9236,
+    "ownerProfiles": 12122,
+    "breederAffiliations": 9238,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12117
+    "webResearchRows": 12122
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,750 plant-patent rows"
+      "detail": "2,767 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,13 +34,13 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,117 owner profiles"
+      "detail": "12,122 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
       "ok": true,
       "severity": "error",
-      "detail": "9,236 breeder relationships"
+      "detail": "9,238 breeder relationships"
     },
     {
       "name": "breeder_affiliation_enums_valid",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,117 audit rows for 12,117 owners"
+      "detail": "12,122 audit rows for 12,122 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,117 research rows for 12,117 owners"
+      "detail": "12,122 research rows for 12,122 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,19 +148,19 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., CREA Fruit Breeding, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Embrapa Grape and Wine"
+      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, The James Hutton Institute Scientific Services, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "17 evidence links need replacement or manual review"
+      "detail": "15 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,117; research rows 12,117"
+      "detail": "Status totals 12,122; research rows 12,122"
     }
   ]
 }
