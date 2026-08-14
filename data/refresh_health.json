@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-13T12:25:25.699494+00:00",
+    "checkedAt": "2026-08-14T12:26:19.976980+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,7 +148,7 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: PSB Producción Vegetal S.L., Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
+      "detail": "Unreachable: Advanced Berry Breeding, Fruit Vision, Sweet Darling Sales, Inc., Plants for Europe Ltd., JFT Nurseries Pty Ltd., CREA Fruit Breeding, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, ITUM / IMIDA Table Grape Program, Feno Scarl"
     },
     {
       "name": "profile_evidence_links_reachable",
