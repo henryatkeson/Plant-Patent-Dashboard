@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-15T12:09:02.323279+00:00",
+    "checkedAt": "2026-08-16T12:05:18.306851+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Bloom Fresh International, Sunview Vineyards of California, Vivai Cooperativi di Rauscedo, OZblu / United Exports, Sweet Darling Sales, Inc., Jeffries Nurseries Ltd., JFT Nurseries Pty Ltd., Mattivi Breeding S.S., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, ITUM / IMIDA Table Grape Program"
+      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, Agriculture and Agri-Food Canada, Sweet Darling Sales, Inc., University of Udine / IGA, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, ITUM / IMIDA Table Grape Program"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "9 evidence links need replacement or manual review"
+      "detail": "16 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
