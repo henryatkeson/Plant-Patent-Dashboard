@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-18T12:07:10.000163+00:00",
+    "checkedAt": "2026-08-19T12:16:37.757138+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2767,
+    "plantPatents": 2823,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12122,
+    "ownerProfiles": 12136,
     "breederAffiliations": 9238,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12122
+    "webResearchRows": 12136
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,767 plant-patent rows"
+      "detail": "2,823 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,7 +34,7 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,122 owner profiles"
+      "detail": "12,136 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,122 audit rows for 12,122 owners"
+      "detail": "12,136 audit rows for 12,136 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,122 research rows for 12,122 owners"
+      "detail": "12,136 research rows for 12,136 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,19 +148,19 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Vivai Cooperativi di Rauscedo, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, ITUM / IMIDA Table Grape Program"
+      "detail": "Unreachable: Bloom Fresh International, Sunview Vineyards of California, VIF International, Berries Del Oeste S.L., The James Hutton Institute Scientific Services, OZblu / United Exports, Sweet Darling Sales, Inc., Jeffries Nurseries Ltd., JFT Nurseries Pty Ltd., Mattivi Breeding S.S., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "7 evidence links need replacement or manual review"
+      "detail": "18 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,122; research rows 12,122"
+      "detail": "Status totals 12,136; research rows 12,136"
     }
   ]
 }
