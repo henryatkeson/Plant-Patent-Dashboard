@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-19T12:16:37.757138+00:00",
+    "checkedAt": "2026-08-20T12:16:06.749401+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Bloom Fresh International, Sunview Vineyards of California, VIF International, Berries Del Oeste S.L., The James Hutton Institute Scientific Services, OZblu / United Exports, Sweet Darling Sales, Inc., Jeffries Nurseries Ltd., JFT Nurseries Pty Ltd., Mattivi Breeding S.S., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
+      "detail": "Unreachable: International Fruit Genetics, Sunview Vineyards of California, Vivai Cooperativi di Rauscedo, OZblu / United Exports, Van Well Nursery, Sweet Darling Sales, Inc., Jeffries Nurseries Ltd., JFT Nurseries Pty Ltd., Mattivi Breeding S.S., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "18 evidence links need replacement or manual review"
+      "detail": "22 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
