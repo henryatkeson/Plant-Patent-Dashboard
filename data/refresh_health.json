@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-22T12:03:43.341124+00:00",
+    "checkedAt": "2026-08-23T12:01:14.558684+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Stargrow Cultivar Development, Van Well Nursery, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Oregon Blueberry Farm and Nursery, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Embrapa Grape and Wine"
+      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Embrapa Grape and Wine"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "70 evidence links need replacement or manual review"
+      "detail": "23 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
