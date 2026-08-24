@@ -1,26 +1,26 @@
 {
   "summary": {
     "profileCount": 179,
-    "websiteVerifiedCount": 135,
+    "websiteVerifiedCount": 134,
     "websiteMissingCount": 37,
-    "websiteFailedCount": 7,
+    "websiteFailedCount": 8,
     "contactUrlCount": 137,
-    "contactVerifiedCount": 129,
+    "contactVerifiedCount": 128,
     "linkedinUrlCount": 56,
     "newsLinkCount": 52,
     "newsLinkVerifiedCount": 51,
     "wrongSiteSuspectedCount": 0,
-    "weakRelevanceCount": 29,
+    "weakRelevanceCount": 25,
     "qaStatusCounts": {
-      "needs_fix": 4,
-      "unresolved": 44,
-      "verified": 6,
-      "verified_with_gaps": 125
+      "needs_fix": 3,
+      "unresolved": 45,
+      "verified": 5,
+      "verified_with_gaps": 126
     }
   },
   "metadata": {
     "title": "Company Website Probe",
-    "generatedAt": "2026-08-23T11:58:38.256783+00:00",
+    "generatedAt": "2026-08-24T12:09:32.941841+00:00",
     "profileCount": 179,
     "methodNotes": [
       "This validates public website, contact, source, and news-link availability and finds likely cultivar/variety evidence links.",
@@ -34,34 +34,79 @@
       "canonicalName": "Bloom Fresh International",
       "website": "https://bloomfreshglobal.com/",
       "ok": true,
-      "status": 202,
+      "status": 200,
       "finalUrl": "https://bloomfreshglobal.com/",
       "error": "",
-      "title": "",
-      "keywordCounts": {},
-      "relevanceStatus": "weak",
-      "relevanceScore": 0,
-      "positiveSignals": {},
+      "title": "Home - BLOOM FRESH",
+      "keywordCounts": {
+        "variety": 5,
+        "varieties": 14,
+        "blueberry": 9,
+        "grape": 37,
+        "apple": 1,
+        "cherry": 14
+      },
+      "relevanceStatus": "strong",
+      "relevanceScore": 100,
+      "positiveSignals": {
+        "blueberry": 2,
+        "breeder": 1,
+        "breeders": 1,
+        "breeding": 6,
+        "cherry": 8,
+        "grape": 9,
+        "varieties": 11,
+        "variety": 2
+      },
       "badSignals": {},
-      "aliasHits": [],
-      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
-      "evidenceLinks": [],
+      "aliasHits": [
+        "bloom fresh international",
+        "bloom fresh",
+        "bloomfresh"
+      ],
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "evidenceLinks": [
+        {
+          "label": "Varieties",
+          "url": "https://bloomfreshglobal.com/products/"
+        },
+        {
+          "label": "Grapes",
+          "url": "https://bloomfreshglobal.com/products/#grapes"
+        },
+        {
+          "label": "Cherries",
+          "url": "https://bloomfreshglobal.com/products/#cherry"
+        },
+        {
+          "label": "Low-Chill Cherry Varieties: BLOOM FRESH™’s Strategic Response to Climate Change",
+          "url": "https://bloomfreshglobal.com/low-chill-cherry-varieties-bloom-freshs-strategic-response-to-climate-change/"
+        },
+        {
+          "label": "Launching Its Largest Global Campaign Against Table Grape IP Infringement Following Major Legal Victories",
+          "url": "https://bloomfreshglobal.com/bloom-fresh-launches-its-largest-global-campaign-against-table-grape-ip-infringement-following-major-legal-victories/"
+        },
+        {
+          "label": "Successfully Hosting Its First Blueberry Open Day in Peru",
+          "url": "https://bloomfreshglobal.com/bloom-fresh-successfully-hosts-its-first-blueberry-open-day-in-peru/"
+        }
+      ],
       "contact": {
         "url": "https://bloomfreshglobal.com/#contact",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://bloomfreshglobal.com/#contact",
         "error": "",
-        "title": "",
+        "title": "Home - BLOOM FRESH",
         "checkType": "http"
       },
       "source": {
         "url": "https://bloomfreshglobal.com/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://bloomfreshglobal.com/",
         "error": "",
-        "title": "",
+        "title": "Home - BLOOM FRESH",
         "checkType": "same_as_website"
       },
       "linkedin": {
@@ -77,20 +122,20 @@
         {
           "url": "https://bloomfreshglobal.com/products/",
           "ok": true,
-          "status": 202,
+          "status": 200,
           "finalUrl": "https://bloomfreshglobal.com/products/",
           "error": "",
-          "title": "",
+          "title": "Products - BLOOM FRESH",
           "checkType": "http",
           "label": "Bloom Fresh varieties"
         },
         {
           "url": "https://bloomfreshglobal.com/news/",
           "ok": true,
-          "status": 202,
+          "status": 200,
           "finalUrl": "https://bloomfreshglobal.com/news/",
           "error": "",
-          "title": "",
+          "title": "News - BLOOM FRESH",
           "checkType": "http",
           "label": "Bloom Fresh news"
         },
@@ -107,10 +152,9 @@
       ],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "weak_website_relevance",
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:06.768943+00:00"
+      "probedAt": "2026-08-24T11:57:51.082454+00:00"
     },
     {
       "canonicalName": "Sun World International",
@@ -211,40 +255,81 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:07.592242+00:00"
+      "probedAt": "2026-08-24T11:57:51.650874+00:00"
     },
     {
       "canonicalName": "International Fruit Genetics",
       "website": "https://bloomfreshglobal.com/",
       "ok": true,
-      "status": 202,
+      "status": 200,
       "finalUrl": "https://bloomfreshglobal.com/",
       "error": "",
-      "title": "",
-      "keywordCounts": {},
-      "relevanceStatus": "weak",
-      "relevanceScore": 0,
-      "positiveSignals": {},
+      "title": "Home - BLOOM FRESH",
+      "keywordCounts": {
+        "variety": 5,
+        "varieties": 14,
+        "blueberry": 9,
+        "grape": 37,
+        "apple": 1,
+        "cherry": 14
+      },
+      "relevanceStatus": "strong",
+      "relevanceScore": 80,
+      "positiveSignals": {
+        "blueberry": 2,
+        "breeder": 1,
+        "breeders": 1,
+        "breeding": 6,
+        "cherry": 8,
+        "grape": 9,
+        "varieties": 11,
+        "variety": 2
+      },
       "badSignals": {},
       "aliasHits": [],
-      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
-      "evidenceLinks": [],
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "evidenceLinks": [
+        {
+          "label": "Varieties",
+          "url": "https://bloomfreshglobal.com/products/"
+        },
+        {
+          "label": "Grapes",
+          "url": "https://bloomfreshglobal.com/products/#grapes"
+        },
+        {
+          "label": "Cherries",
+          "url": "https://bloomfreshglobal.com/products/#cherry"
+        },
+        {
+          "label": "Low-Chill Cherry Varieties: BLOOM FRESH™’s Strategic Response to Climate Change",
+          "url": "https://bloomfreshglobal.com/low-chill-cherry-varieties-bloom-freshs-strategic-response-to-climate-change/"
+        },
+        {
+          "label": "Launching Its Largest Global Campaign Against Table Grape IP Infringement Following Major Legal Victories",
+          "url": "https://bloomfreshglobal.com/bloom-fresh-launches-its-largest-global-campaign-against-table-grape-ip-infringement-following-major-legal-victories/"
+        },
+        {
+          "label": "Successfully Hosting Its First Blueberry Open Day in Peru",
+          "url": "https://bloomfreshglobal.com/bloom-fresh-successfully-hosts-its-first-blueberry-open-day-in-peru/"
+        }
+      ],
       "contact": {
         "url": "https://bloomfreshglobal.com/#contact",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://bloomfreshglobal.com/#contact",
         "error": "",
-        "title": "",
+        "title": "Home - BLOOM FRESH",
         "checkType": "http"
       },
       "source": {
         "url": "https://bloomfreshglobal.com/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://bloomfreshglobal.com/",
         "error": "",
-        "title": "",
+        "title": "Home - BLOOM FRESH",
         "checkType": "same_as_website"
       },
       "linkedin": {
@@ -260,10 +345,10 @@
         {
           "url": "https://bloomfreshglobal.com/products/",
           "ok": true,
-          "status": 202,
+          "status": 200,
           "finalUrl": "https://bloomfreshglobal.com/products/",
           "error": "",
-          "title": "",
+          "title": "Products - BLOOM FRESH",
           "checkType": "http",
           "label": "Bloom Fresh varieties"
         },
@@ -280,10 +365,9 @@
       ],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "weak_website_relevance",
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:08.274529+00:00"
+      "probedAt": "2026-08-24T11:57:55.012873+00:00"
     },
     {
       "canonicalName": "SNFL Group",
@@ -380,7 +464,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:09.780932+00:00"
+      "probedAt": "2026-08-24T11:57:56.053815+00:00"
     },
     {
       "canonicalName": "Driscoll's",
@@ -443,7 +527,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:10.617586+00:00"
+      "probedAt": "2026-08-24T11:57:56.511663+00:00"
     },
     {
       "canonicalName": "BerryWorld Plus",
@@ -509,7 +593,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:13.392329+00:00"
+      "probedAt": "2026-08-24T11:57:58.489968+00:00"
     },
     {
       "canonicalName": "Fall Creek Farm & Nursery",
@@ -626,7 +710,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:16.793674+00:00"
+      "probedAt": "2026-08-24T11:58:03.027017+00:00"
     },
     {
       "canonicalName": "Zaiger's Genetics",
@@ -694,7 +778,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:17.412326+00:00"
+      "probedAt": "2026-08-24T11:58:03.492798+00:00"
     },
     {
       "canonicalName": "Frutaria Innovation",
@@ -810,7 +894,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:21.482817+00:00"
+      "probedAt": "2026-08-24T11:58:07.331019+00:00"
     },
     {
       "canonicalName": "AC Fruit",
@@ -887,33 +971,23 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:25.700089+00:00"
+      "probedAt": "2026-08-24T11:58:10.226844+00:00"
     },
     {
       "canonicalName": "Cerasina GmbH",
       "website": "https://cerasina.com/",
-      "ok": true,
-      "status": 200,
+      "ok": false,
+      "status": "",
       "finalUrl": "https://cerasina.com/",
-      "error": "",
-      "title": "Obstbau Stoppel - Süsskirschensorten und Kirschenzucht im frühen und späten Reifebereich | Süsskirschensorten und Kirschenzucht für den frühen und späten Reifebereich sowie Kirschunterlagen und Erdbeeren",
-      "keywordCounts": {
-        "brand": 6,
-        "apple": 2
-      },
-      "relevanceStatus": "strong",
-      "relevanceScore": 52,
-      "positiveSignals": {
-        "apple": 1,
-        "brand": 6,
-        "license": 7
-      },
+      "error": "TimeoutError: The read operation timed out",
+      "title": "",
+      "keywordCounts": {},
+      "relevanceStatus": "not_checked",
+      "relevanceScore": 0,
+      "positiveSignals": {},
       "badSignals": {},
-      "aliasHits": [
-        "cerasina gmbh",
-        "cerasina"
-      ],
-      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "aliasHits": [],
+      "relevanceNotes": "Website content was not fetched, so semantic relevance could not be checked.",
       "evidenceLinks": [],
       "contact": {
         "url": "https://cerasina.com/en/contact/",
@@ -943,11 +1017,12 @@
         "checkType": "missing"
       },
       "news": [],
-      "qaStatus": "verified_with_gaps",
+      "qaStatus": "unresolved",
       "auditFlags": [
+        "website_failed",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:32.618991+00:00"
+      "probedAt": "2026-08-24T11:59:01.526766+00:00"
     },
     {
       "canonicalName": "B Q Genetics",
@@ -1034,7 +1109,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:34.168214+00:00"
+      "probedAt": "2026-08-24T11:59:02.859457+00:00"
     },
     {
       "canonicalName": "MBG Marketing",
@@ -1164,7 +1239,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:34.625079+00:00"
+      "probedAt": "2026-08-24T11:59:03.126737+00:00"
     },
     {
       "canonicalName": "Advanced Berry Breeding",
@@ -1293,7 +1368,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:37.652810+00:00"
+      "probedAt": "2026-08-24T11:59:05.396876+00:00"
     },
     {
       "canonicalName": "Fruit Vision",
@@ -1414,7 +1489,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:43.967889+00:00"
+      "probedAt": "2026-08-24T11:59:10.491059+00:00"
     },
     {
       "canonicalName": "Threefold Holdings Group",
@@ -1478,7 +1553,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:49:44.507249+00:00"
+      "probedAt": "2026-08-24T11:59:10.772126+00:00"
     },
     {
       "canonicalName": "PSB Producción Vegetal S.L.",
@@ -1548,7 +1623,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:48.053106+00:00"
+      "probedAt": "2026-08-24T11:59:13.534484+00:00"
     },
     {
       "canonicalName": "S.A. Viveros Provedo",
@@ -1616,7 +1691,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:52.411255+00:00"
+      "probedAt": "2026-08-24T11:59:16.507989+00:00"
     },
     {
       "canonicalName": "Flevo Berry Holding B.V.",
@@ -1686,7 +1761,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:55.436875+00:00"
+      "probedAt": "2026-08-24T11:59:18.885538+00:00"
     },
     {
       "canonicalName": "The Burchell Nursery",
@@ -1783,40 +1858,54 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:49:56.569948+00:00"
+      "probedAt": "2026-08-24T11:59:19.627436+00:00"
     },
     {
       "canonicalName": "Sunview Vineyards of California",
       "website": "https://sunviewmarketing.com/",
       "ok": true,
-      "status": 202,
+      "status": 200,
       "finalUrl": "https://sunviewmarketing.com/",
       "error": "",
-      "title": "",
-      "keywordCounts": {},
-      "relevanceStatus": "weak",
-      "relevanceScore": 0,
-      "positiveSignals": {},
+      "title": "Premium Table Grapes Grown in Sunny California - Sunview",
+      "keywordCounts": {
+        "trademark": 1,
+        "brand": 4,
+        "grape": 34,
+        "apple": 9
+      },
+      "relevanceStatus": "strong",
+      "relevanceScore": 100,
+      "positiveSignals": {
+        "apple": 8,
+        "brand": 4,
+        "grape": 25,
+        "seed": 3,
+        "trademark": 1
+      },
       "badSignals": {},
-      "aliasHits": [],
-      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
+      "aliasHits": [
+        "sunview vineyards",
+        "sunview marketing"
+      ],
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
       "evidenceLinks": [],
       "contact": {
         "url": "https://sunviewmarketing.com/contact/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://sunviewmarketing.com/contact/",
         "error": "",
-        "title": "",
+        "title": "Contact - Sunview",
         "checkType": "http"
       },
       "source": {
         "url": "https://sunviewmarketing.com/innovation/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://sunviewmarketing.com/innovation/",
         "error": "",
-        "title": "",
+        "title": "Innovation - Sunview",
         "checkType": "http"
       },
       "linkedin": {
@@ -1832,20 +1921,19 @@
         {
           "url": "https://sunviewmarketing.com/innovation/",
           "ok": true,
-          "status": 202,
+          "status": 200,
           "finalUrl": "https://sunviewmarketing.com/innovation/",
           "error": "",
-          "title": "",
+          "title": "Innovation - Sunview",
           "checkType": "http",
           "label": "Breeding operations"
         }
       ],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "weak_website_relevance",
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:49:56.929167+00:00"
+      "probedAt": "2026-08-24T11:59:21.649364+00:00"
     },
     {
       "canonicalName": "VIF International",
@@ -1927,7 +2015,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:50:01.850361+00:00"
+      "probedAt": "2026-08-24T11:59:25.349371+00:00"
     },
     {
       "canonicalName": "Berries Del Oeste S.L.",
@@ -2009,7 +2097,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:09.841525+00:00"
+      "probedAt": "2026-08-24T11:59:36.333303+00:00"
     },
     {
       "canonicalName": "COT International S.A.R.L.",
@@ -2101,7 +2189,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:11.027807+00:00"
+      "probedAt": "2026-08-24T11:59:40.429438+00:00"
     },
     {
       "canonicalName": "Vivai Cooperativi di Rauscedo",
@@ -2201,7 +2289,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:21.806168+00:00"
+      "probedAt": "2026-08-24T11:59:49.438253+00:00"
     },
     {
       "canonicalName": "ARC Infruitec-Nietvoorbij",
@@ -2283,7 +2371,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:50:29.973704+00:00"
+      "probedAt": "2026-08-24T11:59:55.411708+00:00"
     },
     {
       "canonicalName": "Plant Sciences Genetics",
@@ -2365,7 +2453,7 @@
         "linkedin_manual_check_required",
         "news_failed"
       ],
-      "probedAt": "2026-08-23T11:50:30.774323+00:00"
+      "probedAt": "2026-08-24T11:59:57.107577+00:00"
     },
     {
       "canonicalName": "Florida Foundation Seed Producers",
@@ -2485,7 +2573,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:32.680979+00:00"
+      "probedAt": "2026-08-24T12:00:07.561640+00:00"
     },
     {
       "canonicalName": "Fresh Forward",
@@ -2555,7 +2643,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:35.582523+00:00"
+      "probedAt": "2026-08-24T12:00:09.979166+00:00"
     },
     {
       "canonicalName": "Prevar",
@@ -2669,7 +2757,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:36.913915+00:00"
+      "probedAt": "2026-08-24T12:00:12.534922+00:00"
     },
     {
       "canonicalName": "Planasa",
@@ -2803,7 +2891,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:39.853236+00:00"
+      "probedAt": "2026-08-24T12:00:18.345482+00:00"
     },
     {
       "canonicalName": "Costa Berry International",
@@ -2878,7 +2966,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:42.144337+00:00"
+      "probedAt": "2026-08-24T12:00:21.472876+00:00"
     },
     {
       "canonicalName": "Mountain Blue Orchards Pty Ltd",
@@ -2952,7 +3040,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:43.175087+00:00"
+      "probedAt": "2026-08-24T12:00:22.038793+00:00"
     },
     {
       "canonicalName": "CIV - Consorzio Italiano Vivaisti",
@@ -3023,7 +3111,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:50:47.887120+00:00"
+      "probedAt": "2026-08-24T12:00:29.308701+00:00"
     },
     {
       "canonicalName": "Edward Vinson Limited",
@@ -3088,7 +3176,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:50:49.146140+00:00"
+      "probedAt": "2026-08-24T12:00:30.403796+00:00"
     },
     {
       "canonicalName": "Angus Soft Fruits",
@@ -3166,7 +3254,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:50:50.780046+00:00"
+      "probedAt": "2026-08-24T12:00:31.500912+00:00"
     },
     {
       "canonicalName": "Stargrow Cultivar Development",
@@ -3251,7 +3339,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:50:59.361007+00:00"
+      "probedAt": "2026-08-24T12:00:39.326195+00:00"
     },
     {
       "canonicalName": "ABZ Seeds",
@@ -3355,7 +3443,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:03.416787+00:00"
+      "probedAt": "2026-08-24T12:00:42.578745+00:00"
     },
     {
       "canonicalName": "USDA Agricultural Research Service",
@@ -3422,7 +3510,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:04.114763+00:00"
+      "probedAt": "2026-08-24T12:00:42.800308+00:00"
     },
     {
       "canonicalName": "Agriculture and Agri-Food Canada",
@@ -3446,11 +3534,11 @@
       "evidenceLinks": [],
       "contact": {
         "url": "https://agriculture.canada.ca/en/contact-agriculture-and-agri-food-canada",
-        "ok": true,
-        "status": 200,
-        "finalUrl": "https://agriculture.canada.ca/en/contact",
-        "error": "",
-        "title": "Contact Agriculture and Agri-Food Canada - agriculture.canada.ca",
+        "ok": false,
+        "status": "",
+        "finalUrl": "https://agriculture.canada.ca/en/contact-agriculture-and-agri-food-canada",
+        "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+        "title": "",
         "checkType": "http"
       },
       "source": {
@@ -3472,12 +3560,13 @@
         "checkType": "missing"
       },
       "news": [],
-      "qaStatus": "verified_with_gaps",
+      "qaStatus": "needs_fix",
       "auditFlags": [
         "weak_website_relevance",
+        "contact_failed",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:05.225122+00:00"
+      "probedAt": "2026-08-24T12:01:03.151595+00:00"
     },
     {
       "canonicalName": "University of Florida",
@@ -3554,7 +3643,7 @@
         "missing_contact_url",
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:06.521548+00:00"
+      "probedAt": "2026-08-24T12:01:04.025171+00:00"
     },
     {
       "canonicalName": "The James Hutton Institute Scientific Services",
@@ -3632,7 +3721,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:10.701843+00:00"
+      "probedAt": "2026-08-24T12:01:07.554406+00:00"
     },
     {
       "canonicalName": "NIAB East Malling",
@@ -3762,7 +3851,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:14.031257+00:00"
+      "probedAt": "2026-08-24T12:01:09.883821+00:00"
     },
     {
       "canonicalName": "IQ Berries",
@@ -3865,7 +3954,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:16.061562+00:00"
+      "probedAt": "2026-08-24T12:01:12.427714+00:00"
     },
     {
       "canonicalName": "S.A.T. Sintesis",
@@ -3916,40 +4005,65 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:19.848691+00:00"
+      "probedAt": "2026-08-24T12:01:15.464128+00:00"
     },
     {
       "canonicalName": "OZblu / United Exports",
       "website": "https://www.ozblu.com/",
       "ok": true,
-      "status": 202,
+      "status": 200,
       "finalUrl": "https://www.ozblu.com/",
       "error": "",
-      "title": "",
-      "keywordCounts": {},
-      "relevanceStatus": "weak",
-      "relevanceScore": 0,
-      "positiveSignals": {},
+      "title": "OZblu | Juicier, Crunchier, Tastier Blueberries",
+      "keywordCounts": {
+        "varieties": 10,
+        "brand": 1,
+        "blueberry": 27,
+        "apple": 3
+      },
+      "relevanceStatus": "strong",
+      "relevanceScore": 56,
+      "positiveSignals": {
+        "blueberry": 11,
+        "brand": 1,
+        "varieties": 4
+      },
       "badSignals": {},
-      "aliasHits": [],
-      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
-      "evidenceLinks": [],
+      "aliasHits": [
+        "ozblu",
+        "united exports"
+      ],
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "evidenceLinks": [
+        {
+          "label": "",
+          "url": "https://www.ozblu.com/news/ozblu-blueberry-growers-get-ready-for-anything-at-global-conference/"
+        },
+        {
+          "label": "",
+          "url": "https://www.ozblu.com/news/ozblu%e2%93%a1-blueberries-breaks-its-own-guinness-world-record-with-the-heaviest-blueberry/"
+        },
+        {
+          "label": "OZ Varieties",
+          "url": "https://www.ozblu.com/oz-varieties/"
+        }
+      ],
       "contact": {
         "url": "https://www.ozblu.com/contact/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://www.ozblu.com/contact/",
         "error": "",
-        "title": "",
+        "title": "Contact Us",
         "checkType": "http"
       },
       "source": {
         "url": "https://www.ozblu.com/oz-varieties/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://www.ozblu.com/oz-varieties/",
         "error": "",
-        "title": "",
+        "title": "OZ Varieties | OZblu",
         "checkType": "http"
       },
       "linkedin": {
@@ -3965,20 +4079,19 @@
         {
           "url": "https://united-exports.com/",
           "ok": true,
-          "status": 202,
+          "status": 200,
           "finalUrl": "https://united-exports.com/",
           "error": "",
-          "title": "",
+          "title": "Home - United Exports",
           "checkType": "http",
           "label": "United Exports"
         }
       ],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:20.563079+00:00"
+      "probedAt": "2026-08-24T12:01:17.069259+00:00"
     },
     {
       "canonicalName": "Lassen Canyon Nursery",
@@ -4056,7 +4169,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:21.810021+00:00"
+      "probedAt": "2026-08-24T12:01:19.956029+00:00"
     },
     {
       "canonicalName": "Van Well Nursery",
@@ -4109,7 +4222,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:51:22.523504+00:00"
+      "probedAt": "2026-08-24T12:01:20.339538+00:00"
     },
     {
       "canonicalName": "Midwest Apple Improvement Association",
@@ -4218,7 +4331,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:23.336226+00:00"
+      "probedAt": "2026-08-24T12:01:21.209222+00:00"
     },
     {
       "canonicalName": "Grapeco Limited",
@@ -4271,7 +4384,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:51:23.574137+00:00"
+      "probedAt": "2026-08-24T12:01:21.265761+00:00"
     },
     {
       "canonicalName": "SMS Unlimited LLC",
@@ -4324,7 +4437,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:51:23.751103+00:00"
+      "probedAt": "2026-08-24T12:01:21.286174+00:00"
     },
     {
       "canonicalName": "Newcot S.A.S.",
@@ -4376,7 +4489,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:24.083145+00:00"
+      "probedAt": "2026-08-24T12:01:21.503331+00:00"
     },
     {
       "canonicalName": "Matthews Nurseries Ltd",
@@ -4429,7 +4542,7 @@
         "missing_linkedin_url",
         "missing_source_url"
       ],
-      "probedAt": "2026-08-23T11:51:24.083170+00:00"
+      "probedAt": "2026-08-24T12:01:21.503380+00:00"
     },
     {
       "canonicalName": "SDR Fruit LLC",
@@ -4482,7 +4595,7 @@
         "missing_linkedin_url",
         "missing_source_url"
       ],
-      "probedAt": "2026-08-23T11:51:24.083184+00:00"
+      "probedAt": "2026-08-24T12:01:21.503415+00:00"
     },
     {
       "canonicalName": "Grapa Global",
@@ -4596,7 +4709,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:26.408252+00:00"
+      "probedAt": "2026-08-24T12:01:23.847820+00:00"
     },
     {
       "canonicalName": "INRAE",
@@ -4682,7 +4795,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:28.537850+00:00"
+      "probedAt": "2026-08-24T12:01:26.875002+00:00"
     },
     {
       "canonicalName": "Plant & Food Research",
@@ -4796,7 +4909,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:29.800288+00:00"
+      "probedAt": "2026-08-24T12:01:27.741885+00:00"
     },
     {
       "canonicalName": "University of California",
@@ -4877,7 +4990,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:35.360803+00:00"
+      "probedAt": "2026-08-24T12:01:31.603869+00:00"
     },
     {
       "canonicalName": "University of Arkansas System Division of Agriculture",
@@ -4992,7 +5105,7 @@
         "missing_contact_url",
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:36.672179+00:00"
+      "probedAt": "2026-08-24T12:01:34.184067+00:00"
     },
     {
       "canonicalName": "Fresas Nuevos Materiales",
@@ -5064,7 +5177,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:51:43.811842+00:00"
+      "probedAt": "2026-08-24T12:02:10.332033+00:00"
     },
     {
       "canonicalName": "Georges Delbard",
@@ -5133,7 +5246,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:47.095842+00:00"
+      "probedAt": "2026-08-24T12:02:13.109637+00:00"
     },
     {
       "canonicalName": "Brookfield New Zealand Limited",
@@ -5204,7 +5317,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:51.071893+00:00"
+      "probedAt": "2026-08-24T12:02:17.657917+00:00"
     },
     {
       "canonicalName": "Sweet Darling Sales, Inc.",
@@ -5257,7 +5370,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:51:51.200569+00:00"
+      "probedAt": "2026-08-24T12:02:17.797866+00:00"
     },
     {
       "canonicalName": "Domaine de Castang",
@@ -5308,7 +5421,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:54.010265+00:00"
+      "probedAt": "2026-08-24T12:02:20.971750+00:00"
     },
     {
       "canonicalName": "IVIA",
@@ -5360,7 +5473,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:51:55.580147+00:00"
+      "probedAt": "2026-08-24T12:02:22.094321+00:00"
     },
     {
       "canonicalName": "SERIDA",
@@ -5423,7 +5536,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:00.219942+00:00"
+      "probedAt": "2026-08-24T12:02:26.228393+00:00"
     },
     {
       "canonicalName": "Hazera",
@@ -5492,7 +5605,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:52:06.386494+00:00"
+      "probedAt": "2026-08-24T12:02:31.108533+00:00"
     },
     {
       "canonicalName": "Armstrong Nurseries",
@@ -5564,7 +5677,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:06.533274+00:00"
+      "probedAt": "2026-08-24T12:02:31.256336+00:00"
     },
     {
       "canonicalName": "VNIISPK",
@@ -5676,7 +5789,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:09.846730+00:00"
+      "probedAt": "2026-08-24T12:02:34.182955+00:00"
     },
     {
       "canonicalName": "University of Udine / IGA",
@@ -5744,7 +5857,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:13.070556+00:00"
+      "probedAt": "2026-08-24T12:02:37.035231+00:00"
     },
     {
       "canonicalName": "Cornell University",
@@ -5819,7 +5932,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:52:13.638855+00:00"
+      "probedAt": "2026-08-24T12:02:38.621234+00:00"
     },
     {
       "canonicalName": "Columbia Basin Nursery LLC",
@@ -5871,7 +5984,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:14.269964+00:00"
+      "probedAt": "2026-08-24T12:02:39.286100+00:00"
     },
     {
       "canonicalName": "C&O Nursery",
@@ -5923,7 +6036,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:14.980579+00:00"
+      "probedAt": "2026-08-24T12:02:39.390300+00:00"
     },
     {
       "canonicalName": "Masia Ciscar",
@@ -5993,7 +6106,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:16.772742+00:00"
+      "probedAt": "2026-08-24T12:02:41.973239+00:00"
     },
     {
       "canonicalName": "Marionnet Label",
@@ -6073,7 +6186,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:52:20.515631+00:00"
+      "probedAt": "2026-08-24T12:02:44.442185+00:00"
     },
     {
       "canonicalName": "S&A Group",
@@ -6144,7 +6257,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:24.374435+00:00"
+      "probedAt": "2026-08-24T12:02:47.547340+00:00"
     },
     {
       "canonicalName": "Lubera AG",
@@ -6233,7 +6346,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:29.897271+00:00"
+      "probedAt": "2026-08-24T12:02:51.454364+00:00"
     },
     {
       "canonicalName": "Schniga GmbH",
@@ -6298,7 +6411,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:32.437732+00:00"
+      "probedAt": "2026-08-24T12:02:53.299563+00:00"
     },
     {
       "canonicalName": "Fashion Foods Ltd.",
@@ -6359,7 +6472,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:52:34.120481+00:00"
+      "probedAt": "2026-08-24T12:02:54.698020+00:00"
     },
     {
       "canonicalName": "Agromolinillo",
@@ -6413,7 +6526,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:35.029115+00:00"
+      "probedAt": "2026-08-24T12:02:55.290671+00:00"
     },
     {
       "canonicalName": "Citrigene Pty Ltd.",
@@ -6466,7 +6579,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:52:35.234875+00:00"
+      "probedAt": "2026-08-24T12:02:55.332368+00:00"
     },
     {
       "canonicalName": "Fruit Varieties International Pty Ltd.",
@@ -6519,7 +6632,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:52:35.401459+00:00"
+      "probedAt": "2026-08-24T12:02:55.376205+00:00"
     },
     {
       "canonicalName": "Regal Fruit International LLC",
@@ -6572,7 +6685,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:52:35.561161+00:00"
+      "probedAt": "2026-08-24T12:02:55.419456+00:00"
     },
     {
       "canonicalName": "Proplant AG",
@@ -6625,7 +6738,7 @@
         "missing_linkedin_url",
         "missing_source_url"
       ],
-      "probedAt": "2026-08-23T11:52:35.561189+00:00"
+      "probedAt": "2026-08-24T12:02:55.419542+00:00"
     },
     {
       "canonicalName": "Crocodile Valley Citrus Company",
@@ -6678,7 +6791,7 @@
         "missing_linkedin_url",
         "missing_source_url"
       ],
-      "probedAt": "2026-08-23T11:52:35.561204+00:00"
+      "probedAt": "2026-08-24T12:02:55.419581+00:00"
     },
     {
       "canonicalName": "Plant Breeding International Cambridge",
@@ -6730,7 +6843,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:36.907194+00:00"
+      "probedAt": "2026-08-24T12:02:56.557780+00:00"
     },
     {
       "canonicalName": "Meiosis Ltd.",
@@ -6825,7 +6938,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:52:42.777898+00:00"
+      "probedAt": "2026-08-24T12:03:02.208613+00:00"
     },
     {
       "canonicalName": "Dalival / IFO",
@@ -6897,7 +7010,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:52:45.291426+00:00"
+      "probedAt": "2026-08-24T12:03:04.229858+00:00"
     },
     {
       "canonicalName": "Chislett Investments Pty Ltd",
@@ -6949,40 +7062,54 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:47.185832+00:00"
+      "probedAt": "2026-08-24T12:03:10.972530+00:00"
     },
     {
       "canonicalName": "Jeffries Nurseries Ltd.",
       "website": "https://jeffriesnurseries.com/",
       "ok": true,
-      "status": 202,
+      "status": 200,
       "finalUrl": "https://jeffriesnurseries.com/",
       "error": "",
-      "title": "",
-      "keywordCounts": {},
-      "relevanceStatus": "weak",
-      "relevanceScore": 0,
-      "positiveSignals": {},
+      "title": "Home - Jeffries Nurseries",
+      "keywordCounts": {
+        "apple": 7
+      },
+      "relevanceStatus": "strong",
+      "relevanceScore": 50,
+      "positiveSignals": {
+        "nursery": 6,
+        "plants": 1
+      },
       "badSignals": {},
-      "aliasHits": [],
-      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
-      "evidenceLinks": [],
+      "aliasHits": [
+        "jeffries nurseries ltd.",
+        "jeffries nurseries",
+        "jeffries nurseries ltd"
+      ],
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "evidenceLinks": [
+        {
+          "label": "",
+          "url": "https://jeffriesnurseries.com/wp-content/uploads/2020/08/young-farm-flowering-crabapples-drone-3.jpg"
+        }
+      ],
       "contact": {
         "url": "https://jeffriesnurseries.com/contact-us-2/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://jeffriesnurseries.com/contact-us-2/",
         "error": "",
-        "title": "",
+        "title": "Contact Us - Jeffries Nurseries",
         "checkType": "http"
       },
       "source": {
         "url": "https://jeffriesnurseries.com/about-us/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://jeffriesnurseries.com/about-us/",
         "error": "",
-        "title": "",
+        "title": "About Us - Jeffries Nurseries",
         "checkType": "http"
       },
       "linkedin": {
@@ -6997,10 +7124,9 @@
       "news": [],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:47.707963+00:00"
+      "probedAt": "2026-08-24T12:03:11.973446+00:00"
     },
     {
       "canonicalName": "Plants for Europe Ltd.",
@@ -7069,7 +7195,7 @@
       "news": [],
       "qaStatus": "verified",
       "auditFlags": [],
-      "probedAt": "2026-08-23T11:52:54.093195+00:00"
+      "probedAt": "2026-08-24T12:03:27.323075+00:00"
     },
     {
       "canonicalName": "Teak Enterprises Pty Limited",
@@ -7121,7 +7247,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:52:54.489854+00:00"
+      "probedAt": "2026-08-24T12:03:27.573402+00:00"
     },
     {
       "canonicalName": "CEP Innovation / Novadi",
@@ -7184,7 +7310,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:52:58.523115+00:00"
+      "probedAt": "2026-08-24T12:03:31.090664+00:00"
     },
     {
       "canonicalName": "Vailima Orchard Ltd.",
@@ -7195,16 +7321,16 @@
       "error": "",
       "title": "Our Growers - Luv&#39;ya",
       "keywordCounts": {
-        "varieties": 1,
+        "varieties": 2,
         "brand": 4,
-        "apple": 20
+        "apple": 23
       },
       "relevanceStatus": "strong",
-      "relevanceScore": 40,
+      "relevanceScore": 48,
       "positiveSignals": {
-        "apple": 12,
+        "apple": 15,
         "brand": 1,
-        "varieties": 1
+        "varieties": 2
       },
       "badSignals": {},
       "aliasHits": [
@@ -7245,7 +7371,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:52:59.988045+00:00"
+      "probedAt": "2026-08-24T12:03:32.449656+00:00"
     },
     {
       "canonicalName": "Early Blue Pty Ltd.",
@@ -7275,10 +7401,10 @@
       "source": {
         "url": "https://www.ozblu.com/news/united-exports-widens-portfolio/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://www.ozblu.com/news/united-exports-widens-portfolio/",
         "error": "",
-        "title": "",
+        "title": "United Exports Widens Portfolio | OZblu",
         "checkType": "http"
       },
       "linkedin": {
@@ -7297,7 +7423,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:00.097294+00:00"
+      "probedAt": "2026-08-24T12:03:32.832868+00:00"
     },
     {
       "canonicalName": "Bio Tree Ltd.",
@@ -7410,7 +7536,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:06.343632+00:00"
+      "probedAt": "2026-08-24T12:03:38.770584+00:00"
     },
     {
       "canonicalName": "Tip Top Orchards LLC",
@@ -7421,13 +7547,20 @@
       "error": "",
       "title": "Skylar Rae®",
       "keywordCounts": {
-        "brand": 6
+        "trademark": 1,
+        "brand": 6,
+        "cherry": 31
       },
       "relevanceStatus": "strong",
       "relevanceScore": 60,
-      "positiveSignals": {},
+      "positiveSignals": {
+        "cherry": 1,
+        "trademark": 1
+      },
       "badSignals": {},
-      "aliasHits": [],
+      "aliasHits": [
+        "tip top orchards"
+      ],
       "relevanceNotes": "Official-site relevance override: official tip top cultivar and brand site reviewed 2026 07 15.",
       "evidenceLinks": [
         {
@@ -7467,7 +7600,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:07.336306+00:00"
+      "probedAt": "2026-08-24T12:03:39.620840+00:00"
     },
     {
       "canonicalName": "Southern Trees Limited",
@@ -7519,7 +7652,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:07.766004+00:00"
+      "probedAt": "2026-08-24T12:03:39.818333+00:00"
     },
     {
       "canonicalName": "Nevis Fruit Company Ltd.",
@@ -7572,7 +7705,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:53:07.831237+00:00"
+      "probedAt": "2026-08-24T12:03:39.839364+00:00"
     },
     {
       "canonicalName": "Green and Red Apple Pty Ltd.",
@@ -7624,7 +7757,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:10.164703+00:00"
+      "probedAt": "2026-08-24T12:03:41.779161+00:00"
     },
     {
       "canonicalName": "LFP Lizenzen fuer Fruechte und Pflanzen GmbH",
@@ -7676,7 +7809,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:12.874153+00:00"
+      "probedAt": "2026-08-24T12:03:44.180319+00:00"
     },
     {
       "canonicalName": "International Varieties Unlimited / PFV",
@@ -7785,7 +7918,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:14.190798+00:00"
+      "probedAt": "2026-08-24T12:03:45.096283+00:00"
     },
     {
       "canonicalName": "Groupe Mercier",
@@ -7837,7 +7970,7 @@
       "news": [],
       "qaStatus": "verified",
       "auditFlags": [],
-      "probedAt": "2026-08-23T11:53:18.762606+00:00"
+      "probedAt": "2026-08-24T12:03:48.768767+00:00"
     },
     {
       "canonicalName": "Star Group / Star Fruits Diffusion",
@@ -7891,44 +8024,31 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:53:20.801434+00:00"
+      "probedAt": "2026-08-24T12:03:50.178808+00:00"
     },
     {
       "canonicalName": "Fleuren Tree Nursery",
       "website": "https://fleuren.net/",
-      "ok": true,
-      "status": 200,
+      "ok": false,
+      "status": "",
       "finalUrl": "https://fleuren.net/",
-      "error": "",
-      "title": "Fleuren Boomkwekerij",
-      "keywordCounts": {
-        "variety": 2,
-        "apple": 5,
-        "cherry": 4
-      },
-      "relevanceStatus": "strong",
-      "relevanceScore": 60,
-      "positiveSignals": {
-        "apple": 4,
-        "cherry": 4,
-        "nursery": 6,
-        "pbr": 2,
-        "variety": 2
-      },
+      "error": "TimeoutError: The read operation timed out",
+      "title": "",
+      "keywordCounts": {},
+      "relevanceStatus": "not_checked",
+      "relevanceScore": 0,
+      "positiveSignals": {},
       "badSignals": {},
-      "aliasHits": [
-        "fleuren tree nursery",
-        "fleuren"
-      ],
-      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "aliasHits": [],
+      "relevanceNotes": "Website content was not fetched, so semantic relevance could not be checked.",
       "evidenceLinks": [],
       "contact": {
         "url": "https://fleuren.net/contact/",
-        "ok": true,
-        "status": 200,
+        "ok": false,
+        "status": "",
         "finalUrl": "https://fleuren.net/contact/",
-        "error": "",
-        "title": "Contact - Fleuren Boomkwekerij",
+        "error": "TimeoutError: The read operation timed out",
+        "title": "",
         "checkType": "http"
       },
       "source": {
@@ -7950,9 +8070,12 @@
         "checkType": "http"
       },
       "news": [],
-      "qaStatus": "verified",
-      "auditFlags": [],
-      "probedAt": "2026-08-23T11:53:34.939990+00:00"
+      "qaStatus": "unresolved",
+      "auditFlags": [
+        "website_failed",
+        "contact_failed"
+      ],
+      "probedAt": "2026-08-24T12:04:47.929266+00:00"
     },
     {
       "canonicalName": "Fruitist / AGV Innovation",
@@ -8018,7 +8141,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:53:35.183418+00:00"
+      "probedAt": "2026-08-24T12:04:48.127386+00:00"
     },
     {
       "canonicalName": "Frank P. Matthews Ltd.",
@@ -8109,7 +8232,7 @@
       "news": [],
       "qaStatus": "verified",
       "auditFlags": [],
-      "probedAt": "2026-08-23T11:53:38.836872+00:00"
+      "probedAt": "2026-08-24T12:04:51.160285+00:00"
     },
     {
       "canonicalName": "Vernoge",
@@ -8162,7 +8285,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:53:38.904017+00:00"
+      "probedAt": "2026-08-24T12:04:51.276581+00:00"
     },
     {
       "canonicalName": "JFT Nurseries Pty Ltd.",
@@ -8214,7 +8337,7 @@
         "contact_failed",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:41.343774+00:00"
+      "probedAt": "2026-08-24T12:04:53.725327+00:00"
     },
     {
       "canonicalName": "Oregon Blueberry Farm and Nursery",
@@ -8332,7 +8455,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:53:42.779725+00:00"
+      "probedAt": "2026-08-24T12:04:55.367566+00:00"
     },
     {
       "canonicalName": "Baker PVR Limited",
@@ -8385,7 +8508,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:53:42.855626+00:00"
+      "probedAt": "2026-08-24T12:04:55.387880+00:00"
     },
     {
       "canonicalName": "Island Grove Ag.",
@@ -8457,7 +8580,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:53:43.184279+00:00"
+      "probedAt": "2026-08-24T12:04:55.727237+00:00"
     },
     {
       "canonicalName": "Howell Fruit Advantage LLC",
@@ -8509,7 +8632,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:43.609746+00:00"
+      "probedAt": "2026-08-24T12:04:56.031440+00:00"
     },
     {
       "canonicalName": "Nipama LLC",
@@ -8561,7 +8684,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:53:44.315928+00:00"
+      "probedAt": "2026-08-24T12:04:57.261811+00:00"
     },
     {
       "canonicalName": "Sunglo Varieties Limited",
@@ -8613,7 +8736,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:53:49.260376+00:00"
+      "probedAt": "2026-08-24T12:05:05.501278+00:00"
     },
     {
       "canonicalName": "Zespri Group Limited",
@@ -8669,7 +8792,7 @@
       "news": [],
       "qaStatus": "verified",
       "auditFlags": [],
-      "probedAt": "2026-08-23T11:53:53.473831+00:00"
+      "probedAt": "2026-08-24T12:05:10.007402+00:00"
     },
     {
       "canonicalName": "Dole South Africa",
@@ -8733,7 +8856,7 @@
       "news": [],
       "qaStatus": "verified",
       "auditFlags": [],
-      "probedAt": "2026-08-23T11:54:03.010053+00:00"
+      "probedAt": "2026-08-24T12:05:16.948636+00:00"
     },
     {
       "canonicalName": "Cuna de Platero",
@@ -8787,7 +8910,7 @@
       "auditFlags": [
         "weak_website_relevance"
       ],
-      "probedAt": "2026-08-23T11:54:09.976232+00:00"
+      "probedAt": "2026-08-24T12:05:21.974160+00:00"
     },
     {
       "canonicalName": "Westfalia Fruit / Hans Merensky Holdings",
@@ -8826,11 +8949,11 @@
       },
       "source": {
         "url": "https://www.hmh.co.za/about/",
-        "ok": false,
-        "status": "",
+        "ok": true,
+        "status": 200,
         "finalUrl": "https://www.hmh.co.za/about/",
-        "error": "URLError: <urlopen error [Errno 111] Connection refused>",
-        "title": "",
+        "error": "",
+        "title": "About - Hans Merensky Holdings",
         "checkType": "http"
       },
       "linkedin": {
@@ -8843,12 +8966,11 @@
         "checkType": "linkedin_url_format"
       },
       "news": [],
-      "qaStatus": "needs_fix",
+      "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "linkedin_manual_check_required",
-        "source_failed"
+        "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:54:12.884624+00:00"
+      "probedAt": "2026-08-24T12:05:24.887226+00:00"
     },
     {
       "canonicalName": "Croc Valley Farms (Pty) Ltd",
@@ -8880,7 +9002,7 @@
         "ok": false,
         "status": "",
         "finalUrl": "https://www.gov.za/sites/default/files/gcis_document/202412/51711gon5624.pdf",
-        "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+        "error": "URLError: <urlopen error timed out>",
         "title": "",
         "checkType": "http"
       },
@@ -8901,7 +9023,7 @@
         "missing_linkedin_url",
         "source_failed"
       ],
-      "probedAt": "2026-08-23T11:54:37.773181+00:00"
+      "probedAt": "2026-08-24T12:05:45.548681+00:00"
     },
     {
       "canonicalName": "South African Avocado Growers Association",
@@ -8957,7 +9079,7 @@
         "weak_website_relevance",
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:54:47.792270+00:00"
+      "probedAt": "2026-08-24T12:05:56.072942+00:00"
     },
     {
       "canonicalName": "Summerland Varieties Corp.",
@@ -9056,7 +9178,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:54:49.453556+00:00"
+      "probedAt": "2026-08-24T12:05:56.853285+00:00"
     },
     {
       "canonicalName": "Caudle Apple Inc.",
@@ -9108,7 +9230,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:54:49.847973+00:00"
+      "probedAt": "2026-08-24T12:05:57.114012+00:00"
     },
     {
       "canonicalName": "Qualiagro S.A.",
@@ -9160,7 +9282,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:54:50.298216+00:00"
+      "probedAt": "2026-08-24T12:05:57.311396+00:00"
     },
     {
       "canonicalName": "Changsha Yanoon BioTech Co. Ltd.",
@@ -9211,7 +9333,7 @@
         "missing_website",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:54:51.731838+00:00"
+      "probedAt": "2026-08-24T12:05:58.995200+00:00"
     },
     {
       "canonicalName": "CITA Aragon",
@@ -9222,6 +9344,7 @@
       "error": "",
       "title": "CITA ARAGÓN &#8211; Centro de Investigación y Tecnología Agroalimentaria de Aragón",
       "keywordCounts": {
+        "genetic": 5,
         "patent": 10,
         "brand": 2
       },
@@ -9239,6 +9362,10 @@
         {
           "label": "Patentes y obtenciones",
           "url": "https://cita-aragon.es/patentes-y-obtenciones/"
+        },
+        {
+          "label": "",
+          "url": "https://cita-aragon.es/el-cita-supera-los-25-000-analisis-geneticos-para-impulsar-la-mejora-de-las-razas-ovinas-aragonesas/"
         }
       ],
       "contact": {
@@ -9273,7 +9400,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:54:58.326575+00:00"
+      "probedAt": "2026-08-24T12:06:03.451993+00:00"
     },
     {
       "canonicalName": "Berry Gardens Growers",
@@ -9285,15 +9412,12 @@
       "title": "Welcome | Berry Gardens Growers ..",
       "keywordCounts": {
         "varieties": 1,
-        "blackberry": 1,
-        "apple": 1,
         "plum": 1,
-        "cherry": 2
+        "cherry": 3
       },
-      "relevanceStatus": "moderate",
-      "relevanceScore": 18,
+      "relevanceStatus": "weak",
+      "relevanceScore": 16,
       "positiveSignals": {
-        "apple": 1,
         "plum": 1,
         "varieties": 1
       },
@@ -9301,7 +9425,7 @@
       "aliasHits": [
         "berry gardens growers"
       ],
-      "relevanceNotes": "Website has some relevant crop or variety language.",
+      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
       "evidenceLinks": [],
       "contact": {
         "url": "https://www.bggrowers.co.uk/contact/",
@@ -9333,9 +9457,10 @@
       "news": [],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
+        "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:00.865224+00:00"
+      "probedAt": "2026-08-24T12:06:05.720121+00:00"
     },
     {
       "canonicalName": "Annapeter Property Limited",
@@ -9387,7 +9512,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:01.106095+00:00"
+      "probedAt": "2026-08-24T12:06:06.389252+00:00"
     },
     {
       "canonicalName": "Powell Navel Pty Ltd.",
@@ -9439,7 +9564,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:01.491528+00:00"
+      "probedAt": "2026-08-24T12:06:06.679749+00:00"
     },
     {
       "canonicalName": "Willashben Pty Ltd.",
@@ -9469,10 +9594,10 @@
       "source": {
         "url": "https://lenswoodcoop.com.au/nfga/miapple/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://lenswoodcoop.com.au/nfga/miapple/",
         "error": "",
-        "title": "",
+        "title": "Lenswood Apples | Miapple",
         "checkType": "http"
       },
       "linkedin": {
@@ -9491,7 +9616,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:02.090925+00:00"
+      "probedAt": "2026-08-24T12:06:08.232654+00:00"
     },
     {
       "canonicalName": "CABP 4 Limited",
@@ -9543,7 +9668,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:02.298106+00:00"
+      "probedAt": "2026-08-24T12:06:08.425334+00:00"
     },
     {
       "canonicalName": "Comoset (Pty) Ltd.",
@@ -9595,7 +9720,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:03.829080+00:00"
+      "probedAt": "2026-08-24T12:06:09.510274+00:00"
     },
     {
       "canonicalName": "Seminis Vegetable Seeds",
@@ -9657,7 +9782,7 @@
         "missing_contact_url",
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:55:04.206974+00:00"
+      "probedAt": "2026-08-24T12:06:10.435136+00:00"
     },
     {
       "canonicalName": "Constellation Brands U.S. Operations",
@@ -9765,7 +9890,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:55:05.156384+00:00"
+      "probedAt": "2026-08-24T12:06:10.995318+00:00"
     },
     {
       "canonicalName": "CAP Farms Inc.",
@@ -9817,7 +9942,7 @@
         "missing_contact_url",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:05.568296+00:00"
+      "probedAt": "2026-08-24T12:06:11.181029+00:00"
     },
     {
       "canonicalName": "AGRANA Fruit Services GmbH",
@@ -9876,7 +10001,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:55:08.357922+00:00"
+      "probedAt": "2026-08-24T12:06:13.136501+00:00"
     },
     {
       "canonicalName": "HOB Co. Ltd.",
@@ -9954,7 +10079,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:11.401906+00:00"
+      "probedAt": "2026-08-24T12:06:17.068002+00:00"
     },
     {
       "canonicalName": "Nippon Ryokusan Co. Ltd.",
@@ -10005,7 +10130,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:14.256231+00:00"
+      "probedAt": "2026-08-24T12:06:21.052379+00:00"
     },
     {
       "canonicalName": "Black Venture Farm / Frutura",
@@ -10047,10 +10172,10 @@
       "contact": {
         "url": "https://www.fruturaproduce.com/companies/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://www.fruturaproduce.com/companies/",
         "error": "",
-        "title": "",
+        "title": "Companies | Frutura",
         "checkType": "http"
       },
       "source": {
@@ -10076,7 +10201,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:55:14.805118+00:00"
+      "probedAt": "2026-08-24T12:06:21.611037+00:00"
     },
     {
       "canonicalName": "Del Monte International GmbH",
@@ -10148,7 +10273,7 @@
       "auditFlags": [
         "linkedin_manual_check_required"
       ],
-      "probedAt": "2026-08-23T11:55:15.720386+00:00"
+      "probedAt": "2026-08-24T12:06:22.215731+00:00"
     },
     {
       "canonicalName": "Ben Dor Fruits & Nurseries Ltd",
@@ -10245,40 +10370,99 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:18.246672+00:00"
+      "probedAt": "2026-08-24T12:06:24.004143+00:00"
     },
     {
       "canonicalName": "Mattivi Breeding S.S.",
       "website": "https://www.mattivi.it/",
       "ok": true,
-      "status": 202,
+      "status": 200,
       "finalUrl": "https://www.mattivi.it/",
       "error": "",
-      "title": "",
-      "keywordCounts": {},
-      "relevanceStatus": "weak",
-      "relevanceScore": 0,
-      "positiveSignals": {},
+      "title": "Welcome to Mattivi from Genetics to Berries | Trentino",
+      "keywordCounts": {
+        "varieties": 40,
+        "genetic": 7,
+        "genetics": 7,
+        "blueberry": 11,
+        "strawberry": 15,
+        "raspberry": 18,
+        "apple": 1
+      },
+      "relevanceStatus": "strong",
+      "relevanceScore": 100,
+      "positiveSignals": {
+        "blueberry": 5,
+        "breeding": 4,
+        "genetic": 6,
+        "genetics": 6,
+        "nursery": 1,
+        "pbr": 14,
+        "raspberry": 5,
+        "strawberry": 5,
+        "varieties": 8
+      },
       "badSignals": {},
       "aliasHits": [],
-      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
-      "evidenceLinks": [],
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "evidenceLinks": [
+        {
+          "label": "Strawberry",
+          "url": "https://www.mattivi.it/strawberry-varieties/"
+        },
+        {
+          "label": "Karima ® – A.Karima PBR",
+          "url": "https://www.mattivi.it/strawberry-varieties/karima/"
+        },
+        {
+          "label": "Munira – A.Munira PBR",
+          "url": "https://www.mattivi.it/strawberry-varieties/munira/"
+        },
+        {
+          "label": "Raspberry",
+          "url": "https://www.mattivi.it/raspberry-varieties/"
+        },
+        {
+          "label": "Serena ® – M.P. 745 PBR",
+          "url": "https://www.mattivi.it/raspberry-varieties/serena/"
+        },
+        {
+          "label": "Nives ® – M.P. 102 PBR",
+          "url": "https://www.mattivi.it/raspberry-varieties/nives/"
+        },
+        {
+          "label": "Dolcevita ® – M.F. 500 PBR",
+          "url": "https://www.mattivi.it/raspberry-varieties/dolcevita/"
+        },
+        {
+          "label": "Isabella ® – M.F. 1116 PBR",
+          "url": "https://www.mattivi.it/raspberry-varieties/isabella/"
+        },
+        {
+          "label": "Blueberry",
+          "url": "https://www.mattivi.it/blueberry-varieties/"
+        },
+        {
+          "label": "M.H. 1-07 PBR",
+          "url": "https://www.mattivi.it/blueberry-varieties/m-h-1-07-pbr/"
+        }
+      ],
       "contact": {
         "url": "https://www.mattivi.it/contact-us/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://www.mattivi.it/contact-us/",
         "error": "",
-        "title": "",
+        "title": "Contact us | Mattivi from Genetics to Berries",
         "checkType": "http"
       },
       "source": {
         "url": "https://www.mattivi.it/",
         "ok": true,
-        "status": 202,
+        "status": 200,
         "finalUrl": "https://www.mattivi.it/",
         "error": "",
-        "title": "",
+        "title": "Welcome to Mattivi from Genetics to Berries | Trentino",
         "checkType": "same_as_website"
       },
       "linkedin": {
@@ -10293,10 +10477,9 @@
       "news": [],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:20.223651+00:00"
+      "probedAt": "2026-08-24T12:06:26.208954+00:00"
     },
     {
       "canonicalName": "Bayerisches Obstzentrum / BayOZ",
@@ -10350,7 +10533,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:23.030542+00:00"
+      "probedAt": "2026-08-24T12:06:28.477367+00:00"
     },
     {
       "canonicalName": "University of Cordoba / UCOLIVO",
@@ -10403,7 +10586,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:24.689191+00:00"
+      "probedAt": "2026-08-24T12:06:29.870323+00:00"
     },
     {
       "canonicalName": "CREA Fruit Breeding",
@@ -10414,21 +10597,21 @@
       "error": "",
       "title": "CREA - Consiglio per la ricerca in agricoltura e l&#39;analisi dell&#39;economia agraria - CREA",
       "keywordCounts": {
-        "genetic": 4,
+        "genetic": 5,
         "brand": 2
       },
-      "relevanceStatus": "moderate",
-      "relevanceScore": 18,
+      "relevanceStatus": "strong",
+      "relevanceScore": 20,
       "positiveSignals": {
         "breeding": 1,
-        "genetic": 1,
+        "genetic": 2,
         "seed": 1
       },
       "badSignals": {},
       "aliasHits": [
         "crea"
       ],
-      "relevanceNotes": "Website has some relevant crop or variety language.",
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
       "evidenceLinks": [],
       "contact": {
         "url": "https://www.crea.gov.it/contatti",
@@ -10462,7 +10645,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:27.384664+00:00"
+      "probedAt": "2026-08-24T12:06:32.134996+00:00"
     },
     {
       "canonicalName": "Miyoshi Agri-Tech Co. Ltd.",
@@ -10539,7 +10722,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:32.678900+00:00"
+      "probedAt": "2026-08-24T12:06:39.805030+00:00"
     },
     {
       "canonicalName": "IRTA / Hot Climate Partnership",
@@ -10597,7 +10780,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:50.757577+00:00"
+      "probedAt": "2026-08-24T12:07:13.824171+00:00"
     },
     {
       "canonicalName": "Royal Berries / Hortifrut",
@@ -10669,7 +10852,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:51.787187+00:00"
+      "probedAt": "2026-08-24T12:07:14.267801+00:00"
     },
     {
       "canonicalName": "Camposol S.A.",
@@ -10709,7 +10892,7 @@
           "url": "https://www.camposol.com/news-and-press/"
         },
         {
-          "label": "Blueberry Muffin Cake with Maple Glaze",
+          "label": "Blueberry Orange Cardamon Crostata",
           "url": "https://www.camposol.com/recipes/"
         }
       ],
@@ -10745,7 +10928,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:53.034586+00:00"
+      "probedAt": "2026-08-24T12:07:15.610608+00:00"
     },
     {
       "canonicalName": "NARO Fruit Breeding",
@@ -10830,7 +11013,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:54.957791+00:00"
+      "probedAt": "2026-08-24T12:07:18.256819+00:00"
     },
     {
       "canonicalName": "Queensland DPI Fruit Breeding",
@@ -10882,7 +11065,7 @@
         "contact_failed",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:57.395248+00:00"
+      "probedAt": "2026-08-24T12:07:21.284378+00:00"
     },
     {
       "canonicalName": "Yamagata Prefecture Fruit Breeding",
@@ -10935,7 +11118,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:55:58.370500+00:00"
+      "probedAt": "2026-08-24T12:07:22.813922+00:00"
     },
     {
       "canonicalName": "Chinese Academy of Sciences Kiwifruit Programs",
@@ -10987,7 +11170,7 @@
         "contact_failed",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:01.807364+00:00"
+      "probedAt": "2026-08-24T12:07:28.062776+00:00"
     },
     {
       "canonicalName": "Sichuan Provincial Academy / Mingzhang Kiwifruit",
@@ -11039,7 +11222,7 @@
         "contact_failed",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:42.359096+00:00"
+      "probedAt": "2026-08-24T12:08:08.837394+00:00"
     },
     {
       "canonicalName": "Huron Plant Technologies LLC",
@@ -11095,7 +11278,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:43.584240+00:00"
+      "probedAt": "2026-08-24T12:08:09.755580+00:00"
     },
     {
       "canonicalName": "Oregon State University Hazelnut Program",
@@ -11104,33 +11287,26 @@
       "status": 200,
       "finalUrl": "https://horticulture.oregonstate.edu/",
       "error": "",
-      "title": "College of Agricultural Sciences |",
+      "title": "Horticulture",
       "keywordCounts": {
-        "variety": 1,
         "cultivar": 1,
         "cultivars": 1,
         "genetic": 2,
         "genetics": 2,
-        "patent": 1,
-        "brand": 4,
+        "brand": 11,
         "grape": 2
       },
       "relevanceStatus": "strong",
-      "relevanceScore": 54,
+      "relevanceScore": 36,
       "positiveSignals": {
-        "brand": 3,
-        "breeder": 1,
-        "breeding": 5,
+        "breeding": 4,
         "cultivar": 1,
         "cultivars": 1,
         "genetic": 1,
         "genetics": 1,
         "grape": 1,
         "nursery": 2,
-        "patent": 1,
-        "plant variety": 1,
-        "plants": 2,
-        "variety": 1
+        "plants": 1
       },
       "badSignals": {},
       "aliasHits": [
@@ -11151,18 +11327,18 @@
         "url": "https://horticulture.oregonstate.edu/users/david-smith",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://horticulture.oregonstate.edu/users/david-smith",
+        "finalUrl": "https://horticulture.oregonstate.edu/directory/people/david-smith",
         "error": "",
-        "title": "David Smith | College of Agricultural Sciences",
+        "title": "David Smith | Horticulture",
         "checkType": "http"
       },
       "source": {
         "url": "https://horticulture.oregonstate.edu/users/david-smith",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://horticulture.oregonstate.edu/users/david-smith",
+        "finalUrl": "https://horticulture.oregonstate.edu/directory/people/david-smith",
         "error": "",
-        "title": "David Smith | College of Agricultural Sciences",
+        "title": "David Smith | Horticulture",
         "checkType": "http"
       },
       "linkedin": {
@@ -11179,7 +11355,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:44.179211+00:00"
+      "probedAt": "2026-08-24T12:08:13.779795+00:00"
     },
     {
       "canonicalName": "ITUM / IMIDA Table Grape Program",
@@ -11293,7 +11469,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:48.069492+00:00"
+      "probedAt": "2026-08-24T12:08:18.440159+00:00"
     },
     {
       "canonicalName": "Rusticas del Guadalquivir S.L.",
@@ -11350,7 +11526,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:50.225628+00:00"
+      "probedAt": "2026-08-24T12:08:20.025132+00:00"
     },
     {
       "canonicalName": "Nova Siri Genetics S.r.l.",
@@ -11465,7 +11641,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:56.007304+00:00"
+      "probedAt": "2026-08-24T12:08:23.753000+00:00"
     },
     {
       "canonicalName": "GAEC des Pepinieres Gromolard",
@@ -11518,7 +11694,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:56:58.445844+00:00"
+      "probedAt": "2026-08-24T12:08:26.773967+00:00"
     },
     {
       "canonicalName": "Gradilis Holding SAS",
@@ -11577,7 +11753,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:03.207637+00:00"
+      "probedAt": "2026-08-24T12:08:33.143921+00:00"
     },
     {
       "canonicalName": "Institute of Experimental Botany Apple Breeding",
@@ -11693,7 +11869,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:08.990517+00:00"
+      "probedAt": "2026-08-24T12:08:41.565258+00:00"
     },
     {
       "canonicalName": "University of Minnesota Fruit Breeding",
@@ -11770,7 +11946,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:10.182308+00:00"
+      "probedAt": "2026-08-24T12:08:42.320872+00:00"
     },
     {
       "canonicalName": "ARO Volcani Citrus Breeding",
@@ -11839,7 +12015,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:12.271023+00:00"
+      "probedAt": "2026-08-24T12:08:43.920244+00:00"
     },
     {
       "canonicalName": "M.M. Gryshko National Botanical Garden",
@@ -11868,11 +12044,11 @@
       },
       "source": {
         "url": "https://www.old.nas.gov.ua/UA/Department/Pages/default.aspx?DepartmentID=0001507",
-        "ok": false,
-        "status": 503,
+        "ok": true,
+        "status": 200,
         "finalUrl": "https://www.old.nas.gov.ua/UA/Department/Pages/default.aspx?DepartmentID=0001507",
-        "error": "HTTP 503",
-        "title": "",
+        "error": "",
+        "title": "Сайт підрозділу",
         "checkType": "http"
       },
       "linkedin": {
@@ -11885,13 +12061,12 @@
         "checkType": "missing"
       },
       "news": [],
-      "qaStatus": "needs_fix",
+      "qaStatus": "verified_with_gaps",
       "auditFlags": [
         "weak_website_relevance",
-        "missing_linkedin_url",
-        "source_failed"
+        "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:15.624078+00:00"
+      "probedAt": "2026-08-24T12:08:49.366234+00:00"
     },
     {
       "canonicalName": "IMIDA Fruit Breeding",
@@ -11958,7 +12133,7 @@
         "url": "https://www.imida.es/contacto",
         "ok": true,
         "status": 200,
-        "finalUrl": "https://validate.perfdrive.com/?ssa=c4cda50f-0720-49b4-95d0-fef9bee05814&ssb=61908299818&ssc=https%3A%2F%2Fwww.imida.es%2Fcontacto&ssi=6eec60db-dhsu-45a6-b8ef-f5dc74d58845&ssk=botmanager_support@radware.com&ssm=57614230954802645108972772009263&ssn=90453f97a656fb4be8b31ddade7486cb5691ddcec2ac-b9dd-47fb-bf2baa&sso=1dd8db48-7c3421de7aaf0f5325df15a37e034e0607e55db6a9db91eb&ssp=14803835581787418316178748409153476&ssq=45028188623706706362886237059036225932031&ssr=MjAuMTY5LjUzLjQ5&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)&ssu=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDBkZGNlYzJhYy1iOWRkLTQ3ZmItYmI0OC03YzM0MjFkZTdhYWYxLTE3ODc0ODYyMzc0OTAwLTAwMzE5NzkzNmJmYWQ1MTdlYTcxMCIsInJkIjoiaW1pZGEuZXMiLCJ1em14IjoiN2ZjMDAwYTlmMjQ3YzQtNjAxMi00NDVkLThlZDQtNzlkODA1NWY5ODkxMS0xNzg3NDg2MjM3NDkwMC0wMDE4MTAwZTU2OGMxNTVmMWRiMTAifQ==",
+        "finalUrl": "https://validate.perfdrive.com/?ssa=8877275d-55f1-49f2-b2c0-1c6d63b9e113&ssb=08791286926&ssc=https%3A%2F%2Fwww.imida.es%2Fcontacto&ssi=ba45cbd0-dhsu-4740-a79b-e49271a20c95&ssk=botmanager_support@radware.com&ssm=00645591606746497101185805959350&ssn=0277e08ed76e02e12a454f394ad81f27f1b2f68f1e39-a3b6-46aa-b28e8c&sso=ec939cfb-10f619080d69a9a9ff8be7ad54c237fbd5f25abec28d6088&ssp=32455066711787596304178750142170750&ssq=96863957333006270808173330488045058446130&ssr=NzQuMjM1LjEzMy4yMTY=&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)&ssu=&ssv=&ssw=&ssx=eyJyZCI6ImltaWRhLmVzIiwiX191em1mIjoiN2Y5MDAwZjY4ZjFlMzktYTNiNi00NmFhLWJjZmItMTBmNjE5MDgwZDY5MS0xNzg3NTczMzMwODk3MC0wMDNkODkwODBkZTY2N2ZlNTJjMTAiLCJ1em14IjoiN2ZjMDAwZGI5N2MxNzAtMTViNS00NGFiLWI1ZDctZGM4MzcwMzVmNTI3MS0xNzg3NTczMzMwODk3MC0wMDI1OTQwZTNhZDdiYmQ5YTMzMTAifQ==",
         "error": "",
         "title": "Radware Captcha Page",
         "checkType": "http"
@@ -11987,7 +12162,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:17.946534+00:00"
+      "probedAt": "2026-08-24T12:08:51.042299+00:00"
     },
     {
       "canonicalName": "Splendor Produce",
@@ -12045,7 +12220,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:19.220747+00:00"
+      "probedAt": "2026-08-24T12:08:51.286362+00:00"
     },
     {
       "canonicalName": "Feno Scarl",
@@ -12142,7 +12317,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:24.789684+00:00"
+      "probedAt": "2026-08-24T12:08:58.667075+00:00"
     },
     {
       "canonicalName": "Berryneo S.L.",
@@ -12202,7 +12377,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:31.345180+00:00"
+      "probedAt": "2026-08-24T12:09:04.697676+00:00"
     },
     {
       "canonicalName": "Hortplant Jerzy Dominikowski",
@@ -12259,7 +12434,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:33.948880+00:00"
+      "probedAt": "2026-08-24T12:09:06.623974+00:00"
     },
     {
       "canonicalName": "Escande Breeding Group",
@@ -12312,7 +12487,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:36.121264+00:00"
+      "probedAt": "2026-08-24T12:09:08.182039+00:00"
     },
     {
       "canonicalName": "Ibergen Frutales S.L.",
@@ -12321,39 +12496,15 @@
       "status": 200,
       "finalUrl": "https://ibergen.es/",
       "error": "",
-      "title": "Ibergen",
-      "keywordCounts": {
-        "brand": 18,
-        "apple": 1,
-        "plum": 21
-      },
-      "relevanceStatus": "strong",
-      "relevanceScore": 22,
-      "positiveSignals": {
-        "brand": 7,
-        "plum": 4
-      },
+      "title": "",
+      "keywordCounts": {},
+      "relevanceStatus": "weak",
+      "relevanceScore": 0,
+      "positiveSignals": {},
       "badSignals": {},
       "aliasHits": [],
-      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
-      "evidenceLinks": [
-        {
-          "label": "IberPlum",
-          "url": "https://ibergen.es/iberplum/"
-        },
-        {
-          "label": "BabyPlum",
-          "url": "https://ibergen.es/babyplum/"
-        },
-        {
-          "label": "",
-          "url": "https://ibergen.es/iberplum"
-        },
-        {
-          "label": "",
-          "url": "https://ibergen.es/babyplum"
-        }
-      ],
+      "relevanceNotes": "Website opens, but public page has limited breeding/variety relevance signals.",
+      "evidenceLinks": [],
       "contact": {
         "url": "https://ibergen.es/",
         "ok": true,
@@ -12369,7 +12520,7 @@
         "status": 200,
         "finalUrl": "https://ibergen.es/",
         "error": "",
-        "title": "Ibergen",
+        "title": "",
         "checkType": "same_as_website"
       },
       "linkedin": {
@@ -12395,9 +12546,10 @@
       ],
       "qaStatus": "verified_with_gaps",
       "auditFlags": [
+        "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:38.408546+00:00"
+      "probedAt": "2026-08-24T12:09:09.629971+00:00"
     },
     {
       "canonicalName": "COTEVISA",
@@ -12452,7 +12604,7 @@
         "weak_website_relevance",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:40.341791+00:00"
+      "probedAt": "2026-08-24T12:09:11.342656+00:00"
     },
     {
       "canonicalName": "Zouk B.V.",
@@ -12538,7 +12690,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:43.247328+00:00"
+      "probedAt": "2026-08-24T12:09:14.904290+00:00"
     },
     {
       "canonicalName": "Citrogold Pty Ltd",
@@ -12613,40 +12765,58 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:57:53.155200+00:00"
+      "probedAt": "2026-08-24T12:09:21.365365+00:00"
     },
     {
       "canonicalName": "Embrapa Grape and Wine",
       "website": "https://www.embrapa.br/uva-e-vinho",
-      "ok": false,
-      "status": "",
-      "finalUrl": "https://www.embrapa.br/uva-e-vinho",
-      "error": "URLError: <urlopen error timed out>",
-      "title": "",
-      "keywordCounts": {},
-      "relevanceStatus": "not_checked",
-      "relevanceScore": 0,
-      "positiveSignals": {},
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.embrapa.br/web/uva-e-vinho",
+      "error": "",
+      "title": "Inicial - Embrapa Uva e Vinho - Portal Embrapa",
+      "keywordCounts": {
+        "cultivar": 20,
+        "apple": 1
+      },
+      "relevanceStatus": "strong",
+      "relevanceScore": 100,
+      "positiveSignals": {
+        "cultivar": 14,
+        "license": 33
+      },
       "badSignals": {},
-      "aliasHits": [],
-      "relevanceNotes": "Website content was not fetched, so semantic relevance could not be checked.",
-      "evidenceLinks": [],
+      "aliasHits": [
+        "embrapa uva e vinho",
+        "embrapa"
+      ],
+      "relevanceNotes": "Website has strong public breeding, variety, crop, or licensing relevance.",
+      "evidenceLinks": [
+        {
+          "label": "Cultivares e Porta-enxertos",
+          "url": "https://www.embrapa.br/web/uva-e-vinho/cultivares-e-porta-enxertos"
+        },
+        {
+          "label": "Todas as cultivares e porta-enxertos",
+          "url": "https://www.embrapa.br/uva-e-vinho/cultivares-e-porta-enxertos"
+        }
+      ],
       "contact": {
         "url": "https://www.embrapa.br/uva-e-vinho",
-        "ok": false,
-        "status": "",
-        "finalUrl": "https://www.embrapa.br/uva-e-vinho",
-        "error": "URLError: <urlopen error timed out>",
-        "title": "",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://www.embrapa.br/web/uva-e-vinho",
+        "error": "",
+        "title": "Inicial - Embrapa Uva e Vinho - Portal Embrapa",
         "checkType": "http"
       },
       "source": {
         "url": "https://www.embrapa.br/uva-e-vinho",
-        "ok": false,
-        "status": "",
-        "finalUrl": "https://www.embrapa.br/uva-e-vinho",
-        "error": "URLError: <urlopen error timed out>",
-        "title": "",
+        "ok": true,
+        "status": 200,
+        "finalUrl": "https://www.embrapa.br/web/uva-e-vinho",
+        "error": "",
+        "title": "Inicial - Embrapa Uva e Vinho - Portal Embrapa",
         "checkType": "same_as_website"
       },
       "linkedin": {
@@ -12659,14 +12829,11 @@
         "checkType": "missing"
       },
       "news": [],
-      "qaStatus": "unresolved",
+      "qaStatus": "verified_with_gaps",
       "auditFlags": [
-        "website_failed",
-        "contact_failed",
-        "missing_linkedin_url",
-        "source_failed"
+        "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:58:33.912945+00:00"
+      "probedAt": "2026-08-24T12:09:28.611686+00:00"
     },
     {
       "canonicalName": "GJH LLC",
@@ -12718,7 +12885,7 @@
         "contact_failed",
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:58:34.398314+00:00"
+      "probedAt": "2026-08-24T12:09:29.017715+00:00"
     },
     {
       "canonicalName": "Todolivo S.L.",
@@ -12803,7 +12970,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:58:37.921817+00:00"
+      "probedAt": "2026-08-24T12:09:32.701569+00:00"
     },
     {
       "canonicalName": "Sino-NZ Innovation Limited",
@@ -12909,7 +13076,7 @@
       "auditFlags": [
         "missing_linkedin_url"
       ],
-      "probedAt": "2026-08-23T11:58:38.256470+00:00"
+      "probedAt": "2026-08-24T12:09:32.941457+00:00"
     }
   ]
 }
