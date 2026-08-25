@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-24T12:11:51.228186+00:00",
+    "checkedAt": "2026-08-25T12:08:36.131466+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,7 +148,7 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Cerasina GmbH, Van Well Nursery, Sweet Darling Sales, Inc., Fleuren Tree Nursery, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
+      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
     },
     {
       "name": "profile_evidence_links_reachable",
