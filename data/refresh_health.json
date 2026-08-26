@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-25T12:08:36.131466+00:00",
+    "checkedAt": "2026-08-26T12:10:31.336726+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2823,
+    "plantPatents": 2837,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12136,
+    "ownerProfiles": 12137,
     "breederAffiliations": 9238,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12136
+    "webResearchRows": 12137
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,823 plant-patent rows"
+      "detail": "2,837 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,7 +34,7 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,136 owner profiles"
+      "detail": "12,137 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,136 audit rows for 12,136 owners"
+      "detail": "12,137 audit rows for 12,137 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,136 research rows for 12,136 owners"
+      "detail": "12,137 research rows for 12,137 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,19 +148,19 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
+      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., CITA Aragon, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "17 evidence links need replacement or manual review"
+      "detail": "7 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,136; research rows 12,136"
+      "detail": "Status totals 12,137; research rows 12,137"
     }
   ]
 }
