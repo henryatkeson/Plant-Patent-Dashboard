@@ -1,17 +1,17 @@
 {
   "metadata": {
     "title": "Owner Web Research Ledger",
-    "generatedAt": "2026-08-26T12:10:27.294370+00:00",
+    "generatedAt": "2026-08-27T21:19:23.944221+00:00",
     "profileCount": 12137,
     "statusCounts": {
       "ambiguous_name_quarantined": 1,
       "candidate_parent_needs_verification": 1,
       "company_discovery_needed": 280,
-      "evidence_backed_profile": 12,
+      "evidence_backed_profile": 11,
       "historical_holder_assignment_check_required": 1,
       "individual_affiliation_research": 9902,
       "institutional_affiliation_research": 492,
-      "known_domain_needs_review": 6,
+      "known_domain_needs_review": 8,
       "legal_status_unresolved_suppress_scoring": 1,
       "non_target_reference": 988,
       "not_actionable_verified": 145,
@@ -32,7 +32,7 @@
       "unresolved_entity_profile_record_split_required_suppress_scoring": 1,
       "unresolved_record_split_required": 2,
       "unresolved_record_split_required_suppress_scoring": 3,
-      "verified": 162,
+      "verified": 161,
       "verified_current_parent_medium": 4,
       "verified_joint_venture": 1,
       "verified_legal_name_mismatch": 1,
@@ -47,9 +47,9 @@
       "wrong_domains_rejected_unresolved": 1
     },
     "reviewLevelCounts": {
-      "complete": 307,
+      "complete": 306,
       "not_started": 11663,
-      "partial": 167
+      "partial": 168
     },
     "profilesWithKnownWebsite": 186,
     "profilesWithContactPath": 127,
@@ -558,6 +558,37 @@
       "searchQuery3": "\"Escande Breeding Group\" company ownership contact",
       "lastWebReviewAt": "2026-07-15",
       "researchNotes": "High-priority private platform. Verify the rights perimeter, family ownership, financial scale, and cultivar-level title before outreach."
+    },
+    {
+      "ownerName": "Bloom Fresh International",
+      "entityClass": "company_or_rollup",
+      "researchStatus": "known_domain_needs_review",
+      "reviewLevel": "partial",
+      "researchPriorityScore": 74,
+      "acquisitionFitScore": 26,
+      "acquisitionFitBand": "Benchmark / too large",
+      "recordCount": 813,
+      "relevantIpRecordCount": 808,
+      "protectedIpCount": 684,
+      "lastYear": 2026,
+      "knownWebsite": "https://bloomfreshglobal.com/",
+      "knownDomain": "bloomfreshglobal.com",
+      "knownContactUrl": "https://bloomfreshglobal.com/#contact",
+      "knownLinkedInUrl": "https://www.linkedin.com/company/bloomfresh-international/",
+      "candidateParent": "",
+      "ownershipType": "",
+      "parentCompany": "",
+      "primaryContactName": "",
+      "primaryContactEmail": "",
+      "primaryContactPhone": "",
+      "trademarkStatus": "not_checked",
+      "sourceCount": 6,
+      "sourceUrls": "https://bloomfreshglobal.com/ | https://bloomfreshglobal.com/#contact | https://www.linkedin.com/company/bloomfresh-international/ | https://bloomfreshglobal.com/products/ | https://bloomfreshglobal.com/news/ | https://eqtgroup.com/about/current-portfolio/bloom-fresh-international",
+      "searchQuery1": "\"Bloom Fresh International\" plant breeder varieties",
+      "searchQuery2": "\"Bloom Fresh International\" Grape breeding cultivar",
+      "searchQuery3": "\"Bloom Fresh International\" company ownership contact",
+      "lastWebReviewAt": "2026-08-27T21:07:12.967997+00:00",
+      "researchNotes": "Corrected prior florist-domain false positive. Official Bloom Fresh Global site, EQT portfolio page, and LinkedIn profile identify Bloom Fresh as the IFG/SNFL fruit-breeding platform. Large benchmark platform, not a target in current size range."
     },
     {
       "ownerName": "Steven D. Nelson",
@@ -1207,7 +1238,7 @@
       "searchQuery1": "\"IRTA / Hot Climate Partnership\" plant breeder varieties",
       "searchQuery2": "\"IRTA / Hot Climate Partnership\" Almond breeding cultivar",
       "searchQuery3": "\"IRTA / Hot Climate Partnership\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:06:06.996728+00:00",
+      "lastWebReviewAt": "2026-08-27T21:14:25.453367+00:00",
       "researchNotes": ""
     },
     {
@@ -1703,7 +1734,7 @@
       "searchQuery1": "\"Ibergen Frutales S.L.\" plant breeder varieties",
       "searchQuery2": "\"Ibergen Frutales S.L.\" Plum breeding cultivar",
       "searchQuery3": "\"Ibergen Frutales S.L.\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:08:01.595103+00:00",
+      "lastWebReviewAt": "2026-08-27T21:16:41.410874+00:00",
       "researchNotes": ""
     },
     {
@@ -1858,7 +1889,7 @@
       "searchQuery1": "\"INRAE\" plant breeder varieties",
       "searchQuery2": "\"INRAE\" Grape breeding cultivar",
       "searchQuery3": "\"INRAE\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:01:41.909411+00:00",
+      "lastWebReviewAt": "2026-08-27T21:09:50.946916+00:00",
       "researchNotes": ""
     },
     {
@@ -2013,7 +2044,7 @@
       "searchQuery1": "\"Agriculture and Agri-Food Canada\" plant breeder varieties",
       "searchQuery2": "\"Agriculture and Agri-Food Canada\" Cherry-Sweet breeding cultivar",
       "searchQuery3": "\"Agriculture and Agri-Food Canada\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:01:19.874434+00:00",
+      "lastWebReviewAt": "2026-08-27T21:09:25.077596+00:00",
       "researchNotes": ""
     },
     {
@@ -2044,7 +2075,7 @@
       "searchQuery1": "\"University of California\" plant breeder varieties",
       "searchQuery2": "\"University of California\" Strawberry breeding cultivar",
       "searchQuery3": "\"University of California\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:01:46.450706+00:00",
+      "lastWebReviewAt": "2026-08-27T21:09:55.199628+00:00",
       "researchNotes": "Added Royce Bringhurst and Steven Knapp public strawberry breeder rows to avoid standalone acquisition-lead noise."
     },
     {
@@ -2230,7 +2261,7 @@
       "searchQuery1": "\"Sun World International\" plant breeder varieties",
       "searchQuery2": "\"Sun World International\" Grape breeding cultivar",
       "searchQuery3": "\"Sun World International\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T11:59:10.120783+00:00",
+      "lastWebReviewAt": "2026-08-27T21:07:13.995357+00:00",
       "researchNotes": ""
     },
     {
@@ -2571,7 +2602,7 @@
       "searchQuery1": "\"USDA Agricultural Research Service\" plant breeder varieties",
       "searchQuery2": "\"USDA Agricultural Research Service\" Blueberry breeding cultivar",
       "searchQuery3": "\"USDA Agricultural Research Service\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:00:59.496096+00:00",
+      "lastWebReviewAt": "2026-08-27T21:09:24.448413+00:00",
       "researchNotes": ""
     },
     {
@@ -2633,7 +2664,7 @@
       "searchQuery1": "\"Angus Soft Fruits\" plant breeder varieties",
       "searchQuery2": "\"Angus Soft Fruits\" Strawberry breeding cultivar",
       "searchQuery3": "\"Angus Soft Fruits\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:00:48.233970+00:00",
+      "lastWebReviewAt": "2026-08-27T21:09:10.482234+00:00",
       "researchNotes": "Official site states the AVA Berries breeding programme develops strawberry, raspberry, and blackberry varieties."
     },
     {
@@ -3253,7 +3284,7 @@
       "searchQuery1": "\"Todolivo S.L.\" plant breeder varieties",
       "searchQuery2": "\"Todolivo S.L.\" Olive breeding cultivar",
       "searchQuery3": "\"Todolivo S.L.\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:08:21.421499+00:00",
+      "lastWebReviewAt": "2026-08-27T21:17:01.805133+00:00",
       "researchNotes": ""
     },
     {
@@ -3501,7 +3532,7 @@
       "searchQuery1": "\"ARC Infruitec-Nietvoorbij\" plant breeder varieties",
       "searchQuery2": "\"ARC Infruitec-Nietvoorbij\" Plum breeding cultivar",
       "searchQuery3": "\"ARC Infruitec-Nietvoorbij\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:00:23.654224+00:00",
+      "lastWebReviewAt": "2026-08-27T21:08:37.720001+00:00",
       "researchNotes": "Public research program; keep in the database for licensing context but not as an acquisition lead."
     },
     {
@@ -5671,7 +5702,7 @@
       "searchQuery1": "\"Royal Berries / Hortifrut\" plant breeder varieties",
       "searchQuery2": "\"Royal Berries / Hortifrut\" Blueberry breeding cultivar",
       "searchQuery3": "\"Royal Berries / Hortifrut\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:06:07.624626+00:00",
+      "lastWebReviewAt": "2026-08-27T21:14:26.238874+00:00",
       "researchNotes": ""
     },
     {
@@ -8554,7 +8585,7 @@
       "searchQuery1": "\"Costa Berry International\" plant breeder varieties",
       "searchQuery2": "\"Costa Berry International\" Blueberry breeding cultivar",
       "searchQuery3": "\"Costa Berry International\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:00:37.103725+00:00",
+      "lastWebReviewAt": "2026-08-27T21:08:55.052795+00:00",
       "researchNotes": ""
     },
     {
@@ -8864,7 +8895,7 @@
       "searchQuery1": "\"C&O Nursery\" plant breeder varieties",
       "searchQuery2": "\"C&O Nursery\" Apple breeding cultivar",
       "searchQuery3": "\"C&O Nursery\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:02:31.126289+00:00",
+      "lastWebReviewAt": "2026-08-27T21:11:01.013845+00:00",
       "researchNotes": ""
     },
     {
@@ -10538,7 +10569,7 @@
       "searchQuery1": "\"University of Udine / IGA\" plant breeder varieties",
       "searchQuery2": "\"University of Udine / IGA\" Grape breeding cultivar",
       "searchQuery3": "\"University of Udine / IGA\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:02:28.383861+00:00",
+      "lastWebReviewAt": "2026-08-27T21:10:50.407832+00:00",
       "researchNotes": ""
     },
     {
@@ -13051,37 +13082,6 @@
       "searchQuery3": "\"Early Blue Pty Ltd.\" company ownership contact",
       "lastWebReviewAt": "2026-07-15",
       "researchNotes": "Confirm current cap table and rights held by Early Blue, Biza Trading, Prunus Persica, and OZ Varieties."
-    },
-    {
-      "ownerName": "Bloom Fresh International",
-      "entityClass": "company_or_rollup",
-      "researchStatus": "verified",
-      "reviewLevel": "complete",
-      "researchPriorityScore": 54,
-      "acquisitionFitScore": 26,
-      "acquisitionFitBand": "Benchmark / too large",
-      "recordCount": 813,
-      "relevantIpRecordCount": 808,
-      "protectedIpCount": 684,
-      "lastYear": 2026,
-      "knownWebsite": "https://bloomfreshglobal.com/",
-      "knownDomain": "bloomfreshglobal.com",
-      "knownContactUrl": "https://bloomfreshglobal.com/#contact",
-      "knownLinkedInUrl": "https://www.linkedin.com/company/bloomfresh-international/",
-      "candidateParent": "",
-      "ownershipType": "",
-      "parentCompany": "",
-      "primaryContactName": "",
-      "primaryContactEmail": "",
-      "primaryContactPhone": "",
-      "trademarkStatus": "not_checked",
-      "sourceCount": 6,
-      "sourceUrls": "https://bloomfreshglobal.com/ | https://bloomfreshglobal.com/#contact | https://www.linkedin.com/company/bloomfresh-international/ | https://bloomfreshglobal.com/products/ | https://bloomfreshglobal.com/news/ | https://eqtgroup.com/about/current-portfolio/bloom-fresh-international",
-      "searchQuery1": "\"Bloom Fresh International\" plant breeder varieties",
-      "searchQuery2": "\"Bloom Fresh International\" Grape breeding cultivar",
-      "searchQuery3": "\"Bloom Fresh International\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T11:59:09.264529+00:00",
-      "researchNotes": "Corrected prior florist-domain false positive. Official Bloom Fresh Global site, EQT portfolio page, and LinkedIn profile identify Bloom Fresh as the IFG/SNFL fruit-breeding platform. Large benchmark platform, not a target in current size range."
     },
     {
       "ownerName": "S.A. Viveros Provedo",
@@ -33602,7 +33602,7 @@
       "searchQuery1": "\"Embrapa Grape and Wine\" plant breeder varieties",
       "searchQuery2": "\"Embrapa Grape and Wine\" Grape breeding cultivar",
       "searchQuery3": "\"Embrapa Grape and Wine\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:08:18.313392+00:00",
+      "lastWebReviewAt": "2026-08-27T21:16:57.691853+00:00",
       "researchNotes": ""
     },
     {
@@ -38066,7 +38066,7 @@
       "searchQuery1": "\"Chinese Academy of Sciences Kiwifruit Programs\" plant breeder varieties",
       "searchQuery2": "\"Chinese Academy of Sciences Kiwifruit Programs\" Kiwifruit breeding cultivar",
       "searchQuery3": "\"Chinese Academy of Sciences Kiwifruit Programs\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:06:23.198530+00:00",
+      "lastWebReviewAt": "2026-08-27T21:14:38.468183+00:00",
       "researchNotes": ""
     },
     {
@@ -59921,7 +59921,7 @@
       "searchQuery1": "\"Yamagata Prefecture Fruit Breeding\" plant breeder varieties",
       "searchQuery2": "\"Yamagata Prefecture Fruit Breeding\" Cherry-Sweet breeding cultivar",
       "searchQuery3": "\"Yamagata Prefecture Fruit Breeding\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:06:16.465371+00:00",
+      "lastWebReviewAt": "2026-08-27T21:14:34.837141+00:00",
       "researchNotes": ""
     },
     {
@@ -60448,7 +60448,7 @@
       "searchQuery1": "\"Columbia Basin Nursery LLC\" plant breeder varieties",
       "searchQuery2": "\"Columbia Basin Nursery LLC\" Apple breeding cultivar",
       "searchQuery3": "\"Columbia Basin Nursery LLC\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:02:30.757346+00:00",
+      "lastWebReviewAt": "2026-08-27T21:10:58.851524+00:00",
       "researchNotes": ""
     },
     {
@@ -70585,7 +70585,7 @@
       "searchQuery1": "\"GJH LLC\" plant breeder varieties",
       "searchQuery2": "\"GJH LLC\" Citrus breeding cultivar",
       "searchQuery3": "\"GJH LLC\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:08:18.608826+00:00",
+      "lastWebReviewAt": "2026-08-27T21:16:58.129108+00:00",
       "researchNotes": ""
     },
     {
@@ -73964,7 +73964,7 @@
       "searchQuery1": "\"Queensland DPI Fruit Breeding\" plant breeder varieties",
       "searchQuery2": "\"Queensland DPI Fruit Breeding\" Strawberry breeding cultivar",
       "searchQuery3": "\"Queensland DPI Fruit Breeding\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:06:15.100906+00:00",
+      "lastWebReviewAt": "2026-08-27T21:14:33.185351+00:00",
       "researchNotes": ""
     },
     {
@@ -128708,7 +128708,7 @@
       "sourceCount": 4,
       "sourceUrls": "https://us.hazera.com/ | https://us.hazera.com/stay-connected/ | https://www.linkedin.com/company/hazera-seeds/ | https://us.hazera.com/our-story/who-we-are/",
       "searchQuery1": "\"Hazera\" plant breeder varieties",
-      "searchQuery2": "\"Hazera\" Plum breeding cultivar",
+      "searchQuery2": "\"Hazera\" Blackberry breeding cultivar",
       "searchQuery3": "\"Hazera\" company ownership contact",
       "lastWebReviewAt": "2026-07-15",
       "researchNotes": "Keep HM.CLAUSE and Vilmorin-Mikado as separate operating profiles even when an ultimate-parent view aggregates them under Limagrain."
@@ -128801,7 +128801,7 @@
       "sourceCount": 4,
       "sourceUrls": "https://www.subtrop.co.za/about_us/ | https://www.subtrop.co.za/contact-us/ | https://www.linkedin.com/company/south-african-avocado-growers-association/ | https://www.subtrop.co.za/meet-the-team/",
       "searchQuery1": "\"South African Avocado Growers Association\" plant breeder varieties",
-      "searchQuery2": "\"South African Avocado Growers Association\" Avocado breeding cultivar",
+      "searchQuery2": "\"South African Avocado Growers Association\" Avocado Rootstock breeding cultivar",
       "searchQuery3": "\"South African Avocado Growers Association\" company ownership contact",
       "lastWebReviewAt": "2026-07-15",
       "researchNotes": "Not an acquisition target. Verify whether any specific record reflects ownership, research funding, applicant status, or representation."
@@ -256870,7 +256870,7 @@
     {
       "ownerName": "Citrogold Pty Ltd",
       "entityClass": "company_or_rollup",
-      "researchStatus": "evidence_backed_profile",
+      "researchStatus": "known_domain_needs_review",
       "reviewLevel": "partial",
       "researchPriorityScore": 24,
       "acquisitionFitScore": 6,
@@ -256895,7 +256895,7 @@
       "searchQuery1": "\"Citrogold Pty Ltd\" plant breeder varieties",
       "searchQuery2": "\"Citrogold Pty Ltd\" Citrus breeding cultivar",
       "searchQuery3": "\"Citrogold Pty Ltd\" company ownership contact",
-      "lastWebReviewAt": "2026-08-26T12:08:13.268468+00:00",
+      "lastWebReviewAt": "2026-08-27T21:16:49.304408+00:00",
       "researchNotes": ""
     },
     {
