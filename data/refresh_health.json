@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-08-30T15:40:50.440096+00:00",
+    "checkedAt": "2026-08-31T18:28:25.516022+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Bloom Fresh International, Sunview Vineyards of California, OZblu / United Exports, Van Well Nursery, Sweet Darling Sales, Inc., Lubera AG, Jeffries Nurseries Ltd., JFT Nurseries Pty Ltd., Mattivi Breeding S.S., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Feno Scarl, Zouk B.V., Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "16 evidence links need replacement or manual review"
+      "detail": "29 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
