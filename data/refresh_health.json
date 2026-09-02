@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-01T15:47:57.287428+00:00",
+    "checkedAt": "2026-09-02T15:29:40.521177+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., Lubera AG, LFP Lizenzen fuer Fruechte und Pflanzen GmbH, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Cerasina GmbH, Van Well Nursery, Sweet Darling Sales, Inc., JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "20 evidence links need replacement or manual review"
+      "detail": "16 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",

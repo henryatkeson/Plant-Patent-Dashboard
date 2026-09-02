@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T15:47:54.930929+00:00",
+  "generatedAt": "2026-09-02T15:29:38.189857+00:00",
   "strategy": "USPTO Official Gazette refreshes automatically through GitHub Actions. CPVO is currently refreshed when new Variety Finder Excel exports are saved and imported. Owner profiles, internal research queues, and data-contract health checks are rebuilt after each data refresh.",
   "sources": [
     {
@@ -8,7 +8,7 @@
       "cadence": "Daily check for weekly Gazette issues",
       "recordCount": 2852,
       "latestRecordDate": "2026-09-01",
-      "lastFileUpdate": "2026-09-01T15:31:29.654354+00:00",
+      "lastFileUpdate": "2026-09-02T15:13:26.229954+00:00",
       "nextStep": "Keep the scheduled GitHub Action active; it will pick up newly published Gazette issues."
     },
     {
@@ -17,7 +17,7 @@
       "cadence": "Refresh when new CPVO Excel pulls are downloaded",
       "recordCount": 115141,
       "latestRecordDate": "2026-06-30",
-      "lastFileUpdate": "2026-09-01T15:31:11.163131+00:00",
+      "lastFileUpdate": "2026-09-02T15:13:21.807937+00:00",
       "nextStep": "Download new CPVO workbook exports for priority crops, then run scripts/import_cpvo_varieties.py."
     },
     {
@@ -26,7 +26,7 @@
       "cadence": "Rebuilt after USPTO or CPVO data changes",
       "recordCount": 12142,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-09-01T15:33:11.733599+00:00",
+      "lastFileUpdate": "2026-09-02T15:15:07.039295+00:00",
       "nextStep": "Review aliases in config/company_profiles.json as new breeders appear."
     },
     {
@@ -37,7 +37,7 @@
       "completedCount": 307,
       "partialCount": 167,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-09-01T15:47:53.462658+00:00",
+      "lastFileUpdate": "2026-09-02T15:29:36.697038+00:00",
       "nextStep": "Work the highest-priority unresolved companies and breeder affiliations, recording only source-backed findings."
     },
     {
@@ -48,7 +48,7 @@
       "verifiedCount": 95,
       "probableCount": 132,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-09-01T15:31:53.526656+00:00",
+      "lastFileUpdate": "2026-09-02T15:13:49.914043+00:00",
       "nextStep": "Verify review-queue relationships with official company, university, and registry sources; never infer blanket ownership from employment."
     }
   ],
