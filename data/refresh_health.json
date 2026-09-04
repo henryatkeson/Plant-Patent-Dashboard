@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-03T15:21:09.217271+00:00",
+    "checkedAt": "2026-09-04T15:25:50.852385+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., VNIISPK, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: VIF International, Berries Del Oeste S.L., Agriculture and Agri-Food Canada, Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, Lubera AG, LFP Lizenzen fuer Fruechte und Pflanzen GmbH, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Feno Scarl, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "18 evidence links need replacement or manual review"
+      "detail": "15 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
