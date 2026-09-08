@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-07T16:55:43.123186+00:00",
+    "checkedAt": "2026-09-08T15:29:35.642129+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2852,
+    "plantPatents": 2875,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12142,
-    "breederAffiliations": 9246,
+    "ownerProfiles": 12146,
+    "breederAffiliations": 9247,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12142
+    "webResearchRows": 12146
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,852 plant-patent rows"
+      "detail": "2,875 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,13 +34,13 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,142 owner profiles"
+      "detail": "12,146 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
       "ok": true,
       "severity": "error",
-      "detail": "9,246 breeder relationships"
+      "detail": "9,247 breeder relationships"
     },
     {
       "name": "breeder_affiliation_enums_valid",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,142 audit rows for 12,142 owners"
+      "detail": "12,146 audit rows for 12,146 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,142 research rows for 12,142 owners"
+      "detail": "12,146 research rows for 12,146 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,7 +148,7 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Cerasina GmbH, Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, Dalival / IFO, CEP Innovation / Novadi, JFT Nurseries Pty Ltd., HOB Co. Ltd., Nippon Ryokusan Co. Ltd., Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
@@ -160,7 +160,7 @@
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,142; research rows 12,142"
+      "detail": "Status totals 12,146; research rows 12,146"
     }
   ]
 }
