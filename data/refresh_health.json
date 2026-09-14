@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-13T15:11:38.884491+00:00",
+    "checkedAt": "2026-09-14T17:16:31.378029+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: NIAB East Malling, Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Gradilis Holding SAS, Citrogold Pty Ltd"
+      "detail": "Unreachable: Cerasina GmbH, Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "26 evidence links need replacement or manual review"
+      "detail": "18 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
