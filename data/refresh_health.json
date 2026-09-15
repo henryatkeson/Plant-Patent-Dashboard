@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-14T17:16:31.378029+00:00",
+    "checkedAt": "2026-09-15T15:55:49.392702+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2875,
+    "plantPatents": 2887,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12146,
+    "ownerProfiles": 12152,
     "breederAffiliations": 9247,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12146
+    "webResearchRows": 12152
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,875 plant-patent rows"
+      "detail": "2,887 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,7 +34,7 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,146 owner profiles"
+      "detail": "12,152 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,146 audit rows for 12,146 owners"
+      "detail": "12,152 audit rows for 12,152 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,146 research rows for 12,146 owners"
+      "detail": "12,152 research rows for 12,152 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,7 +148,7 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Cerasina GmbH, Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, Lubera AG, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
@@ -160,7 +160,7 @@
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,146; research rows 12,146"
+      "detail": "Status totals 12,152; research rows 12,152"
     }
   ]
 }
