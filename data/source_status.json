@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T15:21:17.444799+00:00",
+  "generatedAt": "2026-09-19T14:57:29.331140+00:00",
   "strategy": "USPTO Official Gazette refreshes automatically through GitHub Actions. CPVO is currently refreshed when new Variety Finder Excel exports are saved and imported. Owner profiles, internal research queues, and data-contract health checks are rebuilt after each data refresh.",
   "sources": [
     {
@@ -8,7 +8,7 @@
       "cadence": "Daily check for weekly Gazette issues",
       "recordCount": 2887,
       "latestRecordDate": "2026-09-15",
-      "lastFileUpdate": "2026-09-18T15:05:33.984587+00:00",
+      "lastFileUpdate": "2026-09-19T14:42:04.342701+00:00",
       "nextStep": "Keep the scheduled GitHub Action active; it will pick up newly published Gazette issues."
     },
     {
@@ -17,7 +17,7 @@
       "cadence": "Refresh when new CPVO Excel pulls are downloaded",
       "recordCount": 115141,
       "latestRecordDate": "2026-06-30",
-      "lastFileUpdate": "2026-09-18T15:05:27.705496+00:00",
+      "lastFileUpdate": "2026-09-19T14:41:54.776595+00:00",
       "nextStep": "Download new CPVO workbook exports for priority crops, then run scripts/import_cpvo_varieties.py."
     },
     {
@@ -26,7 +26,7 @@
       "cadence": "Rebuilt after USPTO or CPVO data changes",
       "recordCount": 12152,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-09-18T15:07:13.187590+00:00",
+      "lastFileUpdate": "2026-09-19T14:43:43.662856+00:00",
       "nextStep": "Review aliases in config/company_profiles.json as new breeders appear."
     },
     {
@@ -34,10 +34,10 @@
       "mode": "continuous public-source review",
       "cadence": "Resumable evidence batches; known domains rechecked during QA passes",
       "recordCount": 12152,
-      "completedCount": 306,
-      "partialCount": 168,
+      "completedCount": 307,
+      "partialCount": 167,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-09-18T15:21:15.902855+00:00",
+      "lastFileUpdate": "2026-09-19T14:57:27.874759+00:00",
       "nextStep": "Work the highest-priority unresolved companies and breeder affiliations, recording only source-backed findings."
     },
     {
@@ -48,7 +48,7 @@
       "verifiedCount": 95,
       "probableCount": 133,
       "latestRecordDate": "",
-      "lastFileUpdate": "2026-09-18T15:05:57.461608+00:00",
+      "lastFileUpdate": "2026-09-19T14:42:27.683770+00:00",
       "nextStep": "Verify review-queue relationships with official company, university, and registry sources; never infer blanket ownership from employment."
     }
   ],
