@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-20T15:01:18.498715+00:00",
+    "checkedAt": "2026-09-21T17:23:15.383145+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: ABZ Seeds, Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: ABZ Seeds, Van Well Nursery, Sweet Darling Sales, Inc., Domaine de Castang, Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "18 evidence links need replacement or manual review"
+      "detail": "22 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
