@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-21T17:23:15.383145+00:00",
+    "checkedAt": "2026-09-22T15:52:27.437824+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2887,
+    "plantPatents": 2896,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12152,
-    "breederAffiliations": 9247,
+    "ownerProfiles": 12154,
+    "breederAffiliations": 9254,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12152
+    "webResearchRows": 12154
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,887 plant-patent rows"
+      "detail": "2,896 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,13 +34,13 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,152 owner profiles"
+      "detail": "12,154 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
       "ok": true,
       "severity": "error",
-      "detail": "9,247 breeder relationships"
+      "detail": "9,254 breeder relationships"
     },
     {
       "name": "breeder_affiliation_enums_valid",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,152 audit rows for 12,152 owners"
+      "detail": "12,154 audit rows for 12,154 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,152 research rows for 12,152 owners"
+      "detail": "12,154 research rows for 12,154 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,7 +148,7 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: ABZ Seeds, Van Well Nursery, Sweet Darling Sales, Inc., Domaine de Castang, Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Bloom Fresh International, VIF International, Berries Del Oeste S.L., ABZ Seeds, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
@@ -160,7 +160,7 @@
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,152; research rows 12,152"
+      "detail": "Status totals 12,154; research rows 12,154"
     }
   ]
 }
