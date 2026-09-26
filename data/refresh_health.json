@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-09-25T16:07:40.219497+00:00",
+    "checkedAt": "2026-09-26T15:20:37.088565+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Frutaria Innovation, ABZ Seeds, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., CREA Fruit Breeding, Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Frutaria Innovation, ABZ Seeds, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, Lubera AG, JFT Nurseries Pty Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, M.M. Gryshko National Botanical Garden, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "18 evidence links need replacement or manual review"
+      "detail": "24 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
