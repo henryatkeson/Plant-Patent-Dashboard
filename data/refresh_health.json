@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-10-01T17:43:14.645019+00:00",
+    "checkedAt": "2026-10-02T17:04:26.857474+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Frutaria Innovation, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Frutaria Innovation, AC Fruit, Van Well Nursery, University of Arkansas System Division of Agriculture, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "21 evidence links need replacement or manual review"
+      "detail": "12 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
