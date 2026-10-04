@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-10-03T15:30:58.386031+00:00",
+    "checkedAt": "2026-10-04T16:11:48.519474+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Bloom Fresh International, Frutaria Innovation, B Q Genetics, Advanced Berry Breeding, Fruit Vision, VIF International, Berries Del Oeste S.L., Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce, Feno Scarl, Citrogold Pty Ltd"
+      "detail": "Unreachable: Frutaria Innovation, B Q Genetics, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "26 evidence links need replacement or manual review"
+      "detail": "16 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
