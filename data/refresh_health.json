@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-10-04T16:11:48.519474+00:00",
+    "checkedAt": "2026-10-06T17:38:07.721378+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2905,
+    "plantPatents": 2933,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12159,
-    "breederAffiliations": 9255,
+    "ownerProfiles": 12168,
+    "breederAffiliations": 9257,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12159
+    "webResearchRows": 12168
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,905 plant-patent rows"
+      "detail": "2,933 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,13 +34,13 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,159 owner profiles"
+      "detail": "12,168 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
       "ok": true,
       "severity": "error",
-      "detail": "9,255 breeder relationships"
+      "detail": "9,257 breeder relationships"
     },
     {
       "name": "breeder_affiliation_enums_valid",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,159 audit rows for 12,159 owners"
+      "detail": "12,168 audit rows for 12,168 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,159 research rows for 12,159 owners"
+      "detail": "12,168 research rows for 12,168 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,19 +148,19 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Frutaria Innovation, B Q Genetics, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce, Citrogold Pty Ltd"
+      "detail": "Unreachable: Frutaria Innovation, MBG Marketing, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, Dalival / IFO, JFT Nurseries Pty Ltd., South African Avocado Growers Association, Constellation Brands U.S. Operations, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Splendor Produce, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "16 evidence links need replacement or manual review"
+      "detail": "12 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,159; research rows 12,159"
+      "detail": "Status totals 12,168; research rows 12,168"
     }
   ]
 }

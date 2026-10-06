@@ -1,23 +1,751 @@
 {
   "metadata": {
     "title": "Fruit, Tree Nut, and Vegetable Plant Patent Dashboard",
-    "generatedAt": "2026-10-04T15:56:02.422174+00:00",
-    "recordCount": 2905,
+    "generatedAt": "2026-10-06T17:21:46.791233+00:00",
+    "recordCount": 2933,
     "sources": [
       "Seeded from the local Excel workbook",
       "Daily updater checks USPTO Official Gazette public plant-patent pages",
       "USPTO Official Gazette public plant patent pages"
     ],
     "publicDataNote": "The dashboard tracks public issued grants and public/published records. Unpublished filings inside Patent Center are not public dashboard data.",
-    "lastGrantRefresh": "2026-10-04T15:56:02.421545+00:00",
-    "lastGrantRefreshChecked": 155,
-    "lastGrantRefreshAdded": 0,
-    "lastGrantRefreshEnriched": 155,
-    "lastLinkEnrichment": "2026-10-04T15:56:02.671803+00:00",
+    "lastGrantRefresh": "2026-10-06T17:21:46.790490+00:00",
+    "lastGrantRefreshChecked": 166,
+    "lastGrantRefreshAdded": 28,
+    "lastGrantRefreshEnriched": 138,
+    "lastLinkEnrichment": "2026-10-06T17:21:47.695718+00:00",
     "lastLinkEnrichmentLinked": 0,
-    "lastLinkEnrichmentCandidates": 0
+    "lastLinkEnrichmentCandidates": 28
   },
   "records": [
+    {
+      "id": "PP37722",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37722",
+      "patentNumber": "PP37722",
+      "publicationNumber": "",
+      "applicationNumber": "19/327,254",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Sep. 12, 2025",
+      "title": "Cherry tree named ‘V69062’",
+      "crop": "Cherry",
+      "cropFocus": "Target crop",
+      "cultivar": "V69062",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "University of Guelph, Guelph (CA)",
+      "inventors": "’ Latin Name: Prunus avium , Varietal Denomination: V69062 Ghassem Tehrani, Guelph (CA); and James William Lay, Guelph (CA)",
+      "list": "",
+      "notes": "Prunus avium",
+      "detailText": "﻿ US PP37,722 P3 Cherry tree named ‘V69062’ Latin Name: Prunus avium , Varietal Denomination: V69062 Ghassem Tehrani, Guelph (CA); and James William Lay, Guelph (CA) Assigned to University of Guelph, Guelph (CA) Filed by University of Guelph, Guelph (CA) Filed on Sep. 12, 2025, as Appl. No. 19/327,254. Application 19/327,254 is a continuation in part of application No. 18/784,761, filed on Jul. 25, 2024, abandoned. Prior Publication US 2026/0033409 P1, Jan. 29, 2026 Int. Cl. A01H 5/08 (2018.01); A01H 5/00 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/7445 (2018.05) [ A01H 5/00 (2013.01); A01H 5/08 (2013.01)] U.S. Cl. PLT—181 1 Claim 1 . A new and distinct cultivar of cherry tree named ‘V69062’ as illustrated and described herein.",
+      "updatedAt": "2026-10-06T17:21:33.614588+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037722-20261006.html"
+    },
+    {
+      "id": "PP37723",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37723",
+      "patentNumber": "PP37723",
+      "publicationNumber": "",
+      "applicationNumber": "19/327,359",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Sep. 12, 2025",
+      "title": "Cherry tree named ‘V69068’",
+      "crop": "Cherry",
+      "cropFocus": "Target crop",
+      "cultivar": "V69068",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "University of Guelph, Guelph (CA)",
+      "inventors": "’ Latin Name: Prunus avium , Varietal Denomination: V69068 Ghassem Tehrani, Guelph (CA); and James William Lay, Guelph (CA)",
+      "list": "",
+      "notes": "Prunus avium",
+      "detailText": "﻿ US PP37,723 P3 Cherry tree named ‘V69068’ Latin Name: Prunus avium , Varietal Denomination: V69068 Ghassem Tehrani, Guelph (CA); and James William Lay, Guelph (CA) Assigned to University of Guelph, Guelph (CA) Filed by University of Guelph, Guelph (CA) Filed on Sep. 12, 2025, as Appl. No. 19/327,359. Application 19/327,359 is a continuation of application No. 18/783,946, filed on Jul. 25, 2024, abandoned. Prior Publication US 2026/0033410 P1, Jan. 29, 2026 Int. Cl. A01H 5/08 (2018.01); A01H 5/00 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/7445 (2018.05) [ A01H 5/00 (2013.01); A01H 5/08 (2013.01)] U.S. Cl. PLT—181 1 Claim 1 . A new and distinct cultivar of cherry tree named ‘V69068’ as illustrated and described herein.",
+      "updatedAt": "2026-10-06T17:21:33.697269+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037723-20261006.html"
+    },
+    {
+      "id": "PP37724",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37724",
+      "patentNumber": "PP37724",
+      "publicationNumber": "",
+      "applicationNumber": "19/327,484",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Sep. 12, 2025",
+      "title": "Cherry tree named ‘V690630’",
+      "crop": "Cherry",
+      "cropFocus": "Target crop",
+      "cultivar": "V690630",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "University of Guelph, Guelph (CA)",
+      "inventors": "’ Latin Name: Prunus avium , Varietal Denomination: V690630 Ghassem Tehrani, Guelph (CA); James William Lay, Guelph (CA); and Frank Eady, Kanata (CA)",
+      "list": "",
+      "notes": "Prunus avium",
+      "detailText": "﻿ US PP37,724 P3 Cherry tree named ‘V690630’ Latin Name: Prunus avium , Varietal Denomination: V690630 Ghassem Tehrani, Guelph (CA); James William Lay, Guelph (CA); and Frank Eady, Kanata (CA) Assigned to University of Guelph, Guelph (CA) Filed by University of Guelph, Guelph (CA) Filed on Sep. 12, 2025, as Appl. No. 19/327,484. Application 19/327,484 is a continuation of application No. 18/784,641, filed on Jul. 25, 2024, abandoned. Prior Publication US 2026/0033411 P1, Jan. 29, 2026 Int. Cl. A01H 5/08 (2018.01); A01H 5/00 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/7445 (2018.05) [ A01H 5/00 (2013.01); A01H 5/08 (2013.01)] U.S. Cl. PLT—181 1 Claim 1 . A new and distinct cultivar of Cherry Tree Named ‘V690630’ as illustrated and described herein.",
+      "updatedAt": "2026-10-06T17:21:33.772426+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037724-20261006.html"
+    },
+    {
+      "id": "PP37725",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37725",
+      "patentNumber": "PP37725",
+      "publicationNumber": "",
+      "applicationNumber": "19/320,567",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Sep. 5, 2025",
+      "title": "Shepherdia plant named ‘Torrey’",
+      "crop": "Shepherdia",
+      "cropFocus": "Other plant patent",
+      "cultivar": "Torrey",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Utah State University, Logan, UT (US)",
+      "inventors": "’ Latin Name: Shepherdia argentea x Sheperdia rotundifolia , Varietal Denomination: Torrey Chalita Forgotson, Logan, UT (US); and Heidi Kratsch, Logan, UT (US)",
+      "list": "",
+      "notes": "Shepherdia argentea x Sheperdia rotundifolia",
+      "detailText": "﻿ US PP37,725 P3 Shepherdia plant named ‘Torrey’ Latin Name: Shepherdia argentea x Sheperdia rotundifolia , Varietal Denomination: Torrey Chalita Forgotson, Logan, UT (US); and Heidi Kratsch, Logan, UT (US) Assigned to Utah State University, Logan, UT (US) Filed by Chalita Forgotson, Logan, UT (US); and Heidi Kratsch, Logan, UT (US) Filed on Sep. 5, 2025, as Appl. No. 19/320,567. Claims priority of provisional application 63/691,736, filed on Sep. 6, 2024. Prior Publication US 2026/0076278 P1, Mar. 12, 2026 Int. Cl. A01H 5/00 (2018.01); A01H 5/12 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) [ A01H 5/12 (2013.01)] U.S. Cl. PLT—226 1 Claim 1 . A new and distinct variety of Shepherdia plant named ‘Torrey’ as shown and described herein.",
+      "updatedAt": "2026-10-06T17:21:33.833884+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037725-20261006.html"
+    },
+    {
+      "id": "PP37726",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37726",
+      "patentNumber": "PP37726",
+      "publicationNumber": "",
+      "applicationNumber": "19/361,562",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Oct. 17, 2025",
+      "title": "Hibiscus plant named ‘TNY049’",
+      "crop": "Hibiscus",
+      "cropFocus": "Other plant patent",
+      "cultivar": "TNY049",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "UNIVERSITY OF TENNESSEE RESEARCH FOUNDATION, Knoxville, TN (US)",
+      "inventors": "’ Latin Name: Hibiscus hybrid (L.) , Varietal Denomination: TNY049 Andrew J. Pulte, Knoxville, TN (US)",
+      "list": "",
+      "notes": "Hibiscus hybrid (L.)",
+      "detailText": "﻿ US PP37,726 P2 Hibiscus plant named ‘TNY049’ Latin Name: Hibiscus hybrid (L.) , Varietal Denomination: TNY049 Andrew J. Pulte, Knoxville, TN (US) Assigned to UNIVERSITY OF TENNESSEE RESEARCH FOUNDATION, Knoxville, TN (US) Filed by UNIVERSITY OF TENNESSEE RESEARCH FOUNDATION, Knoxville, TN (US) Filed on Oct. 17, 2025, as Appl. No. 19/361,562. Int. Cl. A01H 5/02 (2018.01); A01H 6/60 (2018.01) CPC A01H 6/608 (2018.05) U.S. Cl. PLT—257 1 Claim 1 . A new and distinct cultivar of Hibiscus, Hibiscus hybrid (L.), named ‘TNY049’, as illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:33.902970+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037726-20261006.html"
+    },
+    {
+      "id": "PP37727",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37727",
+      "patentNumber": "PP37727",
+      "publicationNumber": "",
+      "applicationNumber": "19/259,850",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jul. 3, 2025",
+      "title": "Sweet basil plant named ‘RUVOB10’",
+      "crop": "Sweet Basil",
+      "cropFocus": "Other plant patent",
+      "cultivar": "RUVOB10",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Rutgers, The State University of New Jersey, New Brunswick, NJ (US)",
+      "inventors": "’ Latin Name: Ocimum basilicum , Varietal Denomination: RUVOB10 James E. Simon, Princeton, NJ (US); and Utsav Kumar, New Brunswick, NJ (US)",
+      "list": "",
+      "notes": "Ocimum basilicum",
+      "detailText": "﻿ US PP37,727 P2 Sweet basil plant named ‘RUVOB10’ Latin Name: Ocimum basilicum , Varietal Denomination: RUVOB10 James E. Simon, Princeton, NJ (US); and Utsav Kumar, New Brunswick, NJ (US) Assigned to Rutgers, The State University of New Jersey, New Brunswick, NJ (US) Filed by Rutgers, The State University of New Jersey, New Brunswick, NJ (US) Filed on Jul. 3, 2025, as Appl. No. 19/259,850. Int. Cl. A01H 5/02 (2018.01); A01H 5/12 (2018.01); A01H 6/50 (2018.01) CPC A01H 6/506 (2018.05) U.S. Cl. PLT—258 1 Claim 1 . A new and distinct Ocimum basilicum plant named ‘RUVOB10’ substantially as illustrated and described herein.",
+      "updatedAt": "2026-10-06T17:21:33.974093+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037727-20261006.html"
+    },
+    {
+      "id": "PP37728",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37728",
+      "patentNumber": "PP37728",
+      "publicationNumber": "",
+      "applicationNumber": "19/285,726",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jul. 30, 2025",
+      "title": "Phlox plant named ‘Balcloudlue’",
+      "crop": "Phlox",
+      "cropFocus": "Other plant patent",
+      "cultivar": "Balcloudlue",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Ball Horticultural Company, West Chicago, IL (US)",
+      "inventors": "’ Latin Name: Phlox hybrida , Varietal Denomination: Balcloudlue Christa Kievit, Vessem (NL)",
+      "list": "",
+      "notes": "Phlox hybrida",
+      "detailText": "﻿ US PP37,728 P2 Phlox plant named ‘Balcloudlue’ Latin Name: Phlox hybrida , Varietal Denomination: Balcloudlue Christa Kievit, Vessem (NL) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Christa Kievit, Vessem (NL) Filed on Jul. 30, 2025, as Appl. No. 19/285,726. Int. Cl. A01H 6/70 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—320 1 Claim 1 . A new and distinct cultivar of Phlox plant named ‘Balcloudlue’, substantially as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.045365+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037728-20261006.html"
+    },
+    {
+      "id": "PP37729",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37729",
+      "patentNumber": "PP37729",
+      "publicationNumber": "",
+      "applicationNumber": "19/351,724",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Oct. 7, 2025",
+      "title": "Michaelmoelleria plant named ‘SAPPHIRE’",
+      "crop": "Michaelmoelleria",
+      "cropFocus": "Other plant patent",
+      "cultivar": "SAPPHIRE",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Flores Laeti, (NL)",
+      "inventors": "’ Latin Name: Michaelmoelleria vietnamensis , Varietal Denomination: SAPPHIRE Chen Shih Jhe, Linluo Township (TW)",
+      "list": "",
+      "notes": "Michaelmoelleria vietnamensis",
+      "detailText": "﻿ US PP37,729 P2 Michaelmoelleria plant named ‘SAPPHIRE’ Latin Name: Michaelmoelleria vietnamensis , Varietal Denomination: SAPPHIRE Chen Shih Jhe, Linluo Township (TW) Assigned to Flores Laeti, (NL) Filed by Flores Laeti, Den Hoorn (NL) Filed on Oct. 7, 2025, as Appl. No. 19/351,724. Int. Cl. A01H 5/02 (2018.01); A01H 6/44 (2018.01) U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct cultivar of Michaelmoelleria plant named ‘Sapphire’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.135008+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037729-20261006.html"
+    },
+    {
+      "id": "PP37730",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37730",
+      "patentNumber": "PP37730",
+      "publicationNumber": "",
+      "applicationNumber": "19/375,362",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Oct. 31, 2025",
+      "title": "Fittonia plant named ‘KEJAPA121’",
+      "crop": "Fittonia",
+      "cropFocus": "Other plant patent",
+      "cultivar": "KEJAPA121",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Schoenmakers Tussenholding B.V., Haaren (NL)",
+      "inventors": "’ Latin Name: Fittonia albivenis , Varietal Denomination: KEJAPA121 Jan Cornelis Adrianus Maria Schoenmakers, Haaren (NL)",
+      "list": "",
+      "notes": "Fittonia albivenis",
+      "detailText": "﻿ US PP37,730 P2 Fittonia plant named ‘KEJAPA121’ Latin Name: Fittonia albivenis , Varietal Denomination: KEJAPA121 Jan Cornelis Adrianus Maria Schoenmakers, Haaren (NL) Assigned to Schoenmakers Tussenholding B.V., Haaren (NL) Filed by Schoenmakers Tussenholding B.V., Haaren (NL) Filed on Oct. 31, 2025, as Appl. No. 19/375,362. Int. Cl. A01H 5/12 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—373 1 Claim 1 . A new and distinct variety of Fittonia plant named ‘KEJAPA121’, substantially as described and illustrated herein.",
+      "updatedAt": "2026-10-06T17:21:34.211332+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037730-20261006.html"
+    },
+    {
+      "id": "PP37731",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37731",
+      "patentNumber": "PP37731",
+      "publicationNumber": "",
+      "applicationNumber": "19/418,507",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Dec. 12, 2025",
+      "title": "Nandina plant named ‘GS-02-21’",
+      "crop": "Nandina",
+      "cropFocus": "Other plant patent",
+      "cultivar": "GS-02-21",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Premier Introductions Inc., Watkinsville, GA (US)",
+      "inventors": "’ Latin Name: Nandina domestica , Varietal Denomination: GS-02-21 Michael Dirr, Bogart, GA (US); Jeff Beasley, Lavonia, GA (US); and Mark Griffith, Watkinsville, GA (US)",
+      "list": "",
+      "notes": "Nandina domestica",
+      "detailText": "﻿ US PP37,731 P2 Nandina plant named ‘GS-02-21’ Latin Name: Nandina domestica , Varietal Denomination: GS-02-21 Michael Dirr, Bogart, GA (US); Jeff Beasley, Lavonia, GA (US); and Mark Griffith, Watkinsville, GA (US) Assigned to Premier Introductions Inc., Watkinsville, GA (US) Filed by Premier Introductions Inc., Watkinsville, GA (US) Filed on Dec. 12, 2025, as Appl. No. 19/418,507. Int. Cl. A01H 5/00 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—235 1 Claim 1 . A new and distinct cultivar of Nandina plant named ‘GS-02-21’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.307783+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037731-20261006.html"
+    },
+    {
+      "id": "PP37732",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37732",
+      "patentNumber": "PP37732",
+      "publicationNumber": "",
+      "applicationNumber": "19/422,442",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Dec. 17, 2025",
+      "title": "Agapanthus plant named ‘A19002’",
+      "crop": "Agapanthus",
+      "cropFocus": "Other plant patent",
+      "cultivar": "A19002",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "VAN VLIET NEW PLANTS B.V., Stroe (NL)",
+      "inventors": "’ Latin Name: Agapanthus hybrid , Varietal Denomination: A19002 Tim Wyckstandt, Aalter (BE)",
+      "list": "",
+      "notes": "Agapanthus hybrid",
+      "detailText": "﻿ US PP37,732 P2 Agapanthus plant named ‘A19002’ Latin Name: Agapanthus hybrid , Varietal Denomination: A19002 Tim Wyckstandt, Aalter (BE) Assigned to VAN VLIET NEW PLANTS B.V., Stroe (NL) Filed by Tim Wyckstandt, Aalter (BE) Filed on Dec. 17, 2025, as Appl. No. 19/422,442. Claims priority of application No. PBR 20251671 (QZ), filed on Aug. 19, 2025. Int. Cl. A01H 5/02 (2018.01); A01H 6/04 (2018.01) U.S. Cl. PLT—398 1 Claim 1 . A new and distinct cultivar of Agapanthus plant named ‘A19002’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.387766+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037732-20261006.html"
+    },
+    {
+      "id": "PP37733",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37733",
+      "patentNumber": "PP37733",
+      "publicationNumber": "",
+      "applicationNumber": "19/422,451",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Dec. 17, 2025",
+      "title": "Agapanthus plant named ‘Vitro 002’",
+      "crop": "Agapanthus",
+      "cropFocus": "Other plant patent",
+      "cultivar": "Vitro 002",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "VAN VLIET NEW PLANTS B.V., Stroe (NL)",
+      "inventors": "’ Latin Name: Agapanthu hybrid , Varietal Denomination: Vitro 002 Tim Wyckstandt, Aalter (BE)",
+      "list": "",
+      "notes": "Agapanthu hybrid",
+      "detailText": "﻿ US PP37,733 P2 Agapanthus plant named ‘Vitro 002’ Latin Name: Agapanthu hybrid , Varietal Denomination: Vitro 002 Tim Wyckstandt, Aalter (BE) Assigned to VAN VLIET NEW PLANTS B.V., Stroe (NL) Filed by Tim Wyckstandt, Aalter (BE) Filed on Dec. 17, 2025, as Appl. No. 19/422,451. Claims priority of application No. PBR 20251689 (QZ), filed on Jul. 29, 2025. Int. Cl. A01H 6/04 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—398 1 Claim 1 . A new and distinct cultivar of Agapanthus plant named ‘Vitro 002’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.454947+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037733-20261006.html"
+    },
+    {
+      "id": "PP37734",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37734",
+      "patentNumber": "PP37734",
+      "publicationNumber": "",
+      "applicationNumber": "19/425,995",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Dec. 18, 2025",
+      "title": "Phyllostachys plant named ‘Bokrijk’",
+      "crop": "Phyllostachys",
+      "cropFocus": "Other plant patent",
+      "cultivar": "Bokrijk",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "LOWLANDS BAMBOO BV, Haarlem (NL)",
+      "inventors": "’ Latin Name: Phyllostachys kwangsiensis , Varietal Denomination: Bokrijk Nele Pieters, Genk (BE)",
+      "list": "",
+      "notes": "Phyllostachys kwangsiensis",
+      "detailText": "﻿ US PP37,734 P2 Phyllostachys plant named ‘Bokrijk’ Latin Name: Phyllostachys kwangsiensis , Varietal Denomination: Bokrijk Nele Pieters, Genk (BE) Assigned to LOWLANDS BAMBOO BV, Haarlem (NL) Filed by Nele Pieters, Genk (BE) Filed on Dec. 18, 2025, as Appl. No. 19/425,995. Int. Cl. A01H 5/12 (2018.01); A01H 6/46 (2018.01) U.S. Cl. PLT—384 1 Claim 1 . A new and distinct cultivar of Phyllostachys plant named ‘Bokrijk’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.523620+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037734-20261006.html"
+    },
+    {
+      "id": "PP37735",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37735",
+      "patentNumber": "PP37735",
+      "publicationNumber": "",
+      "applicationNumber": "19/433,671",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Dec. 26, 2025",
+      "title": "Cherry tree named ‘SMS-CA-05-RVT1191’",
+      "crop": "Sweet Cherry",
+      "cropFocus": "Target crop",
+      "cultivar": "SMS-CA-05-RVT1191",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "SMS UNLIMITED, LLC, Pensacola, FL (US)",
+      "inventors": "’ Latin Name: Prunus avium L. , Varietal Denomination: SMS-CA-05-RVT1191 Stephen M. Southwick, Pensacola, FL (US)",
+      "list": "",
+      "notes": "Prunus avium L",
+      "detailText": "﻿ US PP37,735 P2 Cherry tree named ‘SMS-CA-05-RVT1191’ Latin Name: Prunus avium L. , Varietal Denomination: SMS-CA-05-RVT1191 Stephen M. Southwick, Pensacola, FL (US) Assigned to SMS UNLIMITED, LLC, Pensacola, FL (US) Filed by SMS UNLIMITED, LLC, Pensacola, FL (US) Filed on Dec. 26, 2025, as Appl. No. 19/433,671. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—181 1 Claim 1 . A new and distinct variety of sweet cherry tree, substantially as illustrated and described, which is characterized principally as to novelty by self-fertility, by high productivity, and by producing early ripening fruit considered large in size, with comparatively higher degrees Brix, and low in off-grade fruit types of deep suture, spurs, and doubled fruit formations under the ecological conditions prevailing in the Stockton and Lodi, California area.",
+      "updatedAt": "2026-10-06T17:21:34.589039+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037735-20261006.html"
+    },
+    {
+      "id": "PP37736",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37736",
+      "patentNumber": "PP37736",
+      "publicationNumber": "",
+      "applicationNumber": "19/436,359",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Dec. 30, 2025",
+      "title": "Catharanthus plant named ‘Kchuchu2’",
+      "crop": "Catharanthus",
+      "cropFocus": "Other plant patent",
+      "cultivar": "Kchuchu2",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Osamu Kitajima, Sakurai (JP)",
+      "inventors": "’ Latin Name: Catharanthus roseus , Varietal Denomination: Kchuchu2 Osamu Kitajima, Sakurai (JP)",
+      "list": "",
+      "notes": "Catharanthus roseus",
+      "detailText": "﻿ US PP37,736 P2 Catharanthus plant named ‘Kchuchu2’ Latin Name: Catharanthus roseus , Varietal Denomination: Kchuchu2 Osamu Kitajima, Sakurai (JP) Filed by Osamu Kitajima, Sakurai (JP) Filed on Dec. 30, 2025, as Appl. No. 19/436,359. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct Catharanthus plant named ‘Kchuchu2’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.821355+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037736-20261006.html"
+    },
+    {
+      "id": "PP37737",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37737",
+      "patentNumber": "PP37737",
+      "publicationNumber": "",
+      "applicationNumber": "19/444,159",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jan. 8, 2026",
+      "title": "Ugni plant named ‘PI16’",
+      "crop": "Ugni",
+      "cropFocus": "Other plant patent",
+      "cultivar": "PI16",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "VIVEROS HIJUELAS S.A., Hijuelas (CL)",
+      "inventors": "’ Latin Name: Ugni molinae , Varietal Denomination: PI16 Arie Peterse, Noordwijk (NL)",
+      "list": "",
+      "notes": "Ugni molinae",
+      "detailText": "﻿ US PP37,737 P2 Ugni plant named ‘PI16’ Latin Name: Ugni molinae , Varietal Denomination: PI16 Arie Peterse, Noordwijk (NL) Assigned to VIVEROS HIJUELAS S.A., Hijuelas (CL) Filed by Viveros Hijuelas S.A., Hijuelas (CL) Filed on Jan. 8, 2026, as Appl. No. 19/444,159. Int. Cl. A01H 5/00 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—226 1 Claim 1 . A new and distinct cultivar of Ugni plant named ‘PI16’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:34.897275+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037737-20261006.html"
+    },
+    {
+      "id": "PP37738",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37738",
+      "patentNumber": "PP37738",
+      "publicationNumber": "",
+      "applicationNumber": "19/444,429",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jan. 9, 2026",
+      "title": "Peach tree named ‘USDA-ARS Summer Joy’",
+      "crop": "Peach",
+      "cropFocus": "Target crop",
+      "cultivar": "USDA-ARS Summer Joy",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "The United States of America, as represented by the Secretary of Agriculture, Washington, DC (US)",
+      "inventors": "’ Latin Name: Prunus persica [L.] Batsch. , Varietal Denomination: USDA-ARS Summer Joy Chunxian Chen, Warner Robins, GA (US); and William R Okie, Augusta, GA (US)",
+      "list": "",
+      "notes": "Prunus persica [L.] Batsch",
+      "detailText": "﻿ US PP37,738 P2 Peach tree named ‘USDA-ARS Summer Joy’ Latin Name: Prunus persica [L.] Batsch. , Varietal Denomination: USDA-ARS Summer Joy Chunxian Chen, Warner Robins, GA (US); and William R Okie, Augusta, GA (US) Assigned to The United States of America, as represented by the Secretary of Agriculture, Washington, DC (US) Filed by The United States of America, as represented by the Secretary of Agriculture, Washington, DC (US) Filed on Jan. 9, 2026, as Appl. No. 19/444,429. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—197 1 Claim 1 . A new and distinct cultivar of peach tree named ‘USDA-ARS Summer Joy’ as illustrated and described, characterized by fruit ripening in early to mid-June with attractive red blush and yellow ground color, clingstone, melting texture, yellow flesh, normal acidity, pleasant flavor and eating quality.",
+      "updatedAt": "2026-10-06T17:21:34.964304+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037738-20261006.html"
+    },
+    {
+      "id": "PP37739",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37739",
+      "patentNumber": "PP37739",
+      "publicationNumber": "",
+      "applicationNumber": "19/463,084",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jan. 29, 2026",
+      "title": "Rudbeckia plant named ‘RUDBKS772’",
+      "crop": "Rudbeckia",
+      "cropFocus": "Other plant patent",
+      "cultivar": "RUDBKS772",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "NOVA PERENNE BV, Zuidwolde (NL)",
+      "inventors": "’ Latin Name: Rudbeckia hirta , Varietal Denomination: RUDBKS772 Henricus Maria Joseph Holtmaat, Zuidwolde (NL)",
+      "list": "",
+      "notes": "Rudbeckia hirta",
+      "detailText": "﻿ US PP37,739 P2 Rudbeckia plant named ‘RUDBKS772’ Latin Name: Rudbeckia hirta , Varietal Denomination: RUDBKS772 Henricus Maria Joseph Holtmaat, Zuidwolde (NL) Assigned to NOVA PERENNE BV, Zuidwolde (NL) Filed by Henricus Maria Joseph Holtmaat, Zuidwolde (NL) Filed on Jan. 29, 2026, as Appl. No. 19/463,084. Claims priority of application No. PBR 20252206 (QZ), filed on Oct. 27, 2025. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/14 (2018.05) U.S. Cl. PLT—474 1 Claim 1 . A new and distinct cultivar of Rudbeckia plant named ‘RUDBKS772’ substantially as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:35.032929+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037739-20261006.html"
+    },
+    {
+      "id": "PP37740",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37740",
+      "patentNumber": "PP37740",
+      "publicationNumber": "",
+      "applicationNumber": "19/465,211",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jan. 30, 2026",
+      "title": "Miniature rose plant named ‘KORpot145’",
+      "crop": "Miniature Rose",
+      "cropFocus": "Other plant patent",
+      "cultivar": "KORpot145",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE)",
+      "inventors": "’ Latin Name: Rosa hybrida , Varietal Denomination: KORpot145 Wilhelm-Alexander Kordes, Klein Offenseth-Sparrieshoop (DE); and Britta Feuerhahn, Klein Offenseth-Sparrieshoop (DE)",
+      "list": "",
+      "notes": "Rosa hybrida",
+      "detailText": "﻿ US PP37,740 P2 Miniature rose plant named ‘KORpot145’ Latin Name: Rosa hybrida , Varietal Denomination: KORpot145 Wilhelm-Alexander Kordes, Klein Offenseth-Sparrieshoop (DE); and Britta Feuerhahn, Klein Offenseth-Sparrieshoop (DE) Assigned to W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed by W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed on Jan. 30, 2026, as Appl. No. 19/465,211. Int. Cl. A01H 5/02 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—117 1 Claim 1 . A new and distinct variety of miniature rose plant named ‘KORpot145’ characterized by the following combination of characteristics: (a) abundantly and substantially continuously forming cream-white-colored blossoms, (b) exhibiting a bushy and upright growth habit, and (c) forming semi-glossy, dark green foliage; substantially as herein shown and described.",
+      "updatedAt": "2026-10-06T17:21:35.099829+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037740-20261006.html"
+    },
+    {
+      "id": "PP37741",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37741",
+      "patentNumber": "PP37741",
+      "publicationNumber": "",
+      "applicationNumber": "19/529,561",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Feb. 4, 2026",
+      "title": "Clematis plant named ‘EviGsy157’",
+      "crop": "Clematis",
+      "cropFocus": "Other plant patent",
+      "cultivar": "EviGsy157",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Raymond J. Evison Ltd, (GG)",
+      "inventors": "’ Latin Name: Clematis patens x viticella , Varietal Denomination: EviGsy157 Raymond J. Evison, Vale (GG)",
+      "list": "",
+      "notes": "Clematis patens x viticella",
+      "detailText": "﻿ US PP37,741 P2 Clematis plant named ‘EviGsy157’ Latin Name: Clematis patens x viticella , Varietal Denomination: EviGsy157 Raymond J. Evison, Vale (GG) Assigned to Raymond J. Evison Ltd, (GG) Filed by Raymond H. Evison Ltd, Vale (GG) Filed on Feb. 4, 2026, as Appl. No. 19/529,561. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) U.S. Cl. PLT—228 1 Claim 1 . A new and distinct cultivar of Clematis plant named ‘EviGsy157’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:35.176506+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037741-20261006.html"
+    },
+    {
+      "id": "PP37742",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37742",
+      "patentNumber": "PP37742",
+      "publicationNumber": "",
+      "applicationNumber": "19/544,992",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Feb. 19, 2026",
+      "title": "Hibiscus plant named ‘Orange Crush Wind’",
+      "crop": "Orange",
+      "cropFocus": "Target crop",
+      "cultivar": "Orange Crush Wind",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "ARIS HORTICULTURE, INC., Barberton, OH (US)",
+      "inventors": "’ Latin Name: Hibiscus rosa-sinensis , Varietal Denomination: Orange Crush Wind Cornelis P. Vandenberg, Fort Myers, FL (US)",
+      "list": "",
+      "notes": "Hibiscus rosa-sinensis",
+      "detailText": "﻿ US PP37,742 P2 Hibiscus plant named ‘Orange Crush Wind’ Latin Name: Hibiscus rosa-sinensis , Varietal Denomination: Orange Crush Wind Cornelis P. Vandenberg, Fort Myers, FL (US) Assigned to ARIS HORTICULTURE, INC., Barberton, OH (US) Filed by Cornelis P. Vandenberg, Fort Myers, FL (US) Filed on Feb. 19, 2026, as Appl. No. 19/544,992. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—257 1 Claim 1 . A new and distinct Hibiscus plant named ‘Orange Crush Wind’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:35.239433+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037742-20261006.html"
+    },
+    {
+      "id": "PP37743",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37743",
+      "patentNumber": "PP37743",
+      "publicationNumber": "",
+      "applicationNumber": "19/546,388",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Feb. 22, 2026",
+      "title": "Mandevilla plant named ‘INMAN 572’",
+      "crop": "Mandevilla",
+      "cropFocus": "Other plant patent",
+      "cultivar": "INMAN 572",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "INNOVAPLANT ZIERPFLANZEN GmbH & Co. KG, Gensingen (DE)",
+      "inventors": "’ Latin Name: Mandevilla sanderi , Varietal Denomination: INMAN 572 Birgit Hofmann, Rudesheim am Rhein (DE)",
+      "list": "",
+      "notes": "Mandevilla sanderi",
+      "detailText": "﻿ US PP37,743 P2 Mandevilla plant named ‘INMAN 572’ Latin Name: Mandevilla sanderi , Varietal Denomination: INMAN 572 Birgit Hofmann, Rudesheim am Rhein (DE) Assigned to INNOVAPLANT ZIERPFLANZEN GmbH & Co. KG, Gensingen (DE) Filed by INNOVAPLANT ZIERPFLANZEN GmbH & Co. KG, Gensingen (DE) Filed on Feb. 22, 2026, as Appl. No. 19/546,388. Int. Cl. A01H 5/02 (2018.01); A01H 6/08 (2018.01) U.S. Cl. PLT—232 1 Claim 1 . A new and distinct Mandevilla plant named ‘INMAN 572’ as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:35.305748+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037743-20261006.html"
+    },
+    {
+      "id": "PP37744",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37744",
+      "patentNumber": "PP37744",
+      "publicationNumber": "",
+      "applicationNumber": "19/653,210",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Apr. 21, 2026",
+      "title": "Chrysanthemum plant named ‘CIDZ0132’",
+      "crop": "Chrysanthemum",
+      "cropFocus": "Other plant patent",
+      "cultivar": "CIDZ0132",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Syngenta Crop Protection AG, Basel (CH)",
+      "inventors": "’ Latin Name: Chrysanthemum x morifolium , Varietal Denomination: CIDZ0132 Wendy R. Bergman, Gilroy, CA (US)",
+      "list": "",
+      "notes": "Chrysanthemum x morifolium",
+      "detailText": "﻿ US PP37,744 P2 Chrysanthemum plant named ‘CIDZ0132’ Latin Name: Chrysanthemum x morifolium , Varietal Denomination: CIDZ0132 Wendy R. Bergman, Gilroy, CA (US) Assigned to Syngenta Crop Protection AG, Basel (CH) Filed by SYNGENTA CROP PROTECTION AG, Basel (CH) Filed on Apr. 21, 2026, as Appl. No. 19/653,210. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/1424 (2018.05) U.S. Cl. PLT—295 1 Claim 1 . A new and distinct variety of Chrysanthemum plant named ‘CIDZ0132’ substantially as illustrated and described herein.",
+      "updatedAt": "2026-10-06T17:21:35.373676+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037744-20261006.html"
+    },
+    {
+      "id": "PP37745",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37745",
+      "patentNumber": "PP37745",
+      "publicationNumber": "",
+      "applicationNumber": "19/341,868",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Sep. 26, 2025",
+      "title": "Dahlia plant named ‘KLEDH24735’",
+      "crop": "Dahlia",
+      "cropFocus": "Other plant patent",
+      "cultivar": "KLEDH24735",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE)",
+      "inventors": "’ Latin Name: Dahlia Sp. , Varietal Denomination: KLEDH24735 Maike Boxriker, Stuttgart (DE)",
+      "list": "",
+      "notes": "Dahlia Sp",
+      "detailText": "﻿ US PP37,745 P2 Dahlia plant named ‘KLEDH24735’ Latin Name: Dahlia Sp. , Varietal Denomination: KLEDH24735 Maike Boxriker, Stuttgart (DE) Assigned to KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed by KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed on Sep. 26, 2025, as Appl. No. 19/341,868. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/144 (2018.05) U.S. Cl. PLT—321 1 Claim 1 . A new and distinct variety of Dahlia Plant Named ‘KLEDH24735’, as illustrated and described herein.",
+      "updatedAt": "2026-10-06T17:21:35.442266+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037745-20261006.html"
+    },
+    {
+      "id": "PP37746",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37746",
+      "patentNumber": "PP37746",
+      "publicationNumber": "",
+      "applicationNumber": "19/349,983",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Oct. 4, 2025",
+      "title": "Calibrachoa plant named ‘Balchaopar’",
+      "crop": "Calibrachoa",
+      "cropFocus": "Other plant patent",
+      "cultivar": "Balchaopar",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Ball Horticultural Company, West Chicago, IL (US)",
+      "inventors": "’ Latin Name: Calibrachoa x hybrida , Varietal Denomination: Balchaopar Laura Masor, Buda, TX (US)",
+      "list": "",
+      "notes": "Calibrachoa x hybrida",
+      "detailText": "﻿ US PP37,746 P2 Calibrachoa plant named ‘Balchaopar’ Latin Name: Calibrachoa x hybrida , Varietal Denomination: Balchaopar Laura Masor, Buda, TX (US) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Ball Horticultural Company, West Chicago, IL (US) Filed on Oct. 4, 2025, as Appl. No. 19/349,983. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) U.S. Cl. PLT—413 1 Claim 1 . A new and distinct cultivar of Calibrachoa plant named ‘Balchaopar’, substantially as herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:35.515726+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037746-20261006.html"
+    },
+    {
+      "id": "PP37747",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37747",
+      "patentNumber": "PP37747",
+      "publicationNumber": "",
+      "applicationNumber": "19/235,276",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jun. 11, 2025",
+      "title": "Heliopsis plant named ‘BullHeliopsisscabra 01’",
+      "crop": "Heliopsis",
+      "cropFocus": "Other plant patent",
+      "cultivar": "BullHeliopsisscabra 01",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Hartwig Bull, Gönnebek (DE)",
+      "inventors": "’ Latin Name: Heliopsis helianthoides var. scabra , Varietal Denomination: BullHeliopsisscabra 01 Hartwig Bull, Gönnebek (DE)",
+      "list": "",
+      "notes": "Heliopsis helianthoides var. scabra",
+      "detailText": "﻿ US PP37,747 P3 Heliopsis plant named ‘BullHeliopsisscabra 01’ Latin Name: Heliopsis helianthoides var. scabra , Varietal Denomination: BullHeliopsisscabra 01 Hartwig Bull, Gönnebek (DE) Filed by Hartwig Bull, Gönnebek (DE) Filed on Jun. 11, 2025, as Appl. No. 19/235,276. Claims priority of provisional application 63/731,836, filed on Jun. 12, 2024. Prior Publication US 2025/0386754 P1, Dec. 18, 2025 Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/14 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—437 1 Claim 1 . A new and distinct variety of Heliopsis plant named ‘BullHeliopsisscabra 01’, as is herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:35.579636+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037747-20261006.html"
+    },
+    {
+      "id": "PP37748",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37748",
+      "patentNumber": "PP37748",
+      "publicationNumber": "",
+      "applicationNumber": "19/235,294",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Jun. 11, 2025",
+      "title": "Rudbeckia plant named ‘BullRudihir 122’",
+      "crop": "Rudbeckia",
+      "cropFocus": "Other plant patent",
+      "cultivar": "BullRudihir 122",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Hartwig Bull, Gönnebek (DE)",
+      "inventors": "’ Latin Name: Rudbeckia hirta L. , Varietal Denomination: BullRudihir 122 Hartwig Bull, Gönnebek (DE)",
+      "list": "",
+      "notes": "Rudbeckia hirta L",
+      "detailText": "﻿ US PP37,748 P3 Rudbeckia plant named ‘BullRudihir 122’ Latin Name: Rudbeckia hirta L. , Varietal Denomination: BullRudihir 122 Hartwig Bull, Gönnebek (DE) Filed by Hartwig Bull, Gönnebek (DE) Filed on Jun. 11, 2025, as Appl. No. 19/235,294. Claims priority of provisional application 63/731,838, filed on Jun. 12, 2024. Prior Publication US 2026/0107859 P1, Apr. 16, 2026 Int. Cl. A01H 6/14 (2018.01); A01H 5/02 (2018.01) CPC A01H 6/14 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—474 1 Claim 1 . A new and distinct variety of Rudbeckia plant named ‘BullRudihir 122’, as is herein illustrated and described.",
+      "updatedAt": "2026-10-06T17:21:35.640511+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037748-20261006.html"
+    },
+    {
+      "id": "PP37749",
+      "source": "USPTO Official Gazette",
+      "sourceKind": "Issued plant patent",
+      "primarySource": "PP37749",
+      "patentNumber": "PP37749",
+      "publicationNumber": "",
+      "applicationNumber": "19/339,620",
+      "date": "2026-10-06",
+      "issueDate": "2026-10-06",
+      "filedDateText": "Sep. 25, 2025",
+      "title": "Sedum plant named ‘Mocha Magic’",
+      "crop": "Sedum",
+      "cropFocus": "Other plant patent",
+      "cultivar": "Mocha Magic",
+      "tradeName": "",
+      "status": "issued",
+      "breeders": "",
+      "assignee": "Terra Nova Nurseries, Inc., Canby, OR (US)",
+      "inventors": "’ Latin Name: Sedum telephium , Varietal Denomination: Mocha Magic Janet N. Egger, Seattle, WA (US)",
+      "list": "",
+      "notes": "Sedum telephium",
+      "detailText": "﻿ US PP37,749 P2 Sedum plant named ‘Mocha Magic’ Latin Name: Sedum telephium , Varietal Denomination: Mocha Magic Janet N. Egger, Seattle, WA (US) Assigned to Terra Nova Nurseries, Inc., Canby, OR (US) Filed by Terra Nova Nurseries, Inc., Canby, OR (US) Filed on Sep. 25, 2025, as Appl. No. 19/339,620. Int. Cl. A01H 5/12 (2018.01); A01H 6/32 (2018.01) U.S. Cl. PLT—479 1 Claim 1 . A new and distinct Sedum plant named ‘Mocha Magic’ substantially as illustrated and described herein.",
+      "updatedAt": "2026-10-06T17:21:35.704373+00:00",
+      "gazetteUrl": "https://patentsgazette.uspto.gov/week40/OG/html/1551-1/USPP037749-20261006.html"
+    },
     {
       "id": "PP37713",
       "source": "USPTO Official Gazette",
@@ -43,7 +771,7 @@
       "detailText": "﻿ US PP37,713 P2 Pawpaw tree named ‘Hi 1-4’ Latin Name: Asimina triloba (L.) Dunal , Varietal Denomination: Hi 1-4 Kirk Pomper, Frankfort, KY (US); Sheri Crabtree, Frankfort, KY (US); and Jeremy Lowe, Frankfort, KY (US) Assigned to Kentucky State University, Frankfort, KY (US) Filed by Kentucky State University, Frankfort, KY (US) Filed on Aug. 29, 2025, as Appl. No. 19/314,990. Int. Cl. A01H 5/08 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) [ A01H 5/08 (2013.01)] U.S. Cl. PLT—156 1 Claim 1 . A new and distinct Asimina triloba (L.) Dunal (pawpaw) tree substantially as shown and described herein.",
       "updatedAt": "2026-09-29T16:58:06.659471+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037713-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:48.614958+00:00"
+      "verifiedAt": "2026-10-06T17:21:35.863902+00:00"
     },
     {
       "id": "PP37714",
@@ -70,7 +798,7 @@
       "detailText": "﻿ US PP37,714 P2 Blueberry plant named ‘OBG-18064’ Latin Name: Vaccinium corymbosum , Varietal Denomination: OBG-18064 Adam L. Wagner, Brownsville, OR (US) Assigned to Robert Gabriel, Silverton, OR (US) Filed by Robert Gabriel, Silverton, OR (US) Filed on Sep. 12, 2025, as Appl. No. 19/327,884. Int. Cl. A01H 5/08 (2018.01); A01H 6/36 (2018.01) U.S. Cl. PLT—157 1 Claim 1 . A new and distinct variety of blueberry plant named ‘OBG-18064’, substantially as illustrated and described herein.",
       "updatedAt": "2026-09-29T16:58:06.741764+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037714-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:48.700655+00:00"
+      "verifiedAt": "2026-10-06T17:21:35.941791+00:00"
     },
     {
       "id": "PP37715",
@@ -97,7 +825,7 @@
       "detailText": "﻿ US PP37,715 P3 Prunus rootstock named ‘RVL-4’ Latin Name: Prunus cerasus x maackii x lannesiana , Varietal Denomination: RVL-4 Gennady Eremin, Krymsk (RU); and Oxana Eremin, Krymsk (RU) Filed by Gennady Eremin, Krymsk (RU); and Oxana Eremin, Krymsk (RU) Filed on Aug. 15, 2025, as Appl. No. 19/301,524. Claims priority of provisional application 63/686,300, filed on Aug. 23, 2024. Prior Publication US 2026/0060155 P1, Feb. 26, 2026 Int. Cl. A01H 5/06 (2018.01); A01H 5/12 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/7445 (2018.05) [ A01H 5/06 (2013.01); A01H 5/12 (2013.01)] U.S. Cl. PLT—183 1 Claim 1 . A new and distinct cultivar of Prunus tree named ‘RVL-4’ as herein illustrated and described.",
       "updatedAt": "2026-09-29T16:58:06.823952+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037715-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:48.784738+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.027794+00:00"
     },
     {
       "id": "PP37716",
@@ -124,7 +852,7 @@
       "detailText": "﻿ US PP37,716 P2 Chrysanthemum plant named ‘Dochryjobro’ Latin Name: Chrysanthemum X morifolium , Varietal Denomination: Dochryjobro Peter Wain, Locks Heath (GB) Assigned to DÜMMEN GROUP B.V., De Lier (NL) Filed by DUMMEN GROUP B.V., De Lier (NL) Filed on Feb. 12, 2026, as Appl. No. 19/538,680. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/1424 (2018.05) U.S. Cl. PLT—290 1 Claim 1 . A new and distinct Chrysanthemum plant named ‘Dochryjobro’ as herein illustrated and described.",
       "updatedAt": "2026-09-29T16:58:06.906094+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037716-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:48.868565+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.104470+00:00"
     },
     {
       "id": "PP37717",
@@ -151,7 +879,7 @@
       "detailText": "﻿ US PP37,717 P2 Astilbe plant named ‘HVDM18P’ Latin Name: Astilbe chinensis , Varietal Denomination: HVDM18P Hans van der Meer, Nieuwe Wetering (NL) Filed by Hans van der Meer, Nieuwe Wetering (NL) Filed on Feb. 25, 2026, as Appl. No. 19/549,701. Int. Cl. A01H 6/80 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—407 1 Claim 1 . A new and distinct Astilbe plant named ‘HVDM18P’ as herein illustrated and described.",
       "updatedAt": "2026-09-29T16:58:06.986931+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037717-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:48.951826+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.167387+00:00"
     },
     {
       "id": "PP37718",
@@ -178,7 +906,7 @@
       "detailText": "﻿ US PP37,718 P2 Dianthus plant named ‘KLEDA28787’ Latin Name: Dianthus x allwoodii hort , Varietal Denomination: KLEDA28787 Laetitia Moucheboeuf, Exeter (GB) Assigned to KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed by KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed on Oct. 15, 2025, as Appl. No. 19/359,504. Int. Cl. A01H 5/02 (2018.01); A01H 6/30 (2018.01) CPC A01H 6/30 (2018.05) U.S. Cl. PLT—273 1 Claim 1 . A new and distinct variety of Dianthus plant named ‘KLEDA28787’ as shown and described herein.",
       "updatedAt": "2026-09-29T16:58:07.068285+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037718-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:49.037407+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.248588+00:00"
     },
     {
       "id": "PP37719",
@@ -205,7 +933,7 @@
       "detailText": "﻿ US PP37,719 P3 Mushroom variety named ‘RO10425’ Latin Name: Agaricus bisporus Imbach , Varietal Denomination: RO10425 Christopher W. Robles, Watsonville, CA (US); and Maykoe R. Abaunza, Memphis, TN (US) Assigned to Amycel, LLC, Watsonville, CA (US) Filed by Amycel, LLC, Watsonville, CA (US) Filed on Aug. 20, 2025, as Appl. No. 19/305,679. Claims priority of provisional application 63/733,289, filed on Dec. 12, 2024. Claims priority of provisional application 63/685,196, filed on Aug. 20, 2024. Prior Publication US 2026/0060156 P1, Feb. 26, 2026 This patent is subject to a terminal disclaimer. Int. Cl. A01H 15/00 (2006.01) CPC A01H 15/00 (2013.01) U.S. Cl. PLT—394 1 Claim 1 . A new and distinct variety of Agaricus bisporus Imbach mushroom named ‘RO10425’. as shown and described herein.",
       "updatedAt": "2026-09-29T16:58:07.150016+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037719-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:49.120735+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.320813+00:00"
     },
     {
       "id": "PP37720",
@@ -232,7 +960,7 @@
       "detailText": "﻿ US PP37,720 P2 Calibrachoa plant named ‘Balchadior’ Latin Name: Calibrachoa x hybrida , Varietal Denomination: Balchadior Laura Masor, Buda, TX (US) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Ball Horticultural Company, West Chicago, IL (US) Filed on Oct. 4, 2025, as Appl. No. 19/349,982. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) U.S. Cl. PLT—413 1 Claim 1 . A new and distinct cultivar of Calibrachoa plant named ‘Balchadior’, substantially as herein illustrated and described.",
       "updatedAt": "2026-09-29T16:58:07.232995+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037720-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:49.206401+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.414656+00:00"
     },
     {
       "id": "PP37721",
@@ -259,7 +987,7 @@
       "detailText": "﻿ US PP37,721 P3 Echinacea plant named ‘BullEchipur 124’ Latin Name: Echinacea purpurea , Varietal Denomination: BullEchipur 124 Hartwig Bull, Gönnebek (DE) Filed by Hartwig Bull, Gönnebek (DE) Filed on Jun. 11, 2025, as Appl. No. 19/235,255. Claims priority of provisional application 63/731,837, filed on Jun. 12, 2024. Prior Publication US 2026/0020510 P1, Jan. 15, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 5/12 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/1448 (2018.05) [ A01H 5/02 (2013.01); A01H 5/12 (2013.01)] U.S. Cl. PLT—428 1 Claim 1 . A new and distinct variety of Echinacea plant named ‘BullEchipur 124’, as is herein illustrated and described.",
       "updatedAt": "2026-09-29T16:58:07.314197+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week39/OG/html/1550-5/USPP037721-20260929.html",
-      "verifiedAt": "2026-10-04T15:55:49.290342+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.482330+00:00"
     },
     {
       "id": "PP37704",
@@ -286,7 +1014,7 @@
       "detailText": "﻿ US PP37,704 P2 Fragaria L. plant named ‘YUKAGUYA’ Latin Name: Fragaria L. , Varietal Denomination: YUKAGUYA Yusuke Nakai, Tsukuba (JP); Kazuyoshi Sone, Tsukuba (JP); Toshiro Fujita, Tsukuba (JP); Masahiro Misumi, Tsukuba (JP); Kota Hidaka, Tsukuba (JP); Minori Endo, Tsukuba (JP); and Masafumi Seki, Hirokawa-machi (JP) Assigned to NATIONAL AGRICULTURE AND FOOD RESEARCH ORGANIZATION, Tsukuba (JP); and OREC CO., LTD, Hirokawa-machi (JP) Filed by NATIONAL AGRICULTURE AND FOOD RESEARCH ORGANIZATION, Tsukuba (JP); and OREC CO., LTD, Hirokawa-machi (JP) Filed on Oct. 20, 2025, as Appl. No. 19/362,560. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—208 1 Claim 1 . A new and distinct variety of Fragaria L. plant named ‘YUKAGUYA’, substantially as described and illustrated herein.",
       "updatedAt": "2026-09-22T15:36:49.506952+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037704-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:49.515770+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.646316+00:00"
     },
     {
       "id": "PP37705",
@@ -313,7 +1041,7 @@
       "detailText": "﻿ US PP37,705 P2 Helleborus plant named ‘HF 1120’ Latin Name: HHelleborus x nigercors x Helleborus x hybridus , Varietal Denomination: Hf 1120 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,949. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HF 1120’ as herein illustrated and described.",
       "updatedAt": "2026-09-22T15:36:49.539278+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037705-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:49.719257+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.724080+00:00"
     },
     {
       "id": "PP37706",
@@ -340,7 +1068,7 @@
       "detailText": "﻿ US PP37,706 P2 Hydrangea plant named ‘Perla57631’ Latin Name: Hydrangea macrophylla , Varietal Denomination: Perla57631 Cornelis Hoogendoorn, Zevenhuizen (NL) Assigned to PERLANOVA BREEDING VOF, Zevenhuizen (NL) Filed by Cornelis Hoogendoorn, Zevenhuizen (NL) Filed on Dec. 9, 2025, as Appl. No. 19/414,233. Int. Cl. A01H 5/02 (2018.01); A01H 6/48 (2018.01) U.S. Cl. PLT—250 1 Claim 1 . A new and distinct cultivar of Hydrangea plant named ‘Perla57631’ substantially as herein illustrated and described.",
       "updatedAt": "2026-09-22T15:36:49.567564+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037706-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:49.805933+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.787635+00:00"
     },
     {
       "id": "PP37707",
@@ -367,7 +1095,7 @@
       "detailText": "﻿ US PP37,707 P2 Chamaecyparis plant named ‘El Paso’ Latin Name: Chamaecyparis thyoides , Varietal Denomination: El Paso Henrik Christiaan Cozijn Rietberg, Wezep (NL) Assigned to EDENS CREATIONS BV, Wezep (NL) Filed by Henrik Christiaan Cozijn Rietberg, Wezep (NL) Filed on Dec. 9, 2025, as Appl. No. 19/414,261. Claims priority of application No. 20251763 (QZ), filed on Aug. 6, 2025. Int. Cl. A01H 7/00 (2006.01) U.S. Cl. PLT—213 1 Claim 1 . A new and distinct cultivar of Chamaecyparis plant named ‘El Paso’ substantially as herein illustrated and described.",
       "updatedAt": "2026-09-22T15:36:49.596505+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037707-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:49.890061+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.872663+00:00"
     },
     {
       "id": "PP37708",
@@ -394,7 +1122,7 @@
       "detailText": "﻿ US PP37,708 P2 Hemerocallis plant named ‘Gothic Grenadine’ Latin Name: Hemerocallis (L.) hybrid , Varietal Denomination: Gothic Grenadine Chris Meyer, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Chris Meyer, Zeeland, MI (US) Filed on Jan. 14, 2026, as Appl. No. 19/729,002. Int. Cl. A01H 5/02 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—312 1 Claim 1 . A new and distinct ornamental daylily plant named Hemerocallis ‘Gothic Grenadine’ as herein described and illustrated.",
       "updatedAt": "2026-09-22T15:36:49.627721+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037708-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:49.970785+00:00"
+      "verifiedAt": "2026-10-06T17:21:36.948567+00:00"
     },
     {
       "id": "PP37709",
@@ -421,7 +1149,7 @@
       "detailText": "﻿ US PP37,709 P2 Grapevine plant named ‘LATE BEAR’ Latin Name: Vitis vinifera L. , Varietal Denomination: LATE BEAR Hanan Bazak, Carmei Yossef (IL) Assigned to Bazak Agro Innovation Ltd, Carmei Yossef (IL) Filed by Bazak Agro Innovation Ltd, Carmei Yossef (IL) Filed on Sep. 29, 2025, as Appl. No. 19/344,328. Int. Cl. A01H 6/88 (2018.01); A01H 5/08 (2018.01) U.S. Cl. PLT—205 1 Claim 1 . A new and distinct Grapevine variety of Vitis vinifera plant named ‘LATE BEAR’, as illustrated and described herein.",
       "updatedAt": "2026-09-22T15:36:49.657769+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037709-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:50.053240+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.010908+00:00"
     },
     {
       "id": "PP37710",
@@ -448,7 +1176,7 @@
       "detailText": "﻿ US PP37,710 P3 Iris plant named ‘Eye Liner’ Latin Name: Iris x pseudata (pseudacorus X ensata) , Varietal Denomination: Eye Liner Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc, Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Jan. 14, 2026, as Appl. No. 18/831,999. Claims priority of provisional application 63/833,932, filed on Jan. 29, 2025. Prior Publication US 2026/0262557 P1, Sep. 3, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) U.S. Cl. PLT—310 1 Claim 1 . A new and distinct cultivar of Iris plant named ‘Eye Liner’ as herein illustrated and described.",
       "updatedAt": "2026-09-22T15:36:49.685170+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037710-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:50.143061+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.089802+00:00"
     },
     {
       "id": "PP37711",
@@ -475,7 +1203,7 @@
       "detailText": "﻿ US PP37,711 P3 Aechmea plant named ‘A4006’ Latin Name: Aechmea fasciata , Varietal Denomination: A4006 Chester Skotak, Jr., Alajuela (CR) Filed by Chester Skotak, Jr., Alajuela (CR) Filed on Nov. 26, 2025, as Appl. No. 19/401,699. Claims priority of application No. PBR 2024/2860 (QZ), filed on Nov. 29, 2024. Prior Publication US 2026/0157249 P1, Jun. 4, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 5/12 (2018.01); A01H 6/22 (2018.01) CPC A01H 6/22 (2018.05) [ A01H 5/02 (2013.01); A01H 5/12 (2013.01)] U.S. Cl. PLT—370 1 Claim 1 . A new and distinct cultivar of Aechmea plant named ‘A4006’, substantially as illustrated and described herein.",
       "updatedAt": "2026-09-22T15:36:49.715206+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037711-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:50.231625+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.156639+00:00"
     },
     {
       "id": "PP37712",
@@ -502,7 +1230,7 @@
       "detailText": "﻿ US PP37,712 P2 Salvia plant named ‘Dark Sky’ Latin Name: Salvia hybrid , Varietal Denomination: Dark Sky Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Feb. 25, 2026, as Appl. No. 19/729,047. Int. Cl. A01H 5/02 (2018.01); A01H 6/50 (2018.01) U.S. Cl. PLT—475 1 Claim 1 . A new and distinct perennial Salvia plant named ‘Dark Sky’ as herein described and illustrated.",
       "updatedAt": "2026-09-22T15:36:49.747835+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week38/OG/html/1550-4/USPP037712-20260922.html",
-      "verifiedAt": "2026-10-04T15:55:50.318968+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.223993+00:00"
     },
     {
       "id": "PP37692",
@@ -529,7 +1257,7 @@
       "detailText": "﻿ US PP37,692 P2 Senecio plant named ‘Dopermanplumagpur’ Latin Name: Senecio x hybrida , Varietal Denomination: Dopermanplumagpur Eveline Barends, De Lier (NL) Assigned to DÜMMEN GROUP B.V., De Lier (NL) Filed by DUMMEN GROUP B.V., De Lier (NL) Filed on Nov. 24, 2025, as Appl. No. 19/398,512. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) U.S. Cl. PLT—480 1 Claim 1 . A new and distinct Senecio plant named ‘Dopermanplumagpur’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:06.586366+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037692-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:50.615622+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.387468+00:00"
     },
     {
       "id": "PP37693",
@@ -556,7 +1284,7 @@
       "detailText": "﻿ US PP37,693 P2 Dahlia plant named ‘LeeAnn's FD168D’ Latin Name: Dahlia hybrida , Varietal Denomination: LeeAnn's FD168D LeeAnn Huber, Greencastle, PA (US) Assigned to Coseytown Flowers llc, State Line, PA (US) Filed by Coseytown Flowers LLC, State Line, PA (US) Filed on Dec. 2, 2025, as Appl. No. 19/406,877. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—321 1 Claim 1 . A new and distinct cultivar of Dahlia plant named ‘LeeAnn's FD168D’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:06.694260+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037693-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:50.708045+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.461378+00:00"
     },
     {
       "id": "PP37694",
@@ -583,7 +1311,7 @@
       "detailText": "﻿ US PP37,694 P2 Begonia plant named ‘Dobegicfikidelso’ Latin Name: Begonia hybrida , Varietal Denomination: Dobegicfikidelso Eveline Barends, De Lier (NL) Assigned to DÜMMEN GROUP B.V., De Lier (NL) Filed by DUMMEN GROUP B.V., De Lier (NL) Filed on Dec. 12, 2025, as Appl. No. 19/418,803. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—343 1 Claim 1 . A new and distinct Begonia plant named ‘Dobegicfikidelso’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:06.796163+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037694-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:50.793539+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.544200+00:00"
     },
     {
       "id": "PP37695",
@@ -610,7 +1338,7 @@
       "detailText": "﻿ US PP37,695 P2 Kalanchoe plant named ‘Dokalamor’ Latin Name: Kalanchoe blossfeldiana , Varietal Denomination: Dokalamor Rami Mousa, De Lier (NL) Assigned to DÜMMEN GROUP B.V., DeLier (NL) Filed by DUMMEN GROUP B.V., De Lier (NL) Filed on Dec. 15, 2025, as Appl. No. 19/420,641. Int. Cl. A01H 5/02 (2018.01); A01H 6/32 (2018.01) U.S. Cl. PLT—341 1 Claim 1 . A new and distinct Kalanchoe plant named ‘Dokalamor’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:06.901791+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037695-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:50.876928+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.612738+00:00"
     },
     {
       "id": "PP37696",
@@ -637,7 +1365,7 @@
       "detailText": "﻿ US PP37,696 P2 Agapanthus plant named ‘Su Casa’ Latin Name: Agapanthus hybrid , Varietal Denomination: Su Casa Tim Wyckstandt, Aalter (BE) Assigned to VAN VLIET NEW PLANTS B.V., Stroe (NL) Filed by Tim Wyckstandt, Aalter (BE) Filed on Dec. 17, 2025, as Appl. No. 19/422,434. Int. Cl. A01H 6/04 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—398 1 Claim 1 . A new and distinct cultivar of Agapanthus plant named ‘Su Casa’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:07.003266+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037696-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:50.958844+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.700463+00:00"
     },
     {
       "id": "PP37697",
@@ -664,7 +1392,7 @@
       "detailText": "﻿ US PP37,697 P2 Agapanthus plant named ‘A21001’ Latin Name: Agapanthus hybrid , Varietal Denomination: A21001 Tim Wyckstandt, Aalter (BE) Assigned to VAN VLIET NEW PLANTS B.V., Stroe (NL) Filed by Tim Wyckstandt, Aalter (BE) Filed on Dec. 17, 2025, as Appl. No. 19/422,443. Claims priority of application No. PBR 20251673 (QZ), filed on Aug. 19, 2025. Int. Cl. A01H 5/02 (2018.01); A01H 6/04 (2018.01) U.S. Cl. PLT—398 1 Claim 1 . A new and distinct cultivar of Agapanthus plant named ‘A21001’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:07.108255+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037697-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:51.040146+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.782787+00:00"
     },
     {
       "id": "PP37698",
@@ -691,7 +1419,7 @@
       "detailText": "﻿ US PP37,698 P2 Nemesia plant named ‘INNEMPLUHO’ Latin Name: Nemesia hybrida , Varietal Denomination: INNEMPLUHO Silvia Hofmann, Mainz (DE) Assigned to INNOVAPLANT ZIERPFLANZEN GmbH & Co. KG, Gensingen (DE) Filed by Silvia Hofmann, Mainz (DE) Filed on Dec. 29, 2025, as Appl. No. 19/435,582. Int. Cl. A01H 5/02 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—458 1 Claim 1 . A new and distinct Nemesia plant named ‘INNEMPLUHO’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:07.213777+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037698-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:51.121909+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.866733+00:00"
     },
     {
       "id": "PP37699",
@@ -718,7 +1446,7 @@
       "detailText": "﻿ US PP37,699 P2 Raspberry plant named ‘SFF-20-015’ Latin Name: Rubus idaeus , Varietal Denomination: SFF-20-015 Scott C Trees, Arroyo Grande, CA (US) Assigned to Sunrise Farm Flowers, LLC, Arroyo Grande, CA (US) Filed by Sunrise Farm Flowers, LLC, Arroyo Grande, CA (US) Filed on Dec. 30, 2025, as Appl. No. 19/436,296. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—204 1 Claim 1 . A new and distinct variety of Raspberry plant named ‘SFF-20-015’ as shown and described herein.",
       "updatedAt": "2026-09-15T15:39:07.325818+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037699-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:51.201601+00:00"
+      "verifiedAt": "2026-10-06T17:21:37.943070+00:00"
     },
     {
       "id": "PP37700",
@@ -745,7 +1473,7 @@
       "detailText": "﻿ US PP37,700 P2 Astilbe plant named ‘Philoselmo’ Latin Name: Astilbe chinensis , Varietal Denomination: Philoselmo Harrie Verduin, Heemskerk (NL) Assigned to PHILOS B.V., Lisse (NL) Filed by Harrie Verduin, Heemskerk (NL) Filed on Feb. 25, 2026, as Appl. No. 19/549,898. Int. Cl. A01H 5/02 (2018.01); A01H 6/80 (2018.01) CPC A01H 6/80 (2018.05) U.S. Cl. PLT—407 1 Claim 1 . A new and distinct Astilbe plant named ‘Philoselmo’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:07.427374+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037700-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:51.282920+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.021809+00:00"
     },
     {
       "id": "PP37701",
@@ -772,7 +1500,7 @@
       "detailText": "﻿ US PP37,701 P2 Geranium plant named ‘TOSPL190415’ Latin Name: Pelargonium interspecific , Varietal Denomination: TOSPL190415 Fabienne Monte-Michielsen, Tinte (NL) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Ball Horticultural Company, West Chicago, IL (US) Filed on Oct. 5, 2025, as Appl. No. 19/350,039. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—324 1 Claim 1 . A new and distinct cultivar of Geranium plant named ‘TOSPL190415’, substantially as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:07.528958+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037701-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:51.367974+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.091867+00:00"
     },
     {
       "id": "PP37702",
@@ -799,7 +1527,7 @@
       "detailText": "﻿ US PP37,702 P2 Anthurium plant named ‘AN2761729’ Latin Name: Anthurium andreanum , Varietal Denomination: AN2761729 Jan van Dijk, Bleiswijk (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 9, 2025, as Appl. No. 19/323,728. Int. Cl. A01H 6/00 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—368 1 Claim 1 . A new and distinct Anthurium plant named ‘AN2761729’ as herein illustrated and described.",
       "updatedAt": "2026-09-15T15:39:07.642050+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037702-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:51.452440+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.180819+00:00"
     },
     {
       "id": "PP37703",
@@ -826,7 +1554,7 @@
       "detailText": "﻿ US PP37,703 P3 Zoysia japonica plant named ‘16-TZ-14114’ Latin Name: Zoysia japonica , Varietal Denomination: 16-TZ-14114 Brian Schwartz, Tifton, GA (US) Assigned to University of Georgia Research Foundation, Inc., Athens, GA (US); and Patten Seed Company, Fort Valley, GA (US) Filed by University of Georgia Research Foundation, Inc., Athens, GA (US); and Patten Seed Company, Fort Valley, GA (US) Filed on Feb. 12, 2025, as Appl. No. 19/052,226. Claims priority of provisional application 63/101,186, filed on Feb. 12, 2024. Prior Publication US 2025/0261572 P1, Aug. 14, 2025 Int. Cl. A01H 5/12 (2018.01); A01H 6/46 (2018.01) U.S. Cl. PLT—390 1 Claim 1 . A new and distinct plant of the Zoysia plant named Zoysia ‘ 16-TZ-14114’ as illustrated and described herein.",
       "updatedAt": "2026-09-15T15:39:07.745117+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week37/OG/html/1550-3/USPP037703-20260915.html",
-      "verifiedAt": "2026-10-04T15:55:51.534966+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.272861+00:00"
     },
     {
       "id": "PP37669",
@@ -853,7 +1581,7 @@
       "detailText": "﻿ US PP37,669 P2 Peach tree named ‘TRH2E121L’ Latin Name: Prunus persica , Varietal Denomination: TRH2E121L David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,358. Int. Cl. A01H 6/74 (2018.01) CPC A01H 6/7463 (2018.05) U.S. Cl. PLT—197 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH2E121L’, as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:02.716557+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037669-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:51.722399+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.463781+00:00"
     },
     {
       "id": "PP37670",
@@ -880,7 +1608,7 @@
       "detailText": "﻿ US PP37,670 P2 Peach tree named ‘TRH3A17’ Latin Name: Prunus persica , Varietal Denomination: TRH3A17 David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,361. Int. Cl. A01H 6/74 (2018.01) CPC A01H 6/7463 (2018.05) U.S. Cl. PLT—197 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH3A17’, as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:02.791411+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037670-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:51.804739+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.564178+00:00"
     },
     {
       "id": "PP37671",
@@ -907,7 +1635,7 @@
       "detailText": "﻿ US PP37,671 P2 Peach tree named ‘TX2C465CW’ Latin Name: Prunus persica , Varietal Denomination: TX2C465CW David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,372. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—195 1 Claim 1 . A new and distinct variety of peach tree named ‘TX2C465CW’, as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:02.872613+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037671-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:51.890493+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.642224+00:00"
     },
     {
       "id": "PP37672",
@@ -934,7 +1662,7 @@
       "detailText": "﻿ US PP37,672 P2 Peach tree named ‘TRH3C111’ Latin Name: Prunus persica. , Varietal Denomination: TRH3C111 David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,377. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—197 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH3C111’, as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:02.948032+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037672-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:51.979039+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.708949+00:00"
     },
     {
       "id": "PP37673",
@@ -961,7 +1689,7 @@
       "detailText": "﻿ US PP37,673 P2 Peach tree named ‘TRH2B102LW’ Latin Name: Prunus persica , Varietal Denomination: TRH2B102LW David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,385. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—195 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH2B102LW’, as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:03.025538+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037673-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.058831+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.785624+00:00"
     },
     {
       "id": "PP37674",
@@ -988,7 +1716,7 @@
       "detailText": "﻿ US PP37,674 P3 Strawberry plant named ‘FL 19.66-220’ Latin Name: Fragaria X ananassa Duchesne , Varietal Denomination: FL 19.66-220 Vance M. Whitaker, Brandon, FL (US); Cheryl Dalid, Valrico, FL (US); and Luis Osorio, Tampa, FL (US) Assigned to Florida Foundation Seed Producers, Inc., Marianna, FL (US); and University of Florida Research Foundation, Inc., Gainesville, FL (US) Filed by Florida Foundation Seed Producers, Inc., Marianna, FL (US); and University of Florida Research Foundation, Inc., Gainesville, FL (US) Filed on Sep. 25, 2024, as Appl. No. 18/896,723. Prior Publication US 2026/0090487 P1, Mar. 26, 2026 This patent is subject to a terminal disclaimer. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/7409 (2018.05) U.S. Cl. PLT—208 1 Claim 1 . A new and distinct strawberry plant named ‘FL 19.66-220’ as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:03.128432+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037674-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.141507+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.858271+00:00"
     },
     {
       "id": "PP37675",
@@ -1015,7 +1743,7 @@
       "detailText": "﻿ US PP37,675 P3 Buddleja plant named ‘Botex 014’ Latin Name: Buddleja davidii , Varietal Denomination: Botex 014 Johannes Adrianus Maria Koot, Kaatsheuvel (NL) Assigned to BOTANIC EXPERIENCE B.V., Kaatsheuvel (NL) Filed by Johannes Adrianus Maria Koot, Kaatsheuvel (NL) Filed on Sep. 16, 2025, as Appl. No. 19/330,792. Claims priority of application No. 20242105 (QZ), filed on Sep. 25, 2024. Prior Publication US 2026/0090489 P1, Mar. 26, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—242 1 Claim 1 . A new and distinct cultivar of Buddleja plant named ‘Botex 014’ as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:03.214681+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037675-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.224821+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.930978+00:00"
     },
     {
       "id": "PP37676",
@@ -1042,7 +1770,7 @@
       "detailText": "﻿ US PP37,676 P2 Ipomoea plant named ‘ISGFB11-0’ Latin Name: Ipomoea batatas , Varietal Denomination: ISGFB11-0 Kenneth Nelson Garner, Trent Woods, NC (US) Filed by Kenneth Nelson Garner, Trent Woods, NC (US) Filed on Feb. 25, 2026, as Appl. No. 19/549,987. Claims priority of provisional application 63/768,963, filed on Mar. 8, 2025. Int. Cl. A01H 5/02 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct cultivar of Ipomoea plant named ‘ISGFB11-0’ as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:03.281747+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037676-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.306649+00:00"
+      "verifiedAt": "2026-10-06T17:21:38.998305+00:00"
     },
     {
       "id": "PP37677",
@@ -1069,7 +1797,7 @@
       "detailText": "﻿ US PP37,677 P2 Deutzia plant named ‘SMNDXI’ Latin Name: Deutzia sp. , Varietal Denomination: SMNDXI Megan M. Mathey, Holland, MI (US) Assigned to SPRING MEADOW NURSERY, INC., Grand Haven, MI (US) Filed by Megan M. Mathey, Holland, MI (US) Filed on Nov. 8, 2025, as Appl. No. 19/383,646. Int. Cl. A01H 5/00 (2018.01); A01H 6/48 (2018.01) U.S. Cl. PLT—226 1 Claim 1 . A new and distinct Deutzia plant named ‘SMNDXI’ as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:03.340921+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037677-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.392268+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.061556+00:00"
     },
     {
       "id": "PP37678",
@@ -1096,7 +1824,7 @@
       "detailText": "﻿ US PP37,678 P2 Helleborus plant named ‘HL 1060’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1060 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,963. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) CPC A01H 6/72 (2018.05) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1060’ as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:03.438461+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037678-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.476936+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.156191+00:00"
     },
     {
       "id": "PP37679",
@@ -1123,7 +1851,7 @@
       "detailText": "﻿ US PP37,679 P2 Colocasia plant named ‘Tropical Paradise’ Latin Name: Colocasia esculenta , Varietal Denomination: Tropical Paradise John J. Cho, Kula, HI (US) Filed by John J. Cho, Kula, HI (US) Filed on Dec. 30, 2025, as Appl. No. 19/437,281. Int. Cl. A01H 5/12 (2018.01); A01H 6/10 (2018.01) U.S. Cl. PLT—373 1 Claim 1 . A new and distinct variety of Colocasia plant named ‘Tropical Paradise’ as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:03.508946+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037679-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.555513+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.229590+00:00"
     },
     {
       "id": "PP37680",
@@ -1150,7 +1878,7 @@
       "detailText": "﻿ US PP37,680 P2 Gaillardia plant named ‘DGAIGSORZT’ Latin Name: Gaillardia aristata , Varietal Denomination: DGAIGSORZT Gavriel Danziger, Beit Dagan (IL) Assigned to Danziger “DAN” Flower Farm, (IL) Filed by Danziger “DAN” Flower Farm, Beit Dagan (IL) Filed on Jan. 14, 2026, as Appl. No. 19/448,528. Int. Cl. A01H 6/14 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—431 1 Claim 1 . A new and distinct cultivar of Gaillardia plant named ‘DGAIGSORZT’ as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:03.575424+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037680-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.635605+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.299239+00:00"
     },
     {
       "id": "PP37681",
@@ -1177,7 +1905,7 @@
       "detailText": "﻿ US PP37,681 P2 Miniature rose plant named ‘KORpot144’ Latin Name: Rosa hybrida , Varietal Denomination: KORpot144 Wilhelm-Alexander Kordes, Klein Offenseth-Sparrieshoop (DE); and Britta Feuerhahn, Klein Offenseth-Sparrieshoop (DE) Assigned to W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed by W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed on Jan. 30, 2026, as Appl. No. 19/465,316. Int. Cl. A01H 5/02 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/749 (2018.05) U.S. Cl. PLT—119 1 Claim 1 . A new and distinct variety of miniature rose plant named ‘KORpot144’ characterized by the following combination of characteristics: (a) abundantly and substantially continuously forming orange-colored blossoms, and (b) exhibiting a compact growth habit; substantially as herein shown and described.",
       "updatedAt": "2026-09-08T15:15:03.642927+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037681-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.724369+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.370282+00:00"
     },
     {
       "id": "PP37682",
@@ -1204,7 +1932,7 @@
       "detailText": "﻿ US PP37,682 P2 Delphinium plant named ‘DEAZ0002’ Latin Name: Delphinium elatum , Varietal Denomination: DEAZ0002 Marie Bradford, Foxley Dereham Norfolk (GB) Assigned to Syngenta Crop Protection AG, Basel (CH) Filed by SYNGENTA CROP PROTECTION AG, Basel (CH) Filed on Feb. 23, 2026, as Appl. No. 19/546,522. Int. Cl. A01H 6/72 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—423 1 Claim 1 . A new and distinct variety of Delphinium plant named ‘DEAZ0002’ substantially as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:03.708384+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037682-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.806479+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.441308+00:00"
     },
     {
       "id": "PP37683",
@@ -1231,7 +1959,7 @@
       "detailText": "﻿ US PP37,683 P2 Dicentra plant named ‘Hearts on Fire’ Latin Name: Dicentra spectabilis , Varietal Denomination: Hearts on Fire Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc, Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Feb. 25, 2026, as Appl. No. 19/729,050. Int. Cl. A01H 5/02 (2018.01); A01H 6/64 (2018.01) U.S. Cl. PLT—426 1 Claim 1 . A new and distinct cultivar of Old-fashioned Bleeding Heart, Dicentra plant named ‘Hearts on Fire’ as herein described and illustrated.",
       "updatedAt": "2026-09-08T15:15:03.783684+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037683-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.887672+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.505160+00:00"
     },
     {
       "id": "PP37684",
@@ -1258,7 +1986,7 @@
       "detailText": "﻿ US PP37,684 P2 Dianthus plant named ‘KLEDG20460’ Latin Name: Dianthus sp. , Varietal Denomination: KLEDG20460 Nils Klemm, Stuttgart (DE); and Lena Thiede, Riederich (DE) Assigned to KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed by KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed on Oct. 1, 2025, as Appl. No. 19/346,915. Int. Cl. A01H 5/02 (2018.01); A01H 6/30 (2018.01) U.S. Cl. PLT—281 1 Claim 1 . A new and distinct cultivar of Dianthus plant designated ‘KLEDG20460’ as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:03.855448+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037684-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:52.970858+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.575503+00:00"
     },
     {
       "id": "PP37685",
@@ -1285,7 +2013,7 @@
       "detailText": "﻿ US PP37,685 P2 Persicaria plant named ‘Glowing Reviews’ Latin Name: Persicaria amplexicaulis (D. Don) Ronse Deer. , Varietal Denomination: Glowing Reviews Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Dec. 11, 2025, as Appl. No. 18/831,965. Int. Cl. A01H 6/00 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—467 1 Claim 1 . A new and distinct ornamental plant cultivar named Persicaria ‘Glowing Reviews’ as herein described and illustrated.",
       "updatedAt": "2026-09-08T15:15:03.923755+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037685-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:53.053160+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.664226+00:00"
     },
     {
       "id": "PP37686",
@@ -1312,7 +2040,7 @@
       "detailText": "﻿ US PP37,686 P2 Phalaenopsis plant named ‘PHA533378’ Latin Name: Phalaenopsis hybrida , Varietal Denomination: PHA533378 Martinus Nicolaas Gerardus van Swieten, Utrecht (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 15, 2025, as Appl. No. 19/329,283. Int. Cl. A01H 5/02 (2018.01); A01H 6/62 (2018.01) CPC A01H 6/62 (2018.05) U.S. Cl. PLT—311 1 Claim 1 . A new and distinct Phalaenopsis plant named ‘PHA533378’ as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:04.007573+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037686-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:53.133375+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.733855+00:00"
     },
     {
       "id": "PP37687",
@@ -1339,7 +2067,7 @@
       "detailText": "﻿ US PP37,687 P2 Geranium plant named ‘TOSPL200223’ Latin Name: Pelargonium interspecific , Varietal Denomination: TOSPL200223 Fabienne Monte-Michielsen, Tinte (NL) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Ball Horticultural Company, West Chicago, IL (US) Filed on Oct. 5, 2025, as Appl. No. 19/350,037. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—324 1 Claim 1 . A new and distinct cultivar of Geranium plant named ‘TOSPL200223’, substantially as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:04.075275+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037687-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:53.214042+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.800039+00:00"
     },
     {
       "id": "PP37688",
@@ -1366,7 +2094,7 @@
       "detailText": "﻿ US PP37,688 P2 Petunia plant named ‘Balslincheel’ Latin Name: Petunia x hybrida , Varietal Denomination: Balslincheel Rebecca Tashiro, Nipomo, CA (US) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Ball Horticultural Company, West Chicago, IL (US) Filed on Oct. 5, 2025, as Appl. No. 19/350,045. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) U.S. Cl. PLT—356.13 1 Claim 1 . A new and distinct cultivar of Petunia plant named ‘Balslincheel’, substantially as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:04.158435+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037688-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:53.295696+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.879483+00:00"
     },
     {
       "id": "PP37689",
@@ -1393,7 +2121,7 @@
       "detailText": "﻿ US PP37,689 P2 Petunia plant named ‘Balslinplant’ Latin Name: Petunia x hybrida , Varietal Denomination: Balslinplant Rebecca Tashiro, Nipomo, CA (US) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Ball Horticultural Company, West Chicago, IL (US) Filed on Oct. 5, 2025, as Appl. No. 19/350,046. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) U.S. Cl. PLT—356.21 1 Claim 1 . A new and distinct cultivar of Petunia plant named ‘Balslinplant’, substantially as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:04.238666+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037689-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:53.380403+00:00"
+      "verifiedAt": "2026-10-06T17:21:39.944816+00:00"
     },
     {
       "id": "PP37690",
@@ -1420,7 +2148,7 @@
       "detailText": "﻿ US PP37,690 P2 Calibrachoa plant named ‘Balcablav763’ Latin Name: Calibrachoa x hybrida , Varietal Denomination: Balcablav763 Laura Masor, Buda, TX (US) Assigned to Ball Horticultural Company, West Chicago, IL (US) Filed by Ball Horticultural Company, West Chicago, IL (US) Filed on Oct. 4, 2025, as Appl. No. 19/349,981. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) U.S. Cl. PLT—413 1 Claim 1 . A new and distinct cultivar of Calibrachoa plant named ‘Balcablav763’ is, substantially as herein illustrated and described.",
       "updatedAt": "2026-09-08T15:15:04.298417+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037690-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:53.460686+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.012566+00:00"
     },
     {
       "id": "PP37691",
@@ -1447,7 +2175,7 @@
       "detailText": "﻿ US PP37,691 P2 Rudbeckia plant named ‘NCRH2’ Latin Name: Rudbeckia spp. , Varietal Denomination: NCRH2 Thomas Ranney, Arden, NC (US); Nathan P. Lynch, Mills River, NC (US); Irene Palmer, Mills River, NC (US); Andra Windorf Nus, Mills River, NC (US); and John Tyler Nix, Mills River, NC (US) Assigned to North Carolina State University, Raleigh, NC (US) Filed by North Carolina State University, Raleigh, NC (US) Filed on Sep. 25, 2025, as Appl. No. 19/339,428. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) U.S. Cl. PLT—474 1 Claim 1 . A new and distinct Rudbeckia plant named ‘NCRH2,’ substantially as illustrated and described herein.",
       "updatedAt": "2026-09-08T15:15:04.367569+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week36/OG/html/1550-2/USPP037691-20260908.html",
-      "verifiedAt": "2026-10-04T15:55:53.541500+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.091932+00:00"
     },
     {
       "id": "PP37654",
@@ -1474,7 +2202,7 @@
       "detailText": "﻿ US PP37,654 P2 Pawpaw tree named ‘Hi 7-1’ Latin Name: Asimina triloba (L.) Dunal. , Varietal Denomination: Hi 7-1 Kirk Pomper, Frankfort, KY (US); Sheri Crabtree, Frankfort, KY (US); and Jeremy Lowe, Frankfort, KY (US) Assigned to Kentucky State University, Frankfort, KY (US) Filed by Kentucky State University, Frankfort, KY (US) Filed on Aug. 29, 2025, as Appl. No. 19/314,949. Int. Cl. A01H 5/08 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) [ A01H 5/08 (2013.01)] U.S. Cl. PLT—156 1 Claim 1 . A new and distinct Asimina triloba (L.) Dunal (pawpaw) tree named ‘Hi 7 - 1 ’ substantially as shown and described herein.",
       "updatedAt": "2026-09-01T15:31:12.414643+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037654-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:53.716864+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.251242+00:00"
     },
     {
       "id": "PP37655",
@@ -1501,7 +2229,7 @@
       "detailText": "﻿ US PP37,655 P3 Mandevilla plant named ‘TVMD803’ Latin Name: Mandevilla sanderi , Varietal Denomination: TVMD803 Everton Gomes da Costa, Sao Paulo (BR) Assigned to NICOLAAS JOSEF SCHOENMAKER e OUTROS, Sao Paulo (BR) Filed by NICOLAAS JOSEF SCHOENMAKER e OUTROS, Sao Paulo (BR) Filed on Aug. 28, 2025, as Appl. No. 19/313,553. Claims priority of provisional application 63/689,809, filed on Sep. 2, 2024. Prior Publication US 2026/0068783 P1, Mar. 5, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 6/08 (2018.01) CPC A01H 6/088 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—232 1 Claim 1 . A new and distinct Mandevilla plant named ‘TVMD803’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:12.686449+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037655-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:53.805640+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.329907+00:00"
     },
     {
       "id": "PP37656",
@@ -1528,7 +2256,7 @@
       "detailText": "﻿ US PP37,656 P2 Ilex plant named ‘HARVEST’ Latin Name: Ilex dabieshanensis x latifolia , Varietal Denomination: HARVEST Chen Hong, Nanjing (CN); Zhou Ting, Nanjing (CN); Chong Xinran, Nanjing (CN); Lu Bo, Nanjing (CN); Li Naiwei, Nanjing (CN); Zhou Yanwei, Nanjing (CN); Cai Xiaolong, Nanjing (CN); Lu Xiaoqing, Nanjing (CN); and Wang Chuanyong, Nanjing (CN) Assigned to Institute of Botany, Jiangsu Province and Chinese Academy of Science, (CN) Filed by Institute of Botany, Jiangsu Province and Chinese Academy of Sciences, Nanjing (CN) Filed on Sep. 10, 2025, as Appl. No. 19/325,093. Int. Cl. A01H 5/08 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—247 1 Claim 1 . A new and distinct cultivar of Ilex plant named ‘HARVEST’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:12.793316+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037656-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:53.889631+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.407916+00:00"
     },
     {
       "id": "PP37657",
@@ -1555,7 +2283,7 @@
       "detailText": "﻿ US PP37,657 P2 Hibiscus plant named ‘Coconut Cream’ Latin Name: Hibiscus hybrid (L.) , Varietal Denomination: Coconut Cream Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Feb. 25, 2026, as Appl. No. 19/729,049. Int. Cl. A01H 5/02 (2018.01); A01H 6/60 (2018.01) CPC A01H 6/608 (2018.05) U.S. Cl. PLT—257 1 Claim 1 . A new cultivar of hardy herbaceous perennial Hibiscus plant named ‘Coconut Cream’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:12.899628+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037657-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:53.971275+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.472744+00:00"
     },
     {
       "id": "PP37658",
@@ -1582,7 +2310,7 @@
       "detailText": "﻿ US PP37,658 P2 Lithodora plant named ‘LTHZ0001’ Latin Name: Lithodora diffusa , Varietal Denomination: LTHZ0001 Monique Juist, Enkhuizen (NL) Assigned to Syngenta Crop Protection AG, Basel (CH) Filed by SYNGENTA CROP PROTECTION AG, Basel (CH) Filed on Feb. 25, 2025, as Appl. No. 19/062,093. Int. Cl. A01H 5/02 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct variety of Lithodora plant named ‘LTHZ0001’ substantially as illustrated and described herein.",
       "updatedAt": "2026-09-01T15:31:13.002597+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037658-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.053234+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.543356+00:00"
     },
     {
       "id": "PP37659",
@@ -1609,7 +2337,7 @@
       "detailText": "﻿ US PP37,659 P2 Cephalanthus plant named ‘SMNCMBH’ Latin Name: Cephalanthus occidentalis , Varietal Denomination: SMNCMBH Megan M. Mathey, Holland, MI (US) Assigned to SPRING MEADOW NURSERY, INC., Grand Haven, MI (US) Filed by Megan M. Mathey, Holland, MI (US) Filed on Nov. 8, 2025, as Appl. No. 19/383,642. Int. Cl. A01H 6/76 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—226 1 Claim 1 . A new and distinct Cephalanthus plant named ‘SMNCMBH’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:13.105945+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037659-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.134546+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.632370+00:00"
     },
     {
       "id": "PP37660",
@@ -1636,7 +2364,7 @@
       "detailText": "﻿ US PP37,660 P2 Lobelia plant named ‘WILODABLU27’ Latin Name: Lobelia hybrida , Varietal Denomination: WILODABLU27 Adam Moseley, Kyle, TX (US) Assigned to WINGEN, LLC, Mustang Ridge, TX (US) Filed by Adam Moseley, Kyle, TX (US) Filed on Nov. 25, 2025, as Appl. No. 19/401,278. Int. Cl. A01H 5/02 (2018.01); A01H 6/26 (2018.01) U.S. Cl. PLT—451 1 Claim 1 . A new and distinct Lobelia plant named ‘WILODABLU27’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:13.209791+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037660-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.216449+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.711738+00:00"
     },
     {
       "id": "PP37661",
@@ -1663,7 +2391,7 @@
       "detailText": "﻿ US PP37,661 P2 Anthurium plant named ‘KARINA’ Latin Name: Anthurium andraeanum , Varietal Denomination: KARINA Fazhuang Lin, Sanming (CN); and Fengqin Yao, Sanming (CN) Assigned to Zhongshan Brighten Floriculture Ltd, (CN) Filed by Zhongshan Brighten Floriculture Co., Ltd, Zhongshan City (CN) Filed on Dec. 2, 2025, as Appl. No. 19/406,904. Int. Cl. A01H 5/02 (2018.01); A01H 6/10 (2018.01) U.S. Cl. PLT—365 1 Claim 1 . A new and distinct cultivar of Anthurium plant named ‘Karina’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:13.313155+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037661-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.301922+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.779719+00:00"
     },
     {
       "id": "PP37662",
@@ -1690,7 +2418,7 @@
       "detailText": "﻿ US PP37,662 P2 Petunia plant named ‘Surf 271’ Latin Name: Petunia x hybrida , Varietal Denomination: Surf 271 Kiyoshi Miyazaki, Hikone (JP); and Yasuyuki Murakami, Higashiomi (JP) Assigned to SUNTORY FLOWERS LIMITED, Tokyo (JP) Filed by Kiyoshi Miyazaki, Hikone (JP); and Yasuyuki Murakami, Higashiomi (JP) Filed on Dec. 30, 2025, as Appl. No. 19/436,646. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) CPC A01H 6/824 (2018.05) U.S. Cl. PLT—356.21 1 Claim 1 . A new and distinct Petunia plant named ‘Surf 271’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:13.419177+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037662-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.385622+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.860060+00:00"
     },
     {
       "id": "PP37663",
@@ -1717,7 +2445,7 @@
       "detailText": "﻿ US PP37,663 P2 Strawberry plant named ‘Ferosa’ Latin Name: Fragaria x ananassa , Varietal Denomination: Ferosa Marcel Suiker, Ens (NL) Assigned to Flevo Berry Holding B.V., Ens (NL) Filed by Flevo Berry Holding B.V., Ens (NL) Filed on Jan. 28, 2026, as Appl. No. 19/462,915. Claims priority of application No. PBR 2025/1709 (QZ), filed on Jul. 31, 2025. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—209 1 Claim 1 . A new and distinct variety of strawberry plant named ‘Ferosa’, substantially as illustrated and described herein.",
       "updatedAt": "2026-09-01T15:31:13.524382+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037663-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.467386+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.923471+00:00"
     },
     {
       "id": "PP37664",
@@ -1744,7 +2472,7 @@
       "detailText": "﻿ US PP37,664 P2 Poinsettia plant named ‘LAZZPOGENA’ Latin Name: Euphorbia pulcherrima Willd. , Varietal Denomination: LAZZPOGENA Johannes Nebelmeir, Hann. Munden (DE) Assigned to LAZZERI GENETICA S.A.S. di DALLAGO FRANCO & C., Merano (IT) Filed by LAZZERI GENETICA S.A.S. di DALLAGO FRANCO & C., Merano (IT) Filed on Oct. 7, 2025, as Appl. No. 19/352,112. Int. Cl. A01H 6/38 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—303 1 Claim 1 . A new and distinct Poinsettia plant named ‘LAZZPOGENA’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:13.629032+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037664-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.549820+00:00"
+      "verifiedAt": "2026-10-06T17:21:40.995823+00:00"
     },
     {
       "id": "PP37665",
@@ -1771,7 +2499,7 @@
       "detailText": "﻿ US PP37,665 P3 Aechmea plant named ‘A2508’ Latin Name: Aechmea fasciata. , Varietal Denomination: A2508 Chester Skotak, Jr., Alajuela (CR) Filed by Chester Skotak, Jr., Alajuela (CR) Filed on Nov. 18, 2025, as Appl. No. 19/393,349. Claims priority of application No. PBR 2024/2862 (QZ), filed on Nov. 29, 2024. Prior Publication US 2026/0157246 P1, Jun. 4, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 5/12 (2018.01); A01H 6/22 (2018.01) CPC A01H 6/22 (2018.05) [ A01H 5/02 (2013.01); A01H 5/12 (2013.01)] U.S. Cl. PLT—370 1 Claim 1 . A new and distinct cultivar of Aechmea plant named ‘A2508’, substantially as illustrated and described herein.",
       "updatedAt": "2026-09-01T15:31:13.732098+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037665-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.629506+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.059639+00:00"
     },
     {
       "id": "PP37666",
@@ -1798,7 +2526,7 @@
       "detailText": "﻿ US PP37,666 P3 Aristaloe plant named ‘OVROCKS16’ Latin Name: Aristaloe aristata , Varietal Denomination: OVROCKS16 Johannes Hendrikus Adrianus Ammerlaan, Bleiswijk (NL) Assigned to Ovata B.V., Bleiswijk (NL) Filed by Ovata B.V., Bleiswijk (NL) Filed on Apr. 4, 2025, as Appl. No. 18/831,537. Claims priority of application No. PBR 2024/2741 (QZ), filed on Nov. 22, 2024. Prior Publication US 2026/0150769 P1, May 28, 2026 Int. Cl. A01H 5/12 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) [ A01H 5/12 (2013.01)] U.S. Cl. PLT—373 1 Claim 1 . A new and distinct variety of Aristaloe aristata plant named ‘OVROCKS16’, substantially as described and illustrated herein.",
       "updatedAt": "2026-09-01T15:31:13.838451+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037666-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.713808+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.140347+00:00"
     },
     {
       "id": "PP37667",
@@ -1825,7 +2553,7 @@
       "detailText": "﻿ US PP37,667 P2 Sansevieria plant named ‘Hansoti61’ Latin Name: Sansevieria hybrid , Varietal Denomination: Hansoti61 Ashish Hansoti, Mumbai (IN) Filed by Ashish Hansoti, Mumbai (IN) Filed on Oct. 3, 2025, as Appl. No. 19/349,641. Int. Cl. A01H 6/12 (2018.01); A01H 5/12 (2018.01) U.S. Cl. PLT—382 1 Claim 1 . A new and distinct cultivar of Sansevieria plant named ‘HANSOTI61’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:13.945784+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037667-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.795289+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.214627+00:00"
     },
     {
       "id": "PP37668",
@@ -1852,7 +2580,7 @@
       "detailText": "﻿ US PP37,668 P2 Bidens plant named ‘SUNBIDEVB 8’ Latin Name: Bidens ferulifolia , Varietal Denomination: SUNBIDEVB 8 Kazunori Sato, Tokyo (JP) Assigned to SUNTORY FLOWERS LIMITED, Tokyo (JP) Filed by Kazunori Sato, Tokyo (JP) Filed on Sep. 26, 2025, as Appl. No. 19/341,909. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/14 (2018.05) U.S. Cl. PLT—410 1 Claim 1 . A new and distinct Bidens plant named ‘SUNBIDEVB 8’ as herein illustrated and described.",
       "updatedAt": "2026-09-01T15:31:14.051502+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week35/OG/html/1550-1/USPP037668-20260901.html",
-      "verifiedAt": "2026-10-04T15:55:54.874737+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.282713+00:00"
     },
     {
       "id": "PP37640",
@@ -1879,7 +2607,7 @@
       "detailText": "﻿ US PP37,640 P2 Nectarine tree named ‘TRH4D144WN’ Latin Name: Prunus persica , Varietal Denomination: TRH4D144WN David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,292. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—188 1 Claim 1 . A new and distinct variety of nectarine tree named ‘TRH4D144WN’, as illustrated and described herein.",
       "updatedAt": "2026-08-26T11:57:21.018910+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037640-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.107805+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.483502+00:00"
     },
     {
       "id": "PP37641",
@@ -1906,7 +2634,7 @@
       "detailText": "﻿ US PP37,641 P2 Peach tree named ‘TX3C490LWP’ Latin Name: Prunus persica. , Varietal Denomination: TX3C490LWP David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,141. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—194 1 Claim 1 . A new and distinct variety of peach tree named ‘TX3C490LWP’, as illustrated and described herein.",
       "updatedAt": "2026-08-26T11:57:21.068206+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037641-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.196271+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.576979+00:00"
     },
     {
       "id": "PP37642",
@@ -1933,7 +2661,7 @@
       "detailText": "﻿ US PP37,642 P2 Peach tree named ‘TRH2E68L’ Latin Name: Prunus persica , Varietal Denomination: TRH2E68L David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,148. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—197 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH2E68L’, as illustrated and described herein.",
       "updatedAt": "2026-08-26T11:57:21.108858+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037642-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.280343+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.651131+00:00"
     },
     {
       "id": "PP37643",
@@ -1960,7 +2688,7 @@
       "detailText": "﻿ US PP37,643 P2 Peach tree named ‘TRH2C108W’ Latin Name: Prunus persica. , Varietal Denomination: TRH2C108W David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,380. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—195 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH2C108W’, as illustrated and described herein.",
       "updatedAt": "2026-08-26T11:57:21.148544+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037643-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.364496+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.725602+00:00"
     },
     {
       "id": "PP37644",
@@ -1987,7 +2715,7 @@
       "detailText": "﻿ US PP37,644 P2 Lantana plant named ‘KLELA24691’ Latin Name: Lantana camara , Varietal Denomination: KLELA24691 Angelo Carrella, Palma Campania (IT) Assigned to KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed by KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed on Jul. 4, 2025, as Appl. No. 19/260,359. Int. Cl. A01H 5/02 (2018.01); A01H 6/86 (2018.01) CPC A01H 6/86 (2018.05) U.S. Cl. PLT—227 1 Claim 1 . A new and distinct variety of Lantana plant as shown and described herein.",
       "updatedAt": "2026-08-26T11:57:21.188176+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037644-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.447940+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.795397+00:00"
     },
     {
       "id": "PP37645",
@@ -2014,7 +2742,7 @@
       "detailText": "﻿ US PP37,645 P3 Garlic plant named ‘Slamka’ Latin Name: Allium sativum var. ophioscorodon , Varietal Denomination: Slamka Katrina Anne Leiber, Franksville, WI (US) Filed by Katrina Anne Leiber, Franksville, WI (US) Filed on Jul. 7, 2025, as Appl. No. 18/831,654. Claims priority of provisional application 63/732,456, filed on Aug. 19, 2024. Prior Publication US 2026/0053078 P1, Feb. 19, 2026 Int. Cl. A01H 5/06 (2018.01); A01H 5/00 (2018.01); A01H 6/04 (2018.01) CPC A01H 6/04 (2018.05) [ A01H 5/00 (2013.01)] U.S. Cl. PLT—258 1 Claim 1 . A new and distinct variety of Allium sativum var. ophioscorodon plant named ‘Slamka’, as illustrated and described herein.",
       "updatedAt": "2026-08-26T11:57:21.225210+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037645-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.526500+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.875854+00:00"
     },
     {
       "id": "PP37646",
@@ -2041,7 +2769,7 @@
       "detailText": "﻿ US PP37,646 P2 Hosta plant named ‘Brontosaurus’ Latin Name: Hosta hybrid , Varietal Denomination: Brontosaurus Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc, Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Dec. 11, 2025, as Appl. No. 18/831,966. Int. Cl. A01H 5/02 (2018.01); A01H 6/12 (2018.01) U.S. Cl. PLT—353 1 Claim 1 . A new and distinct Hosta plant named ‘Brontosaurus’ as herein described and illustrated.",
       "updatedAt": "2026-08-26T11:57:21.265745+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037646-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.611810+00:00"
+      "verifiedAt": "2026-10-06T17:21:41.946723+00:00"
     },
     {
       "id": "PP37647",
@@ -2068,7 +2796,7 @@
       "detailText": "﻿ US PP37,647 P2 Heuchera plant named ‘Glazed and Infused’ Latin Name: Heuchera hybrid , Varietal Denomination: Glazed and Infused Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Jan. 14, 2026, as Appl. No. 19/729,001. Int. Cl. A01H 5/12 (2018.01); A01H 6/80 (2018.01) U.S. Cl. PLT—440 1 Claim 1 . A new and distinct Heuchera plant named ‘Glazed and Infused’ as herein described and illustrated.",
       "updatedAt": "2026-08-26T11:57:21.301346+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037647-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.694523+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.012914+00:00"
     },
     {
       "id": "PP37648",
@@ -2095,7 +2823,7 @@
       "detailText": "﻿ US PP37,648 P2 Baptisia plant named ‘Musical Duet’ Latin Name: Baptisia hybrid , Varietal Denomination: Musical Duet Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc, Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Jan. 14, 2026, as Appl. No. 19/729,003. Int. Cl. A01H 6/00 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct cultivar of Baptisia plant named ‘Musical Duet’ as herein described and illustrated.",
       "updatedAt": "2026-08-26T11:57:21.336813+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037648-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.778114+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.090006+00:00"
     },
     {
       "id": "PP37649",
@@ -2122,7 +2850,7 @@
       "detailText": "﻿ US PP37,649 P2 Thalictrum plant named ‘Cotton Ball’ Latin Name: Thalictrum hybrid , Varietal Denomination: Cotton Ball Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Feb. 25, 2026, as Appl. No. 19/729,051. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct cultivar of Thalictrum plant named ‘Cotton Ball’ as herein described and illustrated.",
       "updatedAt": "2026-08-26T11:57:21.381971+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037649-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.858625+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.165146+00:00"
     },
     {
       "id": "PP37650",
@@ -2149,7 +2877,7 @@
       "detailText": "﻿ US PP37,650 P2 Dianthus plant named ‘KLEDA25852’ Latin Name: Dianthus x allwoodii hort , Varietal Denomination: KLEDA25852 Laetitia Moucheboeuf, Exeter (GB) Assigned to KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed by KLEMM + SOHN GMBH & CO. KG, Stuttgart (DE) Filed on Sep. 4, 2025, as Appl. No. 19/319,132. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—273 1 Claim 1 . A new and distinct variety of Dianthus plant designated named ‘KLEDA25852’ as shown and described herein.",
       "updatedAt": "2026-08-26T11:57:21.421086+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037650-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:55.939504+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.230495+00:00"
     },
     {
       "id": "PP37651",
@@ -2176,7 +2904,7 @@
       "detailText": "﻿ US PP37,651 P2 Phalaenopsis plant named ‘PHA958054’ Latin Name: Phalaenopsis hybrida , Varietal Denomination: PHA958054 Martinus Nicolaas Gerardus van Swieten, Utrecht (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 15, 2025, as Appl. No. 19/329,332. Int. Cl. A01H 5/02 (2018.01); A01H 6/62 (2018.01) CPC A01H 6/62 (2018.05) U.S. Cl. PLT—311 1 Claim 1 . A new and distinct Phalaenopsis plant named ‘PHA958054’ as herein illustrated and described.",
       "updatedAt": "2026-08-26T11:57:21.459385+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037651-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:56.027656+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.306341+00:00"
     },
     {
       "id": "PP37652",
@@ -2203,7 +2931,7 @@
       "detailText": "﻿ US PP37,652 P2 Anthurium plant named ‘AN2860280’ Latin Name: Anthurium andreanum , Varietal Denomination: ‘AN2860280’ Jan van Dijk, Bleiswijk (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 9, 2025, as Appl. No. 19/323,756. Int. Cl. A01H 5/02 (2018.01); A01H 6/10 (2018.01) U.S. Cl. PLT—365 1 Claim 1 . A new and distinct Anthurium plant named ‘AN2860280’ as herein illustrated and described.",
       "updatedAt": "2026-08-26T11:57:21.508142+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037652-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:56.110714+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.369950+00:00"
     },
     {
       "id": "PP37653",
@@ -2230,7 +2958,7 @@
       "detailText": "﻿ US PP37,653 P3 Echinacea plant named ‘BullEchipur 120’ Latin Name: Echinacea purpurea , Varietal Denomination: BullEchipur 120 Hartwig Bull, Gönnebek (DE) Filed by Hartwig Bull, Gönnebek (DE) Filed on Jun. 11, 2025, as Appl. No. 19/235,179. Claims priority of provisional application 63/731,837, filed on Jun. 12, 2024. Prior Publication US 2025/0386751 P1, Dec. 18, 2025 Int. Cl. A01H 5/02 (2018.01); A01H 5/12 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/1448 (2018.05) [ A01H 5/02 (2013.01); A01H 5/12 (2013.01)] U.S. Cl. PLT—428 1 Claim 1 . A new and distinct cultivar of Echinacea plant named ‘BullEchipur 120’, as herein illustrated and described.",
       "updatedAt": "2026-08-26T11:57:21.549120+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week34/OG/html/1549-4/USPP037653-20260825.html",
-      "verifiedAt": "2026-10-04T15:55:56.192639+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.445164+00:00"
     },
     {
       "id": "PP37584",
@@ -2257,7 +2985,7 @@
       "detailText": "﻿ US PP37,584 P2 Verbena plant named ‘VEAZ0069’ Latin Name: Verbena hybrida , Varietal Denomination: VEAZ0069 Ronald Christiaan Snijder, Enkhuizen (NL) Assigned to Syngenta Crop Protection AG, Basel (CH) Filed by SYNGENTA CROP PROTECTION AG, Basel (CH) Filed on Jul. 8, 2025, as Appl. No. 19/262,184. Int. Cl. A01H 5/02 (2018.01); A01H 6/86 (2018.01) CPC A01H 6/86 (2018.05) U.S. Cl. PLT—308 1 Claim 1 . A new and distinct variety of Verbena plant named ‘VEAZ0069’ substantially as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:10.890187+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037584-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.364456+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.604901+00:00"
     },
     {
       "id": "PP37585",
@@ -2284,7 +3012,7 @@
       "detailText": "﻿ US PP37,585 P3 Miniature rose plant named ‘Poulpah127’ Latin Name: Rosa hybrida , Varietal Denomination: Poulpah127 Mogens Nyegaard Olesen, Fredensborg (DK) Assigned to POULSEN ROSER A/S, Fredensborg (DK) Filed by Mogens Nyegaard Olesen, Fredensborg (DK) Filed on Sep. 15, 2025, as Appl. No. 18/831,800. Claims priority of application No. PBR 20242186 (QZ), filed on Sep. 19, 2024. Prior Publication US 2026/0114338 P1, Apr. 23, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/749 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—122 1 Claim 1 . A new and distinct variety of rose plant named ‘Poulpah127’ substantially as described and illustrated herein.",
       "updatedAt": "2026-08-19T11:52:10.996748+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037585-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.446835+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.675158+00:00"
     },
     {
       "id": "PP37586",
@@ -2311,7 +3039,7 @@
       "detailText": "﻿ US PP37,586 P2 Miniature rose plant named ‘Poulpal106’ Latin Name: Rosa hybrida , Varietal Denomination: Poulpal106 Mogens Nyegaard Olesen, Fredensborg (DK) Assigned to Poulsen Roser A/S, Fredensborg (DK) Filed by Mogens Nyegaard Olesen, Fredensborg (DK) Filed on Sep. 15, 2025, as Appl. No. 18/831,802. Claims priority of application No. PBR 20242188 (QZ), filed on Sep. 19, 2024. Int. Cl. A01H 5/02 (2018.01); A01H 6/74 (2018.01) CPC A01H 6/749 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—122 1 Claim 1 . A new and distinct variety of rose plant named ‘Poulpal106’ substantially as described and illustrated herein.",
       "updatedAt": "2026-08-19T11:52:11.100710+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037586-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.526566+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.753574+00:00"
     },
     {
       "id": "PP37587",
@@ -2338,7 +3066,7 @@
       "detailText": "﻿ US PP37,587 P3 Miniature rose plant named ‘Poulpal107’ Latin Name: Rosa hybrida , Varietal Denomination: Poulpal107 Mogens Nyegaard Olesen, Fredensborg (DK) Assigned to POULSEN ROSER A/S, Fredensborg (DK) Filed by Mogens Nyegaard Olesen, Fredensborg (DK) Filed on Sep. 15, 2025, as Appl. No. 18/831,803. Claims priority of application No. PBR 20242189 (QZ), filed on Sep. 19, 2024. Prior Publication US 2026/0114339 P1, Apr. 23, 2026 Int. Cl. A01H 6/74 (2018.01); A01H 5/02 (2018.01) CPC A01H 6/749 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—121 1 Claim 1 . A new and distinct variety of rose plant named ‘Poulpal107’ substantially as described and illustrated herein.",
       "updatedAt": "2026-08-19T11:52:11.207028+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037587-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.608830+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.827082+00:00"
     },
     {
       "id": "PP37588",
@@ -2365,7 +3093,7 @@
       "detailText": "﻿ US PP37,588 P2 Nectarine tree named ‘TX2B444LWN’ Latin Name: Prunus persica. , Varietal Denomination: TX2B444LWN David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,355. Int. Cl. A01H 6/74 (2018.01) CPC A01H 6/7454 (2018.05) U.S. Cl. PLT—188 1 Claim 1 . A new and distinct variety of nectarine tree named ‘TX2B444LWN’, as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:11.307952+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037588-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.690744+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.897580+00:00"
     },
     {
       "id": "PP37589",
@@ -2392,7 +3120,7 @@
       "detailText": "﻿ US PP37,589 P2 Peach tree named ‘TRH3B53L’ Latin Name: Prunus persica , Varietal Denomination: TRH3B53L David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,164. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—194 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH3B53L’, as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:11.411678+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037589-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.775129+00:00"
+      "verifiedAt": "2026-10-06T17:21:42.993485+00:00"
     },
     {
       "id": "PP37590",
@@ -2419,7 +3147,7 @@
       "detailText": "﻿ US PP37,590 P2 Peach tree named ‘TRH2E120LW’ Latin Name: Prunus persica. , Varietal Denomination: TRH2E120LW David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,363. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—195 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH2E120LW’, as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:11.555527+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037590-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.859242+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.071613+00:00"
     },
     {
       "id": "PP37591",
@@ -2446,7 +3174,7 @@
       "detailText": "﻿ US PP37,591 P2 Peach tree named ‘TRH3E88LW’ Latin Name: Prunus persica , Varietal Denomination: TRH3E88LW David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,368. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—195 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH3E88LW’, as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:11.655436+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037591-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:56.939154+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.134268+00:00"
     },
     {
       "id": "PP37592",
@@ -2473,7 +3201,7 @@
       "detailText": "﻿ US PP37,592 P2 Peach tree named ‘TX2B449LW’ Latin Name: Prunus persica , Varietal Denomination: TX2B449LW David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,370. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—195 1 Claim 1 . A new and distinct variety of peach tree named ‘TX2B449LW’, as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:11.757714+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037592-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.023531+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.200617+00:00"
     },
     {
       "id": "PP37593",
@@ -2500,7 +3228,7 @@
       "detailText": "﻿ US PP37,593 P2 Peach tree named ‘TRHIC104LW’ Latin Name: Prunus persica , Varietal Denomination: TRHIC104LW David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Sep. 22, 2025, as Appl. No. 19/336,375. Int. Cl. A01H 5/08 (2018.01) U.S. Cl. PLT—195 1 Claim 1 . A new and distinct variety of peach tree named ‘TRHIC104LW’, as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:11.861754+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037593-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.104279+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.273150+00:00"
     },
     {
       "id": "PP37594",
@@ -2527,7 +3255,7 @@
       "detailText": "﻿ US PP37,594 P2 Peach tree named ‘TRH2E122W’ Latin Name: Prunus persica. , Varietal Denomination: TRH2E122W David H. Byrne, Bryan, TX (US); and Natalie Anderson, Calvert, TX (US) Assigned to The Texas A&M University System, College Station, TX (US) Filed by The Texas A&M University System, College Station, TX (US) Filed on Aug. 8, 2025, as Appl. No. 19/295,148. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—196 1 Claim 1 . A new and distinct variety of peach tree named ‘TRH2E122W’, as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:11.968060+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037594-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.185549+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.348602+00:00"
     },
     {
       "id": "PP37595",
@@ -2554,7 +3282,7 @@
       "detailText": "﻿ US PP37,595 P2 Raspberry plant named ‘Crimson Beauty’ Latin Name: Rubus idaeus L , Varietal Denomination: Crimson Beauty Courtney Weber, Geneva, NY (US) Assigned to Cornell University, Ithaca, NY (US) Filed by Cornell University, Ithaca, NY (US) Filed on Sep. 12, 2025, as Appl. No. 19/327,950. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—204 1 Claim 1 . A new and distinct raspberry plant named ‘Crimson Beauty’, as herein described and illustrated by the characteristics set forth above.",
       "updatedAt": "2026-08-19T11:52:12.076616+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037595-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.266444+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.424512+00:00"
     },
     {
       "id": "PP37596",
@@ -2581,7 +3309,7 @@
       "detailText": "﻿ US PP37,596 P2 Ficus plant named ‘GM3X25002’ Latin Name: Ficus Lyrata , Varietal Denomination: GM3X25002 Gregory J. Mislow, III, Miami, FL (US) Filed by Gregory J. Mislow, III, Miami, FL (US) Filed on May 9, 2025, as Appl. No. 19/204,041. Int. Cl. A01H 5/00 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—211 1 Claim 1 . A new and distinct cultivar of Ficus Lyrata , named ‘GM3X25002’ as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:12.220357+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037596-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.348838+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.509142+00:00"
     },
     {
       "id": "PP37597",
@@ -2608,7 +3336,7 @@
       "detailText": "﻿ US PP37,597 P3 Mandevilla plant named ‘TVMD1027’ Latin Name: Mandevilla sanderi , Varietal Denomination: TVMD1027 Everton Gomes da Costa, Sao Paulo (BR) Assigned to NICOLAAS JOSEF SCHOENMAKER e OUTROS, Sao Paulo (BR) Filed by NICOLAAS JOSEF SCHOENMAKER e OUTROS, Sao Paulo (BR) Filed on Aug. 28, 2025, as Appl. No. 19/313,609. Claims priority of provisional application 63/689,809, filed on Sep. 2, 2024. Prior Publication US 2026/0068787 P1, Mar. 5, 2026 Int. Cl. A01H 5/02 (2018.01); A01H 6/08 (2018.01) CPC A01H 6/088 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—232 1 Claim 1 . A new and distinct Mandevilla plant named ‘TVMD1027’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:12.361446+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037597-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.435365+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.578026+00:00"
     },
     {
       "id": "PP37598",
@@ -2635,7 +3363,7 @@
       "detailText": "﻿ US PP37,598 P2 Veonica plant named ‘Jedi Gem’ Latin Name: Veronica spicata , Varietal Denomination: Jedi Gem Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Jan. 14, 2026, as Appl. No. 18/831,998. Int. Cl. A01H 5/02 (2018.01); A01H 6/68 (2018.01) U.S. Cl. PLT—251 1 Claim 1 . A new and distinct cultivar of Veronica plant named ‘Jedi Gem’ as herein described and illustrated.",
       "updatedAt": "2026-08-19T11:52:12.463087+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037598-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.514495+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.642748+00:00"
     },
     {
       "id": "PP37599",
@@ -2662,7 +3390,7 @@
       "detailText": "﻿ US PP37,599 P2 Strawberry plant named ‘GF Midnight’ Latin Name: Fragaria x ananassa , Varietal Denomination: GF Midnight Jimmy Haig Bagdasarian, Santa Cruz, CA (US); and Travis Stegmeir, Salinas, CA (US) Filed by GoodFarms Genetics, LLC, San Diego, CA (US) Filed on Oct. 27, 2025, as Appl. No. 19/370,530. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—209 1 Claim 1 . A new and distinct strawberry plant named ‘GF Midnight’ as described and illustrated herein.",
       "updatedAt": "2026-08-19T11:52:12.565110+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037599-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.594301+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.729220+00:00"
     },
     {
       "id": "PP37600",
@@ -2689,7 +3417,7 @@
       "detailText": "﻿ US PP37,600 P2 Ilex plant named ‘SMNIGCM’ Latin Name: Ilex glabra , Varietal Denomination: SMNIGCM Megan M. Mathey, Holland, MI (US) Assigned to SPRING MEADOW NURSERY, INC., Grand Haven, MI (US) Filed by Megan M. Mathey, Holland, MI (US) Filed on Nov. 8, 2025, as Appl. No. 19/383,649. Int. Cl. A01H 5/00 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—247 1 Claim 1 . A new and distinct Ilex plant named ‘SMNIGCM’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:12.676247+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037600-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.677360+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.803852+00:00"
     },
     {
       "id": "PP37601",
@@ -2716,7 +3444,7 @@
       "detailText": "﻿ US PP37,601 P2 Physocarpus plant named ‘SMNPOFT’ Latin Name: Physocarpus opulifolius , Varietal Denomination: SMNPOFT Megan M. Mathey, Holland, MI (US) Assigned to SPRING MEADOW NURSERY, INC., Grand Haven, MI (US) Filed by Megan M. Mathey, Holland, MI (US) Filed on Nov. 8, 2025, as Appl. No. 19/383,651. Int. Cl. A01H 5/00 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—226 1 Claim 1 . A new and distinct Physocarpus plant named ‘SMNPOFT’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:12.779950+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037601-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.757884+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.869655+00:00"
     },
     {
       "id": "PP37602",
@@ -2743,7 +3471,7 @@
       "detailText": "﻿ US PP37,602 P2 Helleborus plant named ‘HL 1064’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1064 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,972. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) CPC A01H 6/72 (2018.05) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1064’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:12.882934+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037602-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.841175+00:00"
+      "verifiedAt": "2026-10-06T17:21:43.939304+00:00"
     },
     {
       "id": "PP37603",
@@ -2770,7 +3498,7 @@
       "detailText": "﻿ US PP37,603 P2 Helleborus plant named ‘HL 1072’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1072 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,980. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1072’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:12.985544+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037603-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:57.925555+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.013978+00:00"
     },
     {
       "id": "PP37604",
@@ -2797,7 +3525,7 @@
       "detailText": "﻿ US PP37,604 P2 Helleborus plant named ‘HL 1076’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1076 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,982. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1076’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.089347+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037604-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.008483+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.090327+00:00"
     },
     {
       "id": "PP37605",
@@ -2824,7 +3552,7 @@
       "detailText": "﻿ US PP37,605 P2 Helleborus plant named ‘HL 1078’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1078 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,984. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1078’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.193232+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037605-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.090349+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.159695+00:00"
     },
     {
       "id": "PP37606",
@@ -2851,7 +3579,7 @@
       "detailText": "﻿ US PP37,606 P2 Petunia plant named ‘Surf 20511’ Latin Name: Petunia x hybrida , Varietal Denomination: Surf 20511 Kiyoshi Miyazaki, Hikone (JP) Assigned to SUNTORY FLOWERS LIMITED, Tokyo (JP) Filed by Kiyoshi Miyazaki, Hikone (JP) Filed on Nov. 23, 2025, as Appl. No. 19/397,987. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) CPC A01H 6/824 (2018.05) U.S. Cl. PLT—356.15 1 Claim 1 . A new and distinct Petunia plant named ‘Surf 20511’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.297786+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037606-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.172457+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.225725+00:00"
     },
     {
       "id": "PP37607",
@@ -2878,7 +3606,7 @@
       "detailText": "﻿ US PP37,607 P2 Lavandula plant named ‘Felice Silver’ Latin Name: Lavandula angustifolia , Varietal Denomination: Felice Silver Lammert Koning, Nuis (NL) Assigned to L. KONING BEHEER B.V., Nais (NL) Filed by L. KONING BEHEER B.V., Nuis (NL) Filed on Nov. 24, 2025, as Appl. No. 19/399,201. Int. Cl. A01H 5/02 (2018.01); A01H 6/50 (2018.01) U.S. Cl. PLT—445 1 Claim 1 . A new and distinct Lavandula plant named ‘Felice Silver’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.402101+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037607-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.254983+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.295248+00:00"
     },
     {
       "id": "PP37608",
@@ -2905,7 +3633,7 @@
       "detailText": "﻿ US PP37,608 P2 Calibrachoa plant named ‘WICAMIMAG27’ Latin Name: Calibrachoa hybrida , Varietal Denomination: WICAMIMAG27 Akiko Nagasawa, Higashiomi (JP); and Adam Moseley, Kyle, TX (US) Assigned to WINGEN, LLC, Mustang Ridge, TX (US) Filed by Akiko Nagasawa, Higashiomi (JP); and Adam Moseley, Kyle, TX (US) Filed on Nov. 25, 2025, as Appl. No. 19/401,272. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) U.S. Cl. PLT—413 1 Claim 1 . A new and distinct Calibrachoa plant named ‘WICAMIMAG27’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.507212+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037608-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.337145+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.364275+00:00"
     },
     {
       "id": "PP37609",
@@ -2932,7 +3660,7 @@
       "detailText": "﻿ US PP37,609 P2 Osteospermum plant named ‘Doostmardarpup’ Latin Name: Osteospermum ecklonis , Varietal Denomination: Doostmardarpup Eveline Barends, De Lier (NL) Assigned to DÜMMEN GROUP B.V., De Lier (NL) Filed by DUMMEN GROUP B.V., De Lier (NL) Filed on Dec. 12, 2025, as Appl. No. 19/418,845. Int. Cl. A01H 5/02 (2018.01); A01H 6/14 (2018.01) CPC A01H 6/148 (2018.05) U.S. Cl. PLT—360 1 Claim 1 . A new and distinct Osteospermum plant named ‘Doostmardarpup’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.609518+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037609-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.416730+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.440526+00:00"
     },
     {
       "id": "PP37610",
@@ -2959,7 +3687,7 @@
       "detailText": "﻿ US PP37,610 P2 Agapanthus plant named ‘A22004’ Latin Name: Agapathus hybrid , Varietal Denomination: A22004 Tim Wyckstandt, Aalter (BE) Assigned to VAN VLIET NEW PLANTS B.V., Stroe (NL) Filed by Tim Wyckstandt, Aalter (BE) Filed on Dec. 17, 2025, as Appl. No. 19/422,445. Claims priority of application No. PBR 20251685 (QZ), filed on Jul. 29, 2025. Int. Cl. A01H 5/02 (2018.01); A01H 6/04 (2018.01) U.S. Cl. PLT—398 1 Claim 1 . A new and distinct cultivar of Agapanthus plant named ‘A22004’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.751165+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037610-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.499341+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.520763+00:00"
     },
     {
       "id": "PP37611",
@@ -2986,7 +3714,7 @@
       "detailText": "﻿ US PP37,611 P2 Miniature rose plant named ‘KORpot133’ Latin Name: Rosa hybrida , Varietal Denomination: KORpot133 Wilhelm-Alexander Kordes, Klein Offenseth-Sparrieshoop (DE); and Britta Feuerhahn, Klein Offenseth-Sparrieshoop (DE) Assigned to W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed by W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed on Dec. 18, 2025, as Appl. No. 19/424,800. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—129 1 Claim 1 . A new and distinct variety of miniature rose plant named ‘KORpot133’ characterized by the following combination of characteristics: (a) abundantly and substantially continuously forming deep red-colored blossoms, (b) exhibiting a compact growth habit, and (c) forming glossy, dark green foliage; substantially as herein shown and described.",
       "updatedAt": "2026-08-19T11:52:13.856796+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037611-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.579441+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.612399+00:00"
     },
     {
       "id": "PP37612",
@@ -3013,7 +3741,7 @@
       "detailText": "﻿ US PP37,612 P2 Catharanthus plant named ‘Kchuchu1’ Latin Name: Catharanthus roseus , Varietal Denomination: Kchuchu1 Osamu Kitajima, Sakurai (JP) Filed by Osamu Kitajima, Sakurai (JP) Filed on Dec. 30, 2025, as Appl. No. 19/436,337. Int. Cl. A01H 5/02 (2018.01); A01H 6/08 (2018.01) U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct Catharanthus plant named ‘Kchuchu1’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:13.960584+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037612-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.658462+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.683879+00:00"
     },
     {
       "id": "PP37613",
@@ -3040,7 +3768,7 @@
       "detailText": "﻿ US PP37,613 P2 Monstera plant named ‘LONGPRIDEMO01’ Latin Name: Monstera deliciosa , Varietal Denomination: LONGPRIDEMO01 Jui-Fang Liang, Gaoshu Township (TW) Assigned to Long Pride Biotechnology Co., LTD, (TW) Filed by Long Pride Biotechnology Co., Ltd, Gaoshu Township (TW) Filed on Jan. 7, 2026, as Appl. No. 19/442,340. Int. Cl. A01H 5/12 (2018.01); A01H 6/10 (2018.01) U.S. Cl. PLT—373 1 Claim 1 . A new and distinct cultivar of Monstera plant named ‘LONGPRIDEMO01’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:14.065438+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037613-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.739564+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.749285+00:00"
     },
     {
       "id": "PP37614",
@@ -3067,7 +3795,7 @@
       "detailText": "﻿ US PP37,614 P2 Strawberry plant named ‘Ferris’ Latin Name: Fragaria x ananassa , Varietal Denomination: Ferris Marcel Suiker, Ens (NL) Assigned to Flevo Berry Holding B.V., Ens (NL) Filed by Flevo Berry Holding B.V., Ens (NL) Filed on Jan. 28, 2026, as Appl. No. 19/462,883. Int. Cl. A01H 5/08 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—208 1 Claim 1 . A new and distinct variety of strawberry plant named ‘Ferris’, substantially as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:14.167739+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037614-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.821801+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.819661+00:00"
     },
     {
       "id": "PP37615",
@@ -3094,7 +3822,7 @@
       "detailText": "﻿ US PP37,615 P2 Miniature rose plant named ‘KORpot146’ Latin Name: Rosa hybrida , Varietal Denomination: KORpot146 Wilhelm-Alexander Kordes, Klein Offenseth-Sparrieshoop (DE); and Britta Feuerhahn, Klein Offenseth-Sparrieshoop (DE) Assigned to W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed by W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed on Jan. 30, 2026, as Appl. No. 19/465,015. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—120 1 Claim 1 . A new and distinct variety of miniature rose plant named ‘KORpot146’ characterized by the following combination of characteristics: (a) abundantly and substantially continuously forming salmon-colored blossoms, (b) exhibiting a bushy growth habit, and (c) forming semi-glossy, medium green foliage; substantially as herein shown and described.",
       "updatedAt": "2026-08-19T11:52:14.272733+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037615-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.904888+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.882993+00:00"
     },
     {
       "id": "PP37616",
@@ -3121,7 +3849,7 @@
       "detailText": "﻿ US PP37,616 P2 Miniature rose plant named ‘KORpot147’ Latin Name: Rosa hybrida , Varietal Denomination: KORpot147 Wilhelm-Alexander Kordes, Klein Offenseth-Sparrieshoop (DE); and Britta Feuerhahn, Klein Offenseth-Sparrieshoop (DE) Assigned to W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed by W. KORDES' SÖHNE Rosenschulen GmbH & Co KG, Klein Offenseth-Sparrieshoop (DE) Filed on Jan. 30, 2026, as Appl. No. 19/465,111. Int. Cl. A01H 5/02 (2018.01); A01H 6/74 (2018.01) U.S. Cl. PLT—121 1 Claim 1 . A new and distinct variety of miniature rose plant named ‘KORpot147’ characterized by the following combination of characteristics: (a) abundantly and substantially continuously forming dark pink-colored blossoms, (b) exhibiting a bushy and upright growth habit, and (c) forming semi-glossy, dark green foliage; substantially as herein shown and described.",
       "updatedAt": "2026-08-19T11:52:14.377588+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037616-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:58.987259+00:00"
+      "verifiedAt": "2026-10-06T17:21:44.960676+00:00"
     },
     {
       "id": "PP37617",
@@ -3148,7 +3876,7 @@
       "detailText": "﻿ US PP37,617 P2 Nephrolepis plant named ‘DEBO2025’ Latin Name: Nephrolepis exaltata , Varietal Denomination: DEBO2025 Hein Johannes Petrus de Boer, Asten (NL) Assigned to Debo-Plant, Asten (NL) Filed by Debo-Plant, Asten (NL) Filed on Feb. 10, 2026, as Appl. No. 19/536,031. Claims priority of application No. PBR 2025/1575 (QZ), filed on Jul. 15, 2025. Int. Cl. A01H 5/00 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) U.S. Cl. PLT—379 1 Claim 1 . A new and distinct variety of Nephrolepis exaltata plant named ‘DEBO2025’, substantially as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:14.483042+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037617-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.069833+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.065232+00:00"
     },
     {
       "id": "PP37618",
@@ -3175,7 +3903,7 @@
       "detailText": "﻿ US PP37,618 P2 Sedum plant named ‘Wineberry Delight’ Latin Name: Sedum hybrid , Varietal Denomination: Wineberry Delight Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc, Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Jan. 14, 2026, as Appl. No. 19/729,004. Int. Cl. A01H 5/02 (2018.01); A01H 6/32 (2018.01) U.S. Cl. PLT—479 1 Claim 1 . A new and distinct perennial Sedum plant named ‘Wineberry Delight’ as herein described and illustrated.",
       "updatedAt": "2026-08-19T11:52:14.585161+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037618-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.151073+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.133420+00:00"
     },
     {
       "id": "PP37619",
@@ -3202,7 +3930,7 @@
       "detailText": "﻿ US PP37,619 P2 Hibiscus plant named ‘Glitter Bomb’ Latin Name: Hibiscus hybrid (L.) , Varietal Denomination: Glitter Bomb Hans A. Hansen, Zeeland, MI (US) Assigned to Walters Gardens, Inc., Zeeland, MI (US) Filed by Hans A. Hansen, Zeeland, MI (US) Filed on Feb. 25, 2026, as Appl. No. 19/729,048. Int. Cl. A01H 5/02 (2018.01) U.S. Cl. PLT—257 1 Claim 1 . A new cultivar of hardy, herbaceous, perennial, hybrid Hibiscus plant named ‘Glitter Bomb’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:14.687598+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037619-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.234451+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.197205+00:00"
     },
     {
       "id": "PP37620",
@@ -3229,7 +3957,7 @@
       "detailText": "﻿ US PP37,620 P2 Peperomia plant named ‘BINL-77430002’ Latin Name: Peperomia trifolia , Varietal Denomination: BINL-77430002 Jacobus A. M. Nannes, Nairobi (KE) Assigned to Botanical Innovation B.V., (NL) Filed by Botanical Innovation B.V., Wageningen (NL) Filed on Oct. 7, 2025, as Appl. No. 19/351,766. Int. Cl. A01H 5/12 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—373 1 Claim 1 . A new and distinct cultivar of Peperomia plant named ‘BINL-77430002’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:14.793123+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037620-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.320704+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.275569+00:00"
     },
     {
       "id": "PP37621",
@@ -3256,7 +3984,7 @@
       "detailText": "﻿ US PP37,621 P2 Schismatoglottis plant named ‘RPFSTRDST’ Latin Name: Schismatoglottis sp. , Varietal Denomination: RPFSTRDST Jocelyn Ho, Detroit, MI (US) Assigned to Rare Plant Fairy, LLC, Detroit, MI (US) Filed by RARE PLANT FAIRY, LLC, Detroit, MI (US) Filed on Oct. 14, 2025, as Appl. No. 19/357,256. Int. Cl. A01H 5/12 (2018.01); A01H 6/10 (2018.01) U.S. Cl. PLT—373 1 Claim 1 . A new and distinct variety of Schismatoglottis plant named ‘RPFSTRDST’, substantially as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:14.893799+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037621-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.403716+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.356553+00:00"
     },
     {
       "id": "PP37622",
@@ -3283,7 +4011,7 @@
       "detailText": "﻿ US PP37,622 P2 Diervilla plant named ‘Baildiertwo’ Latin Name: Diervilla X splendens , Varietal Denomination: Baildiertwo Oren McBee, Bishop, GA (US); David Jonathan Roberts, Athens, GA (US); and Justin Schulze, Athens, GA (US) Assigned to BAILEY NURSERIES, INC., Newport, MN (US) Filed by Bailey Nurseries, Newport, MN (US) Filed on Oct. 22, 2025, as Appl. No. 19/366,286. Int. Cl. A01H 6/00 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—226 1 Claim 1 . A new and distinct cultivar of Diervilla plant named ‘Baildiertwo’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.016887+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037622-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.486501+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.441483+00:00"
     },
     {
       "id": "PP37623",
@@ -3310,7 +4038,7 @@
       "detailText": "﻿ US PP37,623 P2 Spiraea plant named ‘FARROWSJKO’ Latin Name: Spiraea japonica , Varietal Denomination: FARROWSJKO Michael W. Farrow, Warwick, MD (US) Assigned to Spring Meadow Nursery Inc., Grand Haven, MI (US) Filed by Spring Meadow Nursery Inc, Grand Haven, MI (US) Filed on Oct. 28, 2025, as Appl. No. 19/370,978. Int. Cl. A01H 6/74 (2018.01); A01H 5/02 (2018.01) U.S. Cl. PLT—226 1 Claim 1 . A new and distinct cultivar of Spiraea plant named ‘FARROWSJKO’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.120859+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037623-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.569959+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.520242+00:00"
     },
     {
       "id": "PP37624",
@@ -3337,7 +4065,7 @@
       "detailText": "﻿ US PP37,624 P2 Hebe plant named ‘Nina’ Latin Name: Hebe hybrid , Varietal Denomination: Nina Henrik Christiaan Cozijn Rietberg, Wezep (NL) Assigned to EDENS CREATIONS BV, Wezep (NL) Filed by Henrik Christiaan Cozijn Rietberg, Wezep (NL) Filed on Nov. 10, 2025, as Appl. No. 19/385,011. Claims priority of application No. 20242673 (QZ), filed on Nov. 19, 2024. Int. Cl. A01H 5/02 (2018.01); A01H 6/68 (2018.01) CPC A01H 6/68 (2018.05) U.S. Cl. PLT—251 1 Claim 1 . A new and distinct cultivar of Hebe plant named ‘Nina’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.221436+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037624-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.650480+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.592805+00:00"
     },
     {
       "id": "PP37625",
@@ -3364,7 +4092,7 @@
       "detailText": "﻿ US PP37,625 P2 Phalaenopsis plant named ‘MI03271’ Latin Name: Phalaenopsis hybrida , Varietal Denomination: MI03271 Febe Flore, Lochristi (BE) Assigned to MICROFLOR N.V., Lochristi (BE) Filed by MICROFLOR N.V., Lochristi (BE) Filed on Jun. 15, 2025, as Appl. No. 19/238,472. Int. Cl. A01H 5/02 (2018.01); A01H 6/62 (2018.01) CPC A01H 6/62 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—311 1 Claim 1 . A new and distinct Phalaenopsis plant named ‘MI03271’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.367497+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037625-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.736123+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.685717+00:00"
     },
     {
       "id": "PP37626",
@@ -3391,7 +4119,7 @@
       "detailText": "﻿ US PP37,626 P2 Phalaenopsis plant named ‘PHA973648’ Latin Name: Phalaenopsis hybrida , Varietal Denomination: PHA973648 Martinus Nicolaas Gerardus van Swieten, Utrecht (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 4, 2025, as Appl. No. 19/318,788. Int. Cl. A01H 5/02 (2018.01); A01H 6/62 (2018.01) CPC A01H 6/62 (2018.05) U.S. Cl. PLT—311 1 Claim 1 . A new and distinct Phalaenopsis plant named ‘PHA973648’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.469703+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037626-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.817532+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.760093+00:00"
     },
     {
       "id": "PP37627",
@@ -3418,7 +4146,7 @@
       "detailText": "﻿ US PP37,627 P2 Phalaenopsis plant named ‘PHA814617’ Latin Name: Phalaenopsis hybrida , Varietal Denomination: PHA814617 Martinus Nicolaas Gerardus van Swieten, Utrecht (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 15, 2025, as Appl. No. 19/329,313. Int. Cl. A01H 5/02 (2018.01); A01H 6/62 (2018.01) CPC A01H 6/62 (2018.05) U.S. Cl. PLT—311 1 Claim 1 . A new and distinct Phalaenopsis plant named ‘PHA814617’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.573836+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037627-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.899288+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.842622+00:00"
     },
     {
       "id": "PP37628",
@@ -3445,7 +4173,7 @@
       "detailText": "﻿ US PP37,628 P2 Anthurium plant named ‘AN2874586’ Latin Name: Anthurium andreanum , Varietal Denomination: AN2874586 Jan van Dijk, Bleiswijk (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 9, 2025, as Appl. No. 19/323,764. Int. Cl. A01H 5/02 (2018.01); A01H 6/10 (2018.01) CPC A01H 6/10 (2018.05) U.S. Cl. PLT—365 1 Claim 1 . A new and distinct Anthurium plant named ‘AN2874586’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.675240+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037628-20260818.html",
-      "verifiedAt": "2026-10-04T15:55:59.980137+00:00"
+      "verifiedAt": "2026-10-06T17:21:45.932983+00:00"
     },
     {
       "id": "PP37629",
@@ -3472,7 +4200,7 @@
       "detailText": "﻿ US PP37,629 P2 Anthurium plant named ‘AN2950768’ Latin Name: Anthurium andreanum , Varietal Denomination: AN2950768 Jan van Dijk, Bleiswijk (NL) Assigned to ANTHURA B.V., Bleiswijk (NL) Filed by ANTHURA B.V., Bleiswijk (NL) Filed on Sep. 9, 2025, as Appl. No. 19/323,769. Int. Cl. A01H 5/02 (2018.01); A01H 6/10 (2018.01) CPC A01H 6/10 (2018.05) U.S. Cl. PLT—365 1 Claim 1 . A new and distinct Anthurium plant named ‘AN2950768’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:15.774410+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037629-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.063021+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.014156+00:00"
     },
     {
       "id": "PP37630",
@@ -3499,7 +4227,7 @@
       "detailText": "﻿ US PP37,630 P3 Colocasia plant named ‘COMASTA’ Latin Name: Colocasia esculenta (L.) Schott. , Varietal Denomination: COMASTA Brian Paul Williams, Louisville, KY (US) Filed by Brian's Botanicals, Louisville, KY (US) Filed on Feb. 6, 2025, as Appl. No. 18/831,475. Prior Publication US 2026/0231842 P1, Aug. 6, 2026 Int. Cl. A01H 5/12 (2018.01); A01H 6/10 (2018.01) CPC A01H 6/10 (2018.05) [ A01H 5/12 (2013.01)] U.S. Cl. PLT—373 1 Claim 1 . A new and distinct variety of Colocasia plant named ‘COMASTA’, substantially as described and illustrated herein.",
       "updatedAt": "2026-08-19T11:52:15.875728+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037630-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.141778+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.082217+00:00"
     },
     {
       "id": "PP37631",
@@ -3526,7 +4254,7 @@
       "detailText": "﻿ US PP37,631 P2 Ficus plant named ‘GM3X25001’ Latin Name: Ficus lyrata , Varietal Denomination: GM3X25001 Gregory J. Mislow, III, Miami, FL (US) Filed by Gregory J. Mislow, III, Miami, FL (US) Filed on May 9, 2025, as Appl. No. 19/203,971. Int. Cl. A01H 5/12 (2018.01); A01H 6/00 (2018.01) U.S. Cl. PLT—211 1 Claim 1 . A new and distinct variety of Ficus lyrata plant, named ‘GM3X25001’ substantially as illustrated and described herein.",
       "updatedAt": "2026-08-19T11:52:15.978776+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037631-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.220285+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.145439+00:00"
     },
     {
       "id": "PP37632",
@@ -3553,7 +4281,7 @@
       "detailText": "﻿ US PP37,632 P2 Sansevieria plant named ‘Hansoti63’ Latin Name: Sansevieria trifasciata , Varietal Denomination: Hansoti63 Ashish Hansoti, Mumbai (IN) Filed by Ashish Hansoti, Mumbai (IN) Filed on Oct. 3, 2025, as Appl. No. 19/349,654. Int. Cl. A01H 6/12 (2018.01); A01H 5/12 (2018.01) U.S. Cl. PLT—382 1 Claim 1 . A new and distinct cultivar of Sansevieria plant named ‘HANSOTI63’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.083026+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037632-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.309989+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.225664+00:00"
     },
     {
       "id": "PP37633",
@@ -3580,7 +4308,7 @@
       "detailText": "﻿ US PP37,633 P2 Sansevieria plant named ‘HANSOTI64’ Latin Name: Sansevieria trifasciata , Varietal Denomination: HANSOTI64 Ashish Hansoti, Mumbai (IN) Filed by Ashish Hansoti, Mumbai (IN) Filed on Oct. 3, 2025, as Appl. No. 19/349,669. Int. Cl. A01H 6/12 (2018.01); A01H 5/12 (2018.01) U.S. Cl. PLT—382 1 Claim 1 . A new and distinct cultivar of Sansevieria plant named ‘HANSOTI64’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.186012+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037633-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.392179+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.302212+00:00"
     },
     {
       "id": "PP37634",
@@ -3607,7 +4335,7 @@
       "detailText": "﻿ US PP37,634 P2 Calibrachoa plant named ‘Docalrahopi’ Latin Name: Calibrachoa parviflora , Varietal Denomination: Docalrahopi Arjan Koot, Oeffelt (NL) Assigned to Dümmen Group B.V., De Lier (NL) Filed by DUMMEN GROUP B.V., De Lier (NL) Filed on Sep. 28, 2025, as Appl. No. 19/342,619. Int. Cl. A01H 5/02 (2018.01); A01H 6/82 (2018.01) U.S. Cl. PLT—413 1 Claim 1 . A new and distinct Calibrachoa plant named ‘Docalrahopi’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.287772+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037634-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.475561+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.390995+00:00"
     },
     {
       "id": "PP37635",
@@ -3634,7 +4362,7 @@
       "detailText": "﻿ US PP37,635 P2 Helleborus plant named ‘HL 1058’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1058 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,962. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) CPC A01H 6/72 (2018.05) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1058’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.391896+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037635-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.558755+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.458670+00:00"
     },
     {
       "id": "PP37636",
@@ -3661,7 +4389,7 @@
       "detailText": "﻿ US PP37,636 P2 Helleborus plant named ‘HL 1062’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1062 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,971. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) CPC A01H 6/72 (2018.05) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1062’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.493609+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037636-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.641077+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.542295+00:00"
     },
     {
       "id": "PP37637",
@@ -3688,7 +4416,7 @@
       "detailText": "﻿ US PP37,637 P2 Helleborus plant named ‘HL 1068’ Latin Name: Helleborus x niger X Helleborus x hybridus , Varietal Denomination: HL 1068 Josef Heuger, Glandorf (DE) Filed by Josef Heuger, Glandorf (DE) Filed on Nov. 23, 2025, as Appl. No. 19/397,979. Int. Cl. A01H 5/02 (2018.01); A01H 6/72 (2018.01) CPC A01H 6/72 (2018.05) U.S. Cl. PLT—439 1 Claim 1 . A new and distinct Helleborus plant named ‘HL 1068’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.596865+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037637-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.721736+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.615781+00:00"
     },
     {
       "id": "PP37638",
@@ -3715,7 +4443,7 @@
       "detailText": "﻿ US PP37,638 P2 Portulacaria ‘Sunkissed’ Latin Name: Portulacaria afra , Varietal Denomination: Sunkissed Renee O'Connell, Pala, CA (US) Assigned to Altman Specialty Plants Ilc, Vista, CA (US) Filed by Altman Specialty Plants llc, Vista, CA (US) Filed on Jul. 9, 2025, as Appl. No. 19/264,395. Int. Cl. A01H 5/12 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) [ A01H 5/12 (2013.01)] U.S. Cl. PLT—373 1 Claim 1 . A new and distinct cultivar of Portulacaria afra plant named ‘SUNKISSED’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.741195+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037638-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.804333+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.717882+00:00"
     },
     {
       "id": "PP37639",
@@ -3742,7 +4470,7 @@
       "detailText": "﻿ US PP37,639 P2 Lewisia plant named ‘MARIANNE’ Latin Name: Lewisia cotyledon , Varietal Denomination: MARIANNE Philip van Hilst, Kaatsheuvel (NL) Filed by Philip van Hilst, Kaatsheuvel (NL) Filed on Aug. 15, 2025, as Appl. No. 19/301,485. Int. Cl. A01H 5/02 (2018.01); A01H 6/00 (2018.01) CPC A01H 6/00 (2018.05) [ A01H 5/02 (2013.01)] U.S. Cl. PLT—263.1 1 Claim 1 . A new and distinct cultivar of Lewisia plant named ‘Marianne’ as herein illustrated and described.",
       "updatedAt": "2026-08-19T11:52:16.843935+00:00",
       "gazetteUrl": "https://patentsgazette.uspto.gov/week33/OG/html/1549-3/USPP037639-20260818.html",
-      "verifiedAt": "2026-10-04T15:56:00.887075+00:00"
+      "verifiedAt": "2026-10-06T17:21:46.790453+00:00"
     },
     {
       "id": "PP37567",
