@@ -1,28 +1,28 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-10-12T20:40:22.397834+00:00",
+    "checkedAt": "2026-10-13T18:41:39.958359+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 2933,
+    "plantPatents": 2967,
     "cpvoRecords": 115141,
-    "ownerProfiles": 12168,
+    "ownerProfiles": 12179,
     "breederAffiliations": 9257,
     "companyProfiles": 179,
     "manualAudits": 35,
     "webEvidenceProfiles": 485,
     "profileEvidenceLinks": 1419,
-    "webResearchRows": 12168
+    "webResearchRows": 12179
   },
   "checks": [
     {
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "2,933 plant-patent rows"
+      "detail": "2,967 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -34,7 +34,7 @@
       "name": "owner_profiles_present",
       "ok": true,
       "severity": "error",
-      "detail": "12,168 owner profiles"
+      "detail": "12,179 owner profiles"
     },
     {
       "name": "breeder_affiliations_present",
@@ -88,13 +88,13 @@
       "name": "profile_audit_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,168 audit rows for 12,168 owners"
+      "detail": "12,179 audit rows for 12,179 owners"
     },
     {
       "name": "web_research_covers_every_owner",
       "ok": true,
       "severity": "error",
-      "detail": "12,168 research rows for 12,168 owners"
+      "detail": "12,179 research rows for 12,179 owners"
     },
     {
       "name": "unique_company_profiles",
@@ -148,19 +148,19 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Frutaria Innovation, MBG Marketing, VIF International, Berries Del Oeste S.L., Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, CREA Fruit Breeding, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Frutaria Innovation, MBG Marketing, Florida Foundation Seed Producers, Angus Soft Fruits, Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, Fashion Foods Ltd., JFT Nurseries Pty Ltd., Constellation Brands U.S. Operations, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "24 evidence links need replacement or manual review"
+      "detail": "11 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
       "ok": true,
       "severity": "error",
-      "detail": "Status totals 12,168; research rows 12,168"
+      "detail": "Status totals 12,179; research rows 12,179"
     }
   ]
 }
