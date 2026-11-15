@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-11-14T18:39:29.079262+00:00",
+    "checkedAt": "2026-11-15T19:17:46.766809+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: NIAB East Malling, Van Well Nursery, Grapa Global, Sweet Darling Sales, Inc., SERIDA, Cornell University, Fleuren Tree Nursery, Berry Gardens Growers, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Van Well Nursery, University of California, Sweet Darling Sales, Inc., SERIDA, Cornell University, Berry Gardens Growers, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "42 evidence links need replacement or manual review"
+      "detail": "44 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
