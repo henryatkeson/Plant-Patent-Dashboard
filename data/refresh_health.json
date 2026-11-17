@@ -1,13 +1,13 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-11-16T22:38:08.867098+00:00",
+    "checkedAt": "2026-11-17T21:30:42.318463+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
   },
   "counts": {
-    "plantPatents": 3028,
+    "plantPatents": 3033,
     "cpvoRecords": 115141,
     "ownerProfiles": 12206,
     "breederAffiliations": 9258,
@@ -22,7 +22,7 @@
       "name": "patent_dataset_present",
       "ok": true,
       "severity": "error",
-      "detail": "3,028 plant-patent rows"
+      "detail": "3,033 plant-patent rows"
     },
     {
       "name": "cpvo_dataset_present",
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Mountain Blue Orchards Pty Ltd, Van Well Nursery, Grapa Global, Sweet Darling Sales, Inc., SERIDA, Cornell University, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
+      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., SERIDA, Cornell University, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "30 evidence links need replacement or manual review"
+      "detail": "31 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
