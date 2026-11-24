@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-11-24T00:28:53.075908+00:00",
+    "checkedAt": "2026-11-24T22:55:58.781897+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -148,13 +148,13 @@
       "name": "configured_sites_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "Unreachable: Van Well Nursery, Sweet Darling Sales, Inc., Cornell University, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Berryneo S.L., Citrogold Pty Ltd, Embrapa Grape and Wine"
+      "detail": "Unreachable: Van Well Nursery, Grapa Global, Sweet Darling Sales, Inc., SERIDA, Cornell University, University of Cordoba / UCOLIVO, Miyoshi Agri-Tech Co. Ltd., Queensland DPI Fruit Breeding, Chinese Academy of Sciences Kiwifruit Programs, Sichuan Provincial Academy / Mingzhang Kiwifruit, Citrogold Pty Ltd, Embrapa Grape and Wine"
     },
     {
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "37 evidence links need replacement or manual review"
+      "detail": "30 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
