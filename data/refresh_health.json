@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Dashboard Refresh Health",
-    "checkedAt": "2026-11-25T22:10:35.271778+00:00",
+    "checkedAt": "2026-11-26T22:02:16.205518+00:00",
     "status": "warning",
     "errorCount": 0,
     "warningCount": 2
@@ -154,7 +154,7 @@
       "name": "profile_evidence_links_reachable",
       "ok": false,
       "severity": "warning",
-      "detail": "21 evidence links need replacement or manual review"
+      "detail": "20 evidence links need replacement or manual review"
     },
     {
       "name": "research_status_totals_match",
